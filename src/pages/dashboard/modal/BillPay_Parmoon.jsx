@@ -178,7 +178,7 @@ const styles = StyleSheet.create({
     borderStyle: "solid",
     borderWidth: 1,
     borderColor: "#000",
-    marginBottom: 10,
+    marginBottom: 48,
   },
   tableRow: {
     margin: "auto",
@@ -202,7 +202,7 @@ const styles = StyleSheet.create({
     borderColor: "#000",
     textAlign: "center",
     width: "40%", // แบ่งเป็น 3 ส่วนเท่า ๆ กัน (ขนาดเท่ากัน)
-    height: "auto",
+    height: "100%",
   },
   tableCell3: {
     margin: "auto",
@@ -221,7 +221,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "#000",
     textAlign: "center",
-    width: "10%", // แบ่งเป็น 3 ส่วนเท่า ๆ กัน (ขนาดเท่ากัน)
+    width: "20%", // แบ่งเป็น 3 ส่วนเท่า ๆ กัน (ขนาดเท่ากัน)
     height: "100%",
   },
   tableCell5: {
@@ -231,7 +231,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "#000",
     textAlign: "center",
-    width: "15%", // แบ่งเป็น 3 ส่วนเท่า ๆ กัน (ขนาดเท่ากัน)
+    width: "20%", // แบ่งเป็น 3 ส่วนเท่า ๆ กัน (ขนาดเท่ากัน)
     height: "100%",
   },
   tableCell6: {
@@ -258,13 +258,15 @@ const styles = StyleSheet.create({
 
 const BillPay_Parmoon = ({ open5, handleOpen5, data, statusModal  }) => {
   const [dataPay, setDataPay] = useState({})
+  const [totalPrice, setTotalPrice] = useState('')
 
   const fethDataPay = async()=>{
     if (data?.id_receipt){
       try {
         const res = await axios.get(`${import.meta.env.VITE_APP_API}/Auction-Sale/${data?.id_receipt}/detail`)
-        console.log(res.data[0]);
+        // console.log(res.data[0]);
         setDataPay(res.data[0])
+        setTotalPrice(res.data[0].sale_auction.auction_report_price)
         
       } catch (error) {
         console.log(error);
@@ -273,16 +275,19 @@ const BillPay_Parmoon = ({ open5, handleOpen5, data, statusModal  }) => {
   }
 
   useEffect(() => {
-    console.log(data);
+    // console.log(data);
     fethDataPay()
   }, [open5]);
+
+  console.log(dataPay)
+  console.log(totalPrice)
 
   const currentDate = new Date();
 
   const buddhistYear = currentDate.getFullYear() + 543;
   // console.log(buddhistYear);
   //  --------------- แปลงรูปแบบวันที่ วว/ดด/ปป -------------------------------- //
-  const dateObject = new Date(data?.sale_receipt_date_pay);
+  const dateObject = new Date(dataPay?.sale_receipt_date_pay);
 
   // รับค่าวันที่, เดือน, และปี
   const day = dateObject.getDate();
@@ -295,16 +300,16 @@ const BillPay_Parmoon = ({ open5, handleOpen5, data, statusModal  }) => {
     .padStart(2, "0")}/${year}`;
 
 
-    const productPrices = (data?.products || []).map(product => {
-      const count = parseInt(product.sale_auction_start_event_count);
-      const price = parseInt(product.sale_auction_start_event_count_price);
-      return count * price;
-    });
+    // const productPrices = (data?.products || []).map(product => {
+    //   const count = parseInt(product.sale_auction_start_event_count);
+    //   const price = parseInt(product.sale_auction_start_event_count_price);
+    //   return count * price;
+    // });
   
-    // คำนวณผลรวมของราคาทั้งหมด
-    const totalPrice = productPrices.reduce((acc, currentPrice) => acc + currentPrice, 0);
+    // // คำนวณผลรวมของราคาทั้งหมด
+    // const totalPrice = productPrices.reduce((acc, currentPrice) => acc + currentPrice, 0);
 
-    // console.log(totalPrice)
+    // // console.log(totalPrice)
   
   return (
     <div>
@@ -342,7 +347,7 @@ const BillPay_Parmoon = ({ open5, handleOpen5, data, statusModal  }) => {
                        { fontFamily: "Sarabun" },
                      ]}
                    >
-                     {data?.sale_code}
+                     {dataPay?.sale_auction?.number}
                    </Text>
                  </View>
                </View>
@@ -415,7 +420,7 @@ const BillPay_Parmoon = ({ open5, handleOpen5, data, statusModal  }) => {
                          styles.mtsm,
                        ]}
                      >
-                       {data?.auction_report_user_auction}{" "}
+                       {dataPay?.sale_auction?.auction_report_user_auction}{" "}
                      </Text>
                    </View>
    
@@ -444,7 +449,7 @@ const BillPay_Parmoon = ({ open5, handleOpen5, data, statusModal  }) => {
                            styles.spacesm,
                          ]}
                        >
-                         {" "}{data?.sale_receipt_status == 1 ? "เงินสด" : data?.sale_receipt_status == 2 ? "เงินโอน" : data?.sale_receipt_status == 3 ? "เช็ค" : "" }
+                         {" "}{dataPay?.sale_receipt_status == 1 ? "เงินสด" : dataPay?.sale_receipt_status == 2 ? "เงินโอน" : dataPay?.sale_receipt_status == 3 ? "เช็ค" : "" }
                        </Text>
                      </View>
                    </View>
@@ -475,7 +480,7 @@ const BillPay_Parmoon = ({ open5, handleOpen5, data, statusModal  }) => {
                          { width:"80%"},
                        ]}
                      >
-                       {data?.sale_code_customer_address}{" "}
+                       {dataPay?.sale_auction?.auction_report_customer_address}{" "}
                      </Text>
                    </View>
    
@@ -536,7 +541,7 @@ const BillPay_Parmoon = ({ open5, handleOpen5, data, statusModal  }) => {
                          { width:"80%"},
                        ]}
                      >
-                       {data?.sale_code_customer_noun + '' }.{" "} 
+                       {dataPay?.sale_auction?.auction_report_customer_noun + '' }.{" "} 
                      </Text>
                    </View>
    
@@ -566,7 +571,7 @@ const BillPay_Parmoon = ({ open5, handleOpen5, data, statusModal  }) => {
                          ]}
                        >
                          {" "}
-                         {data?.sale_code_customer_tel}
+                         {dataPay?.sale_auction?.auction_report_customer_tel}
                        </Text>
                      </View>
                    </View>
@@ -597,7 +602,7 @@ const BillPay_Parmoon = ({ open5, handleOpen5, data, statusModal  }) => {
                          styles.mtsm,
                        ]}
                      >
-                     {data?.sale_code_customer_contract}{" "}
+                     {dataPay?.sale_auction?.auction_report_customer_contract}{" "}
                      </Text>
                    </View>
    
@@ -629,7 +634,7 @@ const BillPay_Parmoon = ({ open5, handleOpen5, data, statusModal  }) => {
                          ]}
                        >
                          {" "}
-                         {data?.sale_auction_refer} / {data?.sale_auction_num}
+                         {dataPay?.sale_auction?.auction_refer} / {dataPay?.sale_auction?.auction_num}
                          {" "}
                        </Text>
                      </View>
@@ -642,826 +647,431 @@ const BillPay_Parmoon = ({ open5, handleOpen5, data, statusModal  }) => {
                      <Text style={styles.tableCell2}>รายละเอียด </Text>
                      <Text style={styles.tableCell3}>จำนวน </Text>
                      <Text style={styles.tableCell4}>หน่วยนับ </Text>
-                     <Text style={styles.tableCell5}>ราคา/หน่วย </Text>
-                     <Text style={styles.tableCell6}>จำนวนเงิน </Text>
+                     <Text style={styles.tableCell5}>จำนวนเงิน </Text>
                    </View>
                    {/* row 1 */}
                    <View style={styles.tableRow}>
                      <Text style={styles.tableCell1}> 1 </Text>
                      <Text style={[styles.tableCell2, { textAlign: "left" }]}>
                        {" "}
-                       {data?.products?.[0]?.product_name }{" "}
+                       {dataPay?.sale_auction?.auction_report_auctionstarted} {" "}
                      </Text>
-                     <Text style={styles.tableCell3}>{" "} {data?.products?.[0]?.sale_auction_start_event_count_price }{" "} </Text>
+                     <Text style={styles.tableCell3}>1{" "} </Text>
                      <Text style={styles.tableCell4}> {" "} {data?.products?.[0]?.product_count }{" "} </Text>
-                     <Text style={styles.tableCell5}> {" "} {isNaN(data?.products?.[0]?.sale_auction_start_event_count) ? '' : Number(data?.products?.[0]?.sale_auction_start_event_count).toLocaleString() }{" "} </Text>
-                     <Text style={styles.tableCell6}> {" "} {isNaN(data?.products?.[0]?.sale_auction_start_event_count_price) || isNaN(data?.products?.[0]?.sale_auction_start_event_count) ? '' : (data?.products?.[0]?.sale_auction_start_event_count_price * data?.products?.[0]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
+                     <Text style={styles.tableCell5}> {" "} {isNaN(dataPay?.sale_auction?.auction_report_price) ? '' : Number(dataPay?.sale_auction?.auction_report_price).toLocaleString() }{" "} </Text>
                    </View>
                    {/* row 2 */}
                    <View style={styles.tableRow}>
                      <Text style={styles.tableCell1}> 2 </Text>
                      <Text style={[styles.tableCell2, { textAlign: "left" }]}>
                        {" "}
-                       {data?.products?.[1]?.product_name }{" "}
+                       สลากออมสิน{" "}
                      </Text>
-                     <Text style={styles.tableCell3}>{" "} {data?.products?.[1]?.sale_auction_start_event_count_price }{" "} </Text>
-                     <Text style={styles.tableCell4}> {" "} {data?.products?.[1]?.product_count }{" "} </Text>
-                     <Text style={styles.tableCell5}> {" "} {isNaN(data?.products?.[1]?.sale_auction_start_event_count) ? '' : Number(data?.products?.[1]?.sale_auction_start_event_count).toLocaleString() }{" "} </Text>
-                     <Text style={styles.tableCell6}> {" "} {isNaN(data?.products?.[1]?.sale_auction_start_event_count_price) || isNaN(data?.products?.[1]?.sale_auction_start_event_count) ? '' : (data?.products?.[1]?.sale_auction_start_event_count_price * data?.products?.[1]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
+                     <Text style={styles.tableCell3}>{" "} {dataPay?.sale_auction?.aomsin1?.[0]?.auction_auction_start_event_count }{" "} </Text>
+                     <Text style={styles.tableCell4}> {dataPay?.sale_auction?.aomsin1?.[0]?.auction_auction_start_event_count ? "ใบ" : '' }  </Text>
+                     <Text style={styles.tableCell5}> </Text>
+                    
                    </View>
                    {/* row 3 */}
                    <View style={styles.tableRow}>
                      <Text style={styles.tableCell1}> 3 </Text>
                      <Text style={[styles.tableCell2, { textAlign: "left" }]}>
                        {" "}
-                       {data?.products?.[2]?.product_name }{" "}
+                       ล็อตเตอรี่{" "}
                      </Text>
-                     <Text style={styles.tableCell3}>{" "} {data?.products?.[2]?.sale_auction_start_event_count_price }{" "} </Text>
-                     <Text style={styles.tableCell4}> {" "} {data?.products?.[2]?.product_count }{" "} </Text>
-                     <Text style={styles.tableCell5}> {" "} {isNaN(data?.products?.[2]?.sale_auction_start_event_count) ? '' : Number(data?.products?.[2]?.sale_auction_start_event_count).toLocaleString() }{" "} </Text>
-                     <Text style={styles.tableCell6}> {" "} {isNaN(data?.products?.[2]?.sale_auction_start_event_count_price) || isNaN(data?.products?.[2]?.sale_auction_start_event_count) ? '' : (data?.products?.[2]?.sale_auction_start_event_count_price * data?.products?.[2]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
+                     <Text style={styles.tableCell3}>{" "} {dataPay?.sale_auction?.aomsin1?.[1]?.auction_auction_start_event_count }{" "} </Text>
+                     <Text style={styles.tableCell4}> {" "} {dataPay?.sale_auction?.aomsin1?.[1]?.auction_auction_start_event_count ? "ใบ" : '' }{" "} </Text>
+                     <Text style={styles.tableCell5}>  </Text>
                    </View>
                    {/* row 4 */}
                    <View style={styles.tableRow}>
                      <Text style={styles.tableCell1}> 4 </Text>
                      <Text style={[styles.tableCell2, { textAlign: "left" }]}>
                        {" "}
-                       {data?.products?.[3]?.product_name }{" "}
+                       {dataPay?.sale_auction?.product1?.[0]?.auction_product_start_event }{" "}
                      </Text>
-                     <Text style={styles.tableCell3}>{" "} {data?.products?.[3]?.sale_auction_start_event_count_price }{" "} </Text>
-                     <Text style={styles.tableCell4}> {" "} {data?.products?.[3]?.product_count }{" "} </Text>
-                     <Text style={styles.tableCell5}> {" "} {isNaN(data?.products?.[3]?.sale_auction_start_event_count) ? '' : Number(data?.products?.[3]?.sale_auction_start_event_count).toLocaleString() }{" "} </Text>
-                     <Text style={styles.tableCell6}> {" "} {isNaN(data?.products?.[3]?.sale_auction_start_event_count_price) || isNaN(data?.products?.[3]?.sale_auction_start_event_count) ? '' : (data?.products?.[3]?.sale_auction_start_event_count_price * data?.products?.[3]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
+                     <Text style={styles.tableCell3}>{" "} {dataPay?.sale_auction?.product1?.[0]?.auction_product_start_event_count }{" "} </Text>
+                     <Text style={styles.tableCell4}> {" "}  {dataPay?.sale_auction?.product1?.[0]?.auction_product_start_event_cat_count }{" "} </Text>
+                     <Text style={styles.tableCell5}>  </Text>
+                     
                    </View>
                    {/* row 5 */}
                    <View style={styles.tableRow}>
                      <Text style={styles.tableCell1}> 5 </Text>
                      <Text style={[styles.tableCell2, { textAlign: "left" }]}>
                        {" "}
-                       {data?.products?.[4]?.product_name }{" "}
+                       {dataPay?.sale_auction?.product1?.[1]?.auction_product_start_event }{" "}
                      </Text>
-                     <Text style={styles.tableCell3}>{" "} {data?.products?.[4]?.sale_auction_start_event_count_price }{" "} </Text>
-                     <Text style={styles.tableCell4}> {" "} {data?.products?.[4]?.product_count }{" "} </Text>
-                     <Text style={styles.tableCell5}> {" "} {isNaN(data?.products?.[4]?.sale_auction_start_event_count) ? '' : Number(data?.products?.[4]?.sale_auction_start_event_count).toLocaleString() }{" "} </Text>
-                     <Text style={styles.tableCell6}> {" "} {isNaN(data?.products?.[4]?.sale_auction_start_event_count_price) || isNaN(data?.products?.[4]?.sale_auction_start_event_count) ? '' : (data?.products?.[4]?.sale_auction_start_event_count_price * data?.products?.[4]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
+                     <Text style={styles.tableCell3}>{" "} {dataPay?.sale_auction?.product1?.[1]?.auction_product_start_event_count }{" "} </Text>
+                     <Text style={styles.tableCell4}> {" "}  {dataPay?.sale_auction?.product1?.[1]?.auction_product_start_event_cat_count }{" "} </Text>
+                     <Text style={styles.tableCell5}>  </Text>
+                     
                    </View>
                    {/* row 6 */}
                    <View style={styles.tableRow}>
                      <Text style={styles.tableCell1}> 6 </Text>
                      <Text style={[styles.tableCell2, { textAlign: "left" }]}>
                        {" "}
-                       {data?.products?.[5]?.product_name }{" "}
+                       {dataPay?.sale_auction?.product1?.[2]?.auction_product_start_event }{" "}
                      </Text>
-                     <Text style={styles.tableCell3}>{" "} {data?.products?.[5]?.sale_auction_start_event_count_price }{" "} </Text>
-                     <Text style={styles.tableCell4}> {" "} {data?.products?.[5]?.product_count }{" "} </Text>
-                     <Text style={styles.tableCell5}> {" "} {isNaN(data?.products?.[5]?.sale_auction_start_event_count) ? '' : Number(data?.products?.[5]?.sale_auction_start_event_count).toLocaleString() }{" "} </Text>
-                     <Text style={styles.tableCell6}> {" "} {isNaN(data?.products?.[5]?.sale_auction_start_event_count_price) || isNaN(data?.products?.[5]?.sale_auction_start_event_count) ? '' : (data?.products?.[5]?.sale_auction_start_event_count_price * data?.products?.[5]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
+                     <Text style={styles.tableCell3}>{" "} {dataPay?.sale_auction?.product1?.[2]?.auction_product_start_event_count }{" "} </Text>
+                     <Text style={styles.tableCell4}> {" "}  {dataPay?.sale_auction?.product1?.[2]?.auction_product_start_event_cat_count }{" "} </Text>
+                     <Text style={styles.tableCell5}>  </Text>
                    </View>
                    {/* row 7 */}
                    <View style={styles.tableRow}>
                      <Text style={styles.tableCell1}> 7 </Text>
                      <Text style={[styles.tableCell2, { textAlign: "left" }]}>
                        {" "}
-                       {data?.products?.[6]?.product_name }{" "}
+                       {dataPay?.sale_auction?.product1?.[3]?.auction_product_start_event }{" "}
                      </Text>
-                     <Text style={styles.tableCell3}>{" "} {data?.products?.[6]?.sale_auction_start_event_count_price }{" "} </Text>
-                     <Text style={styles.tableCell4}> {" "} {data?.products?.[6]?.product_count }{" "} </Text>
-                     <Text style={styles.tableCell5}> {" "} {isNaN(data?.products?.[6]?.sale_auction_start_event_count) ? '' : Number(data?.products?.[6]?.sale_auction_start_event_count).toLocaleString() }{" "} </Text>
-                     <Text style={styles.tableCell6}> {" "} {isNaN(data?.products?.[6]?.sale_auction_start_event_count_price) || isNaN(data?.products?.[6]?.sale_auction_start_event_count) ? '' : (data?.products?.[6]?.sale_auction_start_event_count_price * data?.products?.[6]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
+                     <Text style={styles.tableCell3}>{" "} {dataPay?.sale_auction?.product1?.[3]?.auction_product_start_event_count }{" "} </Text>
+                     <Text style={styles.tableCell4}> {" "}  {dataPay?.sale_auction?.product1?.[3]?.auction_product_start_event_cat_count }{" "} </Text>
+                     <Text style={styles.tableCell5}>  </Text>
                    </View>
                    {/* row 8 */}
                    <View style={styles.tableRow}>
                      <Text style={styles.tableCell1}> 8 </Text>
                      <Text style={[styles.tableCell2, { textAlign: "left" }]}>
                        {" "}
-                       {data?.products?.[7]?.product_name }{" "}
+                       {dataPay?.sale_auction?.product1?.[4]?.auction_product_start_event }{" "}
                      </Text>
-                     <Text style={styles.tableCell3}>{" "} {data?.products?.[7]?.sale_auction_start_event_count_price }{" "} </Text>
-                     <Text style={styles.tableCell4}> {" "} {data?.products?.[7]?.product_count }{" "} </Text>
-                     <Text style={styles.tableCell5}> {" "} {isNaN(data?.products?.[7]?.sale_auction_start_event_count) ? '' : Number(data?.products?.[7]?.sale_auction_start_event_count).toLocaleString() }{" "} </Text>
-                     <Text style={styles.tableCell6}> {" "} {isNaN(data?.products?.[7]?.sale_auction_start_event_count_price) || isNaN(data?.products?.[7]?.sale_auction_start_event_count) ? '' : (data?.products?.[7]?.sale_auction_start_event_count_price * data?.products?.[7]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
+                     <Text style={styles.tableCell3}>{" "} {dataPay?.sale_auction?.product1?.[4]?.auction_product_start_event_count }{" "} </Text>
+                     <Text style={styles.tableCell4}> {" "}  {dataPay?.sale_auction?.product1?.[4]?.auction_product_start_event_cat_count }{" "} </Text>
+                     <Text style={styles.tableCell5}>  </Text>
                    </View>
                    {/* สรุปรวม */}
                    <View style={styles.tableRow}>
                      <Text style={styles.tableCellsum}> {" "}{THBText(totalPrice) || ''}{" "}   </Text>
                      <Text style={styles.tableCell3}>  </Text>
-                     <Text style={styles.tableCell4}>  </Text>
-                     <Text style={styles.tableCell5}> รวมเป็นเงิน  </Text>
-                     <Text style={styles.tableCell6}>  {Number(totalPrice).toLocaleString() || ''} </Text>
+                     <Text style={styles.tableCell4}> รวมเป็นเงิน  </Text>
+                     <Text style={styles.tableCell5}>  {Number(totalPrice).toLocaleString() || ''} </Text>
                    </View>
                  </View>
                  <View style={styles.flexrow}>
-                   <View style={[
-                     styles.flexrowstart,
-                     {width:"70%"}
-                     ]}>
-                     <Text
-                       style={[
-                         { fontWeight: "extrabold" },
-                         { fontFamily: "SarabunBold" },
-                         { fontSize: "12" },
-                         styles.mtsm,
-                         styles.spacesm,
-                       ]}
-                     >
-                       วันที่รับ:{" "}
-                     </Text>
-                     <Text
-                       style={[
-                         styles.mtsm,
-                         { fontWeight: "light" },
-                         { fontFamily: "Sarabun" },
-                         { fontSize: "12" },
-                         { display:"flex"},
-                         { width:"80%"},
-                       ]}
-                     >
-                       ..................................................
-                     </Text>
-                   </View>
-   
-                   <View style={[
-                     styles.flexrow,
-                     {width:"30%"}
-                     ]}>
-                   <View style={styles.flexrowstart}>
-                       <Text
-                         style={[
-                           { fontWeight: "extrabold" },
-                           { fontFamily: "SarabunBold" },
-                           { fontSize: "12" },
-                           styles.mtsm,
-                           styles.spacesm,
-                         ]}
-                       >
-                         ผู้รับชำระเงิน:{" "}
-   
-                       </Text>
-                       <Text
-                         style={[
-                           { fontWeight: "light" },
-                           { fontFamily: "Sarabun" },
-                           { fontSize: "12" },
-                           styles.mtsm,
-                           styles.spacesm,
-                         ]}
-                       >
-                       
-                         {data?.sale_receipt_name}.{" "}
-                       </Text>
-                     </View>
-                   </View>
-                 </View>
-                 <View style={styles.flexrow}>
-                   <View style={[
-                     styles.flexrowstart,
-                     {width:"70%"}
-                     ]}>
-                     <Text
-                       style={[
-                         { fontWeight: "extrabold" },
-                         { fontFamily: "SarabunBold" },
-                         { fontSize: "12" },
-                         styles.mtsm,
-                         styles.spacesm,
-                       ]}
-                     >
-                       สถานที่จัดส่ง:{" "}
-                     </Text>
-                     <Text
-                       style={[
-                         styles.mtsm,
-                         { fontWeight: "light" },
-                         { fontFamily: "Sarabun" },
-                         { fontSize: "12" },
-                         { display:"flex"},
-                         { width:"80%"},
-                       ]}
-                     >
-                       {data?.sale_code_customer_delivery}.{" "}
-                     </Text>
-                   </View>
-   
-                   <View style={[
-                     styles.flexrow,
-                     {width:"30%"}
-                     ]}>
-                   <View style={styles.flexrowstart}>
-                       <Text
-                         style={[
-                           { fontWeight: "extrabold" },
-                           { fontFamily: "SarabunBold" },
-                           { fontSize: "12" },
-                           styles.mtsm,
-                           styles.spacesm,
-                         ]}
-                       >
-                         เลขที่อ้างอิง:{" "}
-   
-                       </Text>
-                       <Text
-                         style={[
-                           { fontWeight: "light" },
-                           { fontFamily: "Sarabun" },
-                           { fontSize: "12" },
-                           styles.mtsm,
-                           styles.spacesm,
-                         ]}
-                       >
-                       
-                       {data?.sale_receipt_number}.{" "}
-                       </Text>
-                     </View>
-                   </View>
-                 </View>
-                 <View style={styles.flexrow}>
-                   <View style={styles.flexrowstart}>
-                     <Text
-                       style={[
-                         { fontWeight: "extrabold" },
-                         { fontFamily: "SarabunBold" },
-                         { fontSize: "12" },
-                         styles.mtsm,
-                         styles.spacesm,
-                       ]}
-                     >
-                       หมายเหตุ:{" "}
-                     </Text>
-                     <Text
-                       style={[
-                         { fontWeight: "light" },
-                         { fontFamily: "Sarabun" },
-                         { fontSize: "12" },
-                         styles.mtsm,
-                       ]}
-                     >
-                       {data?.sale_auction_q}{" "}
-                     </Text>
-                   </View>
-   
-                 </View>
+            <View style={[
+              styles.flexrowstart,
+              {width:"70%"}
+              ]}>
+              <Text
+                style={[
+                  { fontWeight: "extrabold" },
+                  { fontFamily: "SarabunBold" },
+                  { fontSize: "12" },
+                  styles.mtsm,
+                  styles.spacesm,
+                ]}
+              >
+                วันที่รับ:{" "}
+              </Text>
+              <Text
+                style={[
+                  styles.mtsm,
+                  { fontWeight: "light" },
+                  { fontFamily: "Sarabun" },
+                  { fontSize: "12" },
+                  { display:"flex"},
+                  { width:"80%"},
+                ]}
+              >
+                ..................................................
+              </Text>
+            </View>
+
+            <View style={[
+              styles.flexrow,
+              {width:"30%"}
+              ]}>
+            <View style={styles.flexrowstart}>
+                <Text
+                  style={[
+                    { fontWeight: "extrabold" },
+                    { fontFamily: "SarabunBold" },
+                    { fontSize: "12" },
+                    styles.mtsm,
+                    styles.spacesm,
+                  ]}
+                >
+                  ผู้รับชำระเงิน:{" "}
+
+                </Text>
+                <Text
+                  style={[
+                    { fontWeight: "light" },
+                    { fontFamily: "Sarabun" },
+                    { fontSize: "12" },
+                    styles.mtsm,
+                    styles.spacesm,
+                  ]}
+                >
+                
+                  {dataPay?.sale_receipt_name}.{" "}
+                </Text>
+              </View>
+            </View>
+          </View>
+          {dataPay?.sale_receipt_status == "1" ?
+           ''
+           :
+          <View style={styles.flexrow}>
+            <View style={[
+              styles.flexrowstart,
+              {width:"70%"}
+              ]}>
+              <Text
+                style={[
+                  { fontWeight: "extrabold" },
+                  { fontFamily: "SarabunBold" },
+                  { fontSize: "12" },
+                  styles.mtsm,
+                  styles.spacesm,
+                ]}
+              >
+                {dataPay?.sale_receipt_status == "2" ? "โอนเข้าธนาคาร:" : dataPay?.sale_receipt_status == "3" ? "ธนาคาร:" : '' }{" "}
+              </Text>
+              <Text
+                style={[
+                  styles.mtsm,
+                  { fontWeight: "light" },
+                  { fontFamily: "Sarabun" },
+                  { fontSize: "12" },
+                  { display:"flex"},
+                  { width:"80%"},
+                ]}
+              >
+                {dataPay?.sale_receipt_status == "2" ? dataPay?.sale_receipt_acc : dataPay?.sale_receipt_status == "3" ? dataPay?.sale_receipt_bank : '' }{" "}
+              </Text>
+            </View>
+
+            <View style={[
+              styles.flexrow,
+              {width:"30%"}
+              ]}>
+            <View style={styles.flexrowstart}>
+                <Text
+                  style={[
+                    { fontWeight: "extrabold" },
+                    { fontFamily: "SarabunBold" },
+                    { fontSize: "12" },
+                    styles.mtsm,
+                    styles.spacesm,
+                  ]}
+                >
+                  {dataPay?.sale_receipt_status == "3" ? "เลขที่เช็ค" :''} 
+                </Text>
+                <Text
+                  style={[
+                    { fontWeight: "light" },
+                    { fontFamily: "Sarabun" },
+                    { fontSize: "12" },
+                    styles.mtsm,
+                    styles.spacesm,
+                  ]}
+                >
+                {dataPay.sale_receipt_check}{" "}
+                </Text>
+              </View>
+            </View>
+          </View>
+           }
+          <View style={styles.flexrow}>
+            <View style={[
+              styles.flexrowstart,
+              {width:"70%"}
+              ]}>
+              <Text
+                style={[
+                  { fontWeight: "extrabold" },
+                  { fontFamily: "SarabunBold" },
+                  { fontSize: "12" },
+                  styles.mtsm,
+                  styles.spacesm,
+                ]}
+              >
+                สถานที่จัดส่ง:{" "}
+              </Text>
+              <Text
+                style={[
+                  styles.mtsm,
+                  { fontWeight: "light" },
+                  { fontFamily: "Sarabun" },
+                  { fontSize: "12" },
+                  { display:"flex"},
+                  { width:"80%"},
+                ]}
+              >
+                {dataPay?.sale_auction?.auction_report_customer_delivery}{" "}
+              </Text>
+            </View>
+
+            <View style={[
+              styles.flexrow,
+              {width:"30%"}
+              ]}>
+            <View style={styles.flexrowstart}>
+                <Text
+                  style={[
+                    { fontWeight: "extrabold" },
+                    { fontFamily: "SarabunBold" },
+                    { fontSize: "12" },
+                    styles.mtsm,
+                    styles.spacesm,
+                  ]}
+                >
+                  เลขที่อ้างอิง:{" "}
+
+                </Text>
+                <Text
+                  style={[
+                    { fontWeight: "light" },
+                    { fontFamily: "Sarabun" },
+                    { fontSize: "12" },
+                    styles.mtsm,
+                    styles.spacesm,
+                  ]}
+                >
+                
+                {dataPay?.sale_auction?.auction_report_customer_number}{" "}
+                </Text>
+              </View>
+            </View>
+          </View>
+          <View style={styles.flexrow}>
+            <View style={styles.flexrowstart}>
+              <Text
+                style={[
+                  { fontWeight: "extrabold" },
+                  { fontFamily: "SarabunBold" },
+                  { fontSize: "12" },
+                  styles.mtsm,
+                  styles.spacesm,
+                ]}
+              >
+                หมายเหตุ:{" "}
+              </Text>
+              <Text
+                style={[
+                  { fontWeight: "light" },
+                  { fontFamily: "Sarabun" },
+                  { fontSize: "12" },
+                  styles.mtsm,
+                ]}
+              >
+                {dataPay?.sale_auction?.auction_report_q}{" "}
+              </Text>
+            </View>
+
+          </View>
                </View>
              </Page>
            
              {/* สำเนา1 */}
              {statusModal == "2" ?  
              <Page size="A4" style={styles.page} >
-               <View style={styles.flexrowbetween}>
-                 <View style={styles.flexrow}>
-                   <Text style={[styles.textsm, styles.spacesm]}> </Text>
-                   <Text
-                     style={[
-                       styles.textbase,
-                       { fontWeight: "light" },
-                       { fontFamily: "Sarabun" },
-                       {color:"blue"},
-                     ]}
-                   >
-                     สำเนา{" "}
-                   </Text>
-                 </View>
-                 <View style={styles.flexrow}>
-                   <Text style={[styles.textsm, styles.spacesm]}>เลขที่ </Text>
-                   <Text
-                     style={[
-                       styles.textsm,
-                       { fontWeight: "light" },
-                       { fontFamily: "Sarabun" },
-                     ]}
-                   >
-                     {data?.sale_code}
-                   </Text>
-                 </View>
-               </View>
-               <View style={[styles.imageContainer, styles.flexrow]}>
-                 <Image
-                   // src="../../../public/img/รูปอาม่า01.png"
-                   src={p01}
-                   style={styles.image}
-                 />
-                 <Image 
-                 // src="../../../public/img/รูปอากง02.png" 
-                 src={p02}
-                 style={styles.image} />
-               </View>
-               <View>
+             <View style={styles.flexrowbetween}>
+               <View style={styles.flexrow}>
+                 <Text style={[styles.textsm, styles.spacesm]}> </Text>
                  <Text
                    style={[
-                     styles.flexrowcenter,
                      styles.textbase,
-                     { fontWeight: "thin" },
+                     { fontWeight: "light" },
+                     { fontFamily: "Sarabun" },
+                     {color:"blue"},
                    ]}
                  >
-                   ใบเสร็จ{" "}
+                   สำเนา{" "}
                  </Text>
-                 <Text style={[styles.flexrowcenter, styles.textbase, styles.mtsm]}>
-                   คณะกรรมการจัดงานศาลเจ้าปึงเถ่ากงม่า ขอนแก่น{" "}
-                 </Text>
-                 <View style={styles.flexrowcenter}>
+               </View>
+               <View style={styles.flexrow}>
+                 <Text style={[styles.textsm, styles.spacesm]}>เลขที่ </Text>
                  <Text
                    style={[
-                     styles.flexrowcenter,
                      styles.textsm,
-                     { fontWeight: "thin", marginTop:"7px" },
+                     { fontWeight: "light" },
+                     { fontFamily: "Sarabun" },
                    ]}
                  >
-                     ประจำปี{" "}
+                   {dataPay?.sale_auction?.number}
+                 </Text>
+               </View>
+             </View>
+             <View style={[styles.imageContainer, styles.flexrow]}>
+               <Image
+                 // src="../../../public/img/รูปอาม่า01.png"
+                 src={p01}
+                 style={styles.image}
+               />
+               <Image 
+               // src="../../../public/img/รูปอากง02.png" 
+               src={p02}
+               style={styles.image} />
+             </View>
+             <View>
+               <Text
+                 style={[
+                   styles.flexrowcenter,
+                   styles.textbase,
+                   { fontWeight: "thin" },
+                 ]}
+               >
+                 ใบเสร็จ{" "}
+               </Text>
+               <Text style={[styles.flexrowcenter, styles.textbase, styles.mtsm]}>
+                 คณะกรรมการจัดงานศาลเจ้าปึงเถ่ากงม่า ขอนแก่น{" "}
+               </Text>
+               <View style={styles.flexrowcenter}>
+               <Text
+                 style={[
+                   styles.flexrowcenter,
+                   styles.textsm,
+                   { fontWeight: "thin", marginTop:"7px" },
+                 ]}
+               >
+                   ประจำปี{" "}
+                 </Text>
+                 <Text
+                 style={[
+                   styles.flexrowcenter,
+                   styles.textsm,
+                   { fontWeight: "thin" , marginTop:"7px" },
+                 ]}
+               >
+                   {buddhistYear}
+                 </Text>
+               </View>
+               <View style={styles.flexrow}>
+                 <View style={[
+                   styles.flexrowstart,
+                   {width:"65%"}
+                   ]}>
+                   <Text
+                     style={[
+                       { fontWeight: "extrabold" },
+                       { fontFamily: "SarabunBold" },
+                       { fontSize: "12" },
+                       styles.mtsm,
+                       styles.spacesm,
+                     ]}
+                   >
+                     ชื่อผู้บริจาค:{" "}
                    </Text>
                    <Text
-                   style={[
-                     styles.flexrowcenter,
-                     styles.textsm,
-                     { fontWeight: "thin" , marginTop:"7px" },
-                   ]}
-                 >
-                     {buddhistYear}
+                     style={[
+                       { fontWeight: "light" },
+                       { fontFamily: "Sarabun" },
+                       { fontSize: "12" },
+                       {width:""},
+                       styles.mtsm,
+                     ]}
+                   >
+                     {dataPay?.sale_auction?.auction_report_user_auction}{" "}
                    </Text>
                  </View>
-                 <View style={styles.flexrow}>
-                   <View style={[
-                     styles.flexrowstart,
-                     {width:"65%"}
-                     ]}>
-                     <Text
-                       style={[
-                         { fontWeight: "extrabold" },
-                         { fontFamily: "SarabunBold" },
-                         { fontSize: "12" },
-                         styles.mtsm,
-                         styles.spacesm,
-                       ]}
-                     >
-                       ชื่อผู้บริจาค:{" "}
-                     </Text>
-                     <Text
-                       style={[
-                         { fontWeight: "light" },
-                         { fontFamily: "Sarabun" },
-                         { fontSize: "12" },
-                         {width:""},
-                         styles.mtsm,
-                       ]}
-                     >
-                       {data?.sale_code_customer_name}{" "}
-                     </Text>
-                   </View>
-   
-                   <View style={[
-                     styles.flexrow,
-                     {width:"35%"}
-                     ]}>
-                     <View style={styles.flexrowstart}>
-                       <Text
-                         style={[
-                           { fontWeight: "extrabold" },
-                           { fontFamily: "SarabunBold" },
-                           { fontSize: "12" },
-                           styles.mtsm,
-                           styles.spacesm,
-                         ]}
-                       >
-                         ชำระโดย:{" "}
-                       </Text>
-                       <Text
-                         style={[
-                           { fontWeight: "light" },
-                           { fontFamily: "Sarabun" },
-                           { fontSize: "12" },
-                           styles.mtsm,
-                           styles.spacesm,
-                         ]}
-                       >
-                         {" "}{data?.sale_receipt_status == 1 ? "เงินสด" : data?.sale_receipt_status == 2 ? "เงินโอน" : data?.sale_receipt_status == 3 ? "เช็ค" : "" }
-                       </Text>
-                     </View>
-                   </View>
-                 </View>
-                 <View style={styles.flexrow}>
-                   <View style={[
-                     styles.flexrowstart,
-                     {width:"65%"}
-                     ]}>
-                     <Text
-                       style={[
-                         { fontWeight: "extrabold" },
-                         { fontFamily: "SarabunBold" },
-                         { fontSize: "12" },
-                         styles.mtsm,
-                         styles.spacesm,
-                       ]}
-                     >
-                       ที่อยู่:{" "}
-                     </Text>
-                     <Text
-                       style={[
-                         styles.mtsm,
-                         { fontWeight: "light" },
-                         { fontFamily: "Sarabun" },
-                         { fontSize: "12" },
-                         { display:"flex"},
-                         { width:"80%"},
-                       ]}
-                     >
-                       {data?.sale_code_customer_address}{" "}
-                     </Text>
-                   </View>
-   
-                   <View style={[
-                     styles.flexrow,
-                     {width:"35%"}
-                     ]}>
-                   <View style={styles.flexrowstart}>
-                       <Text
-                         style={[
-                           { fontWeight: "extrabold" },
-                           { fontFamily: "SarabunBold" },
-                           { fontSize: "12" },
-                           styles.mtsm,
-                           styles.spacesm,
-                         ]}
-                       >
-                         วันที่รับชำระ:{" "}
-                       </Text>
-                       <Text
-                         style={[
-                           { fontWeight: "light" },
-                           { fontFamily: "Sarabun" },
-                           { fontSize: "12" },
-                           styles.mtsm,
-                           styles.spacesm,
-                         ]}
-                       >
-                         {" "}
-                         {formattedDate || ''}.
-                       </Text>
-                     </View>
-                   </View>
-                 </View>
-                 <View style={styles.flexrow}>
+ 
                  <View style={[
-                     styles.flexrowstart,
-                     {width:"65%"}
-                     ]}>
-                       <Text
-                       style={[
-                         { fontWeight: "extrabold" },
-                         { fontFamily: "SarabunBold" },
-                         { fontSize: "12" },
-                         styles.mtsm,
-                         styles.spacesm,
-                       ]}
-                     >
-                       ออกสลากในนาม:{" "}
-                     </Text>
-                     <Text
-                       style={[
-                         styles.mtsm,
-                         { fontWeight: "light" },
-                         { fontFamily: "Sarabun" },
-                         { fontSize: "12" },
-                         { display:"flex"},
-                         { width:"80%"},
-                       ]}
-                     >
-                       {data?.sale_code_customer_noun + '' }.{" "} 
-                     </Text>
-                   </View>
-   
-                   <View style={[
-                     styles.flexrow,
-                     {width:"35%"}
-                     ]}>
-                   <View style={styles.flexrowstart}>
-                       <Text
-                         style={[
-                           { fontWeight: "extrabold" },
-                           { fontFamily: "SarabunBold" },
-                           { fontSize: "12" },
-                           styles.mtsm,
-                           styles.spacesm,
-                         ]}
-                       >
-                         เบอร์โทร:{" "}
-                       </Text>
-                       <Text
-                         style={[
-                           { fontWeight: "light" },
-                           { fontFamily: "Sarabun" },
-                           { fontSize: "12" },
-                           styles.mtsm,
-                           styles.spacesm,
-                         ]}
-                       >
-                         {" "}
-                         {data?.sale_code_customer_tel}
-                       </Text>
-                     </View>
-                   </View>
-                 </View>
-                 <View style={styles.flexrow}>
-                 <View style={[
-                     styles.flexrowstart,
-                     {width:"65%"}
-                     ]}>
-                     <Text
-                       style={[
-                         { fontWeight: "extrabold" },
-                         { fontFamily: "SarabunBold" },
-                         { fontSize: "12" },
-                         styles.mtsm,
-                         styles.spacesm,
-                       ]}
-                     >
-                       ผู้ติดต่อ:{" "}
-                     </Text>
-                     <Text
-                       style={[
-                         { fontWeight: "light" },
-                         { fontFamily: "Sarabun" },
-                         { fontSize: "12" },
-                         {display:"flex"},
-                         { width:"80%"},
-                         styles.mtsm,
-                       ]}
-                     >
-                     {data?.sale_code_customer_contract}{" "}
-                     </Text>
-                   </View>
-   
-                   <View style={[
-                     styles.flexrow,
-                     {width:"35%"}
-                     ]}>
-                   <View style={styles.flexrowstart}>
-                       <Text
-                         style={[
-                           { fontWeight: "extrabold" },
-                           { fontFamily: "SarabunBold" },
-                           { fontSize: "12" },
-                           styles.mtsm,
-                           styles.spacesm,
-                         ]}
-                       >
-                         บิลเล่มที่:{" "}
-                       </Text>
-                       <Text
-                         style={[
-                           { fontWeight: "light" },
-                           { fontFamily: "Sarabun" },
-                           { fontSize: "12" },
-                           { display:"flex"},
-                           { width:"60%"},
-                           styles.mtsm,
-                           // styles.spacesm,
-                         ]}
-                       >
-                         {" "}
-                         {data?.sale_auction_refer} / {data?.sale_auction_num}
-                         {" "}
-                       </Text>
-                     </View>
-                   </View>
-                 </View>
-                   {/*-----------  หัวตาราง ---------------------  */}
-                 <View style={[styles.table, { marginTop: "15" }]}>
-                   <View style={styles.tableRow}>
-                     <Text style={styles.tableCell1}>ลำดับ </Text>
-                     <Text style={styles.tableCell2}>รายละเอียด </Text>
-                     <Text style={styles.tableCell3}>จำนวน </Text>
-                     <Text style={styles.tableCell4}>หน่วยนับ </Text>
-                     <Text style={styles.tableCell5}>ราคา/หน่วย </Text>
-                     <Text style={styles.tableCell6}>จำนวนเงิน </Text>
-                   </View>
-                   {/* row 1 */}
-                   <View style={styles.tableRow}>
-                     <Text style={styles.tableCell1}> 1 </Text>
-                     <Text style={[styles.tableCell2, { textAlign: "left" }]}>
-                       {" "}
-                       {data?.products?.[0]?.product_name }{" "}
-                     </Text>
-                     <Text style={styles.tableCell3}>{" "} {data?.products?.[0]?.sale_auction_start_event_count_price }{" "} </Text>
-                     <Text style={styles.tableCell4}> {" "} {data?.products?.[0]?.product_count }{" "} </Text>
-                     <Text style={styles.tableCell5}> {" "} {isNaN(data?.products?.[0]?.sale_auction_start_event_count) ? '' : Number(data?.products?.[0]?.sale_auction_start_event_count).toLocaleString() }{" "} </Text>
-                     <Text style={styles.tableCell6}> {" "} {isNaN(data?.products?.[0]?.sale_auction_start_event_count_price) || isNaN(data?.products?.[0]?.sale_auction_start_event_count) ? '' : (data?.products?.[0]?.sale_auction_start_event_count_price * data?.products?.[0]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
-                   </View>
-                   {/* row 2 */}
-                   <View style={styles.tableRow}>
-                     <Text style={styles.tableCell1}> 2 </Text>
-                     <Text style={[styles.tableCell2, { textAlign: "left" }]}>
-                       {" "}
-                       {data?.products?.[1]?.product_name }{" "}
-                     </Text>
-                     <Text style={styles.tableCell3}>{" "} {data?.products?.[1]?.sale_auction_start_event_count_price }{" "} </Text>
-                     <Text style={styles.tableCell4}> {" "} {data?.products?.[1]?.product_count }{" "} </Text>
-                     <Text style={styles.tableCell5}> {" "} {isNaN(data?.products?.[1]?.sale_auction_start_event_count) ? '' : Number(data?.products?.[1]?.sale_auction_start_event_count).toLocaleString() }{" "} </Text>
-                     <Text style={styles.tableCell6}> {" "} {isNaN(data?.products?.[1]?.sale_auction_start_event_count_price) || isNaN(data?.products?.[1]?.sale_auction_start_event_count) ? '' : (data?.products?.[1]?.sale_auction_start_event_count_price * data?.products?.[1]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
-                   </View>
-                   {/* row 3 */}
-                   <View style={styles.tableRow}>
-                     <Text style={styles.tableCell1}> 3 </Text>
-                     <Text style={[styles.tableCell2, { textAlign: "left" }]}>
-                       {" "}
-                       {data?.products?.[2]?.product_name }{" "}
-                     </Text>
-                     <Text style={styles.tableCell3}>{" "} {data?.products?.[2]?.sale_auction_start_event_count_price }{" "} </Text>
-                     <Text style={styles.tableCell4}> {" "} {data?.products?.[2]?.product_count }{" "} </Text>
-                     <Text style={styles.tableCell5}> {" "} {isNaN(data?.products?.[2]?.sale_auction_start_event_count) ? '' : Number(data?.products?.[2]?.sale_auction_start_event_count).toLocaleString() }{" "} </Text>
-                     <Text style={styles.tableCell6}> {" "} {isNaN(data?.products?.[2]?.sale_auction_start_event_count_price) || isNaN(data?.products?.[2]?.sale_auction_start_event_count) ? '' : (data?.products?.[2]?.sale_auction_start_event_count_price * data?.products?.[2]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
-                   </View>
-                   {/* row 4 */}
-                   <View style={styles.tableRow}>
-                     <Text style={styles.tableCell1}> 4 </Text>
-                     <Text style={[styles.tableCell2, { textAlign: "left" }]}>
-                       {" "}
-                       {data?.products?.[3]?.product_name }{" "}
-                     </Text>
-                     <Text style={styles.tableCell3}>{" "} {data?.products?.[3]?.sale_auction_start_event_count_price }{" "} </Text>
-                     <Text style={styles.tableCell4}> {" "} {data?.products?.[3]?.product_count }{" "} </Text>
-                     <Text style={styles.tableCell5}> {" "} {isNaN(data?.products?.[3]?.sale_auction_start_event_count) ? '' : Number(data?.products?.[3]?.sale_auction_start_event_count).toLocaleString() }{" "} </Text>
-                     <Text style={styles.tableCell6}> {" "} {isNaN(data?.products?.[3]?.sale_auction_start_event_count_price) || isNaN(data?.products?.[3]?.sale_auction_start_event_count) ? '' : (data?.products?.[3]?.sale_auction_start_event_count_price * data?.products?.[3]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
-                   </View>
-                   {/* row 5 */}
-                   <View style={styles.tableRow}>
-                     <Text style={styles.tableCell1}> 5 </Text>
-                     <Text style={[styles.tableCell2, { textAlign: "left" }]}>
-                       {" "}
-                       {data?.products?.[4]?.product_name }{" "}
-                     </Text>
-                     <Text style={styles.tableCell3}>{" "} {data?.products?.[4]?.sale_auction_start_event_count_price }{" "} </Text>
-                     <Text style={styles.tableCell4}> {" "} {data?.products?.[4]?.product_count }{" "} </Text>
-                     <Text style={styles.tableCell5}> {" "} {isNaN(data?.products?.[4]?.sale_auction_start_event_count) ? '' : Number(data?.products?.[4]?.sale_auction_start_event_count).toLocaleString() }{" "} </Text>
-                     <Text style={styles.tableCell6}> {" "} {isNaN(data?.products?.[4]?.sale_auction_start_event_count_price) || isNaN(data?.products?.[4]?.sale_auction_start_event_count) ? '' : (data?.products?.[4]?.sale_auction_start_event_count_price * data?.products?.[4]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
-                   </View>
-                   {/* row 6 */}
-                   <View style={styles.tableRow}>
-                     <Text style={styles.tableCell1}> 6 </Text>
-                     <Text style={[styles.tableCell2, { textAlign: "left" }]}>
-                       {" "}
-                       {data?.products?.[5]?.product_name }{" "}
-                     </Text>
-                     <Text style={styles.tableCell3}>{" "} {data?.products?.[5]?.sale_auction_start_event_count_price }{" "} </Text>
-                     <Text style={styles.tableCell4}> {" "} {data?.products?.[5]?.product_count }{" "} </Text>
-                     <Text style={styles.tableCell5}> {" "} {isNaN(data?.products?.[5]?.sale_auction_start_event_count) ? '' : Number(data?.products?.[5]?.sale_auction_start_event_count).toLocaleString() }{" "} </Text>
-                     <Text style={styles.tableCell6}> {" "} {isNaN(data?.products?.[5]?.sale_auction_start_event_count_price) || isNaN(data?.products?.[5]?.sale_auction_start_event_count) ? '' : (data?.products?.[5]?.sale_auction_start_event_count_price * data?.products?.[5]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
-                   </View>
-                   {/* row 7 */}
-                   <View style={styles.tableRow}>
-                     <Text style={styles.tableCell1}> 7 </Text>
-                     <Text style={[styles.tableCell2, { textAlign: "left" }]}>
-                       {" "}
-                       {data?.products?.[6]?.product_name }{" "}
-                     </Text>
-                     <Text style={styles.tableCell3}>{" "} {data?.products?.[6]?.sale_auction_start_event_count_price }{" "} </Text>
-                     <Text style={styles.tableCell4}> {" "} {data?.products?.[6]?.product_count }{" "} </Text>
-                     <Text style={styles.tableCell5}> {" "} {isNaN(data?.products?.[6]?.sale_auction_start_event_count) ? '' : Number(data?.products?.[6]?.sale_auction_start_event_count).toLocaleString() }{" "} </Text>
-                     <Text style={styles.tableCell6}> {" "} {isNaN(data?.products?.[6]?.sale_auction_start_event_count_price) || isNaN(data?.products?.[6]?.sale_auction_start_event_count) ? '' : (data?.products?.[6]?.sale_auction_start_event_count_price * data?.products?.[6]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
-                   </View>
-                   {/* row 8 */}
-                   <View style={styles.tableRow}>
-                     <Text style={styles.tableCell1}> 8 </Text>
-                     <Text style={[styles.tableCell2, { textAlign: "left" }]}>
-                       {" "}
-                       {data?.products?.[7]?.product_name }{" "}
-                     </Text>
-                     <Text style={styles.tableCell3}>{" "} {data?.products?.[7]?.sale_auction_start_event_count_price }{" "} </Text>
-                     <Text style={styles.tableCell4}> {" "} {data?.products?.[7]?.product_count }{" "} </Text>
-                     <Text style={styles.tableCell5}> {" "} {isNaN(data?.products?.[7]?.sale_auction_start_event_count) ? '' : Number(data?.products?.[7]?.sale_auction_start_event_count).toLocaleString() }{" "} </Text>
-                     <Text style={styles.tableCell6}> {" "} {isNaN(data?.products?.[7]?.sale_auction_start_event_count_price) || isNaN(data?.products?.[7]?.sale_auction_start_event_count) ? '' : (data?.products?.[7]?.sale_auction_start_event_count_price * data?.products?.[7]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
-                   </View>
-                   {/* สรุปรวม */}
-                   <View style={styles.tableRow}>
-                     <Text style={styles.tableCellsum}> {" "}{THBText(totalPrice) || ''}{" "}   </Text>
-                     <Text style={styles.tableCell3}>  </Text>
-                     <Text style={styles.tableCell4}>  </Text>
-                     <Text style={styles.tableCell5}> รวมเป็นเงิน  </Text>
-                     <Text style={styles.tableCell6}>  {Number(totalPrice).toLocaleString() || ''} </Text>
-                   </View>
-                 </View>
-                 <View style={styles.flexrow}>
-                   <View style={[
-                     styles.flexrowstart,
-                     {width:"70%"}
-                     ]}>
-                     <Text
-                       style={[
-                         { fontWeight: "extrabold" },
-                         { fontFamily: "SarabunBold" },
-                         { fontSize: "12" },
-                         styles.mtsm,
-                         styles.spacesm,
-                       ]}
-                     >
-                       วันที่รับ:{" "}
-                     </Text>
-                     <Text
-                       style={[
-                         styles.mtsm,
-                         { fontWeight: "light" },
-                         { fontFamily: "Sarabun" },
-                         { fontSize: "12" },
-                         { display:"flex"},
-                         { width:"80%"},
-                       ]}
-                     >
-                       ..................................................
-                     </Text>
-                   </View>
-   
-                   <View style={[
-                     styles.flexrow,
-                     {width:"30%"}
-                     ]}>
-                   <View style={styles.flexrowstart}>
-                       <Text
-                         style={[
-                           { fontWeight: "extrabold" },
-                           { fontFamily: "SarabunBold" },
-                           { fontSize: "12" },
-                           styles.mtsm,
-                           styles.spacesm,
-                         ]}
-                       >
-                         ผู้รับชำระเงิน:{" "}
-   
-                       </Text>
-                       <Text
-                         style={[
-                           { fontWeight: "light" },
-                           { fontFamily: "Sarabun" },
-                           { fontSize: "12" },
-                           styles.mtsm,
-                           styles.spacesm,
-                         ]}
-                       >
-                       
-                         {data?.sale_receipt_name}.{" "}
-                       </Text>
-                     </View>
-                   </View>
-                 </View>
-                 <View style={styles.flexrow}>
-                   <View style={[
-                     styles.flexrowstart,
-                     {width:"70%"}
-                     ]}>
-                     <Text
-                       style={[
-                         { fontWeight: "extrabold" },
-                         { fontFamily: "SarabunBold" },
-                         { fontSize: "12" },
-                         styles.mtsm,
-                         styles.spacesm,
-                       ]}
-                     >
-                       สถานที่จัดส่ง:{" "}
-                     </Text>
-                     <Text
-                       style={[
-                         styles.mtsm,
-                         { fontWeight: "light" },
-                         { fontFamily: "Sarabun" },
-                         { fontSize: "12" },
-                         { display:"flex"},
-                         { width:"80%"},
-                       ]}
-                     >
-                       {data?.sale_code_customer_delivery}.{" "}
-                     </Text>
-                   </View>
-   
-                   <View style={[
-                     styles.flexrow,
-                     {width:"30%"}
-                     ]}>
-                   <View style={styles.flexrowstart}>
-                       <Text
-                         style={[
-                           { fontWeight: "extrabold" },
-                           { fontFamily: "SarabunBold" },
-                           { fontSize: "12" },
-                           styles.mtsm,
-                           styles.spacesm,
-                         ]}
-                       >
-                         เลขที่อ้างอิง:{" "}
-   
-                       </Text>
-                       <Text
-                         style={[
-                           { fontWeight: "light" },
-                           { fontFamily: "Sarabun" },
-                           { fontSize: "12" },
-                           styles.mtsm,
-                           styles.spacesm,
-                         ]}
-                       >
-                       
-                       {data?.sale_receipt_number}.{" "}
-                       </Text>
-                     </View>
-                   </View>
-                 </View>
-                 <View style={styles.flexrow}>
+                   styles.flexrow,
+                   {width:"35%"}
+                   ]}>
                    <View style={styles.flexrowstart}>
                      <Text
                        style={[
@@ -1472,7 +1082,7 @@ const BillPay_Parmoon = ({ open5, handleOpen5, data, statusModal  }) => {
                          styles.spacesm,
                        ]}
                      >
-                       หมายเหตุ:{" "}
+                       ชำระโดย:{" "}
                      </Text>
                      <Text
                        style={[
@@ -1480,20 +1090,1174 @@ const BillPay_Parmoon = ({ open5, handleOpen5, data, statusModal  }) => {
                          { fontFamily: "Sarabun" },
                          { fontSize: "12" },
                          styles.mtsm,
+                         styles.spacesm,
                        ]}
                      >
-                       {data?.sale_auction_q}{" "}
+                       {" "}{dataPay?.sale_receipt_status == 1 ? "เงินสด" : dataPay?.sale_receipt_status == 2 ? "เงินโอน" : dataPay?.sale_receipt_status == 3 ? "เช็ค" : "" }
                      </Text>
                    </View>
-   
                  </View>
                </View>
-             </Page>
+               <View style={styles.flexrow}>
+                 <View style={[
+                   styles.flexrowstart,
+                   {width:"65%"}
+                   ]}>
+                   <Text
+                     style={[
+                       { fontWeight: "extrabold" },
+                       { fontFamily: "SarabunBold" },
+                       { fontSize: "12" },
+                       styles.mtsm,
+                       styles.spacesm,
+                     ]}
+                   >
+                     ที่อยู่:{" "}
+                   </Text>
+                   <Text
+                     style={[
+                       styles.mtsm,
+                       { fontWeight: "light" },
+                       { fontFamily: "Sarabun" },
+                       { fontSize: "12" },
+                       { display:"flex"},
+                       { width:"80%"},
+                     ]}
+                   >
+                     {dataPay?.sale_auction?.auction_report_customer_address}{" "}
+                   </Text>
+                 </View>
+ 
+                 <View style={[
+                   styles.flexrow,
+                   {width:"35%"}
+                   ]}>
+                 <View style={styles.flexrowstart}>
+                     <Text
+                       style={[
+                         { fontWeight: "extrabold" },
+                         { fontFamily: "SarabunBold" },
+                         { fontSize: "12" },
+                         styles.mtsm,
+                         styles.spacesm,
+                       ]}
+                     >
+                       วันที่รับชำระ:{" "}
+                     </Text>
+                     <Text
+                       style={[
+                         { fontWeight: "light" },
+                         { fontFamily: "Sarabun" },
+                         { fontSize: "12" },
+                         styles.mtsm,
+                         styles.spacesm,
+                       ]}
+                     >
+                       {" "}
+                       {formattedDate || ''}.
+                     </Text>
+                   </View>
+                 </View>
+               </View>
+               <View style={styles.flexrow}>
+               <View style={[
+                   styles.flexrowstart,
+                   {width:"65%"}
+                   ]}>
+                     <Text
+                     style={[
+                       { fontWeight: "extrabold" },
+                       { fontFamily: "SarabunBold" },
+                       { fontSize: "12" },
+                       styles.mtsm,
+                       styles.spacesm,
+                     ]}
+                   >
+                     ออกสลากในนาม:{" "}
+                   </Text>
+                   <Text
+                     style={[
+                       styles.mtsm,
+                       { fontWeight: "light" },
+                       { fontFamily: "Sarabun" },
+                       { fontSize: "12" },
+                       { display:"flex"},
+                       { width:"80%"},
+                     ]}
+                   >
+                     {dataPay?.sale_auction?.auction_report_customer_noun + '' }.{" "} 
+                   </Text>
+                 </View>
+ 
+                 <View style={[
+                   styles.flexrow,
+                   {width:"35%"}
+                   ]}>
+                 <View style={styles.flexrowstart}>
+                     <Text
+                       style={[
+                         { fontWeight: "extrabold" },
+                         { fontFamily: "SarabunBold" },
+                         { fontSize: "12" },
+                         styles.mtsm,
+                         styles.spacesm,
+                       ]}
+                     >
+                       เบอร์โทร:{" "}
+                     </Text>
+                     <Text
+                       style={[
+                         { fontWeight: "light" },
+                         { fontFamily: "Sarabun" },
+                         { fontSize: "12" },
+                         styles.mtsm,
+                         styles.spacesm,
+                       ]}
+                     >
+                       {" "}
+                       {dataPay?.sale_auction?.auction_report_customer_tel}
+                     </Text>
+                   </View>
+                 </View>
+               </View>
+               <View style={styles.flexrow}>
+               <View style={[
+                   styles.flexrowstart,
+                   {width:"65%"}
+                   ]}>
+                   <Text
+                     style={[
+                       { fontWeight: "extrabold" },
+                       { fontFamily: "SarabunBold" },
+                       { fontSize: "12" },
+                       styles.mtsm,
+                       styles.spacesm,
+                     ]}
+                   >
+                     ผู้ติดต่อ:{" "}
+                   </Text>
+                   <Text
+                     style={[
+                       { fontWeight: "light" },
+                       { fontFamily: "Sarabun" },
+                       { fontSize: "12" },
+                       {display:"flex"},
+                       { width:"80%"},
+                       styles.mtsm,
+                     ]}
+                   >
+                   {dataPay?.sale_auction?.auction_report_customer_contract}{" "}
+                   </Text>
+                 </View>
+ 
+                 <View style={[
+                   styles.flexrow,
+                   {width:"35%"}
+                   ]}>
+                 <View style={styles.flexrowstart}>
+                     <Text
+                       style={[
+                         { fontWeight: "extrabold" },
+                         { fontFamily: "SarabunBold" },
+                         { fontSize: "12" },
+                         styles.mtsm,
+                         styles.spacesm,
+                       ]}
+                     >
+                       บิลเล่มที่:{" "}
+                     </Text>
+                     <Text
+                       style={[
+                         { fontWeight: "light" },
+                         { fontFamily: "Sarabun" },
+                         { fontSize: "12" },
+                         { display:"flex"},
+                         { width:"60%"},
+                         styles.mtsm,
+                         // styles.spacesm,
+                       ]}
+                     >
+                       {" "}
+                       {dataPay?.sale_auction?.auction_refer} / {dataPay?.sale_auction?.auction_num}
+                       {" "}
+                     </Text>
+                   </View>
+                 </View>
+               </View>
+                 {/*-----------  หัวตาราง ---------------------  */}
+               <View style={[styles.table, { marginTop: "15" }]}>
+                 <View style={styles.tableRow}>
+                   <Text style={styles.tableCell1}>ลำดับ </Text>
+                   <Text style={styles.tableCell2}>รายละเอียด </Text>
+                   <Text style={styles.tableCell3}>จำนวน </Text>
+                   <Text style={styles.tableCell4}>หน่วยนับ </Text>
+                   <Text style={styles.tableCell5}>จำนวนเงิน </Text>
+                 </View>
+                 {/* row 1 */}
+                 <View style={styles.tableRow}>
+                   <Text style={styles.tableCell1}> 1 </Text>
+                   <Text style={[styles.tableCell2, { textAlign: "left" }]}>
+                     {" "}
+                     {dataPay?.sale_auction?.auction_report_auctionstarted} {" "}
+                   </Text>
+                   <Text style={styles.tableCell3}>1{" "} </Text>
+                   <Text style={styles.tableCell4}> {" "} {data?.products?.[0]?.product_count }{" "} </Text>
+                   <Text style={styles.tableCell5}> {" "} {isNaN(dataPay?.sale_auction?.auction_report_price) ? '' : Number(dataPay?.sale_auction?.auction_report_price).toLocaleString() }{" "} </Text>
+                 </View>
+                 {/* row 2 */}
+                 <View style={styles.tableRow}>
+                   <Text style={styles.tableCell1}> 2 </Text>
+                   <Text style={[styles.tableCell2, { textAlign: "left" }]}>
+                     {" "}
+                     สลากออมสิน{" "}
+                   </Text>
+                   <Text style={styles.tableCell3}>{" "} {dataPay?.sale_auction?.aomsin1?.[0]?.auction_auction_start_event_count }{" "} </Text>
+                   <Text style={styles.tableCell4}> {dataPay?.sale_auction?.aomsin1?.[0]?.auction_auction_start_event_count ? "ใบ" : '' }  </Text>
+                   <Text style={styles.tableCell5}> </Text>
+                  
+                 </View>
+                 {/* row 3 */}
+                 <View style={styles.tableRow}>
+                   <Text style={styles.tableCell1}> 3 </Text>
+                   <Text style={[styles.tableCell2, { textAlign: "left" }]}>
+                     {" "}
+                     ล็อตเตอรี่{" "}
+                   </Text>
+                   <Text style={styles.tableCell3}>{" "} {dataPay?.sale_auction?.aomsin1?.[1]?.auction_auction_start_event_count }{" "} </Text>
+                   <Text style={styles.tableCell4}> {" "} {dataPay?.sale_auction?.aomsin1?.[1]?.auction_auction_start_event_count ? "ใบ" : '' }{" "} </Text>
+                   <Text style={styles.tableCell5}>  </Text>
+                 </View>
+                 {/* row 4 */}
+                 <View style={styles.tableRow}>
+                   <Text style={styles.tableCell1}> 4 </Text>
+                   <Text style={[styles.tableCell2, { textAlign: "left" }]}>
+                     {" "}
+                     {dataPay?.sale_auction?.product1?.[0]?.auction_product_start_event }{" "}
+                   </Text>
+                   <Text style={styles.tableCell3}>{" "} {dataPay?.sale_auction?.product1?.[0]?.auction_product_start_event_count }{" "} </Text>
+                   <Text style={styles.tableCell4}> {" "}  {dataPay?.sale_auction?.product1?.[0]?.auction_product_start_event_cat_count }{" "} </Text>
+                   <Text style={styles.tableCell5}>  </Text>
+                   
+                 </View>
+                 {/* row 5 */}
+                 <View style={styles.tableRow}>
+                   <Text style={styles.tableCell1}> 5 </Text>
+                   <Text style={[styles.tableCell2, { textAlign: "left" }]}>
+                     {" "}
+                     {dataPay?.sale_auction?.product1?.[1]?.auction_product_start_event }{" "}
+                   </Text>
+                   <Text style={styles.tableCell3}>{" "} {dataPay?.sale_auction?.product1?.[1]?.auction_product_start_event_count }{" "} </Text>
+                   <Text style={styles.tableCell4}> {" "}  {dataPay?.sale_auction?.product1?.[1]?.auction_product_start_event_cat_count }{" "} </Text>
+                   <Text style={styles.tableCell5}>  </Text>
+                   
+                 </View>
+                 {/* row 6 */}
+                 <View style={styles.tableRow}>
+                   <Text style={styles.tableCell1}> 6 </Text>
+                   <Text style={[styles.tableCell2, { textAlign: "left" }]}>
+                     {" "}
+                     {dataPay?.sale_auction?.product1?.[2]?.auction_product_start_event }{" "}
+                   </Text>
+                   <Text style={styles.tableCell3}>{" "} {dataPay?.sale_auction?.product1?.[2]?.auction_product_start_event_count }{" "} </Text>
+                   <Text style={styles.tableCell4}> {" "}  {dataPay?.sale_auction?.product1?.[2]?.auction_product_start_event_cat_count }{" "} </Text>
+                   <Text style={styles.tableCell5}>  </Text>
+                 </View>
+                 {/* row 7 */}
+                 <View style={styles.tableRow}>
+                   <Text style={styles.tableCell1}> 7 </Text>
+                   <Text style={[styles.tableCell2, { textAlign: "left" }]}>
+                     {" "}
+                     {dataPay?.sale_auction?.product1?.[3]?.auction_product_start_event }{" "}
+                   </Text>
+                   <Text style={styles.tableCell3}>{" "} {dataPay?.sale_auction?.product1?.[3]?.auction_product_start_event_count }{" "} </Text>
+                   <Text style={styles.tableCell4}> {" "}  {dataPay?.sale_auction?.product1?.[3]?.auction_product_start_event_cat_count }{" "} </Text>
+                   <Text style={styles.tableCell5}>  </Text>
+                 </View>
+                 {/* row 8 */}
+                 <View style={styles.tableRow}>
+                   <Text style={styles.tableCell1}> 8 </Text>
+                   <Text style={[styles.tableCell2, { textAlign: "left" }]}>
+                     {" "}
+                     {dataPay?.sale_auction?.product1?.[4]?.auction_product_start_event }{" "}
+                   </Text>
+                   <Text style={styles.tableCell3}>{" "} {dataPay?.sale_auction?.product1?.[4]?.auction_product_start_event_count }{" "} </Text>
+                   <Text style={styles.tableCell4}> {" "}  {dataPay?.sale_auction?.product1?.[4]?.auction_product_start_event_cat_count }{" "} </Text>
+                   <Text style={styles.tableCell5}>  </Text>
+                 </View>
+                 {/* สรุปรวม */}
+                 <View style={styles.tableRow}>
+                   <Text style={styles.tableCellsum}> {" "}{THBText(totalPrice) || ''}{" "}   </Text>
+                   <Text style={styles.tableCell3}>  </Text>
+                   <Text style={styles.tableCell4}> รวมเป็นเงิน  </Text>
+                   <Text style={styles.tableCell5}>  {Number(totalPrice).toLocaleString() || ''} </Text>
+                 </View>
+               </View>
+               <View style={styles.flexrow}>
+          <View style={[
+            styles.flexrowstart,
+            {width:"70%"}
+            ]}>
+            <Text
+              style={[
+                { fontWeight: "extrabold" },
+                { fontFamily: "SarabunBold" },
+                { fontSize: "12" },
+                styles.mtsm,
+                styles.spacesm,
+              ]}
+            >
+              วันที่รับ:{" "}
+            </Text>
+            <Text
+              style={[
+                styles.mtsm,
+                { fontWeight: "light" },
+                { fontFamily: "Sarabun" },
+                { fontSize: "12" },
+                { display:"flex"},
+                { width:"80%"},
+              ]}
+            >
+              ..................................................
+            </Text>
+          </View>
+
+          <View style={[
+            styles.flexrow,
+            {width:"30%"}
+            ]}>
+          <View style={styles.flexrowstart}>
+              <Text
+                style={[
+                  { fontWeight: "extrabold" },
+                  { fontFamily: "SarabunBold" },
+                  { fontSize: "12" },
+                  styles.mtsm,
+                  styles.spacesm,
+                ]}
+              >
+                ผู้รับชำระเงิน:{" "}
+
+              </Text>
+              <Text
+                style={[
+                  { fontWeight: "light" },
+                  { fontFamily: "Sarabun" },
+                  { fontSize: "12" },
+                  styles.mtsm,
+                  styles.spacesm,
+                ]}
+              >
+              
+                {dataPay?.sale_receipt_name}.{" "}
+              </Text>
+            </View>
+          </View>
+        </View>
+        {dataPay?.sale_receipt_status == "1" ?
+         ''
+         :
+        <View style={styles.flexrow}>
+          <View style={[
+            styles.flexrowstart,
+            {width:"70%"}
+            ]}>
+            <Text
+              style={[
+                { fontWeight: "extrabold" },
+                { fontFamily: "SarabunBold" },
+                { fontSize: "12" },
+                styles.mtsm,
+                styles.spacesm,
+              ]}
+            >
+              {dataPay?.sale_receipt_status == "2" ? "โอนเข้าธนาคาร:" : dataPay?.sale_receipt_status == "3" ? "ธนาคาร:" : '' }{" "}
+            </Text>
+            <Text
+              style={[
+                styles.mtsm,
+                { fontWeight: "light" },
+                { fontFamily: "Sarabun" },
+                { fontSize: "12" },
+                { display:"flex"},
+                { width:"80%"},
+              ]}
+            >
+              {dataPay?.sale_receipt_status == "2" ? dataPay?.sale_receipt_acc : dataPay?.sale_receipt_status == "3" ? dataPay?.sale_receipt_bank : '' }{" "}
+            </Text>
+          </View>
+
+          <View style={[
+            styles.flexrow,
+            {width:"30%"}
+            ]}>
+          <View style={styles.flexrowstart}>
+              <Text
+                style={[
+                  { fontWeight: "extrabold" },
+                  { fontFamily: "SarabunBold" },
+                  { fontSize: "12" },
+                  styles.mtsm,
+                  styles.spacesm,
+                ]}
+              >
+                {dataPay?.sale_receipt_status == "3" ? "เลขที่เช็ค" :''} 
+              </Text>
+              <Text
+                style={[
+                  { fontWeight: "light" },
+                  { fontFamily: "Sarabun" },
+                  { fontSize: "12" },
+                  styles.mtsm,
+                  styles.spacesm,
+                ]}
+              >
+              {dataPay.sale_receipt_check}{" "}
+              </Text>
+            </View>
+          </View>
+        </View>
+         }
+        <View style={styles.flexrow}>
+          <View style={[
+            styles.flexrowstart,
+            {width:"70%"}
+            ]}>
+            <Text
+              style={[
+                { fontWeight: "extrabold" },
+                { fontFamily: "SarabunBold" },
+                { fontSize: "12" },
+                styles.mtsm,
+                styles.spacesm,
+              ]}
+            >
+              สถานที่จัดส่ง:{" "}
+            </Text>
+            <Text
+              style={[
+                styles.mtsm,
+                { fontWeight: "light" },
+                { fontFamily: "Sarabun" },
+                { fontSize: "12" },
+                { display:"flex"},
+                { width:"80%"},
+              ]}
+            >
+              {dataPay?.sale_auction?.auction_report_customer_delivery}{" "}
+            </Text>
+          </View>
+
+          <View style={[
+            styles.flexrow,
+            {width:"30%"}
+            ]}>
+          <View style={styles.flexrowstart}>
+              <Text
+                style={[
+                  { fontWeight: "extrabold" },
+                  { fontFamily: "SarabunBold" },
+                  { fontSize: "12" },
+                  styles.mtsm,
+                  styles.spacesm,
+                ]}
+              >
+                เลขที่อ้างอิง:{" "}
+
+              </Text>
+              <Text
+                style={[
+                  { fontWeight: "light" },
+                  { fontFamily: "Sarabun" },
+                  { fontSize: "12" },
+                  styles.mtsm,
+                  styles.spacesm,
+                ]}
+              >
+              
+              {dataPay?.sale_auction?.auction_report_customer_number}{" "}
+              </Text>
+            </View>
+          </View>
+        </View>
+        <View style={styles.flexrow}>
+          <View style={styles.flexrowstart}>
+            <Text
+              style={[
+                { fontWeight: "extrabold" },
+                { fontFamily: "SarabunBold" },
+                { fontSize: "12" },
+                styles.mtsm,
+                styles.spacesm,
+              ]}
+            >
+              หมายเหตุ:{" "}
+            </Text>
+            <Text
+              style={[
+                { fontWeight: "light" },
+                { fontFamily: "Sarabun" },
+                { fontSize: "12" },
+                styles.mtsm,
+              ]}
+            >
+              {dataPay?.sale_auction?.auction_report_q}{" "}
+            </Text>
+          </View>
+
+        </View>
+             </View>
+              </Page>
              :
              ''
              }
          
              {/* สำเนา2 */}
+             {statusModal == "2" ?  
+             <Page size="A4" style={styles.page} >
+             <View style={styles.flexrowbetween}>
+               <View style={styles.flexrow}>
+                 <Text style={[styles.textsm, styles.spacesm]}> </Text>
+                 <Text
+                   style={[
+                     styles.textbase,
+                     { fontWeight: "light" },
+                     { fontFamily: "Sarabun" },
+                     {color:"blue"},
+                   ]}
+                 >
+                   สำเนา{" "}
+                 </Text>
+               </View>
+               <View style={styles.flexrow}>
+                 <Text style={[styles.textsm, styles.spacesm]}>เลขที่ </Text>
+                 <Text
+                   style={[
+                     styles.textsm,
+                     { fontWeight: "light" },
+                     { fontFamily: "Sarabun" },
+                   ]}
+                 >
+                   {dataPay?.sale_auction?.number}
+                 </Text>
+               </View>
+             </View>
+             <View style={[styles.imageContainer, styles.flexrow]}>
+               <Image
+                 // src="../../../public/img/รูปอาม่า01.png"
+                 src={p01}
+                 style={styles.image}
+               />
+               <Image 
+               // src="../../../public/img/รูปอากง02.png" 
+               src={p02}
+               style={styles.image} />
+             </View>
+             <View>
+               <Text
+                 style={[
+                   styles.flexrowcenter,
+                   styles.textbase,
+                   { fontWeight: "thin" },
+                 ]}
+               >
+                 ใบเสร็จ{" "}
+               </Text>
+               <Text style={[styles.flexrowcenter, styles.textbase, styles.mtsm]}>
+                 คณะกรรมการจัดงานศาลเจ้าปึงเถ่ากงม่า ขอนแก่น{" "}
+               </Text>
+               <View style={styles.flexrowcenter}>
+               <Text
+                 style={[
+                   styles.flexrowcenter,
+                   styles.textsm,
+                   { fontWeight: "thin", marginTop:"7px" },
+                 ]}
+               >
+                   ประจำปี{" "}
+                 </Text>
+                 <Text
+                 style={[
+                   styles.flexrowcenter,
+                   styles.textsm,
+                   { fontWeight: "thin" , marginTop:"7px" },
+                 ]}
+               >
+                   {buddhistYear}
+                 </Text>
+               </View>
+               <View style={styles.flexrow}>
+                 <View style={[
+                   styles.flexrowstart,
+                   {width:"65%"}
+                   ]}>
+                   <Text
+                     style={[
+                       { fontWeight: "extrabold" },
+                       { fontFamily: "SarabunBold" },
+                       { fontSize: "12" },
+                       styles.mtsm,
+                       styles.spacesm,
+                     ]}
+                   >
+                     ชื่อผู้บริจาค:{" "}
+                   </Text>
+                   <Text
+                     style={[
+                       { fontWeight: "light" },
+                       { fontFamily: "Sarabun" },
+                       { fontSize: "12" },
+                       {width:""},
+                       styles.mtsm,
+                     ]}
+                   >
+                     {dataPay?.sale_auction?.auction_report_user_auction}{" "}
+                   </Text>
+                 </View>
+ 
+                 <View style={[
+                   styles.flexrow,
+                   {width:"35%"}
+                   ]}>
+                   <View style={styles.flexrowstart}>
+                     <Text
+                       style={[
+                         { fontWeight: "extrabold" },
+                         { fontFamily: "SarabunBold" },
+                         { fontSize: "12" },
+                         styles.mtsm,
+                         styles.spacesm,
+                       ]}
+                     >
+                       ชำระโดย:{" "}
+                     </Text>
+                     <Text
+                       style={[
+                         { fontWeight: "light" },
+                         { fontFamily: "Sarabun" },
+                         { fontSize: "12" },
+                         styles.mtsm,
+                         styles.spacesm,
+                       ]}
+                     >
+                       {" "}{dataPay?.sale_receipt_status == 1 ? "เงินสด" : dataPay?.sale_receipt_status == 2 ? "เงินโอน" : dataPay?.sale_receipt_status == 3 ? "เช็ค" : "" }
+                     </Text>
+                   </View>
+                 </View>
+               </View>
+               <View style={styles.flexrow}>
+                 <View style={[
+                   styles.flexrowstart,
+                   {width:"65%"}
+                   ]}>
+                   <Text
+                     style={[
+                       { fontWeight: "extrabold" },
+                       { fontFamily: "SarabunBold" },
+                       { fontSize: "12" },
+                       styles.mtsm,
+                       styles.spacesm,
+                     ]}
+                   >
+                     ที่อยู่:{" "}
+                   </Text>
+                   <Text
+                     style={[
+                       styles.mtsm,
+                       { fontWeight: "light" },
+                       { fontFamily: "Sarabun" },
+                       { fontSize: "12" },
+                       { display:"flex"},
+                       { width:"80%"},
+                     ]}
+                   >
+                     {dataPay?.sale_auction?.auction_report_customer_address}{" "}
+                   </Text>
+                 </View>
+ 
+                 <View style={[
+                   styles.flexrow,
+                   {width:"35%"}
+                   ]}>
+                 <View style={styles.flexrowstart}>
+                     <Text
+                       style={[
+                         { fontWeight: "extrabold" },
+                         { fontFamily: "SarabunBold" },
+                         { fontSize: "12" },
+                         styles.mtsm,
+                         styles.spacesm,
+                       ]}
+                     >
+                       วันที่รับชำระ:{" "}
+                     </Text>
+                     <Text
+                       style={[
+                         { fontWeight: "light" },
+                         { fontFamily: "Sarabun" },
+                         { fontSize: "12" },
+                         styles.mtsm,
+                         styles.spacesm,
+                       ]}
+                     >
+                       {" "}
+                       {formattedDate || ''}.
+                     </Text>
+                   </View>
+                 </View>
+               </View>
+               <View style={styles.flexrow}>
+               <View style={[
+                   styles.flexrowstart,
+                   {width:"65%"}
+                   ]}>
+                     <Text
+                     style={[
+                       { fontWeight: "extrabold" },
+                       { fontFamily: "SarabunBold" },
+                       { fontSize: "12" },
+                       styles.mtsm,
+                       styles.spacesm,
+                     ]}
+                   >
+                     ออกสลากในนาม:{" "}
+                   </Text>
+                   <Text
+                     style={[
+                       styles.mtsm,
+                       { fontWeight: "light" },
+                       { fontFamily: "Sarabun" },
+                       { fontSize: "12" },
+                       { display:"flex"},
+                       { width:"80%"},
+                     ]}
+                   >
+                     {dataPay?.sale_auction?.auction_report_customer_noun + '' }.{" "} 
+                   </Text>
+                 </View>
+ 
+                 <View style={[
+                   styles.flexrow,
+                   {width:"35%"}
+                   ]}>
+                 <View style={styles.flexrowstart}>
+                     <Text
+                       style={[
+                         { fontWeight: "extrabold" },
+                         { fontFamily: "SarabunBold" },
+                         { fontSize: "12" },
+                         styles.mtsm,
+                         styles.spacesm,
+                       ]}
+                     >
+                       เบอร์โทร:{" "}
+                     </Text>
+                     <Text
+                       style={[
+                         { fontWeight: "light" },
+                         { fontFamily: "Sarabun" },
+                         { fontSize: "12" },
+                         styles.mtsm,
+                         styles.spacesm,
+                       ]}
+                     >
+                       {" "}
+                       {dataPay?.sale_auction?.auction_report_customer_tel}
+                     </Text>
+                   </View>
+                 </View>
+               </View>
+               <View style={styles.flexrow}>
+               <View style={[
+                   styles.flexrowstart,
+                   {width:"65%"}
+                   ]}>
+                   <Text
+                     style={[
+                       { fontWeight: "extrabold" },
+                       { fontFamily: "SarabunBold" },
+                       { fontSize: "12" },
+                       styles.mtsm,
+                       styles.spacesm,
+                     ]}
+                   >
+                     ผู้ติดต่อ:{" "}
+                   </Text>
+                   <Text
+                     style={[
+                       { fontWeight: "light" },
+                       { fontFamily: "Sarabun" },
+                       { fontSize: "12" },
+                       {display:"flex"},
+                       { width:"80%"},
+                       styles.mtsm,
+                     ]}
+                   >
+                   {dataPay?.sale_auction?.auction_report_customer_contract}{" "}
+                   </Text>
+                 </View>
+ 
+                 <View style={[
+                   styles.flexrow,
+                   {width:"35%"}
+                   ]}>
+                 <View style={styles.flexrowstart}>
+                     <Text
+                       style={[
+                         { fontWeight: "extrabold" },
+                         { fontFamily: "SarabunBold" },
+                         { fontSize: "12" },
+                         styles.mtsm,
+                         styles.spacesm,
+                       ]}
+                     >
+                       บิลเล่มที่:{" "}
+                     </Text>
+                     <Text
+                       style={[
+                         { fontWeight: "light" },
+                         { fontFamily: "Sarabun" },
+                         { fontSize: "12" },
+                         { display:"flex"},
+                         { width:"60%"},
+                         styles.mtsm,
+                         // styles.spacesm,
+                       ]}
+                     >
+                       {" "}
+                       {dataPay?.sale_auction?.auction_refer} / {dataPay?.sale_auction?.auction_num}
+                       {" "}
+                     </Text>
+                   </View>
+                 </View>
+               </View>
+                 {/*-----------  หัวตาราง ---------------------  */}
+               <View style={[styles.table, { marginTop: "15" }]}>
+                 <View style={styles.tableRow}>
+                   <Text style={styles.tableCell1}>ลำดับ </Text>
+                   <Text style={styles.tableCell2}>รายละเอียด </Text>
+                   <Text style={styles.tableCell3}>จำนวน </Text>
+                   <Text style={styles.tableCell4}>หน่วยนับ </Text>
+                   <Text style={styles.tableCell5}>จำนวนเงิน </Text>
+                 </View>
+                 {/* row 1 */}
+                 <View style={styles.tableRow}>
+                   <Text style={styles.tableCell1}> 1 </Text>
+                   <Text style={[styles.tableCell2, { textAlign: "left" }]}>
+                     {" "}
+                     {dataPay?.sale_auction?.auction_report_auctionstarted} {" "}
+                   </Text>
+                   <Text style={styles.tableCell3}>1{" "} </Text>
+                   <Text style={styles.tableCell4}> {" "} {data?.products?.[0]?.product_count }{" "} </Text>
+                   <Text style={styles.tableCell5}> {" "} {isNaN(dataPay?.sale_auction?.auction_report_price) ? '' : Number(dataPay?.sale_auction?.auction_report_price).toLocaleString() }{" "} </Text>
+                 </View>
+                 {/* row 2 */}
+                 <View style={styles.tableRow}>
+                   <Text style={styles.tableCell1}> 2 </Text>
+                   <Text style={[styles.tableCell2, { textAlign: "left" }]}>
+                     {" "}
+                     สลากออมสิน{" "}
+                   </Text>
+                   <Text style={styles.tableCell3}>{" "} {dataPay?.sale_auction?.aomsin1?.[0]?.auction_auction_start_event_count }{" "} </Text>
+                   <Text style={styles.tableCell4}> {dataPay?.sale_auction?.aomsin1?.[0]?.auction_auction_start_event_count ? "ใบ" : '' }  </Text>
+                   <Text style={styles.tableCell5}> </Text>
+                  
+                 </View>
+                 {/* row 3 */}
+                 <View style={styles.tableRow}>
+                   <Text style={styles.tableCell1}> 3 </Text>
+                   <Text style={[styles.tableCell2, { textAlign: "left" }]}>
+                     {" "}
+                     ล็อตเตอรี่{" "}
+                   </Text>
+                   <Text style={styles.tableCell3}>{" "} {dataPay?.sale_auction?.aomsin1?.[1]?.auction_auction_start_event_count }{" "} </Text>
+                   <Text style={styles.tableCell4}> {" "} {dataPay?.sale_auction?.aomsin1?.[1]?.auction_auction_start_event_count ? "ใบ" : '' }{" "} </Text>
+                   <Text style={styles.tableCell5}>  </Text>
+                 </View>
+                 {/* row 4 */}
+                 <View style={styles.tableRow}>
+                   <Text style={styles.tableCell1}> 4 </Text>
+                   <Text style={[styles.tableCell2, { textAlign: "left" }]}>
+                     {" "}
+                     {dataPay?.sale_auction?.product1?.[0]?.auction_product_start_event }{" "}
+                   </Text>
+                   <Text style={styles.tableCell3}>{" "} {dataPay?.sale_auction?.product1?.[0]?.auction_product_start_event_count }{" "} </Text>
+                   <Text style={styles.tableCell4}> {" "}  {dataPay?.sale_auction?.product1?.[0]?.auction_product_start_event_cat_count }{" "} </Text>
+                   <Text style={styles.tableCell5}>  </Text>
+                   
+                 </View>
+                 {/* row 5 */}
+                 <View style={styles.tableRow}>
+                   <Text style={styles.tableCell1}> 5 </Text>
+                   <Text style={[styles.tableCell2, { textAlign: "left" }]}>
+                     {" "}
+                     {dataPay?.sale_auction?.product1?.[1]?.auction_product_start_event }{" "}
+                   </Text>
+                   <Text style={styles.tableCell3}>{" "} {dataPay?.sale_auction?.product1?.[1]?.auction_product_start_event_count }{" "} </Text>
+                   <Text style={styles.tableCell4}> {" "}  {dataPay?.sale_auction?.product1?.[1]?.auction_product_start_event_cat_count }{" "} </Text>
+                   <Text style={styles.tableCell5}>  </Text>
+                   
+                 </View>
+                 {/* row 6 */}
+                 <View style={styles.tableRow}>
+                   <Text style={styles.tableCell1}> 6 </Text>
+                   <Text style={[styles.tableCell2, { textAlign: "left" }]}>
+                     {" "}
+                     {dataPay?.sale_auction?.product1?.[2]?.auction_product_start_event }{" "}
+                   </Text>
+                   <Text style={styles.tableCell3}>{" "} {dataPay?.sale_auction?.product1?.[2]?.auction_product_start_event_count }{" "} </Text>
+                   <Text style={styles.tableCell4}> {" "}  {dataPay?.sale_auction?.product1?.[2]?.auction_product_start_event_cat_count }{" "} </Text>
+                   <Text style={styles.tableCell5}>  </Text>
+                 </View>
+                 {/* row 7 */}
+                 <View style={styles.tableRow}>
+                   <Text style={styles.tableCell1}> 7 </Text>
+                   <Text style={[styles.tableCell2, { textAlign: "left" }]}>
+                     {" "}
+                     {dataPay?.sale_auction?.product1?.[3]?.auction_product_start_event }{" "}
+                   </Text>
+                   <Text style={styles.tableCell3}>{" "} {dataPay?.sale_auction?.product1?.[3]?.auction_product_start_event_count }{" "} </Text>
+                   <Text style={styles.tableCell4}> {" "}  {dataPay?.sale_auction?.product1?.[3]?.auction_product_start_event_cat_count }{" "} </Text>
+                   <Text style={styles.tableCell5}>  </Text>
+                 </View>
+                 {/* row 8 */}
+                 <View style={styles.tableRow}>
+                   <Text style={styles.tableCell1}> 8 </Text>
+                   <Text style={[styles.tableCell2, { textAlign: "left" }]}>
+                     {" "}
+                     {dataPay?.sale_auction?.product1?.[4]?.auction_product_start_event }{" "}
+                   </Text>
+                   <Text style={styles.tableCell3}>{" "} {dataPay?.sale_auction?.product1?.[4]?.auction_product_start_event_count }{" "} </Text>
+                   <Text style={styles.tableCell4}> {" "}  {dataPay?.sale_auction?.product1?.[4]?.auction_product_start_event_cat_count }{" "} </Text>
+                   <Text style={styles.tableCell5}>  </Text>
+                 </View>
+                 {/* สรุปรวม */}
+                 <View style={styles.tableRow}>
+                   <Text style={styles.tableCellsum}> {" "}{THBText(totalPrice) || ''}{" "}   </Text>
+                   <Text style={styles.tableCell3}>  </Text>
+                   <Text style={styles.tableCell4}> รวมเป็นเงิน  </Text>
+                   <Text style={styles.tableCell5}>  {Number(totalPrice).toLocaleString() || ''} </Text>
+                 </View>
+               </View>
+               <View style={styles.flexrow}>
+          <View style={[
+            styles.flexrowstart,
+            {width:"70%"}
+            ]}>
+            <Text
+              style={[
+                { fontWeight: "extrabold" },
+                { fontFamily: "SarabunBold" },
+                { fontSize: "12" },
+                styles.mtsm,
+                styles.spacesm,
+              ]}
+            >
+              วันที่รับ:{" "}
+            </Text>
+            <Text
+              style={[
+                styles.mtsm,
+                { fontWeight: "light" },
+                { fontFamily: "Sarabun" },
+                { fontSize: "12" },
+                { display:"flex"},
+                { width:"80%"},
+              ]}
+            >
+              ..................................................
+            </Text>
+          </View>
+
+          <View style={[
+            styles.flexrow,
+            {width:"30%"}
+            ]}>
+          <View style={styles.flexrowstart}>
+              <Text
+                style={[
+                  { fontWeight: "extrabold" },
+                  { fontFamily: "SarabunBold" },
+                  { fontSize: "12" },
+                  styles.mtsm,
+                  styles.spacesm,
+                ]}
+              >
+                ผู้รับชำระเงิน:{" "}
+
+              </Text>
+              <Text
+                style={[
+                  { fontWeight: "light" },
+                  { fontFamily: "Sarabun" },
+                  { fontSize: "12" },
+                  styles.mtsm,
+                  styles.spacesm,
+                ]}
+              >
+              
+              {" "}{dataPay?.sale_receipt_name}{" "}
+              </Text>
+            </View>
+          </View>
+                </View>
+                {dataPay?.sale_receipt_status == "1" ?
+                ''
+                :
+                <View style={styles.flexrow}>
+                  <View style={[
+                    styles.flexrowstart,
+                    {width:"70%"}
+                    ]}>
+                    <Text
+                      style={[
+                        { fontWeight: "extrabold" },
+                        { fontFamily: "SarabunBold" },
+                        { fontSize: "12" },
+                        styles.mtsm,
+                        styles.spacesm,
+                      ]}
+                    >
+                      {" "}{dataPay?.sale_receipt_status == "2" ? "โอนเข้าธนาคาร:" : dataPay?.sale_receipt_status == "3" ? "ธนาคาร:" : '' }{" "}
+                    </Text>
+                    <Text
+                      style={[
+                        styles.mtsm,
+                        { fontWeight: "light" },
+                        { fontFamily: "Sarabun" },
+                        { fontSize: "12" },
+                        { display:"flex"},
+                        { width:"80%"},
+                      ]}
+                    >
+                      {" "}{dataPay?.sale_receipt_status == "2" ? dataPay?.sale_receipt_acc : dataPay?.sale_receipt_status == "3" ? dataPay?.sale_receipt_bank : '' }{" "}
+                    </Text>
+                  </View>
+
+                  <View style={[
+                    styles.flexrow,
+                    {width:"30%"}
+                    ]}>
+                  <View style={styles.flexrowstart}>
+                      <Text
+                        style={[
+                          { fontWeight: "extrabold" },
+                          { fontFamily: "SarabunBold" },
+                          { fontSize: "12" },
+                          styles.mtsm,
+                          styles.spacesm,
+                        ]}
+                      >
+                        {" "}{dataPay?.sale_receipt_status == "3" ? "เลขที่เช็ค" :''}{" "} 
+                      </Text>
+                      <Text
+                        style={[
+                          { fontWeight: "light" },
+                          { fontFamily: "Sarabun" },
+                          { fontSize: "12" },
+                          styles.mtsm,
+                          styles.spacesm,
+                        ]}
+                      >
+                      {" "}{dataPay.sale_receipt_check}{" "}
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+                }
+                <View style={styles.flexrow}>
+                  <View style={[
+                    styles.flexrowstart,
+                    {width:"70%"}
+                    ]}>
+                    <Text
+                      style={[
+                        { fontWeight: "extrabold" },
+                        { fontFamily: "SarabunBold" },
+                        { fontSize: "12" },
+                        styles.mtsm,
+                        styles.spacesm,
+                      ]}
+                    >
+                      สถานที่จัดส่ง:{" "}
+                    </Text>
+                    <Text
+                      style={[
+                        styles.mtsm,
+                        { fontWeight: "light" },
+                        { fontFamily: "Sarabun" },
+                        { fontSize: "12" },
+                        { display:"flex"},
+                        { width:"80%"},
+                      ]}
+                    >
+                      {" "}{dataPay?.sale_auction?.auction_report_customer_delivery}{" "}
+                    </Text>
+                  </View>
+
+                  <View style={[
+                    styles.flexrow,
+                    {width:"30%"}
+                    ]}>
+                  <View style={styles.flexrowstart}>
+                      <Text
+                        style={[
+                          { fontWeight: "extrabold" },
+                          { fontFamily: "SarabunBold" },
+                          { fontSize: "12" },
+                          styles.mtsm,
+                          styles.spacesm,
+                        ]}
+                      >
+                        เลขที่อ้างอิง:{" "}
+
+                      </Text>
+                      <Text
+                        style={[
+                          { fontWeight: "light" },
+                          { fontFamily: "Sarabun" },
+                          { fontSize: "12" },
+                          styles.mtsm,
+                          styles.spacesm,
+                        ]}
+                      >
+                      
+                      {" "}{dataPay?.sale_auction?.auction_report_customer_number}{" "}
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+                <View style={styles.flexrow}>
+                  <View style={styles.flexrowstart}>
+                    <Text
+                      style={[
+                        { fontWeight: "extrabold" },
+                        { fontFamily: "SarabunBold" },
+                        { fontSize: "12" },
+                        styles.mtsm,
+                        styles.spacesm,
+                      ]}
+                    >
+                      หมายเหตุ:{" "}
+                    </Text>
+                    <Text
+                      style={[
+                        { fontWeight: "light" },
+                        { fontFamily: "Sarabun" },
+                        { fontSize: "12" },
+                        styles.mtsm,
+                      ]}
+                    >
+                      {dataPay?.sale_auction?.auction_report_q}{" "}
+                    </Text>
+                  </View>
+
+                </View>
+             </View>
+           </Page>
+             :
+             ''
+             }
   
              
          </Document>
