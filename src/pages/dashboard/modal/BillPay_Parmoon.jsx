@@ -28,6 +28,7 @@ import { PDFViewer } from "@react-pdf/renderer";
 import THBText from 'thai-baht-text'
 
 import { GiCancel } from "react-icons/gi";
+import axios from "axios";
 
 Font.register({
   family: "Sarabun",
@@ -256,9 +257,24 @@ const styles = StyleSheet.create({
 });
 
 const BillPay_Parmoon = ({ open5, handleOpen5, data, statusModal  }) => {
+  const [dataPay, setDataPay] = useState({})
+
+  const fethDataPay = async()=>{
+    if (data?.id_receipt){
+      try {
+        const res = await axios.get(`${import.meta.env.VITE_APP_API}/Auction-Sale/${data?.id_receipt}/detail`)
+        console.log(res.data[0]);
+        setDataPay(res.data[0])
+        
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  }
 
   useEffect(() => {
     console.log(data);
+    fethDataPay()
   }, [open5]);
 
   const currentDate = new Date();

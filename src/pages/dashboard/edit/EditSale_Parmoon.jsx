@@ -308,7 +308,7 @@ export function EditSale1() {
       <BillPay_Parmoon
         open5={open5}
         handleOpen5={handleOpen5}
-        data={data}
+        data={data[0]}
         statusModal={statusModal}
       />
 
