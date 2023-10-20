@@ -39,7 +39,7 @@ import BillPay_Parmoon from "../modal/BillPay_Parmoon";
 import BillSend_Sale from "../modal/BillSend_Sale";
 import BillPay_Sale from "../modal/BillPay_Sale";
 
-export function EditSale_cart() {
+export function EditSale_cart(idAuctionReport) {
   const Token = localStorage.getItem("token");
 
   const [data, setData] = useState([]);
@@ -85,8 +85,10 @@ export function EditSale_cart() {
     setOpen5(!open5), setStatusModal(number);
   };
 
-  const params = useParams();
-  const id = params.id;
+  // const params = useParams();
+  const id = idAuctionReport.id;
+
+  console.log(id)
 
   const fetchData = async () => {
     try {

@@ -21,7 +21,7 @@ import { SignIn } from "./pages/auth";
 
 import Display from "./pages/dashboard/display";
 import EditSale_cart from "./pages/dashboard/edit/EditSale_cart";
-import EditSale_Parmoon from "./pages/dashboard/edit/EditSale_Parmoon";
+// import EditSale_Parmoon from "./pages/dashboard/edit/EditSale_Parmoon";
 
 
 function App() {
@@ -70,7 +70,7 @@ function App() {
       <Route path="/auth/*" element={<Auth />} />
       <Route path="/auth/sign-in" element={< SignIn />} />
       <Route path="*" element={<Navigate to="/auth/sign-in" replace />} />
-      <Route path="/dashboard/edit-sale-parmoon/:id" element={<EditSale_Parmoon/>} />
+      {/* <Route path="/dashboard/edit-sale-parmoon/:id" element={<EditSale_Parmoon/>} /> */}
       <Route path="/dashboard/edit-sale-cart/:id" element={<EditSale_cart/>} />
 
     </Routes>

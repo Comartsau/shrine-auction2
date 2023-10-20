@@ -1925,9 +1925,6 @@ export const ReceiveSale = ({reportData, sumTotal, thbText}) => {
        
         </View>
       </Page>
-     
-     
-     
     </Document>
   );
 };

@@ -12,6 +12,8 @@ import THBText from 'thai-baht-text'
 import { PDFViewer } from "@react-pdf/renderer";
 import { ReceiveSale } from "./ReceiveSale";
 
+import EditSale_Cart from "../dashboard/edit/EditSale_cart";
+
 import DatePicker from "react-datepicker";
 import {
   Card,
@@ -44,6 +46,9 @@ export function SaleList() {
 
   const [startDateExcel, setStartDateExcel] = useState(new Date());
   const [endDateExcel, setEndDateExcel] = useState(new Date());
+
+  const [openEditSale,setOpenEditSale] = useState(false)
+  const [idAuctionReport,setIdAuctionReport] = useState('')
 
 
   // ---------  Token ------------------------ //
@@ -297,9 +302,23 @@ export function SaleList() {
     .toString()
     .padStart(2, "0")}/${year}`;
 
+  
+    const handleEditSale = (data)=> {
+      console.log(data)
+      setOpenEditSale(true)
+      setIdAuctionReport(data.id)
+      console.log(data.id)
+
+    }
+
+
 
   return (
-       <div >
+    <div>
+      {openEditSale == true ?
+      <EditSale_Cart id={idAuctionReport}/>
+      :
+      <div >
        {/* <p>ข้อมูลผู้บริจาค</p> */}
        <div 
        className="mx-3 mt-3 flex w-full  flex-col justify-center  gap-5 xl:justify-start xl:gap-3 2xl:flex-row  ">
@@ -575,11 +594,12 @@ export function SaleList() {
                          size="sm"
                          className=" rounded-full"
                          disabled={data.status_sale === 0}
+                         onClick={() => handleEditSale(data)}
                        >
-                        <Link to={`/dashboard/edit-sale-cart/${data?.id}`}>
+                        {/* <Link to={`/dashboard/edit-sale-cart/${data?.id}`}> */}
                         <FiEdit className="text-xl  text-lime-900 font-blod"/>
 
-                        </Link>
+                        {/* </Link> */}
                        </IconButton>
                        </div>
                      </td>
@@ -840,7 +860,9 @@ export function SaleList() {
           </Dialog>
 
        </div>
-    
+       }
+    </div>
+       
   );
 }
 export default SaleList;

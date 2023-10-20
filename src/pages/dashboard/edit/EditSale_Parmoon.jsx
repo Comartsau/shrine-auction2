@@ -37,7 +37,7 @@ import BillSend_Parmoon from "../modal/BillSend_Parmoon";
 import Pay from "../modal/Pay";
 import BillPay_Parmoon from "../modal/BillPay_Parmoon";
 
-export function EditSale1() {
+export function EditSale1(idAuctionReport) {
   const Token = localStorage.getItem("token");
 
   const [data, setData] = useState([]);
@@ -51,6 +51,8 @@ export function EditSale1() {
   const [cancelNote, setCancelNote] = useState("");
   const [dataPayModal, setDataPayModal] = useState({});
   const [statusModal, setStatusModal] = useState(1);
+
+  // console.log(idAuctionReport.id)
 
   const TABLE_HEAD = [
     "#",
@@ -81,8 +83,8 @@ export function EditSale1() {
     setOpen5(!open5), setStatusModal(number);
   };
 
-  const params = useParams();
-  const id = params.id;
+  // const params = useParams();
+  const id = idAuctionReport.id
 
   const fetchData = async () => {
     try {

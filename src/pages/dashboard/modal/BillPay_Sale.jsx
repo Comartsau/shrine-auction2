@@ -299,7 +299,7 @@ const BillPay_Sale = ({ open5, handleOpen5, data, statusModal  }) => {
     .padStart(2, "0")}/${year}`;
 
 
-    const productPrices = (data?.products || []).map(product => {
+    const productPrices = (dataPay?.products || []).map(product => {
       const count = parseInt(product.sale_auction_start_event_count);
       const price = parseInt(product.sale_auction_start_event_count_price);
       return count * price;
@@ -308,7 +308,7 @@ const BillPay_Sale = ({ open5, handleOpen5, data, statusModal  }) => {
     // คำนวณผลรวมของราคาทั้งหมด
     const totalPrice = productPrices.reduce((acc, currentPrice) => acc + currentPrice, 0);
 
-    // console.log(totalPrice)
+    console.log(totalPrice)
 
 
 
@@ -660,9 +660,9 @@ const BillPay_Sale = ({ open5, handleOpen5, data, statusModal  }) => {
                        {" "}
                        {dataPay?.products?.[0]?.product_name }{" "}
                      </Text>
-                     <Text style={styles.tableCell3}>{" "} {dataPay.products?.[0]?.sale_auction_start_event_count_price }{" "} </Text>
+                     <Text style={styles.tableCell3}>{" "} {dataPay.products?.[0]?.sale_auction_start_event_count }{" "} </Text>
                      <Text style={styles.tableCell4}> {" "} {dataPay.products?.[0]?.product_count }{" "} </Text>
-                     <Text style={styles.tableCell5}> {" "} {isNaN(dataPay.products?.[0]?.sale_auction_start_event_count) ? '' : Number(dataPay.products?.[0]?.sale_auction_start_event_count).toLocaleString() }{" "} </Text>
+                     <Text style={styles.tableCell5}> {" "} {isNaN(dataPay.products?.[0]?.sale_auction_start_event_count_price) ? '' : Number(dataPay.products?.[0]?.sale_auction_start_event_count).toLocaleString() }{" "} </Text>
                      <Text style={styles.tableCell6}> {" "} {isNaN(dataPay.products?.[0]?.sale_auction_start_event_count_price) || isNaN(dataPay.products?.[0]?.sale_auction_start_event_count) ? '' : (dataPay.products?.[0]?.sale_auction_start_event_count_price * dataPay.products?.[0]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
                    </View>
                    {/* row 2 */}
@@ -672,9 +672,9 @@ const BillPay_Sale = ({ open5, handleOpen5, data, statusModal  }) => {
                        {" "}
                        {dataPay.products?.[1]?.product_name }{" "}
                      </Text>
-                     <Text style={styles.tableCell3}>{" "} {dataPay.products?.[1]?.sale_auction_start_event_count_price }{" "} </Text>
+                     <Text style={styles.tableCell3}>{" "} {dataPay.products?.[1]?.sale_auction_start_event_count }{" "} </Text>
                      <Text style={styles.tableCell4}> {" "} {dataPay.products?.[1]?.product_count }{" "} </Text>
-                     <Text style={styles.tableCell5}> {" "} {isNaN(dataPay.products?.[1]?.sale_auction_start_event_count) ? '' : Number(dataPay.products?.[1]?.sale_auction_start_event_count).toLocaleString() }{" "} </Text>
+                     <Text style={styles.tableCell5}> {" "} {isNaN(dataPay.products?.[1]?.sale_auction_start_event_count_price) ? '' : Number(dataPay.products?.[1]?.sale_auction_start_event_count).toLocaleString() }{" "} </Text>
                      <Text style={styles.tableCell6}> {" "} {isNaN(dataPay.products?.[1]?.sale_auction_start_event_count_price) || isNaN(dataPay.products?.[1]?.sale_auction_start_event_count) ? '' : (dataPay.products?.[1]?.sale_auction_start_event_count_price * dataPay.products?.[1]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
                    </View>
                    {/* row 3 */}
@@ -684,9 +684,9 @@ const BillPay_Sale = ({ open5, handleOpen5, data, statusModal  }) => {
                        {" "}
                        {dataPay.products?.[2]?.product_name }{" "}
                      </Text>
-                     <Text style={styles.tableCell3}>{" "} {dataPay.products?.[2]?.sale_auction_start_event_count_price }{" "} </Text>
+                     <Text style={styles.tableCell3}>{" "} {dataPay.products?.[2]?.sale_auction_start_event_count }{" "} </Text>
                      <Text style={styles.tableCell4}> {" "} {dataPay.products?.[2]?.product_count }{" "} </Text>
-                     <Text style={styles.tableCell5}> {" "} {isNaN(dataPay.products?.[2]?.sale_auction_start_event_count) ? '' : Number(dataPay.products?.[2]?.sale_auction_start_event_count).toLocaleString() }{" "} </Text>
+                     <Text style={styles.tableCell5}> {" "} {isNaN(dataPay.products?.[2]?.sale_auction_start_event_count_price) ? '' : Number(dataPay.products?.[2]?.sale_auction_start_event_count).toLocaleString() }{" "} </Text>
                      <Text style={styles.tableCell6}> {" "} {isNaN(dataPay.products?.[2]?.sale_auction_start_event_count_price) || isNaN(dataPay.products?.[2]?.sale_auction_start_event_count) ? '' : (dataPay.products?.[2]?.sale_auction_start_event_count_price * dataPay.products?.[2]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
                    </View>
                    {/* row 4 */}
@@ -696,9 +696,9 @@ const BillPay_Sale = ({ open5, handleOpen5, data, statusModal  }) => {
                        {" "}
                        {dataPay.products?.[3]?.product_name }{" "}
                      </Text>
-                     <Text style={styles.tableCell3}>{" "} {dataPay.products?.[3]?.sale_auction_start_event_count_price }{" "} </Text>
+                     <Text style={styles.tableCell3}>{" "} {dataPay.products?.[3]?.sale_auction_start_event_count }{" "} </Text>
                      <Text style={styles.tableCell4}> {" "} {dataPay.products?.[3]?.product_count }{" "} </Text>
-                     <Text style={styles.tableCell5}> {" "} {isNaN(dataPay.products?.[3]?.sale_auction_start_event_count) ? '' : Number(dataPay.products?.[3]?.sale_auction_start_event_count).toLocaleString() }{" "} </Text>
+                     <Text style={styles.tableCell5}> {" "} {isNaN(dataPay.products?.[3]?.sale_auction_start_event_count_price) ? '' : Number(dataPay.products?.[3]?.sale_auction_start_event_count).toLocaleString() }{" "} </Text>
                      <Text style={styles.tableCell6}> {" "} {isNaN(dataPay.products?.[3]?.sale_auction_start_event_count_price) || isNaN(dataPay.products?.[3]?.sale_auction_start_event_count) ? '' : (dataPay.products?.[3]?.sale_auction_start_event_count_price * dataPay.products?.[3]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
                    </View>
                    {/* row 5 */}
@@ -708,9 +708,9 @@ const BillPay_Sale = ({ open5, handleOpen5, data, statusModal  }) => {
                        {" "}
                        {dataPay.products?.[4]?.product_name }{" "}
                      </Text>
-                     <Text style={styles.tableCell3}>{" "} {dataPay.products?.[4]?.sale_auction_start_event_count_price }{" "} </Text>
+                     <Text style={styles.tableCell3}>{" "} {dataPay.products?.[4]?.sale_auction_start_event_count }{" "} </Text>
                      <Text style={styles.tableCell4}> {" "} {dataPay.products?.[4]?.product_count }{" "} </Text>
-                     <Text style={styles.tableCell5}> {" "} {isNaN(dataPay.products?.[4]?.sale_auction_start_event_count) ? '' : Number(dataPay.products?.[4]?.sale_auction_start_event_count).toLocaleString() }{" "} </Text>
+                     <Text style={styles.tableCell5}> {" "} {isNaN(dataPay.products?.[4]?.sale_auction_start_event_count_price) ? '' : Number(dataPay.products?.[4]?.sale_auction_start_event_count).toLocaleString() }{" "} </Text>
                      <Text style={styles.tableCell6}> {" "} {isNaN(dataPay.products?.[4]?.sale_auction_start_event_count_price) || isNaN(dataPay.products?.[4]?.sale_auction_start_event_count) ? '' : (dataPay.products?.[4]?.sale_auction_start_event_count_price * dataPay.products?.[4]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
                    </View>
                    {/* row 6 */}
@@ -720,9 +720,9 @@ const BillPay_Sale = ({ open5, handleOpen5, data, statusModal  }) => {
                        {" "}
                        {dataPay.products?.[5]?.product_name }{" "}
                      </Text>
-                     <Text style={styles.tableCell3}>{" "} {dataPay.products?.[5]?.sale_auction_start_event_count_price }{" "} </Text>
+                     <Text style={styles.tableCell3}>{" "} {dataPay.products?.[5]?.sale_auction_start_event_count }{" "} </Text>
                      <Text style={styles.tableCell4}> {" "} {dataPay.products?.[5]?.product_count }{" "} </Text>
-                     <Text style={styles.tableCell5}> {" "} {isNaN(dataPay.products?.[5]?.sale_auction_start_event_count) ? '' : Number(dataPay.products?.[5]?.sale_auction_start_event_count).toLocaleString() }{" "} </Text>
+                     <Text style={styles.tableCell5}> {" "} {isNaN(dataPay.products?.[5]?.sale_auction_start_event_count_price) ? '' : Number(dataPay.products?.[5]?.sale_auction_start_event_count).toLocaleString() }{" "} </Text>
                      <Text style={styles.tableCell6}> {" "} {isNaN(dataPay.products?.[5]?.sale_auction_start_event_count_price) || isNaN(dataPay.products?.[5]?.sale_auction_start_event_count) ? '' : (dataPay.products?.[5]?.sale_auction_start_event_count_price * dataPay.products?.[5]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
                    </View>
                    {/* row 7 */}
@@ -732,9 +732,9 @@ const BillPay_Sale = ({ open5, handleOpen5, data, statusModal  }) => {
                        {" "}
                        {dataPay.products?.[6]?.product_name }{" "}
                      </Text>
-                     <Text style={styles.tableCell3}>{" "} {dataPay.products?.[6]?.sale_auction_start_event_count_price }{" "} </Text>
+                     <Text style={styles.tableCell3}>{" "} {dataPay.products?.[6]?.sale_auction_start_event_count }{" "} </Text>
                      <Text style={styles.tableCell4}> {" "} {dataPay.products?.[6]?.product_count }{" "} </Text>
-                     <Text style={styles.tableCell5}> {" "} {isNaN(dataPay.products?.[6]?.sale_auction_start_event_count) ? '' : Number(dataPay.products?.[6]?.sale_auction_start_event_count).toLocaleString() }{" "} </Text>
+                     <Text style={styles.tableCell5}> {" "} {isNaN(dataPay.products?.[6]?.sale_auction_start_event_count_price) ? '' : Number(dataPay.products?.[6]?.sale_auction_start_event_count).toLocaleString() }{" "} </Text>
                      <Text style={styles.tableCell6}> {" "} {isNaN(dataPay.products?.[6]?.sale_auction_start_event_count_price) || isNaN(dataPay.products?.[6]?.sale_auction_start_event_count) ? '' : (dataPay.products?.[6]?.sale_auction_start_event_count_price * dataPay.products?.[6]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
                    </View>
                    {/* row 8 */}
@@ -744,9 +744,9 @@ const BillPay_Sale = ({ open5, handleOpen5, data, statusModal  }) => {
                        {" "}
                        {dataPay.products?.[7]?.product_name }{" "}
                      </Text>
-                     <Text style={styles.tableCell3}>{" "} {dataPay.products?.[7]?.sale_auction_start_event_count_price }{" "} </Text>
+                     <Text style={styles.tableCell3}>{" "} {dataPay.products?.[7]?.sale_auction_start_event_count }{" "} </Text>
                      <Text style={styles.tableCell4}> {" "} {dataPay.products?.[7]?.product_count }{" "} </Text>
-                     <Text style={styles.tableCell5}> {" "} {isNaN(dataPay.products?.[7]?.sale_auction_start_event_count) ? '' : Number(dataPay.products?.[7]?.sale_auction_start_event_count).toLocaleString() }{" "} </Text>
+                     <Text style={styles.tableCell5}> {" "} {isNaN(dataPay.products?.[7]?.sale_auction_start_event_count_price) ? '' : Number(dataPay.products?.[7]?.sale_auction_start_event_count).toLocaleString() }{" "} </Text>
                      <Text style={styles.tableCell6}> {" "} {isNaN(dataPay.products?.[7]?.sale_auction_start_event_count_price) || isNaN(dataPay.products?.[7]?.sale_auction_start_event_count) ? '' : (dataPay.products?.[7]?.sale_auction_start_event_count_price * dataPay.products?.[7]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
                    </View>
                    {/* สรุปรวม */}
