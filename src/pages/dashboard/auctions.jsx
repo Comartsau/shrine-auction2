@@ -1196,29 +1196,21 @@ export function Auctions() {
     setFilteredOptions6(listDataCustomer);
   }, [listDataCustomer]);
 
-  // const handleSearch6 = (text) => {
-  //   if (text !== "") {
-  //     setSearchText6("");
-  //     setSendData(text);
-  //   }
-  //   const filtered6 = listDataCustomer.filter((option) =>
-  //     option.toLowerCase().includes(text.toLowerCase())
-  //   );
-  //   setFilteredOptions6(filtered6);
-  // };
 
   const handleSearch6 = (text) => {
     if (text !== "") {
-      setSearchText6("");
+      setSearchText6(null);
       setSendData(text);
     }
+    setSearchText6(text); // Update the searchText state
     const filtered6 = listDataCustomer.filter((option) =>
-      option.some((item) =>
-        item.toLowerCase().includes(text.toLowerCase())
-      )
+      option.customer_name.toLowerCase().includes(text.toLowerCase())
     );
     setFilteredOptions6(filtered6);
   };
+  
+
+  
   
 
   // ฟังก์ชันเลือกตัวเลือก
@@ -3489,7 +3481,8 @@ const handleSendDataEDitAuction = async () => {
                       type="text"
                       autoComplete="off"
                       placeholder="เลือกผู้บริจาค"
-                      value={searchText6? searchText6 : ''}
+                      value={searchText6? searchText6 : null}
+                      // value={searchText6? searchText6 : ''}
                       id="search6"
                       list="option"
                       onChange={(e) => handleSearch6(e.target.value)}
@@ -3522,7 +3515,6 @@ const handleSendDataEDitAuction = async () => {
                     size="md"
                     className=" rounded-full border-4 "
                     onClick={createNewCustomer}
-                    // disabled={senddata.length < 2}
                     disabled={customerId && senddata.length < 2 }
                     // onClick={() => createNewCustomer(senddata)}
                   >

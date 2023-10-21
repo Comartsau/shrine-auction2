@@ -805,13 +805,24 @@ setSaveSelectedProductData(newData);
     // console.log(saveSelectedProductData)
 
       const productData = saveSelectedProductData.map((product) => ({
-        // sale_auction_start_event: product.id, // ID สินค้า
+
+        // sale_auction_start_event: product.product_name, // ID สินค้า
+        // sale_auction_start_event_count: product.unit.toString(), 
+        // sale_auction_start_event_count_price: product.amount.toString(),
+        // sale_auction_start_event_count_cat: product.product_category,
+        // sale_auction_start_event_count_unit: product.product_count
+
+
         sale_auction_start_event: product.product_name, // ID สินค้า
-        sale_auction_start_event_count: product.unit.toString(), 
-        sale_auction_start_event_count_price: product.amount.toString(),
+        sale_auction_start_event_count:  product.amount.toString(),
+        sale_auction_start_event_count_price: product.unit.toString(),
         sale_auction_start_event_count_cat: product.product_category,
         sale_auction_start_event_count_unit: product.product_count
+
+
       }));
+
+      console.log(productData)
 
       const saleData = {
         sale_code_customer_name: selectCustomerData.customer_name || '',

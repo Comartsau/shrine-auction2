@@ -219,7 +219,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "#000",
     textAlign: "center",
-    width: "15%", // แบ่งเป็น 3 ส่วนเท่า ๆ กัน (ขนาดเท่ากัน)
+    width: "10%", // แบ่งเป็น 3 ส่วนเท่า ๆ กัน (ขนาดเท่ากัน)
     height: "100%",
   },
   tableCell5: {
@@ -239,7 +239,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "#000",
     textAlign: "center",
-    width: "25%", // แบ่งเป็น 3 ส่วนเท่า ๆ กัน (ขนาดเท่ากัน)
+    width: "15%", // แบ่งเป็น 3 ส่วนเท่า ๆ กัน (ขนาดเท่ากัน)
     height: "100%",
   },
   tableCellsum: {
@@ -367,13 +367,13 @@ export const ReceiveSale = ({reportData, sumTotal, thbText}) => {
           <View style={styles.flexrow}>
             <View style={[
               styles.flexrowstart,
-              {width:"70%"}
+              {width:"65%"}
               ]}>
               <Text
                 style={[
                   { fontWeight: "extrabold" },
                   { fontFamily: "SarabunBold" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   styles.mtmd,
                   styles.spacesm,
                 ]}
@@ -384,7 +384,7 @@ export const ReceiveSale = ({reportData, sumTotal, thbText}) => {
                 style={[
                   { fontWeight: "light" },
                   { fontFamily: "Sarabun" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   {width:""},
                   styles.mtmd,
                 ]}
@@ -395,14 +395,14 @@ export const ReceiveSale = ({reportData, sumTotal, thbText}) => {
 
             <View style={[
               styles.flexrow,
-              {width:"30%"}
+              {width:"35%"}
               ]}>
               <View style={styles.flexrowstart}>
                 <Text
                   style={[
                     { fontWeight: "extrabold" },
                     { fontFamily: "SarabunBold" },
-                    { fontSize: "12" },
+                    { fontSize: "11" },
                     styles.mtmd,
                     styles.spacesm,
                   ]}
@@ -413,7 +413,7 @@ export const ReceiveSale = ({reportData, sumTotal, thbText}) => {
                   style={[
                     { fontWeight: "light" },
                     { fontFamily: "Sarabun" },
-                    { fontSize: "12" },
+                    { fontSize: "11" },
                     styles.mtmd,
                     styles.spacesm,
                   ]}
@@ -427,13 +427,13 @@ export const ReceiveSale = ({reportData, sumTotal, thbText}) => {
           <View style={styles.flexrow}>
             <View style={[
               styles.flexrowstart,
-              {width:"70%"}
+              {width:"65%"}
               ]}>
               <Text
                 style={[
                   { fontWeight: "extrabold" },
                   { fontFamily: "SarabunBold" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   styles.mtsm,
                   styles.spacesm,
                 ]}
@@ -445,7 +445,7 @@ export const ReceiveSale = ({reportData, sumTotal, thbText}) => {
                   styles.mtsm,
                   { fontWeight: "light" },
                   { fontFamily: "Sarabun" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   { display:"flex"},
                   { width:"80%"},
                 ]}
@@ -456,14 +456,14 @@ export const ReceiveSale = ({reportData, sumTotal, thbText}) => {
 
             <View style={[
               styles.flexrow,
-              {width:"30%"}
+              {width:"35%"}
               ]}>
             <View style={styles.flexrowstart}>
                 <Text
                   style={[
                     { fontWeight: "extrabold" },
                     { fontFamily: "SarabunBold" },
-                    { fontSize: "12" },
+                    { fontSize: "11" },
                     styles.mtsm,
                     styles.spacesm,
                   ]}
@@ -474,7 +474,7 @@ export const ReceiveSale = ({reportData, sumTotal, thbText}) => {
                   style={[
                     { fontWeight: "light" },
                     { fontFamily: "Sarabun" },
-                    { fontSize: "12" },
+                    { fontSize: "11" },
                     styles.mtsm,
                     styles.spacesm,
                   ]}
@@ -488,13 +488,13 @@ export const ReceiveSale = ({reportData, sumTotal, thbText}) => {
           <View style={styles.flexrow}>
           <View style={[
               styles.flexrowstart,
-              {width:"70%"}
+              {width:"65%"}
               ]}>
                 <Text
                 style={[
                   { fontWeight: "extrabold" },
                   { fontFamily: "SarabunBold" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   styles.mtsm,
                   styles.spacesm,
                 ]}
@@ -506,7 +506,7 @@ export const ReceiveSale = ({reportData, sumTotal, thbText}) => {
                   styles.mtsm,
                   { fontWeight: "light" },
                   { fontFamily: "Sarabun" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   { display:"flex"},
                   { width:"76%"},
                 ]}
@@ -514,48 +514,71 @@ export const ReceiveSale = ({reportData, sumTotal, thbText}) => {
                 {" "}{data.sale_code_customer_noun + '' }. {" "}
               </Text>
             </View>
-
             <View style={[
-              styles.flexrow,
-              {width:"30%"}
-              ]}>
-            <View style={styles.flexrowstart}>
-                <Text
-                  style={[
-                    { fontWeight: "extrabold" },
-                    { fontFamily: "SarabunBold" },
-                    { fontSize: "12" },
-                    styles.mtsm,
-                    styles.spacesm,
-                  ]}
-                >
-                  บิลเล่มที่:{" "}
-                </Text>
-                <Text
-                  style={[
-                    { fontWeight: "light" },
-                    { fontFamily: "Sarabun" },
-                    { fontSize: "12" },
-                    styles.mtsm,
-                    styles.spacesm,
-                  ]}
-                >
-                  {" "}
-                  {data.sale_auction_refer} / {data.sale_auction_num}
-                </Text>
+                styles.flexrow,
+                {width:"35%"}
+                ]}>
+              <View style={styles.flexrowstart}>
+          <Text
+            style={[
+              { fontWeight: "extrabold" },
+              { fontFamily: "SarabunBold" },
+              { fontSize: "11" },
+              styles.mtsm,
+              styles.spacesm,
+            ]}
+          >
+            บิลอ้างอิงเล่มที่:
+          </Text>
+          <Text
+            style={[
+              { fontWeight: "light" },
+              { fontFamily: "Sarabun" },
+              { fontSize: "11" },
+              styles.mtsm,
+              styles.spacesm,
+            ]}
+          >
+            {data?.sale_auction_refer}
+          </Text>
+          <Text
+            style={[
+              { fontWeight: "extrabold" },
+              { fontFamily: "SarabunBold" },
+              { fontSize: "11" },
+              styles.mtsm,
+              styles.spacesm,
+            ]}
+          >
+            เล่มที่:{" "}
+          </Text>
+          <Text
+            style={[
+              { fontWeight: "light" },
+              { fontFamily: "Sarabun" },
+              { fontSize: "11" },
+              styles.mtsm,
+              styles.spacesm,
+            ]}
+          >
+            {" "}
+            {data?.sale_auction_num}
+          </Text>
+        </View>
               </View>
-            </View>
+
+            
           </View>
           <View style={styles.flexrow}>
           <View style={[
               styles.flexrowstart,
-              {width:"70%"}
+              {width:"65%"}
               ]}>
               <Text
                 style={[
                   { fontWeight: "extrabold" },
                   { fontFamily: "SarabunBold" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   styles.mtsm,
                   styles.spacesm,
                 ]}
@@ -566,7 +589,7 @@ export const ReceiveSale = ({reportData, sumTotal, thbText}) => {
                 style={[
                   { fontWeight: "light" },
                   { fontFamily: "Sarabun" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   {display:"flex"},
                   { width:"80%"},
                   styles.mtsm,
@@ -579,110 +602,120 @@ export const ReceiveSale = ({reportData, sumTotal, thbText}) => {
  
           </View>
             {/*-----------  หัวตาราง ---------------------  */}
-          <View style={[styles.table, { marginTop: "15" }]}>
-            <View style={styles.tableRow}>
-              <Text style={styles.tableCell1}>ลำดับ </Text>
-              <Text style={styles.tableCell2}>รายละเอียด </Text>
-              <Text style={styles.tableCell3}>จำนวน </Text>
-              <Text style={styles.tableCell4}>หน่วยนับ </Text>
-              <Text style={styles.tableCell6}>จำนวนเงิน </Text>
-            </View>
-            {/* row 1 */}
-            <View style={styles.tableRow}>
-              <Text style={styles.tableCell1}> 1 </Text>
-              <Text style={[styles.tableCell2, { textAlign: "left" }]}>
-                {" "}
-                {data.product?.[0]?.sale_auction_start_event }{" "}
-              </Text>
-              <Text style={styles.tableCell3}>{" "} {data.product?.[0]?.sale_auction_start_event_count } {" "} </Text>
-              <Text style={styles.tableCell4}> {" "} {data.product?.[0]?.sale_auction_start_event_count_unit } {" "} </Text>
-              <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[0]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[0]?.sale_auction_start_event_count_price).toLocaleString() }{" "}</Text>
-            </View>
-            {/* row 2 */}
-            <View style={styles.tableRow}>
-              <Text style={styles.tableCell1}> 2 </Text>
-              <Text style={[styles.tableCell2, { textAlign: "left" }]}>
-                {" "}
-                {data.product?.[1]?.sale_auction_start_event }{" "}
-              </Text>
-              <Text style={styles.tableCell3}>{" "} {data.product?.[1]?.sale_auction_start_event_count } {" "} </Text>
-              <Text style={styles.tableCell4}> {" "} {data.product?.[1]?.sale_auction_start_event_count_unit } {" "} </Text>
-              <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[1]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[1]?.sale_auction_start_event_count_price).toLocaleString() }{" "}</Text>
-            </View>
-            {/* row 3 */}
-            <View style={styles.tableRow}>
-              <Text style={styles.tableCell1}> 3 </Text>
-              <Text style={[styles.tableCell2, { textAlign: "left" }]}>
-                {" "}
-                {data.product?.[2]?.sale_auction_start_event }{" "}
-              </Text>
-              <Text style={styles.tableCell3}>{" "} {data.product?.[2]?.sale_auction_start_event_count } {" "} </Text>
-              <Text style={styles.tableCell4}> {" "} {data.product?.[2]?.sale_auction_start_event_count_unit } {" "} </Text>
-              <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[2]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[2]?.sale_auction_start_event_count_price).toLocaleString() }{" "}</Text>
-            </View>
-            {/* row 4 */}
-            <View style={styles.tableRow}>
-              <Text style={styles.tableCell1}> 4 </Text>
-              <Text style={[styles.tableCell2, { textAlign: "left" }]}>
-                {" "}
-                {data.product?.[3]?.sale_auction_start_event }{" "}
-              </Text>
-              <Text style={styles.tableCell3}>{" "} {data.product?.[3]?.sale_auction_start_event_count } {" "} </Text>
-              <Text style={styles.tableCell4}> {" "} {data.product?.[3]?.sale_auction_start_event_count_unit } {" "} </Text>
-              <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[3]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[3]?.sale_auction_start_event_count_price).toLocaleString() }{" "}</Text>
-            </View>
-            {/* row 5 */}
-            <View style={styles.tableRow}>
-              <Text style={styles.tableCell1}> 5 </Text>
-              <Text style={[styles.tableCell2, { textAlign: "left" }]}>
-                {" "}
-                {data.product?.[4]?.sale_auction_start_event }{" "}
-              </Text>
-              <Text style={styles.tableCell3}>{" "} {data.product?.[4]?.sale_auction_start_event_count } {" "} </Text>
-              <Text style={styles.tableCell4}> {" "} {data.product?.[4]?.sale_auction_start_event_count_unit } {" "} </Text>
-              <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[4]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[4]?.sale_auction_start_event_count_price).toLocaleString() }{" "}</Text>
-            </View>
-            {/* row 6 */}
-            <View style={styles.tableRow}>
-              <Text style={styles.tableCell1}> 6 </Text>
-              <Text style={[styles.tableCell2, { textAlign: "left" }]}>
-                {" "}
-                {data.product?.[5]?.sale_auction_start_event }{" "}
-              </Text>
-              <Text style={styles.tableCell3}>{" "} {data.product?.[5]?.sale_auction_start_event_count } {" "} </Text>
-              <Text style={styles.tableCell4}> {" "} {data.product?.[5]?.sale_auction_start_event_count_unit } {" "} </Text>
-              <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[5]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[5]?.sale_auction_start_event_count_price).toLocaleString() }{" "}</Text>
-            </View>
-            {/* row 7 */}
-            <View style={styles.tableRow}>
-              <Text style={styles.tableCell1}> 7 </Text>
-              <Text style={[styles.tableCell2, { textAlign: "left" }]}>
-                {" "}
-                {data.product?.[6]?.sale_auction_start_event }{" "}
-              </Text>
-              <Text style={styles.tableCell3}>{" "} {data.product?.[6]?.sale_auction_start_event_count } {" "} </Text>
-              <Text style={styles.tableCell4}> {" "} {data.product?.[6]?.sale_auction_start_event_count_unit } {" "} </Text>
-              <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[6]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[6]?.sale_auction_start_event_count_price).toLocaleString() }{" "}</Text>
-            </View>
-            {/* row 8 */}
-            <View style={styles.tableRow}>
-              <Text style={styles.tableCell1}> 8 </Text>
-              <Text style={[styles.tableCell2, { textAlign: "left" }]}>
-                {" "}
-                {data.product?.[7]?.sale_auction_start_event }{" "}
-              </Text>
-              <Text style={styles.tableCell3}>{" "} {data.product?.[7]?.sale_auction_start_event_count } {" "} </Text>
-              <Text style={styles.tableCell4}> {" "} {data.product?.[7]?.sale_auction_start_event_count_unit } {" "} </Text>
-              <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[7]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[7]?.sale_auction_start_event_count_price).toLocaleString() }{" "}</Text>
-            </View>
-            {/* สรุปรวม */}
-            <View style={styles.tableRow}>
-              <Text style={styles.tableCellsum}> {" "}{thbText}{" "}  </Text>
-              <Text style={styles.tableCell3}>  </Text>
-              <Text style={styles.tableCell4}> รวมเป็นเงิน  </Text>
-              <Text style={styles.tableCell6}> {" "}{sumTotal ? Number(sumTotal).toLocaleString() : ''}{" "}</Text>
-            </View>
+            <View style={[styles.table, { marginTop: "15" }]}>
+          <View style={styles.tableRow}>
+            <Text style={styles.tableCell1}>ลำดับ </Text>
+            <Text style={styles.tableCell2}>รายละเอียด </Text>
+            <Text style={styles.tableCell3}>จำนวน </Text>
+            <Text style={styles.tableCell4}>หน่วยนับ </Text>
+            <Text style={styles.tableCell5}>ราคา/หน่วย </Text>
+            <Text style={styles.tableCell6}>จำนวนเงิน </Text>
           </View>
+          {/* row 1 */}
+          <View style={styles.tableRow}>
+            <Text style={styles.tableCell1}> 1 </Text>
+            <Text style={[styles.tableCell2, { textAlign: "left" }]}>
+              {" "}
+              {data?.product?.[0]?.sale_auction_start_event }{" "}
+            </Text>
+            <Text style={styles.tableCell3}>{" "} {isNaN(data.product?.[0]?.sale_auction_start_event_count) ? '' : Number(data.product?.[0]?.sale_auction_start_event_count).toLocaleString() } {" "} </Text>
+            <Text style={styles.tableCell4}> {" "} {data.product?.[0]?.sale_auction_start_event_count_unit }{" "} </Text>
+            <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[0]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[0]?.sale_auction_start_event_count_price).toLocaleString() }{" "} </Text>
+            <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[0]?.sale_auction_start_event_count_price) || isNaN(data.product?.[0]?.sale_auction_start_event_count) ? '' : (data.product?.[0]?.sale_auction_start_event_count_price * data.product?.[0]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
+          </View>
+          {/* row 2 */}
+          <View style={styles.tableRow}>
+            <Text style={styles.tableCell1}> 2 </Text>
+            <Text style={[styles.tableCell2, { textAlign: "left" }]}>
+              {" "}
+              {data.product?.[1]?.sale_auction_start_event }{" "}
+            </Text>
+            <Text style={styles.tableCell3}>{" "} {isNaN(data.product?.[1]?.sale_auction_start_event_count) ? '' : Number(data.product?.[1]?.sale_auction_start_event_count).toLocaleString() } {" "} </Text>
+            <Text style={styles.tableCell4}> {" "} {data.product?.[1]?.sale_auction_start_event_count_unit }{" "} </Text>
+            <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[1]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[1]?.sale_auction_start_event_count_price).toLocaleString() }{" "} </Text>
+            <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[1]?.sale_auction_start_event_count_price) || isNaN(data.product?.[1]?.sale_auction_start_event_count) ? '' : (data.product?.[1]?.sale_auction_start_event_count_price * data.product?.[1]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
+          </View>
+          {/* row 3 */}
+          <View style={styles.tableRow}>
+            <Text style={styles.tableCell1}> 3 </Text>
+            <Text style={[styles.tableCell2, { textAlign: "left" }]}>
+              {" "}
+              {data.product?.[2]?.sale_auction_start_event }{" "}
+            </Text>
+            <Text style={styles.tableCell3}>{" "} {isNaN(data.product?.[2]?.sale_auction_start_event_count) ? '' : Number(data.product?.[2]?.sale_auction_start_event_count).toLocaleString() } {" "} </Text>
+            <Text style={styles.tableCell4}> {" "} {data.product?.[2]?.sale_auction_start_event_count_unit }{" "} </Text>
+            <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[2]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[2]?.sale_auction_start_event_count_price).toLocaleString() }{" "} </Text>
+            <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[2]?.sale_auction_start_event_count_price) || isNaN(data.product?.[2]?.sale_auction_start_event_count) ? '' : (data.product?.[2]?.sale_auction_start_event_count_price * data.product?.[2]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
+          </View>
+          {/* row 4 */}
+          <View style={styles.tableRow}>
+            <Text style={styles.tableCell1}> 4 </Text>
+            <Text style={[styles.tableCell2, { textAlign: "left" }]}>
+              {" "}
+              {data.product?.[3]?.sale_auction_start_event }{" "}
+            </Text>
+            <Text style={styles.tableCell3}>{" "} {isNaN(data.product?.[3]?.sale_auction_start_event_count) ? '' : Number(data.product?.[3]?.sale_auction_start_event_count).toLocaleString() } {" "} </Text>
+            <Text style={styles.tableCell4}> {" "} {data.product?.[3]?.sale_auction_start_event_count_unit }{" "} </Text>
+            <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[3]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[3]?.sale_auction_start_event_count_price).toLocaleString() }{" "} </Text>
+            <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[3]?.sale_auction_start_event_count_price) || isNaN(data.product?.[3]?.sale_auction_start_event_count) ? '' : (data.product?.[3]?.sale_auction_start_event_count_price * data.product?.[3]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
+          </View>
+          {/* row 5 */}
+          <View style={styles.tableRow}>
+            <Text style={styles.tableCell1}> 5 </Text>
+            <Text style={[styles.tableCell2, { textAlign: "left" }]}>
+              {" "}
+              {data.product?.[4]?.sale_auction_start_event }{" "}
+            </Text>
+            <Text style={styles.tableCell3}>{" "} {isNaN(data.product?.[4]?.sale_auction_start_event_count) ? '' : Number(data.product?.[4]?.sale_auction_start_event_count).toLocaleString() } {" "} </Text>
+            <Text style={styles.tableCell4}> {" "} {data.product?.[4]?.sale_auction_start_event_count_unit }{" "} </Text>
+            <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[4]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[4]?.sale_auction_start_event_count_price).toLocaleString() }{" "} </Text>
+            <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[4]?.sale_auction_start_event_count_price) || isNaN(data.product?.[4]?.sale_auction_start_event_count) ? '' : (data.product?.[4]?.sale_auction_start_event_count_price * data.product?.[4]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
+          </View>
+          {/* row 6 */}
+          <View style={styles.tableRow}>
+            <Text style={styles.tableCell1}> 6 </Text>
+            <Text style={[styles.tableCell2, { textAlign: "left" }]}>
+              {" "}
+              {data.product?.[5]?.sale_auction_start_event }{" "}
+            </Text>
+            <Text style={styles.tableCell3}>{" "} {isNaN(data.product?.[5]?.sale_auction_start_event_count) ? '' : Number(data.product?.[5]?.sale_auction_start_event_count).toLocaleString() } {" "} </Text>
+            <Text style={styles.tableCell4}> {" "} {data.product?.[5]?.sale_auction_start_event_count_unit }{" "} </Text>
+            <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[5]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[5]?.sale_auction_start_event_count_price).toLocaleString() }{" "} </Text>
+            <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[5]?.sale_auction_start_event_count_price) || isNaN(data.product?.[5]?.sale_auction_start_event_count) ? '' : (data.product?.[5]?.sale_auction_start_event_count_price * data.product?.[5]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
+          </View>
+          {/* row 7 */}
+          <View style={styles.tableRow}>
+            <Text style={styles.tableCell1}> 7 </Text>
+            <Text style={[styles.tableCell2, { textAlign: "left" }]}>
+              {" "}
+              {data.product?.[6]?.sale_auction_start_event }{" "}
+            </Text>
+            <Text style={styles.tableCell3}>{" "} {isNaN(data.product?.[6]?.sale_auction_start_event_count) ? '' : Number(data.product?.[6]?.sale_auction_start_event_count).toLocaleString() } {" "} </Text>
+            <Text style={styles.tableCell4}> {" "} {data.product?.[6]?.sale_auction_start_event_count_unit }{" "} </Text>
+            <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[6]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[6]?.sale_auction_start_event_count_price).toLocaleString() }{" "} </Text>
+            <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[6]?.sale_auction_start_event_count_price) || isNaN(data.product?.[6]?.sale_auction_start_event_count) ? '' : (data.product?.[6]?.sale_auction_start_event_count_price * data.product?.[6]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
+          </View>
+          {/* row 8 */}
+          <View style={styles.tableRow}>
+            <Text style={styles.tableCell1}> 8 </Text>
+            <Text style={[styles.tableCell2, { textAlign: "left" }]}>
+              {" "}
+              {data.product?.[7]?.sale_auction_start_event }{" "}
+            </Text>
+            <Text style={styles.tableCell3}>{" "} {isNaN(data.product?.[7]?.sale_auction_start_event_count) ? '' : Number(data.product?.[7]?.sale_auction_start_event_count).toLocaleString() } {" "} </Text>
+            <Text style={styles.tableCell4}> {" "} {data.product?.[7]?.sale_auction_start_event_count_unit }{" "} </Text>
+            <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[7]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[7]?.sale_auction_start_event_count_price).toLocaleString() }{" "} </Text>
+            <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[7]?.sale_auction_start_event_count_price) || isNaN(data.product?.[7]?.sale_auction_start_event_count) ? '' : (data.product?.[7]?.sale_auction_start_event_count_price * data.product?.[7]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
+          </View>
+          {/* สรุปรวม */}
+          <View style={styles.tableRow}>
+            <Text style={styles.tableCellsum}> {" "}{` ( ${thbText} )` || ''}{" "}   </Text>
+            <Text style={styles.tableCell3}>  </Text>
+            <Text style={styles.tableCell4}>  </Text>
+            <Text style={styles.tableCell5}> รวมเป็นเงิน  </Text>
+            <Text style={styles.tableCell6}>  {Number(sumTotal).toLocaleString() || ''} </Text>
+          </View>
+            </View>
           <View style={styles.flexrow}>
           <View style={[
               styles.flexrowstart,
@@ -692,7 +725,7 @@ export const ReceiveSale = ({reportData, sumTotal, thbText}) => {
                 style={[
                   { fontWeight: "extrabold" },
                   { fontFamily: "SarabunBold" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   styles.mtsm,
                   styles.spacesm,
                 ]}
@@ -704,7 +737,7 @@ export const ReceiveSale = ({reportData, sumTotal, thbText}) => {
                   styles.mtsm,
                   { fontWeight: "light" },
                   { fontFamily: "Sarabun" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   { display:"flex"},
                   { width:"76%"},
                 ]}
@@ -722,7 +755,7 @@ export const ReceiveSale = ({reportData, sumTotal, thbText}) => {
                   style={[
                     { fontWeight: "extrabold" },
                     { fontFamily: "SarabunBold" },
-                    { fontSize: "12" },
+                    { fontSize: "11" },
                     styles.mtsm,
                     styles.spacesm,
                   ]}
@@ -733,7 +766,7 @@ export const ReceiveSale = ({reportData, sumTotal, thbText}) => {
                   style={[
                     { fontWeight: "light" },
                     { fontFamily: "Sarabun" },
-                    { fontSize: "12" },
+                    { fontSize: "11" },
                     styles.mtsm,
                     styles.spacesm,
                   ]}
@@ -752,7 +785,7 @@ export const ReceiveSale = ({reportData, sumTotal, thbText}) => {
                 style={[
                   { fontWeight: "extrabold" },
                   { fontFamily: "SarabunBold" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   styles.mtsm,
                   styles.spacesm,
                 ]}
@@ -764,7 +797,7 @@ export const ReceiveSale = ({reportData, sumTotal, thbText}) => {
                   styles.mtsm,
                   { fontWeight: "light" },
                   { fontFamily: "Sarabun" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   { display:"flex"},
                   { width:"76%"},
                 ]}
@@ -782,7 +815,7 @@ export const ReceiveSale = ({reportData, sumTotal, thbText}) => {
                   style={[
                     { fontWeight: "extrabold" },
                     { fontFamily: "SarabunBold" },
-                    { fontSize: "12" },
+                    { fontSize: "11" },
                     styles.mtsm,
                     styles.spacesm,
                   ]}
@@ -793,7 +826,7 @@ export const ReceiveSale = ({reportData, sumTotal, thbText}) => {
                   style={[
                     { fontWeight: "light" },
                     { fontFamily: "Sarabun" },
-                    { fontSize: "12" },
+                    { fontSize: "11" },
                     styles.mtsm,
                     styles.spacesm,
                   ]}
@@ -809,7 +842,7 @@ export const ReceiveSale = ({reportData, sumTotal, thbText}) => {
                 style={[
                   { fontWeight: "extrabold" },
                   { fontFamily: "SarabunBold" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   styles.mtsm,
                   styles.spacesm,
                 ]}
@@ -820,7 +853,7 @@ export const ReceiveSale = ({reportData, sumTotal, thbText}) => {
                 style={[
                   { fontWeight: "light" },
                   { fontFamily: "Sarabun" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   {display:"flex"},
                   {width:"90%"},
                   styles.mtsm,
@@ -911,13 +944,13 @@ export const ReceiveSale = ({reportData, sumTotal, thbText}) => {
           <View style={styles.flexrow}>
             <View style={[
               styles.flexrowstart,
-              {width:"70%"}
+              {width:"65%"}
               ]}>
               <Text
                 style={[
                   { fontWeight: "extrabold" },
                   { fontFamily: "SarabunBold" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   styles.mtmd,
                   styles.spacesm,
                 ]}
@@ -928,7 +961,7 @@ export const ReceiveSale = ({reportData, sumTotal, thbText}) => {
                 style={[
                   { fontWeight: "light" },
                   { fontFamily: "Sarabun" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   {width:""},
                   styles.mtmd,
                 ]}
@@ -939,14 +972,14 @@ export const ReceiveSale = ({reportData, sumTotal, thbText}) => {
 
             <View style={[
               styles.flexrow,
-              {width:"30%"}
+              {width:"35%"}
               ]}>
               <View style={styles.flexrowstart}>
                 <Text
                   style={[
                     { fontWeight: "extrabold" },
                     { fontFamily: "SarabunBold" },
-                    { fontSize: "12" },
+                    { fontSize: "11" },
                     styles.mtmd,
                     styles.spacesm,
                   ]}
@@ -957,7 +990,7 @@ export const ReceiveSale = ({reportData, sumTotal, thbText}) => {
                   style={[
                     { fontWeight: "light" },
                     { fontFamily: "Sarabun" },
-                    { fontSize: "12" },
+                    { fontSize: "11" },
                     styles.mtmd,
                     styles.spacesm,
                   ]}
@@ -971,13 +1004,13 @@ export const ReceiveSale = ({reportData, sumTotal, thbText}) => {
           <View style={styles.flexrow}>
             <View style={[
               styles.flexrowstart,
-              {width:"70%"}
+              {width:"65%"}
               ]}>
               <Text
                 style={[
                   { fontWeight: "extrabold" },
                   { fontFamily: "SarabunBold" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   styles.mtsm,
                   styles.spacesm,
                 ]}
@@ -989,7 +1022,7 @@ export const ReceiveSale = ({reportData, sumTotal, thbText}) => {
                   styles.mtsm,
                   { fontWeight: "light" },
                   { fontFamily: "Sarabun" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   { display:"flex"},
                   { width:"80%"},
                 ]}
@@ -1000,14 +1033,14 @@ export const ReceiveSale = ({reportData, sumTotal, thbText}) => {
 
             <View style={[
               styles.flexrow,
-              {width:"30%"}
+              {width:"35%"}
               ]}>
             <View style={styles.flexrowstart}>
                 <Text
                   style={[
                     { fontWeight: "extrabold" },
                     { fontFamily: "SarabunBold" },
-                    { fontSize: "12" },
+                    { fontSize: "11" },
                     styles.mtsm,
                     styles.spacesm,
                   ]}
@@ -1018,7 +1051,7 @@ export const ReceiveSale = ({reportData, sumTotal, thbText}) => {
                   style={[
                     { fontWeight: "light" },
                     { fontFamily: "Sarabun" },
-                    { fontSize: "12" },
+                    { fontSize: "11" },
                     styles.mtsm,
                     styles.spacesm,
                   ]}
@@ -1032,13 +1065,13 @@ export const ReceiveSale = ({reportData, sumTotal, thbText}) => {
           <View style={styles.flexrow}>
           <View style={[
               styles.flexrowstart,
-              {width:"70%"}
+              {width:"65%"}
               ]}>
                 <Text
                 style={[
                   { fontWeight: "extrabold" },
                   { fontFamily: "SarabunBold" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   styles.mtsm,
                   styles.spacesm,
                 ]}
@@ -1050,7 +1083,7 @@ export const ReceiveSale = ({reportData, sumTotal, thbText}) => {
                   styles.mtsm,
                   { fontWeight: "light" },
                   { fontFamily: "Sarabun" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   { display:"flex"},
                   { width:"76%"},
                 ]}
@@ -1058,48 +1091,71 @@ export const ReceiveSale = ({reportData, sumTotal, thbText}) => {
                 {" "}{data.sale_code_customer_noun + '' }. {" "}
               </Text>
             </View>
-
             <View style={[
-              styles.flexrow,
-              {width:"30%"}
-              ]}>
-            <View style={styles.flexrowstart}>
-                <Text
-                  style={[
-                    { fontWeight: "extrabold" },
-                    { fontFamily: "SarabunBold" },
-                    { fontSize: "12" },
-                    styles.mtsm,
-                    styles.spacesm,
-                  ]}
-                >
-                  บิลเล่มที่:{" "}
-                </Text>
-                <Text
-                  style={[
-                    { fontWeight: "light" },
-                    { fontFamily: "Sarabun" },
-                    { fontSize: "12" },
-                    styles.mtsm,
-                    styles.spacesm,
-                  ]}
-                >
-                  {" "}
-                  {data.sale_auction_refer} / {data.sale_auction_num}
-                </Text>
+                styles.flexrow,
+                {width:"35%"}
+                ]}>
+              <View style={styles.flexrowstart}>
+          <Text
+            style={[
+              { fontWeight: "extrabold" },
+              { fontFamily: "SarabunBold" },
+              { fontSize: "11" },
+              styles.mtsm,
+              styles.spacesm,
+            ]}
+          >
+            บิลอ้างอิงเล่มที่:
+          </Text>
+          <Text
+            style={[
+              { fontWeight: "light" },
+              { fontFamily: "Sarabun" },
+              { fontSize: "11" },
+              styles.mtsm,
+              styles.spacesm,
+            ]}
+          >
+            {data?.sale_auction_refer}
+          </Text>
+          <Text
+            style={[
+              { fontWeight: "extrabold" },
+              { fontFamily: "SarabunBold" },
+              { fontSize: "11" },
+              styles.mtsm,
+              styles.spacesm,
+            ]}
+          >
+            เล่มที่:{" "}
+          </Text>
+          <Text
+            style={[
+              { fontWeight: "light" },
+              { fontFamily: "Sarabun" },
+              { fontSize: "11" },
+              styles.mtsm,
+              styles.spacesm,
+            ]}
+          >
+            {" "}
+            {data?.sale_auction_num}
+          </Text>
+        </View>
               </View>
-            </View>
+
+            
           </View>
           <View style={styles.flexrow}>
           <View style={[
               styles.flexrowstart,
-              {width:"70%"}
+              {width:"65%"}
               ]}>
               <Text
                 style={[
                   { fontWeight: "extrabold" },
                   { fontFamily: "SarabunBold" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   styles.mtsm,
                   styles.spacesm,
                 ]}
@@ -1110,7 +1166,7 @@ export const ReceiveSale = ({reportData, sumTotal, thbText}) => {
                 style={[
                   { fontWeight: "light" },
                   { fontFamily: "Sarabun" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   {display:"flex"},
                   { width:"80%"},
                   styles.mtsm,
@@ -1123,110 +1179,120 @@ export const ReceiveSale = ({reportData, sumTotal, thbText}) => {
  
           </View>
             {/*-----------  หัวตาราง ---------------------  */}
-          <View style={[styles.table, { marginTop: "15" }]}>
-            <View style={styles.tableRow}>
-              <Text style={styles.tableCell1}>ลำดับ </Text>
-              <Text style={styles.tableCell2}>รายละเอียด </Text>
-              <Text style={styles.tableCell3}>จำนวน </Text>
-              <Text style={styles.tableCell4}>หน่วยนับ </Text>
-              <Text style={styles.tableCell6}>จำนวนเงิน </Text>
-            </View>
-            {/* row 1 */}
-            <View style={styles.tableRow}>
-              <Text style={styles.tableCell1}> 1 </Text>
-              <Text style={[styles.tableCell2, { textAlign: "left" }]}>
-                {" "}
-                {data.product?.[0]?.sale_auction_start_event }{" "}
-              </Text>
-              <Text style={styles.tableCell3}>{" "} {data.product?.[0]?.sale_auction_start_event_count } {" "} </Text>
-              <Text style={styles.tableCell4}> {" "} {data.product?.[0]?.sale_auction_start_event_count_unit } {" "} </Text>
-              <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[0]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[0]?.sale_auction_start_event_count_price).toLocaleString() }{" "}</Text>
-            </View>
-            {/* row 2 */}
-            <View style={styles.tableRow}>
-              <Text style={styles.tableCell1}> 2 </Text>
-              <Text style={[styles.tableCell2, { textAlign: "left" }]}>
-                {" "}
-                {data.product?.[1]?.sale_auction_start_event }{" "}
-              </Text>
-              <Text style={styles.tableCell3}>{" "} {data.product?.[1]?.sale_auction_start_event_count } {" "} </Text>
-              <Text style={styles.tableCell4}> {" "} {data.product?.[1]?.sale_auction_start_event_count_unit } {" "} </Text>
-              <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[1]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[1]?.sale_auction_start_event_count_price).toLocaleString() }{" "}</Text>
-            </View>
-            {/* row 3 */}
-            <View style={styles.tableRow}>
-              <Text style={styles.tableCell1}> 3 </Text>
-              <Text style={[styles.tableCell2, { textAlign: "left" }]}>
-                {" "}
-                {data.product?.[2]?.sale_auction_start_event }{" "}
-              </Text>
-              <Text style={styles.tableCell3}>{" "} {data.product?.[2]?.sale_auction_start_event_count } {" "} </Text>
-              <Text style={styles.tableCell4}> {" "} {data.product?.[2]?.sale_auction_start_event_count_unit } {" "} </Text>
-              <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[2]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[2]?.sale_auction_start_event_count_price).toLocaleString() }{" "}</Text>
-            </View>
-            {/* row 4 */}
-            <View style={styles.tableRow}>
-              <Text style={styles.tableCell1}> 4 </Text>
-              <Text style={[styles.tableCell2, { textAlign: "left" }]}>
-                {" "}
-                {data.product?.[3]?.sale_auction_start_event }{" "}
-              </Text>
-              <Text style={styles.tableCell3}>{" "} {data.product?.[3]?.sale_auction_start_event_count } {" "} </Text>
-              <Text style={styles.tableCell4}> {" "} {data.product?.[3]?.sale_auction_start_event_count_unit } {" "} </Text>
-              <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[3]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[3]?.sale_auction_start_event_count_price).toLocaleString() }{" "}</Text>
-            </View>
-            {/* row 5 */}
-            <View style={styles.tableRow}>
-              <Text style={styles.tableCell1}> 5 </Text>
-              <Text style={[styles.tableCell2, { textAlign: "left" }]}>
-                {" "}
-                {data.product?.[4]?.sale_auction_start_event }{" "}
-              </Text>
-              <Text style={styles.tableCell3}>{" "} {data.product?.[4]?.sale_auction_start_event_count } {" "} </Text>
-              <Text style={styles.tableCell4}> {" "} {data.product?.[4]?.sale_auction_start_event_count_unit } {" "} </Text>
-              <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[4]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[4]?.sale_auction_start_event_count_price).toLocaleString() }{" "}</Text>
-            </View>
-            {/* row 6 */}
-            <View style={styles.tableRow}>
-              <Text style={styles.tableCell1}> 6 </Text>
-              <Text style={[styles.tableCell2, { textAlign: "left" }]}>
-                {" "}
-                {data.product?.[5]?.sale_auction_start_event }{" "}
-              </Text>
-              <Text style={styles.tableCell3}>{" "} {data.product?.[5]?.sale_auction_start_event_count } {" "} </Text>
-              <Text style={styles.tableCell4}> {" "} {data.product?.[5]?.sale_auction_start_event_count_unit } {" "} </Text>
-              <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[5]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[5]?.sale_auction_start_event_count_price).toLocaleString() }{" "}</Text>
-            </View>
-            {/* row 7 */}
-            <View style={styles.tableRow}>
-              <Text style={styles.tableCell1}> 7 </Text>
-              <Text style={[styles.tableCell2, { textAlign: "left" }]}>
-                {" "}
-                {data.product?.[6]?.sale_auction_start_event }{" "}
-              </Text>
-              <Text style={styles.tableCell3}>{" "} {data.product?.[6]?.sale_auction_start_event_count } {" "} </Text>
-              <Text style={styles.tableCell4}> {" "} {data.product?.[6]?.sale_auction_start_event_count_unit } {" "} </Text>
-              <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[6]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[6]?.sale_auction_start_event_count_price).toLocaleString() }{" "}</Text>
-            </View>
-            {/* row 8 */}
-            <View style={styles.tableRow}>
-              <Text style={styles.tableCell1}> 8 </Text>
-              <Text style={[styles.tableCell2, { textAlign: "left" }]}>
-                {" "}
-                {data.product?.[7]?.sale_auction_start_event }{" "}
-              </Text>
-              <Text style={styles.tableCell3}>{" "} {data.product?.[7]?.sale_auction_start_event_count } {" "} </Text>
-              <Text style={styles.tableCell4}> {" "} {data.product?.[7]?.sale_auction_start_event_count_unit } {" "} </Text>
-              <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[7]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[7]?.sale_auction_start_event_count_price).toLocaleString() }{" "}</Text>
-            </View>
-            {/* สรุปรวม */}
-            <View style={styles.tableRow}>
-              <Text style={styles.tableCellsum}> {" "}{thbText}{" "}  </Text>
-              <Text style={styles.tableCell3}>  </Text>
-              <Text style={styles.tableCell4}> รวมเป็นเงิน  </Text>
-              <Text style={styles.tableCell6}> {" "}{sumTotal ? Number(sumTotal).toLocaleString() : ''}{" "}</Text>
-            </View>
+            <View style={[styles.table, { marginTop: "15" }]}>
+          <View style={styles.tableRow}>
+            <Text style={styles.tableCell1}>ลำดับ </Text>
+            <Text style={styles.tableCell2}>รายละเอียด </Text>
+            <Text style={styles.tableCell3}>จำนวน </Text>
+            <Text style={styles.tableCell4}>หน่วยนับ </Text>
+            <Text style={styles.tableCell5}>ราคา/หน่วย </Text>
+            <Text style={styles.tableCell6}>จำนวนเงิน </Text>
           </View>
+          {/* row 1 */}
+          <View style={styles.tableRow}>
+            <Text style={styles.tableCell1}> 1 </Text>
+            <Text style={[styles.tableCell2, { textAlign: "left" }]}>
+              {" "}
+              {data?.product?.[0]?.sale_auction_start_event }{" "}
+            </Text>
+            <Text style={styles.tableCell3}>{" "} {isNaN(data.product?.[0]?.sale_auction_start_event_count) ? '' : Number(data.product?.[0]?.sale_auction_start_event_count).toLocaleString() } {" "} </Text>
+            <Text style={styles.tableCell4}> {" "} {data.product?.[0]?.sale_auction_start_event_count_unit }{" "} </Text>
+            <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[0]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[0]?.sale_auction_start_event_count_price).toLocaleString() }{" "} </Text>
+            <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[0]?.sale_auction_start_event_count_price) || isNaN(data.product?.[0]?.sale_auction_start_event_count) ? '' : (data.product?.[0]?.sale_auction_start_event_count_price * data.product?.[0]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
+          </View>
+          {/* row 2 */}
+          <View style={styles.tableRow}>
+            <Text style={styles.tableCell1}> 2 </Text>
+            <Text style={[styles.tableCell2, { textAlign: "left" }]}>
+              {" "}
+              {data.product?.[1]?.sale_auction_start_event }{" "}
+            </Text>
+            <Text style={styles.tableCell3}>{" "} {isNaN(data.product?.[1]?.sale_auction_start_event_count) ? '' : Number(data.product?.[1]?.sale_auction_start_event_count).toLocaleString() } {" "} </Text>
+            <Text style={styles.tableCell4}> {" "} {data.product?.[1]?.sale_auction_start_event_count_unit }{" "} </Text>
+            <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[1]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[1]?.sale_auction_start_event_count_price).toLocaleString() }{" "} </Text>
+            <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[1]?.sale_auction_start_event_count_price) || isNaN(data.product?.[1]?.sale_auction_start_event_count) ? '' : (data.product?.[1]?.sale_auction_start_event_count_price * data.product?.[1]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
+          </View>
+          {/* row 3 */}
+          <View style={styles.tableRow}>
+            <Text style={styles.tableCell1}> 3 </Text>
+            <Text style={[styles.tableCell2, { textAlign: "left" }]}>
+              {" "}
+              {data.product?.[2]?.sale_auction_start_event }{" "}
+            </Text>
+            <Text style={styles.tableCell3}>{" "} {isNaN(data.product?.[2]?.sale_auction_start_event_count) ? '' : Number(data.product?.[2]?.sale_auction_start_event_count).toLocaleString() } {" "} </Text>
+            <Text style={styles.tableCell4}> {" "} {data.product?.[2]?.sale_auction_start_event_count_unit }{" "} </Text>
+            <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[2]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[2]?.sale_auction_start_event_count_price).toLocaleString() }{" "} </Text>
+            <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[2]?.sale_auction_start_event_count_price) || isNaN(data.product?.[2]?.sale_auction_start_event_count) ? '' : (data.product?.[2]?.sale_auction_start_event_count_price * data.product?.[2]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
+          </View>
+          {/* row 4 */}
+          <View style={styles.tableRow}>
+            <Text style={styles.tableCell1}> 4 </Text>
+            <Text style={[styles.tableCell2, { textAlign: "left" }]}>
+              {" "}
+              {data.product?.[3]?.sale_auction_start_event }{" "}
+            </Text>
+            <Text style={styles.tableCell3}>{" "} {isNaN(data.product?.[3]?.sale_auction_start_event_count) ? '' : Number(data.product?.[3]?.sale_auction_start_event_count).toLocaleString() } {" "} </Text>
+            <Text style={styles.tableCell4}> {" "} {data.product?.[3]?.sale_auction_start_event_count_unit }{" "} </Text>
+            <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[3]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[3]?.sale_auction_start_event_count_price).toLocaleString() }{" "} </Text>
+            <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[3]?.sale_auction_start_event_count_price) || isNaN(data.product?.[3]?.sale_auction_start_event_count) ? '' : (data.product?.[3]?.sale_auction_start_event_count_price * data.product?.[3]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
+          </View>
+          {/* row 5 */}
+          <View style={styles.tableRow}>
+            <Text style={styles.tableCell1}> 5 </Text>
+            <Text style={[styles.tableCell2, { textAlign: "left" }]}>
+              {" "}
+              {data.product?.[4]?.sale_auction_start_event }{" "}
+            </Text>
+            <Text style={styles.tableCell3}>{" "} {isNaN(data.product?.[4]?.sale_auction_start_event_count) ? '' : Number(data.product?.[4]?.sale_auction_start_event_count).toLocaleString() } {" "} </Text>
+            <Text style={styles.tableCell4}> {" "} {data.product?.[4]?.sale_auction_start_event_count_unit }{" "} </Text>
+            <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[4]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[4]?.sale_auction_start_event_count_price).toLocaleString() }{" "} </Text>
+            <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[4]?.sale_auction_start_event_count_price) || isNaN(data.product?.[4]?.sale_auction_start_event_count) ? '' : (data.product?.[4]?.sale_auction_start_event_count_price * data.product?.[4]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
+          </View>
+          {/* row 6 */}
+          <View style={styles.tableRow}>
+            <Text style={styles.tableCell1}> 6 </Text>
+            <Text style={[styles.tableCell2, { textAlign: "left" }]}>
+              {" "}
+              {data.product?.[5]?.sale_auction_start_event }{" "}
+            </Text>
+            <Text style={styles.tableCell3}>{" "} {isNaN(data.product?.[5]?.sale_auction_start_event_count) ? '' : Number(data.product?.[5]?.sale_auction_start_event_count).toLocaleString() } {" "} </Text>
+            <Text style={styles.tableCell4}> {" "} {data.product?.[5]?.sale_auction_start_event_count_unit }{" "} </Text>
+            <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[5]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[5]?.sale_auction_start_event_count_price).toLocaleString() }{" "} </Text>
+            <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[5]?.sale_auction_start_event_count_price) || isNaN(data.product?.[5]?.sale_auction_start_event_count) ? '' : (data.product?.[5]?.sale_auction_start_event_count_price * data.product?.[5]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
+          </View>
+          {/* row 7 */}
+          <View style={styles.tableRow}>
+            <Text style={styles.tableCell1}> 7 </Text>
+            <Text style={[styles.tableCell2, { textAlign: "left" }]}>
+              {" "}
+              {data.product?.[6]?.sale_auction_start_event }{" "}
+            </Text>
+            <Text style={styles.tableCell3}>{" "} {isNaN(data.product?.[6]?.sale_auction_start_event_count) ? '' : Number(data.product?.[6]?.sale_auction_start_event_count).toLocaleString() } {" "} </Text>
+            <Text style={styles.tableCell4}> {" "} {data.product?.[6]?.sale_auction_start_event_count_unit }{" "} </Text>
+            <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[6]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[6]?.sale_auction_start_event_count_price).toLocaleString() }{" "} </Text>
+            <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[6]?.sale_auction_start_event_count_price) || isNaN(data.product?.[6]?.sale_auction_start_event_count) ? '' : (data.product?.[6]?.sale_auction_start_event_count_price * data.product?.[6]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
+          </View>
+          {/* row 8 */}
+          <View style={styles.tableRow}>
+            <Text style={styles.tableCell1}> 8 </Text>
+            <Text style={[styles.tableCell2, { textAlign: "left" }]}>
+              {" "}
+              {data.product?.[7]?.sale_auction_start_event }{" "}
+            </Text>
+            <Text style={styles.tableCell3}>{" "} {isNaN(data.product?.[7]?.sale_auction_start_event_count) ? '' : Number(data.product?.[7]?.sale_auction_start_event_count).toLocaleString() } {" "} </Text>
+            <Text style={styles.tableCell4}> {" "} {data.product?.[7]?.sale_auction_start_event_count_unit }{" "} </Text>
+            <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[7]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[7]?.sale_auction_start_event_count_price).toLocaleString() }{" "} </Text>
+            <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[7]?.sale_auction_start_event_count_price) || isNaN(data.product?.[7]?.sale_auction_start_event_count) ? '' : (data.product?.[7]?.sale_auction_start_event_count_price * data.product?.[7]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
+          </View>
+          {/* สรุปรวม */}
+          <View style={styles.tableRow}>
+            <Text style={styles.tableCellsum}> {" "}{` ( ${thbText} )` || ''}{" "}   </Text>
+            <Text style={styles.tableCell3}>  </Text>
+            <Text style={styles.tableCell4}>  </Text>
+            <Text style={styles.tableCell5}> รวมเป็นเงิน  </Text>
+            <Text style={styles.tableCell6}>  {Number(sumTotal).toLocaleString() || ''} </Text>
+          </View>
+            </View>
           <View style={styles.flexrow}>
           <View style={[
               styles.flexrowstart,
@@ -1236,7 +1302,7 @@ export const ReceiveSale = ({reportData, sumTotal, thbText}) => {
                 style={[
                   { fontWeight: "extrabold" },
                   { fontFamily: "SarabunBold" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   styles.mtsm,
                   styles.spacesm,
                 ]}
@@ -1248,7 +1314,7 @@ export const ReceiveSale = ({reportData, sumTotal, thbText}) => {
                   styles.mtsm,
                   { fontWeight: "light" },
                   { fontFamily: "Sarabun" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   { display:"flex"},
                   { width:"76%"},
                 ]}
@@ -1266,7 +1332,7 @@ export const ReceiveSale = ({reportData, sumTotal, thbText}) => {
                   style={[
                     { fontWeight: "extrabold" },
                     { fontFamily: "SarabunBold" },
-                    { fontSize: "12" },
+                    { fontSize: "11" },
                     styles.mtsm,
                     styles.spacesm,
                   ]}
@@ -1277,7 +1343,7 @@ export const ReceiveSale = ({reportData, sumTotal, thbText}) => {
                   style={[
                     { fontWeight: "light" },
                     { fontFamily: "Sarabun" },
-                    { fontSize: "12" },
+                    { fontSize: "11" },
                     styles.mtsm,
                     styles.spacesm,
                   ]}
@@ -1296,7 +1362,7 @@ export const ReceiveSale = ({reportData, sumTotal, thbText}) => {
                 style={[
                   { fontWeight: "extrabold" },
                   { fontFamily: "SarabunBold" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   styles.mtsm,
                   styles.spacesm,
                 ]}
@@ -1308,7 +1374,7 @@ export const ReceiveSale = ({reportData, sumTotal, thbText}) => {
                   styles.mtsm,
                   { fontWeight: "light" },
                   { fontFamily: "Sarabun" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   { display:"flex"},
                   { width:"76%"},
                 ]}
@@ -1326,7 +1392,7 @@ export const ReceiveSale = ({reportData, sumTotal, thbText}) => {
                   style={[
                     { fontWeight: "extrabold" },
                     { fontFamily: "SarabunBold" },
-                    { fontSize: "12" },
+                    { fontSize: "11" },
                     styles.mtsm,
                     styles.spacesm,
                   ]}
@@ -1337,7 +1403,7 @@ export const ReceiveSale = ({reportData, sumTotal, thbText}) => {
                   style={[
                     { fontWeight: "light" },
                     { fontFamily: "Sarabun" },
-                    { fontSize: "12" },
+                    { fontSize: "11" },
                     styles.mtsm,
                     styles.spacesm,
                   ]}
@@ -1353,7 +1419,7 @@ export const ReceiveSale = ({reportData, sumTotal, thbText}) => {
                 style={[
                   { fontWeight: "extrabold" },
                   { fontFamily: "SarabunBold" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   styles.mtsm,
                   styles.spacesm,
                 ]}
@@ -1364,7 +1430,7 @@ export const ReceiveSale = ({reportData, sumTotal, thbText}) => {
                 style={[
                   { fontWeight: "light" },
                   { fontFamily: "Sarabun" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   {display:"flex"},
                   {width:"90%"},
                   styles.mtsm,
@@ -1379,6 +1445,7 @@ export const ReceiveSale = ({reportData, sumTotal, thbText}) => {
        
         </View>
       </Page>
+      
    
    
       {/* สำเนา2 */}
@@ -1457,13 +1524,13 @@ export const ReceiveSale = ({reportData, sumTotal, thbText}) => {
           <View style={styles.flexrow}>
             <View style={[
               styles.flexrowstart,
-              {width:"70%"}
+              {width:"65%"}
               ]}>
               <Text
                 style={[
                   { fontWeight: "extrabold" },
                   { fontFamily: "SarabunBold" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   styles.mtmd,
                   styles.spacesm,
                 ]}
@@ -1474,7 +1541,7 @@ export const ReceiveSale = ({reportData, sumTotal, thbText}) => {
                 style={[
                   { fontWeight: "light" },
                   { fontFamily: "Sarabun" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   {width:""},
                   styles.mtmd,
                 ]}
@@ -1485,14 +1552,14 @@ export const ReceiveSale = ({reportData, sumTotal, thbText}) => {
 
             <View style={[
               styles.flexrow,
-              {width:"30%"}
+              {width:"35%"}
               ]}>
               <View style={styles.flexrowstart}>
                 <Text
                   style={[
                     { fontWeight: "extrabold" },
                     { fontFamily: "SarabunBold" },
-                    { fontSize: "12" },
+                    { fontSize: "11" },
                     styles.mtmd,
                     styles.spacesm,
                   ]}
@@ -1503,7 +1570,7 @@ export const ReceiveSale = ({reportData, sumTotal, thbText}) => {
                   style={[
                     { fontWeight: "light" },
                     { fontFamily: "Sarabun" },
-                    { fontSize: "12" },
+                    { fontSize: "11" },
                     styles.mtmd,
                     styles.spacesm,
                   ]}
@@ -1517,13 +1584,13 @@ export const ReceiveSale = ({reportData, sumTotal, thbText}) => {
           <View style={styles.flexrow}>
             <View style={[
               styles.flexrowstart,
-              {width:"70%"}
+              {width:"65%"}
               ]}>
               <Text
                 style={[
                   { fontWeight: "extrabold" },
                   { fontFamily: "SarabunBold" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   styles.mtsm,
                   styles.spacesm,
                 ]}
@@ -1535,7 +1602,7 @@ export const ReceiveSale = ({reportData, sumTotal, thbText}) => {
                   styles.mtsm,
                   { fontWeight: "light" },
                   { fontFamily: "Sarabun" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   { display:"flex"},
                   { width:"80%"},
                 ]}
@@ -1546,14 +1613,14 @@ export const ReceiveSale = ({reportData, sumTotal, thbText}) => {
 
             <View style={[
               styles.flexrow,
-              {width:"30%"}
+              {width:"35%"}
               ]}>
             <View style={styles.flexrowstart}>
                 <Text
                   style={[
                     { fontWeight: "extrabold" },
                     { fontFamily: "SarabunBold" },
-                    { fontSize: "12" },
+                    { fontSize: "11" },
                     styles.mtsm,
                     styles.spacesm,
                   ]}
@@ -1564,7 +1631,7 @@ export const ReceiveSale = ({reportData, sumTotal, thbText}) => {
                   style={[
                     { fontWeight: "light" },
                     { fontFamily: "Sarabun" },
-                    { fontSize: "12" },
+                    { fontSize: "11" },
                     styles.mtsm,
                     styles.spacesm,
                   ]}
@@ -1578,13 +1645,13 @@ export const ReceiveSale = ({reportData, sumTotal, thbText}) => {
           <View style={styles.flexrow}>
           <View style={[
               styles.flexrowstart,
-              {width:"70%"}
+              {width:"65%"}
               ]}>
                 <Text
                 style={[
                   { fontWeight: "extrabold" },
                   { fontFamily: "SarabunBold" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   styles.mtsm,
                   styles.spacesm,
                 ]}
@@ -1596,7 +1663,7 @@ export const ReceiveSale = ({reportData, sumTotal, thbText}) => {
                   styles.mtsm,
                   { fontWeight: "light" },
                   { fontFamily: "Sarabun" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   { display:"flex"},
                   { width:"76%"},
                 ]}
@@ -1604,48 +1671,71 @@ export const ReceiveSale = ({reportData, sumTotal, thbText}) => {
                 {" "}{data.sale_code_customer_noun + '' }. {" "}
               </Text>
             </View>
-
             <View style={[
-              styles.flexrow,
-              {width:"30%"}
-              ]}>
-            <View style={styles.flexrowstart}>
-                <Text
-                  style={[
-                    { fontWeight: "extrabold" },
-                    { fontFamily: "SarabunBold" },
-                    { fontSize: "12" },
-                    styles.mtsm,
-                    styles.spacesm,
-                  ]}
-                >
-                  บิลเล่มที่:{" "}
-                </Text>
-                <Text
-                  style={[
-                    { fontWeight: "light" },
-                    { fontFamily: "Sarabun" },
-                    { fontSize: "12" },
-                    styles.mtsm,
-                    styles.spacesm,
-                  ]}
-                >
-                  {" "}
-                  {data.sale_auction_refer} / {data.sale_auction_num}
-                </Text>
+                styles.flexrow,
+                {width:"35%"}
+                ]}>
+              <View style={styles.flexrowstart}>
+          <Text
+            style={[
+              { fontWeight: "extrabold" },
+              { fontFamily: "SarabunBold" },
+              { fontSize: "11" },
+              styles.mtsm,
+              styles.spacesm,
+            ]}
+          >
+            บิลอ้างอิงเล่มที่:
+          </Text>
+          <Text
+            style={[
+              { fontWeight: "light" },
+              { fontFamily: "Sarabun" },
+              { fontSize: "11" },
+              styles.mtsm,
+              styles.spacesm,
+            ]}
+          >
+            {data?.sale_auction_refer}
+          </Text>
+          <Text
+            style={[
+              { fontWeight: "extrabold" },
+              { fontFamily: "SarabunBold" },
+              { fontSize: "11" },
+              styles.mtsm,
+              styles.spacesm,
+            ]}
+          >
+            เล่มที่:{" "}
+          </Text>
+          <Text
+            style={[
+              { fontWeight: "light" },
+              { fontFamily: "Sarabun" },
+              { fontSize: "11" },
+              styles.mtsm,
+              styles.spacesm,
+            ]}
+          >
+            {" "}
+            {data?.sale_auction_num}
+          </Text>
+        </View>
               </View>
-            </View>
+
+            
           </View>
           <View style={styles.flexrow}>
           <View style={[
               styles.flexrowstart,
-              {width:"70%"}
+              {width:"65%"}
               ]}>
               <Text
                 style={[
                   { fontWeight: "extrabold" },
                   { fontFamily: "SarabunBold" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   styles.mtsm,
                   styles.spacesm,
                 ]}
@@ -1656,7 +1746,7 @@ export const ReceiveSale = ({reportData, sumTotal, thbText}) => {
                 style={[
                   { fontWeight: "light" },
                   { fontFamily: "Sarabun" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   {display:"flex"},
                   { width:"80%"},
                   styles.mtsm,
@@ -1669,110 +1759,120 @@ export const ReceiveSale = ({reportData, sumTotal, thbText}) => {
  
           </View>
             {/*-----------  หัวตาราง ---------------------  */}
-          <View style={[styles.table, { marginTop: "15" }]}>
-            <View style={styles.tableRow}>
-              <Text style={styles.tableCell1}>ลำดับ </Text>
-              <Text style={styles.tableCell2}>รายละเอียด </Text>
-              <Text style={styles.tableCell3}>จำนวน </Text>
-              <Text style={styles.tableCell4}>หน่วยนับ </Text>
-              <Text style={styles.tableCell6}>จำนวนเงิน </Text>
-            </View>
-            {/* row 1 */}
-            <View style={styles.tableRow}>
-              <Text style={styles.tableCell1}> 1 </Text>
-              <Text style={[styles.tableCell2, { textAlign: "left" }]}>
-                {" "}
-                {data.product?.[0]?.sale_auction_start_event }{" "}
-              </Text>
-              <Text style={styles.tableCell3}>{" "} {data.product?.[0]?.sale_auction_start_event_count } {" "} </Text>
-              <Text style={styles.tableCell4}> {" "} {data.product?.[0]?.sale_auction_start_event_count_unit } {" "} </Text>
-              <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[0]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[0]?.sale_auction_start_event_count_price).toLocaleString() }{" "}</Text>
-            </View>
-            {/* row 2 */}
-            <View style={styles.tableRow}>
-              <Text style={styles.tableCell1}> 2 </Text>
-              <Text style={[styles.tableCell2, { textAlign: "left" }]}>
-                {" "}
-                {data.product?.[1]?.sale_auction_start_event }{" "}
-              </Text>
-              <Text style={styles.tableCell3}>{" "} {data.product?.[1]?.sale_auction_start_event_count } {" "} </Text>
-              <Text style={styles.tableCell4}> {" "} {data.product?.[1]?.sale_auction_start_event_count_unit } {" "} </Text>
-              <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[1]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[1]?.sale_auction_start_event_count_price).toLocaleString() }{" "}</Text>
-            </View>
-            {/* row 3 */}
-            <View style={styles.tableRow}>
-              <Text style={styles.tableCell1}> 3 </Text>
-              <Text style={[styles.tableCell2, { textAlign: "left" }]}>
-                {" "}
-                {data.product?.[2]?.sale_auction_start_event }{" "}
-              </Text>
-              <Text style={styles.tableCell3}>{" "} {data.product?.[2]?.sale_auction_start_event_count } {" "} </Text>
-              <Text style={styles.tableCell4}> {" "} {data.product?.[2]?.sale_auction_start_event_count_unit } {" "} </Text>
-              <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[2]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[2]?.sale_auction_start_event_count_price).toLocaleString() }{" "}</Text>
-            </View>
-            {/* row 4 */}
-            <View style={styles.tableRow}>
-              <Text style={styles.tableCell1}> 4 </Text>
-              <Text style={[styles.tableCell2, { textAlign: "left" }]}>
-                {" "}
-                {data.product?.[3]?.sale_auction_start_event }{" "}
-              </Text>
-              <Text style={styles.tableCell3}>{" "} {data.product?.[3]?.sale_auction_start_event_count } {" "} </Text>
-              <Text style={styles.tableCell4}> {" "} {data.product?.[3]?.sale_auction_start_event_count_unit } {" "} </Text>
-              <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[3]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[3]?.sale_auction_start_event_count_price).toLocaleString() }{" "}</Text>
-            </View>
-            {/* row 5 */}
-            <View style={styles.tableRow}>
-              <Text style={styles.tableCell1}> 5 </Text>
-              <Text style={[styles.tableCell2, { textAlign: "left" }]}>
-                {" "}
-                {data.product?.[4]?.sale_auction_start_event }{" "}
-              </Text>
-              <Text style={styles.tableCell3}>{" "} {data.product?.[4]?.sale_auction_start_event_count } {" "} </Text>
-              <Text style={styles.tableCell4}> {" "} {data.product?.[4]?.sale_auction_start_event_count_unit } {" "} </Text>
-              <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[4]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[4]?.sale_auction_start_event_count_price).toLocaleString() }{" "}</Text>
-            </View>
-            {/* row 6 */}
-            <View style={styles.tableRow}>
-              <Text style={styles.tableCell1}> 6 </Text>
-              <Text style={[styles.tableCell2, { textAlign: "left" }]}>
-                {" "}
-                {data.product?.[5]?.sale_auction_start_event }{" "}
-              </Text>
-              <Text style={styles.tableCell3}>{" "} {data.product?.[5]?.sale_auction_start_event_count } {" "} </Text>
-              <Text style={styles.tableCell4}> {" "} {data.product?.[5]?.sale_auction_start_event_count_unit } {" "} </Text>
-              <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[5]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[5]?.sale_auction_start_event_count_price).toLocaleString() }{" "}</Text>
-            </View>
-            {/* row 7 */}
-            <View style={styles.tableRow}>
-              <Text style={styles.tableCell1}> 7 </Text>
-              <Text style={[styles.tableCell2, { textAlign: "left" }]}>
-                {" "}
-                {data.product?.[6]?.sale_auction_start_event }{" "}
-              </Text>
-              <Text style={styles.tableCell3}>{" "} {data.product?.[6]?.sale_auction_start_event_count } {" "} </Text>
-              <Text style={styles.tableCell4}> {" "} {data.product?.[6]?.sale_auction_start_event_count_unit } {" "} </Text>
-              <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[6]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[6]?.sale_auction_start_event_count_price).toLocaleString() }{" "}</Text>
-            </View>
-            {/* row 8 */}
-            <View style={styles.tableRow}>
-              <Text style={styles.tableCell1}> 8 </Text>
-              <Text style={[styles.tableCell2, { textAlign: "left" }]}>
-                {" "}
-                {data.product?.[7]?.sale_auction_start_event }{" "}
-              </Text>
-              <Text style={styles.tableCell3}>{" "} {data.product?.[7]?.sale_auction_start_event_count } {" "} </Text>
-              <Text style={styles.tableCell4}> {" "} {data.product?.[7]?.sale_auction_start_event_count_unit } {" "} </Text>
-              <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[7]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[7]?.sale_auction_start_event_count_price).toLocaleString() }{" "}</Text>
-            </View>
-            {/* สรุปรวม */}
-            <View style={styles.tableRow}>
-              <Text style={styles.tableCellsum}> {" "}{thbText}{" "}  </Text>
-              <Text style={styles.tableCell3}>  </Text>
-              <Text style={styles.tableCell4}> รวมเป็นเงิน  </Text>
-              <Text style={styles.tableCell6}> {" "}{sumTotal ? Number(sumTotal).toLocaleString() : ''}{" "}</Text>
-            </View>
+            <View style={[styles.table, { marginTop: "15" }]}>
+          <View style={styles.tableRow}>
+            <Text style={styles.tableCell1}>ลำดับ </Text>
+            <Text style={styles.tableCell2}>รายละเอียด </Text>
+            <Text style={styles.tableCell3}>จำนวน </Text>
+            <Text style={styles.tableCell4}>หน่วยนับ </Text>
+            <Text style={styles.tableCell5}>ราคา/หน่วย </Text>
+            <Text style={styles.tableCell6}>จำนวนเงิน </Text>
           </View>
+          {/* row 1 */}
+          <View style={styles.tableRow}>
+            <Text style={styles.tableCell1}> 1 </Text>
+            <Text style={[styles.tableCell2, { textAlign: "left" }]}>
+              {" "}
+              {data?.product?.[0]?.sale_auction_start_event }{" "}
+            </Text>
+            <Text style={styles.tableCell3}>{" "} {isNaN(data.product?.[0]?.sale_auction_start_event_count) ? '' : Number(data.product?.[0]?.sale_auction_start_event_count).toLocaleString() } {" "} </Text>
+            <Text style={styles.tableCell4}> {" "} {data.product?.[0]?.sale_auction_start_event_count_unit }{" "} </Text>
+            <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[0]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[0]?.sale_auction_start_event_count_price).toLocaleString() }{" "} </Text>
+            <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[0]?.sale_auction_start_event_count_price) || isNaN(data.product?.[0]?.sale_auction_start_event_count) ? '' : (data.product?.[0]?.sale_auction_start_event_count_price * data.product?.[0]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
+          </View>
+          {/* row 2 */}
+          <View style={styles.tableRow}>
+            <Text style={styles.tableCell1}> 2 </Text>
+            <Text style={[styles.tableCell2, { textAlign: "left" }]}>
+              {" "}
+              {data.product?.[1]?.sale_auction_start_event }{" "}
+            </Text>
+            <Text style={styles.tableCell3}>{" "} {isNaN(data.product?.[1]?.sale_auction_start_event_count) ? '' : Number(data.product?.[1]?.sale_auction_start_event_count).toLocaleString() } {" "} </Text>
+            <Text style={styles.tableCell4}> {" "} {data.product?.[1]?.sale_auction_start_event_count_unit }{" "} </Text>
+            <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[1]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[1]?.sale_auction_start_event_count_price).toLocaleString() }{" "} </Text>
+            <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[1]?.sale_auction_start_event_count_price) || isNaN(data.product?.[1]?.sale_auction_start_event_count) ? '' : (data.product?.[1]?.sale_auction_start_event_count_price * data.product?.[1]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
+          </View>
+          {/* row 3 */}
+          <View style={styles.tableRow}>
+            <Text style={styles.tableCell1}> 3 </Text>
+            <Text style={[styles.tableCell2, { textAlign: "left" }]}>
+              {" "}
+              {data.product?.[2]?.sale_auction_start_event }{" "}
+            </Text>
+            <Text style={styles.tableCell3}>{" "} {isNaN(data.product?.[2]?.sale_auction_start_event_count) ? '' : Number(data.product?.[2]?.sale_auction_start_event_count).toLocaleString() } {" "} </Text>
+            <Text style={styles.tableCell4}> {" "} {data.product?.[2]?.sale_auction_start_event_count_unit }{" "} </Text>
+            <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[2]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[2]?.sale_auction_start_event_count_price).toLocaleString() }{" "} </Text>
+            <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[2]?.sale_auction_start_event_count_price) || isNaN(data.product?.[2]?.sale_auction_start_event_count) ? '' : (data.product?.[2]?.sale_auction_start_event_count_price * data.product?.[2]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
+          </View>
+          {/* row 4 */}
+          <View style={styles.tableRow}>
+            <Text style={styles.tableCell1}> 4 </Text>
+            <Text style={[styles.tableCell2, { textAlign: "left" }]}>
+              {" "}
+              {data.product?.[3]?.sale_auction_start_event }{" "}
+            </Text>
+            <Text style={styles.tableCell3}>{" "} {isNaN(data.product?.[3]?.sale_auction_start_event_count) ? '' : Number(data.product?.[3]?.sale_auction_start_event_count).toLocaleString() } {" "} </Text>
+            <Text style={styles.tableCell4}> {" "} {data.product?.[3]?.sale_auction_start_event_count_unit }{" "} </Text>
+            <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[3]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[3]?.sale_auction_start_event_count_price).toLocaleString() }{" "} </Text>
+            <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[3]?.sale_auction_start_event_count_price) || isNaN(data.product?.[3]?.sale_auction_start_event_count) ? '' : (data.product?.[3]?.sale_auction_start_event_count_price * data.product?.[3]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
+          </View>
+          {/* row 5 */}
+          <View style={styles.tableRow}>
+            <Text style={styles.tableCell1}> 5 </Text>
+            <Text style={[styles.tableCell2, { textAlign: "left" }]}>
+              {" "}
+              {data.product?.[4]?.sale_auction_start_event }{" "}
+            </Text>
+            <Text style={styles.tableCell3}>{" "} {isNaN(data.product?.[4]?.sale_auction_start_event_count) ? '' : Number(data.product?.[4]?.sale_auction_start_event_count).toLocaleString() } {" "} </Text>
+            <Text style={styles.tableCell4}> {" "} {data.product?.[4]?.sale_auction_start_event_count_unit }{" "} </Text>
+            <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[4]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[4]?.sale_auction_start_event_count_price).toLocaleString() }{" "} </Text>
+            <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[4]?.sale_auction_start_event_count_price) || isNaN(data.product?.[4]?.sale_auction_start_event_count) ? '' : (data.product?.[4]?.sale_auction_start_event_count_price * data.product?.[4]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
+          </View>
+          {/* row 6 */}
+          <View style={styles.tableRow}>
+            <Text style={styles.tableCell1}> 6 </Text>
+            <Text style={[styles.tableCell2, { textAlign: "left" }]}>
+              {" "}
+              {data.product?.[5]?.sale_auction_start_event }{" "}
+            </Text>
+            <Text style={styles.tableCell3}>{" "} {isNaN(data.product?.[5]?.sale_auction_start_event_count) ? '' : Number(data.product?.[5]?.sale_auction_start_event_count).toLocaleString() } {" "} </Text>
+            <Text style={styles.tableCell4}> {" "} {data.product?.[5]?.sale_auction_start_event_count_unit }{" "} </Text>
+            <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[5]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[5]?.sale_auction_start_event_count_price).toLocaleString() }{" "} </Text>
+            <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[5]?.sale_auction_start_event_count_price) || isNaN(data.product?.[5]?.sale_auction_start_event_count) ? '' : (data.product?.[5]?.sale_auction_start_event_count_price * data.product?.[5]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
+          </View>
+          {/* row 7 */}
+          <View style={styles.tableRow}>
+            <Text style={styles.tableCell1}> 7 </Text>
+            <Text style={[styles.tableCell2, { textAlign: "left" }]}>
+              {" "}
+              {data.product?.[6]?.sale_auction_start_event }{" "}
+            </Text>
+            <Text style={styles.tableCell3}>{" "} {isNaN(data.product?.[6]?.sale_auction_start_event_count) ? '' : Number(data.product?.[6]?.sale_auction_start_event_count).toLocaleString() } {" "} </Text>
+            <Text style={styles.tableCell4}> {" "} {data.product?.[6]?.sale_auction_start_event_count_unit }{" "} </Text>
+            <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[6]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[6]?.sale_auction_start_event_count_price).toLocaleString() }{" "} </Text>
+            <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[6]?.sale_auction_start_event_count_price) || isNaN(data.product?.[6]?.sale_auction_start_event_count) ? '' : (data.product?.[6]?.sale_auction_start_event_count_price * data.product?.[6]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
+          </View>
+          {/* row 8 */}
+          <View style={styles.tableRow}>
+            <Text style={styles.tableCell1}> 8 </Text>
+            <Text style={[styles.tableCell2, { textAlign: "left" }]}>
+              {" "}
+              {data.product?.[7]?.sale_auction_start_event }{" "}
+            </Text>
+            <Text style={styles.tableCell3}>{" "} {isNaN(data.product?.[7]?.sale_auction_start_event_count) ? '' : Number(data.product?.[7]?.sale_auction_start_event_count).toLocaleString() } {" "} </Text>
+            <Text style={styles.tableCell4}> {" "} {data.product?.[7]?.sale_auction_start_event_count_unit }{" "} </Text>
+            <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[7]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[7]?.sale_auction_start_event_count_price).toLocaleString() }{" "} </Text>
+            <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[7]?.sale_auction_start_event_count_price) || isNaN(data.product?.[7]?.sale_auction_start_event_count) ? '' : (data.product?.[7]?.sale_auction_start_event_count_price * data.product?.[7]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
+          </View>
+          {/* สรุปรวม */}
+          <View style={styles.tableRow}>
+            <Text style={styles.tableCellsum}> {" "}{` ( ${thbText} )` || ''}{" "}   </Text>
+            <Text style={styles.tableCell3}>  </Text>
+            <Text style={styles.tableCell4}>  </Text>
+            <Text style={styles.tableCell5}> รวมเป็นเงิน  </Text>
+            <Text style={styles.tableCell6}>  {Number(sumTotal).toLocaleString() || ''} </Text>
+          </View>
+            </View>
           <View style={styles.flexrow}>
           <View style={[
               styles.flexrowstart,
@@ -1782,7 +1882,7 @@ export const ReceiveSale = ({reportData, sumTotal, thbText}) => {
                 style={[
                   { fontWeight: "extrabold" },
                   { fontFamily: "SarabunBold" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   styles.mtsm,
                   styles.spacesm,
                 ]}
@@ -1794,7 +1894,7 @@ export const ReceiveSale = ({reportData, sumTotal, thbText}) => {
                   styles.mtsm,
                   { fontWeight: "light" },
                   { fontFamily: "Sarabun" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   { display:"flex"},
                   { width:"76%"},
                 ]}
@@ -1812,7 +1912,7 @@ export const ReceiveSale = ({reportData, sumTotal, thbText}) => {
                   style={[
                     { fontWeight: "extrabold" },
                     { fontFamily: "SarabunBold" },
-                    { fontSize: "12" },
+                    { fontSize: "11" },
                     styles.mtsm,
                     styles.spacesm,
                   ]}
@@ -1823,7 +1923,7 @@ export const ReceiveSale = ({reportData, sumTotal, thbText}) => {
                   style={[
                     { fontWeight: "light" },
                     { fontFamily: "Sarabun" },
-                    { fontSize: "12" },
+                    { fontSize: "11" },
                     styles.mtsm,
                     styles.spacesm,
                   ]}
@@ -1842,7 +1942,7 @@ export const ReceiveSale = ({reportData, sumTotal, thbText}) => {
                 style={[
                   { fontWeight: "extrabold" },
                   { fontFamily: "SarabunBold" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   styles.mtsm,
                   styles.spacesm,
                 ]}
@@ -1854,7 +1954,7 @@ export const ReceiveSale = ({reportData, sumTotal, thbText}) => {
                   styles.mtsm,
                   { fontWeight: "light" },
                   { fontFamily: "Sarabun" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   { display:"flex"},
                   { width:"76%"},
                 ]}
@@ -1872,7 +1972,7 @@ export const ReceiveSale = ({reportData, sumTotal, thbText}) => {
                   style={[
                     { fontWeight: "extrabold" },
                     { fontFamily: "SarabunBold" },
-                    { fontSize: "12" },
+                    { fontSize: "11" },
                     styles.mtsm,
                     styles.spacesm,
                   ]}
@@ -1883,7 +1983,7 @@ export const ReceiveSale = ({reportData, sumTotal, thbText}) => {
                   style={[
                     { fontWeight: "light" },
                     { fontFamily: "Sarabun" },
-                    { fontSize: "12" },
+                    { fontSize: "11" },
                     styles.mtsm,
                     styles.spacesm,
                   ]}
@@ -1899,7 +1999,7 @@ export const ReceiveSale = ({reportData, sumTotal, thbText}) => {
                 style={[
                   { fontWeight: "extrabold" },
                   { fontFamily: "SarabunBold" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   styles.mtsm,
                   styles.spacesm,
                 ]}
@@ -1910,7 +2010,7 @@ export const ReceiveSale = ({reportData, sumTotal, thbText}) => {
                 style={[
                   { fontWeight: "light" },
                   { fontFamily: "Sarabun" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   {display:"flex"},
                   {width:"90%"},
                   styles.mtsm,
@@ -1925,6 +2025,7 @@ export const ReceiveSale = ({reportData, sumTotal, thbText}) => {
        
         </View>
       </Page>
+      
     </Document>
   );
 };

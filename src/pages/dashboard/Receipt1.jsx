@@ -363,7 +363,7 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
                 style={[
                   { fontWeight: "extrabold" },
                   { fontFamily: "SarabunBold" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   styles.mtsm,
                   styles.spacesm,
                 ]}
@@ -374,7 +374,7 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
                 style={[
                   { fontWeight: "light" },
                   { fontFamily: "Sarabun" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   {width:""},
                   styles.mtsm,
                 ]}
@@ -392,7 +392,7 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
                   style={[
                     { fontWeight: "extrabold" },
                     { fontFamily: "SarabunBold" },
-                    { fontSize: "12" },
+                    { fontSize: "11" },
                     styles.mtsm,
                     styles.spacesm,
                   ]}
@@ -403,7 +403,7 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
                   style={[
                     { fontWeight: "light" },
                     { fontFamily: "Sarabun" },
-                    { fontSize: "12" },
+                    { fontSize: "11" },
                     styles.mtsm,
                     styles.spacesm,
                   ]}
@@ -424,7 +424,7 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
                 style={[
                   { fontWeight: "extrabold" },
                   { fontFamily: "SarabunBold" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   styles.mtsm,
                   styles.spacesm,
                 ]}
@@ -436,7 +436,7 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
                   styles.mtsm,
                   { fontWeight: "light" },
                   { fontFamily: "Sarabun" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   { display:"flex"},
                   { width:"80%"},
                 ]}
@@ -454,7 +454,7 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
                   style={[
                     { fontWeight: "extrabold" },
                     { fontFamily: "SarabunBold" },
-                    { fontSize: "12" },
+                    { fontSize: "11" },
                     styles.mtsm,
                     styles.spacesm,
                   ]}
@@ -465,7 +465,7 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
                   style={[
                     { fontWeight: "light" },
                     { fontFamily: "Sarabun" },
-                    { fontSize: "12" },
+                    { fontSize: "11" },
                     styles.mtsm,
                     styles.spacesm,
                   ]}
@@ -485,7 +485,7 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
                 style={[
                   { fontWeight: "extrabold" },
                   { fontFamily: "SarabunBold" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   styles.mtsm,
                   styles.spacesm,
                 ]}
@@ -497,7 +497,7 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
                   styles.mtsm,
                   { fontWeight: "light" },
                   { fontFamily: "Sarabun" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   { display:"flex"},
                   { width:"80%"},
                 ]}
@@ -515,7 +515,7 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
                   style={[
                     { fontWeight: "extrabold" },
                     { fontFamily: "SarabunBold" },
-                    { fontSize: "12" },
+                    { fontSize: "11" },
                     styles.mtsm,
                     styles.spacesm,
                   ]}
@@ -526,7 +526,7 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
                   style={[
                     { fontWeight: "light" },
                     { fontFamily: "Sarabun" },
-                    { fontSize: "12" },
+                    { fontSize: "11" },
                     styles.mtsm,
                     styles.spacesm,
                   ]}
@@ -546,7 +546,7 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
                 style={[
                   { fontWeight: "extrabold" },
                   { fontFamily: "SarabunBold" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   styles.mtsm,
                   styles.spacesm,
                 ]}
@@ -557,7 +557,7 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
                 style={[
                   { fontWeight: "light" },
                   { fontFamily: "Sarabun" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   {display:"flex"},
                   { width:"80%"},
                   styles.mtsm,
@@ -568,41 +568,63 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
             </View>
 
             <View style={[
-              styles.flexrow,
-              {width:"35%"}
-              ]}>
-            <View style={styles.flexrowstart}>
-                <Text
-                  style={[
-                    { fontWeight: "extrabold" },
-                    { fontFamily: "SarabunBold" },
-                    { fontSize: "12" },
-                    styles.mtsm,
-                    styles.spacesm,
-                  ]}
-                >
-                  บิลเล่มที่:{" "}
-                </Text>
-                <Text
-                  style={[
-                    { fontWeight: "light" },
-                    { fontFamily: "Sarabun" },
-                    { fontSize: "12" },
-                    { display:"flex"},
-                    { width:"60%"},
-                    styles.mtsm,
-                    // styles.spacesm,
-                  ]}
-                >
-                  {" "}
-                  {data.sale_auction_refer} / {data.sale_auction_num}
-                  {" "}
-                </Text>
-              </View>
-            </View>
+                styles.flexrow,
+                {width:"35%"}
+                ]}>
+              <View style={styles.flexrowstart}>
+                  <Text
+                    style={[
+                      { fontWeight: "extrabold" },
+                      { fontFamily: "SarabunBold" },
+                      { fontSize: "11" },
+                      styles.mtsm,
+                      styles.spacesm,
+                    ]}
+                  >
+                    บิลอ้างอิงเล่มที่:
+                  </Text>
+                  <Text
+                    style={[
+                      { fontWeight: "light" },
+                      { fontFamily: "Sarabun" },
+                      { fontSize: "11" },
+                      styles.mtsm,
+                      styles.spacesm,
+                    ]}
+                  >
+                 
+                 {data?.sale_auction_refer} 
+                  </Text>
+                </View>
+              <View style={styles.flexrowstart}>
+                  <Text
+                    style={[
+                      { fontWeight: "extrabold" },
+                      { fontFamily: "SarabunBold" },
+                      { fontSize: "11" },
+                      styles.mtsm,
+                      styles.spacesm,
+                    ]}
+                  >
+                    เล่มที่:
+                  </Text>
+                  <Text
+                    style={[
+                      { fontWeight: "light" },
+                      { fontFamily: "Sarabun" },
+                      { fontSize: "11" },
+                      styles.mtsm,
+                      styles.spacesm,
+                    ]}
+                  >
+                    {" "}
+                    {data?.sale_auction_num}
+                  </Text>
+                </View>
+                  </View>
           </View>
             {/*-----------  หัวตาราง ---------------------  */}
-          <View style={[styles.table, { marginTop: "15" }]}>
+            <View style={[styles.table, { marginTop: "5" }]}>
             <View style={styles.tableRow}>
               <Text style={styles.tableCell1}>ลำดับ </Text>
               <Text style={styles.tableCell2}>รายละเอียด </Text>
@@ -618,9 +640,9 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
                 {" "}
                 {data.product?.[0]?.product_name }{" "}
               </Text>
-              <Text style={styles.tableCell3}>{" "} {data.product?.[0]?.sale_auction_start_event_count_price }{" "} </Text>
+              <Text style={styles.tableCell3}>{" "} {data.product?.[0]?.sale_auction_start_event_count }{" "} </Text>
               <Text style={styles.tableCell4}> {" "} {data.product?.[0]?.product_count }{" "} </Text>
-              <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[0]?.sale_auction_start_event_count) ? '' : Number(data.product?.[0]?.sale_auction_start_event_count).toLocaleString() }{" "} </Text>
+              <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[0]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[0]?.sale_auction_start_event_count_price).toLocaleString() }{" "} </Text>
               <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[0]?.sale_auction_start_event_count_price) || isNaN(data.product?.[0]?.sale_auction_start_event_count) ? '' : (data.product?.[0]?.sale_auction_start_event_count_price * data.product?.[0]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
             </View>
             {/* row 2 */}
@@ -630,9 +652,9 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
                 {" "}
                 {data.product?.[1]?.product_name }{" "}
               </Text>
-              <Text style={styles.tableCell3}>{" "} {data.product?.[1]?.sale_auction_start_event_count_price }{" "} </Text>
+              <Text style={styles.tableCell3}>{" "} {data.product?.[1]?.sale_auction_start_event_count }{" "} </Text>
               <Text style={styles.tableCell4}> {" "} {data.product?.[1]?.product_count }{" "} </Text>
-              <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[1]?.sale_auction_start_event_count) ? '' : Number(data.product?.[1]?.sale_auction_start_event_count).toLocaleString() }{" "} </Text>
+              <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[1]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[1]?.sale_auction_start_event_count_price).toLocaleString() }{" "} </Text>
               <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[1]?.sale_auction_start_event_count_price) || isNaN(data.product?.[1]?.sale_auction_start_event_count) ? '' : (data.product?.[1]?.sale_auction_start_event_count_price * data.product?.[1]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
             </View>
             {/* row 3 */}
@@ -642,9 +664,9 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
                 {" "}
                 {data.product?.[2]?.product_name }{" "}
               </Text>
-              <Text style={styles.tableCell3}>{" "} {data.product?.[2]?.sale_auction_start_event_count_price }{" "} </Text>
+              <Text style={styles.tableCell3}>{" "} {data.product?.[2]?.sale_auction_start_event_count }{" "} </Text>
               <Text style={styles.tableCell4}> {" "} {data.product?.[2]?.product_count }{" "} </Text>
-              <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[2]?.sale_auction_start_event_count) ? '' : Number(data.product?.[2]?.sale_auction_start_event_count).toLocaleString() }{" "} </Text>
+              <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[2]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[2]?.sale_auction_start_event_count_price).toLocaleString() }{" "} </Text>
               <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[2]?.sale_auction_start_event_count_price) || isNaN(data.product?.[2]?.sale_auction_start_event_count) ? '' : (data.product?.[2]?.sale_auction_start_event_count_price * data.product?.[2]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
             </View>
             {/* row 4 */}
@@ -654,9 +676,9 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
                 {" "}
                 {data.product?.[3]?.product_name }{" "}
               </Text>
-              <Text style={styles.tableCell3}>{" "} {data.product?.[3]?.sale_auction_start_event_count_price }{" "} </Text>
+              <Text style={styles.tableCell3}>{" "} {data.product?.[3]?.sale_auction_start_event_count }{" "} </Text>
               <Text style={styles.tableCell4}> {" "} {data.product?.[3]?.product_count }{" "} </Text>
-              <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[3]?.sale_auction_start_event_count) ? '' : Number(data.product?.[3]?.sale_auction_start_event_count).toLocaleString() }{" "} </Text>
+              <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[3]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[3]?.sale_auction_start_event_count_price).toLocaleString() }{" "} </Text>
               <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[3]?.sale_auction_start_event_count_price) || isNaN(data.product?.[3]?.sale_auction_start_event_count) ? '' : (data.product?.[3]?.sale_auction_start_event_count_price * data.product?.[3]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
             </View>
             {/* row 5 */}
@@ -666,9 +688,9 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
                 {" "}
                 {data.product?.[4]?.product_name }{" "}
               </Text>
-              <Text style={styles.tableCell3}>{" "} {data.product?.[4]?.sale_auction_start_event_count_price }{" "} </Text>
+              <Text style={styles.tableCell3}>{" "} {data.product?.[4]?.sale_auction_start_event_count }{" "} </Text>
               <Text style={styles.tableCell4}> {" "} {data.product?.[4]?.product_count }{" "} </Text>
-              <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[4]?.sale_auction_start_event_count) ? '' : Number(data.product?.[4]?.sale_auction_start_event_count).toLocaleString() }{" "} </Text>
+              <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[4]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[4]?.sale_auction_start_event_count_price).toLocaleString() }{" "} </Text>
               <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[4]?.sale_auction_start_event_count_price) || isNaN(data.product?.[4]?.sale_auction_start_event_count) ? '' : (data.product?.[4]?.sale_auction_start_event_count_price * data.product?.[4]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
             </View>
             {/* row 6 */}
@@ -678,9 +700,9 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
                 {" "}
                 {data.product?.[5]?.product_name }{" "}
               </Text>
-              <Text style={styles.tableCell3}>{" "} {data.product?.[5]?.sale_auction_start_event_count_price }{" "} </Text>
+              <Text style={styles.tableCell3}>{" "} {data.product?.[5]?.sale_auction_start_event_count }{" "} </Text>
               <Text style={styles.tableCell4}> {" "} {data.product?.[5]?.product_count }{" "} </Text>
-              <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[5]?.sale_auction_start_event_count) ? '' : Number(data.product?.[5]?.sale_auction_start_event_count).toLocaleString() }{" "} </Text>
+              <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[5]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[5]?.sale_auction_start_event_count_price).toLocaleString() }{" "} </Text>
               <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[5]?.sale_auction_start_event_count_price) || isNaN(data.product?.[5]?.sale_auction_start_event_count) ? '' : (data.product?.[5]?.sale_auction_start_event_count_price * data.product?.[5]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
             </View>
             {/* row 7 */}
@@ -690,9 +712,9 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
                 {" "}
                 {data.product?.[6]?.product_name }{" "}
               </Text>
-              <Text style={styles.tableCell3}>{" "} {data.product?.[6]?.sale_auction_start_event_count_price }{" "} </Text>
+              <Text style={styles.tableCell3}>{" "} {data.product?.[6]?.sale_auction_start_event_count }{" "} </Text>
               <Text style={styles.tableCell4}> {" "} {data.product?.[6]?.product_count }{" "} </Text>
-              <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[6]?.sale_auction_start_event_count) ? '' : Number(data.product?.[6]?.sale_auction_start_event_count).toLocaleString() }{" "} </Text>
+              <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[6]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[6]?.sale_auction_start_event_count_price).toLocaleString() }{" "} </Text>
               <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[6]?.sale_auction_start_event_count_price) || isNaN(data.product?.[6]?.sale_auction_start_event_count) ? '' : (data.product?.[6]?.sale_auction_start_event_count_price * data.product?.[6]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
             </View>
             {/* row 8 */}
@@ -702,14 +724,14 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
                 {" "}
                 {data.product?.[7]?.product_name }{" "}
               </Text>
-              <Text style={styles.tableCell3}>{" "} {data.product?.[7]?.sale_auction_start_event_count_price }{" "} </Text>
+              <Text style={styles.tableCell3}>{" "} {data.product?.[7]?.sale_auction_start_event_count }{" "} </Text>
               <Text style={styles.tableCell4}> {" "} {data.product?.[7]?.product_count }{" "} </Text>
-              <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[7]?.sale_auction_start_event_count) ? '' : Number(data.product?.[7]?.sale_auction_start_event_count).toLocaleString() }{" "} </Text>
+              <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[7]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[7]?.sale_auction_start_event_count_price).toLocaleString() }{" "} </Text>
               <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[7]?.sale_auction_start_event_count_price) || isNaN(data.product?.[7]?.sale_auction_start_event_count) ? '' : (data.product?.[7]?.sale_auction_start_event_count_price * data.product?.[7]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
             </View>
             {/* สรุปรวม */}
             <View style={styles.tableRow}>
-              <Text style={styles.tableCellsum}> {" "}{thbText}{" "}  </Text>
+              <Text style={styles.tableCellsum}> {" "}{thbText? `( ${thbText} ) ` : ''}{" "}  </Text>
               <Text style={styles.tableCell3}>  </Text>
               <Text style={styles.tableCell4}>  </Text>
               <Text style={styles.tableCell5}> รวมเป็นเงิน  </Text>
@@ -719,13 +741,13 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
           <View style={styles.flexrow}>
             <View style={[
               styles.flexrowstart,
-              {width:"70%"}
+              {width:"65%"}
               ]}>
               <Text
                 style={[
                   { fontWeight: "extrabold" },
                   { fontFamily: "SarabunBold" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   styles.mtsm,
                   styles.spacesm,
                 ]}
@@ -737,7 +759,7 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
                   styles.mtsm,
                   { fontWeight: "light" },
                   { fontFamily: "Sarabun" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   { display:"flex"},
                   { width:"80%"},
                 ]}
@@ -748,14 +770,14 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
 
             <View style={[
               styles.flexrow,
-              {width:"30%"}
+              {width:"35%"}
               ]}>
             <View style={styles.flexrowstart}>
                 <Text
                   style={[
                     { fontWeight: "extrabold" },
                     { fontFamily: "SarabunBold" },
-                    { fontSize: "12" },
+                    { fontSize: "11" },
                     styles.mtsm,
                     styles.spacesm,
                   ]}
@@ -767,7 +789,7 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
                   style={[
                     { fontWeight: "light" },
                     { fontFamily: "Sarabun" },
-                    { fontSize: "12" },
+                    { fontSize: "11" },
                     styles.mtsm,
                     styles.spacesm,
                   ]}
@@ -781,13 +803,13 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
           <View style={styles.flexrow}>
             <View style={[
               styles.flexrowstart,
-              {width:"70%"}
+              {width:"65%"}
               ]}>
               <Text
                 style={[
                   { fontWeight: "extrabold" },
                   { fontFamily: "SarabunBold" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   styles.mtsm,
                   styles.spacesm,
                 ]}
@@ -799,7 +821,7 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
                   styles.mtsm,
                   { fontWeight: "light" },
                   { fontFamily: "Sarabun" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   { display:"flex"},
                   { width:"80%"},
                 ]}
@@ -810,14 +832,14 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
 
             <View style={[
               styles.flexrow,
-              {width:"30%"}
+              {width:"35%"}
               ]}>
             <View style={styles.flexrowstart}>
                 <Text
                   style={[
                     { fontWeight: "extrabold" },
                     { fontFamily: "SarabunBold" },
-                    { fontSize: "12" },
+                    { fontSize: "11" },
                     styles.mtsm,
                     styles.spacesm,
                   ]}
@@ -829,7 +851,7 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
                   style={[
                     { fontWeight: "light" },
                     { fontFamily: "Sarabun" },
-                    { fontSize: "12" },
+                    { fontSize: "11" },
                     styles.mtsm,
                     styles.spacesm,
                   ]}
@@ -846,7 +868,7 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
                 style={[
                   { fontWeight: "extrabold" },
                   { fontFamily: "SarabunBold" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   styles.mtsm,
                   styles.spacesm,
                 ]}
@@ -857,7 +879,7 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
                 style={[
                   { fontWeight: "light" },
                   { fontFamily: "Sarabun" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   styles.mtsm,
                 ]}
               >
@@ -950,7 +972,7 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
                 style={[
                   { fontWeight: "extrabold" },
                   { fontFamily: "SarabunBold" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   styles.mtsm,
                   styles.spacesm,
                 ]}
@@ -961,7 +983,7 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
                 style={[
                   { fontWeight: "light" },
                   { fontFamily: "Sarabun" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   {width:""},
                   styles.mtsm,
                 ]}
@@ -979,7 +1001,7 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
                   style={[
                     { fontWeight: "extrabold" },
                     { fontFamily: "SarabunBold" },
-                    { fontSize: "12" },
+                    { fontSize: "11" },
                     styles.mtsm,
                     styles.spacesm,
                   ]}
@@ -990,7 +1012,7 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
                   style={[
                     { fontWeight: "light" },
                     { fontFamily: "Sarabun" },
-                    { fontSize: "12" },
+                    { fontSize: "11" },
                     styles.mtsm,
                     styles.spacesm,
                   ]}
@@ -1011,7 +1033,7 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
                 style={[
                   { fontWeight: "extrabold" },
                   { fontFamily: "SarabunBold" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   styles.mtsm,
                   styles.spacesm,
                 ]}
@@ -1023,7 +1045,7 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
                   styles.mtsm,
                   { fontWeight: "light" },
                   { fontFamily: "Sarabun" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   { display:"flex"},
                   { width:"80%"},
                 ]}
@@ -1041,7 +1063,7 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
                   style={[
                     { fontWeight: "extrabold" },
                     { fontFamily: "SarabunBold" },
-                    { fontSize: "12" },
+                    { fontSize: "11" },
                     styles.mtsm,
                     styles.spacesm,
                   ]}
@@ -1052,7 +1074,7 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
                   style={[
                     { fontWeight: "light" },
                     { fontFamily: "Sarabun" },
-                    { fontSize: "12" },
+                    { fontSize: "11" },
                     styles.mtsm,
                     styles.spacesm,
                   ]}
@@ -1072,7 +1094,7 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
                 style={[
                   { fontWeight: "extrabold" },
                   { fontFamily: "SarabunBold" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   styles.mtsm,
                   styles.spacesm,
                 ]}
@@ -1084,7 +1106,7 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
                   styles.mtsm,
                   { fontWeight: "light" },
                   { fontFamily: "Sarabun" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   { display:"flex"},
                   { width:"80%"},
                 ]}
@@ -1102,7 +1124,7 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
                   style={[
                     { fontWeight: "extrabold" },
                     { fontFamily: "SarabunBold" },
-                    { fontSize: "12" },
+                    { fontSize: "11" },
                     styles.mtsm,
                     styles.spacesm,
                   ]}
@@ -1113,7 +1135,7 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
                   style={[
                     { fontWeight: "light" },
                     { fontFamily: "Sarabun" },
-                    { fontSize: "12" },
+                    { fontSize: "11" },
                     styles.mtsm,
                     styles.spacesm,
                   ]}
@@ -1133,7 +1155,7 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
                 style={[
                   { fontWeight: "extrabold" },
                   { fontFamily: "SarabunBold" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   styles.mtsm,
                   styles.spacesm,
                 ]}
@@ -1144,7 +1166,7 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
                 style={[
                   { fontWeight: "light" },
                   { fontFamily: "Sarabun" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   {display:"flex"},
                   { width:"80%"},
                   styles.mtsm,
@@ -1155,41 +1177,63 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
             </View>
 
             <View style={[
-              styles.flexrow,
-              {width:"35%"}
-              ]}>
-            <View style={styles.flexrowstart}>
-                <Text
-                  style={[
-                    { fontWeight: "extrabold" },
-                    { fontFamily: "SarabunBold" },
-                    { fontSize: "12" },
-                    styles.mtsm,
-                    styles.spacesm,
-                  ]}
-                >
-                  บิลเล่มที่:{" "}
-                </Text>
-                <Text
-                  style={[
-                    { fontWeight: "light" },
-                    { fontFamily: "Sarabun" },
-                    { fontSize: "12" },
-                    { display:"flex"},
-                    { width:"60%"},
-                    styles.mtsm,
-                    // styles.spacesm,
-                  ]}
-                >
-                  {" "}
-                  {data.sale_auction_refer} / {data.sale_auction_num}
-                  {" "}
-                </Text>
-              </View>
-            </View>
+                styles.flexrow,
+                {width:"35%"}
+                ]}>
+              <View style={styles.flexrowstart}>
+                  <Text
+                    style={[
+                      { fontWeight: "extrabold" },
+                      { fontFamily: "SarabunBold" },
+                      { fontSize: "11" },
+                      styles.mtsm,
+                      styles.spacesm,
+                    ]}
+                  >
+                    บิลอ้างอิงเล่มที่:
+                  </Text>
+                  <Text
+                    style={[
+                      { fontWeight: "light" },
+                      { fontFamily: "Sarabun" },
+                      { fontSize: "11" },
+                      styles.mtsm,
+                      styles.spacesm,
+                    ]}
+                  >
+                 
+                 {data?.sale_auction_refer} 
+                  </Text>
+                </View>
+              <View style={styles.flexrowstart}>
+                  <Text
+                    style={[
+                      { fontWeight: "extrabold" },
+                      { fontFamily: "SarabunBold" },
+                      { fontSize: "11" },
+                      styles.mtsm,
+                      styles.spacesm,
+                    ]}
+                  >
+                    เล่มที่:
+                  </Text>
+                  <Text
+                    style={[
+                      { fontWeight: "light" },
+                      { fontFamily: "Sarabun" },
+                      { fontSize: "11" },
+                      styles.mtsm,
+                      styles.spacesm,
+                    ]}
+                  >
+                    {" "}
+                    {data?.sale_auction_num}
+                  </Text>
+                </View>
+                  </View>
           </View>
             {/*-----------  หัวตาราง ---------------------  */}
-          <View style={[styles.table, { marginTop: "15" }]}>
+            <View style={[styles.table, { marginTop: "5" }]}>
             <View style={styles.tableRow}>
               <Text style={styles.tableCell1}>ลำดับ </Text>
               <Text style={styles.tableCell2}>รายละเอียด </Text>
@@ -1205,9 +1249,9 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
                 {" "}
                 {data.product?.[0]?.product_name }{" "}
               </Text>
-              <Text style={styles.tableCell3}>{" "} {data.product?.[0]?.sale_auction_start_event_count_price }{" "} </Text>
+              <Text style={styles.tableCell3}>{" "} {data.product?.[0]?.sale_auction_start_event_count }{" "} </Text>
               <Text style={styles.tableCell4}> {" "} {data.product?.[0]?.product_count }{" "} </Text>
-              <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[0]?.sale_auction_start_event_count) ? '' : Number(data.product?.[0]?.sale_auction_start_event_count).toLocaleString() }{" "} </Text>
+              <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[0]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[0]?.sale_auction_start_event_count_price).toLocaleString() }{" "} </Text>
               <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[0]?.sale_auction_start_event_count_price) || isNaN(data.product?.[0]?.sale_auction_start_event_count) ? '' : (data.product?.[0]?.sale_auction_start_event_count_price * data.product?.[0]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
             </View>
             {/* row 2 */}
@@ -1217,9 +1261,9 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
                 {" "}
                 {data.product?.[1]?.product_name }{" "}
               </Text>
-              <Text style={styles.tableCell3}>{" "} {data.product?.[1]?.sale_auction_start_event_count_price }{" "} </Text>
+              <Text style={styles.tableCell3}>{" "} {data.product?.[1]?.sale_auction_start_event_count }{" "} </Text>
               <Text style={styles.tableCell4}> {" "} {data.product?.[1]?.product_count }{" "} </Text>
-              <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[1]?.sale_auction_start_event_count) ? '' : Number(data.product?.[1]?.sale_auction_start_event_count).toLocaleString() }{" "} </Text>
+              <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[1]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[1]?.sale_auction_start_event_count_price).toLocaleString() }{" "} </Text>
               <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[1]?.sale_auction_start_event_count_price) || isNaN(data.product?.[1]?.sale_auction_start_event_count) ? '' : (data.product?.[1]?.sale_auction_start_event_count_price * data.product?.[1]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
             </View>
             {/* row 3 */}
@@ -1229,9 +1273,9 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
                 {" "}
                 {data.product?.[2]?.product_name }{" "}
               </Text>
-              <Text style={styles.tableCell3}>{" "} {data.product?.[2]?.sale_auction_start_event_count_price }{" "} </Text>
+              <Text style={styles.tableCell3}>{" "} {data.product?.[2]?.sale_auction_start_event_count }{" "} </Text>
               <Text style={styles.tableCell4}> {" "} {data.product?.[2]?.product_count }{" "} </Text>
-              <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[2]?.sale_auction_start_event_count) ? '' : Number(data.product?.[2]?.sale_auction_start_event_count).toLocaleString() }{" "} </Text>
+              <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[2]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[2]?.sale_auction_start_event_count_price).toLocaleString() }{" "} </Text>
               <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[2]?.sale_auction_start_event_count_price) || isNaN(data.product?.[2]?.sale_auction_start_event_count) ? '' : (data.product?.[2]?.sale_auction_start_event_count_price * data.product?.[2]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
             </View>
             {/* row 4 */}
@@ -1241,9 +1285,9 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
                 {" "}
                 {data.product?.[3]?.product_name }{" "}
               </Text>
-              <Text style={styles.tableCell3}>{" "} {data.product?.[3]?.sale_auction_start_event_count_price }{" "} </Text>
+              <Text style={styles.tableCell3}>{" "} {data.product?.[3]?.sale_auction_start_event_count }{" "} </Text>
               <Text style={styles.tableCell4}> {" "} {data.product?.[3]?.product_count }{" "} </Text>
-              <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[3]?.sale_auction_start_event_count) ? '' : Number(data.product?.[3]?.sale_auction_start_event_count).toLocaleString() }{" "} </Text>
+              <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[3]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[3]?.sale_auction_start_event_count_price).toLocaleString() }{" "} </Text>
               <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[3]?.sale_auction_start_event_count_price) || isNaN(data.product?.[3]?.sale_auction_start_event_count) ? '' : (data.product?.[3]?.sale_auction_start_event_count_price * data.product?.[3]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
             </View>
             {/* row 5 */}
@@ -1253,9 +1297,9 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
                 {" "}
                 {data.product?.[4]?.product_name }{" "}
               </Text>
-              <Text style={styles.tableCell3}>{" "} {data.product?.[4]?.sale_auction_start_event_count_price }{" "} </Text>
+              <Text style={styles.tableCell3}>{" "} {data.product?.[4]?.sale_auction_start_event_count }{" "} </Text>
               <Text style={styles.tableCell4}> {" "} {data.product?.[4]?.product_count }{" "} </Text>
-              <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[4]?.sale_auction_start_event_count) ? '' : Number(data.product?.[4]?.sale_auction_start_event_count).toLocaleString() }{" "} </Text>
+              <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[4]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[4]?.sale_auction_start_event_count_price).toLocaleString() }{" "} </Text>
               <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[4]?.sale_auction_start_event_count_price) || isNaN(data.product?.[4]?.sale_auction_start_event_count) ? '' : (data.product?.[4]?.sale_auction_start_event_count_price * data.product?.[4]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
             </View>
             {/* row 6 */}
@@ -1265,9 +1309,9 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
                 {" "}
                 {data.product?.[5]?.product_name }{" "}
               </Text>
-              <Text style={styles.tableCell3}>{" "} {data.product?.[5]?.sale_auction_start_event_count_price }{" "} </Text>
+              <Text style={styles.tableCell3}>{" "} {data.product?.[5]?.sale_auction_start_event_count }{" "} </Text>
               <Text style={styles.tableCell4}> {" "} {data.product?.[5]?.product_count }{" "} </Text>
-              <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[5]?.sale_auction_start_event_count) ? '' : Number(data.product?.[5]?.sale_auction_start_event_count).toLocaleString() }{" "} </Text>
+              <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[5]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[5]?.sale_auction_start_event_count_price).toLocaleString() }{" "} </Text>
               <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[5]?.sale_auction_start_event_count_price) || isNaN(data.product?.[5]?.sale_auction_start_event_count) ? '' : (data.product?.[5]?.sale_auction_start_event_count_price * data.product?.[5]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
             </View>
             {/* row 7 */}
@@ -1277,9 +1321,9 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
                 {" "}
                 {data.product?.[6]?.product_name }{" "}
               </Text>
-              <Text style={styles.tableCell3}>{" "} {data.product?.[6]?.sale_auction_start_event_count_price }{" "} </Text>
+              <Text style={styles.tableCell3}>{" "} {data.product?.[6]?.sale_auction_start_event_count }{" "} </Text>
               <Text style={styles.tableCell4}> {" "} {data.product?.[6]?.product_count }{" "} </Text>
-              <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[6]?.sale_auction_start_event_count) ? '' : Number(data.product?.[6]?.sale_auction_start_event_count).toLocaleString() }{" "} </Text>
+              <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[6]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[6]?.sale_auction_start_event_count_price).toLocaleString() }{" "} </Text>
               <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[6]?.sale_auction_start_event_count_price) || isNaN(data.product?.[6]?.sale_auction_start_event_count) ? '' : (data.product?.[6]?.sale_auction_start_event_count_price * data.product?.[6]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
             </View>
             {/* row 8 */}
@@ -1289,14 +1333,14 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
                 {" "}
                 {data.product?.[7]?.product_name }{" "}
               </Text>
-              <Text style={styles.tableCell3}>{" "} {data.product?.[7]?.sale_auction_start_event_count_price }{" "} </Text>
+              <Text style={styles.tableCell3}>{" "} {data.product?.[7]?.sale_auction_start_event_count }{" "} </Text>
               <Text style={styles.tableCell4}> {" "} {data.product?.[7]?.product_count }{" "} </Text>
-              <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[7]?.sale_auction_start_event_count) ? '' : Number(data.product?.[7]?.sale_auction_start_event_count).toLocaleString() }{" "} </Text>
+              <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[7]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[7]?.sale_auction_start_event_count_price).toLocaleString() }{" "} </Text>
               <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[7]?.sale_auction_start_event_count_price) || isNaN(data.product?.[7]?.sale_auction_start_event_count) ? '' : (data.product?.[7]?.sale_auction_start_event_count_price * data.product?.[7]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
             </View>
             {/* สรุปรวม */}
             <View style={styles.tableRow}>
-              <Text style={styles.tableCellsum}> {" "}{thbText}{" "}  </Text>
+              <Text style={styles.tableCellsum}> {" "}{thbText? `( ${thbText} ) ` : ''}{" "}  </Text>
               <Text style={styles.tableCell3}>  </Text>
               <Text style={styles.tableCell4}>  </Text>
               <Text style={styles.tableCell5}> รวมเป็นเงิน  </Text>
@@ -1306,13 +1350,13 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
           <View style={styles.flexrow}>
             <View style={[
               styles.flexrowstart,
-              {width:"70%"}
+              {width:"65%"}
               ]}>
               <Text
                 style={[
                   { fontWeight: "extrabold" },
                   { fontFamily: "SarabunBold" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   styles.mtsm,
                   styles.spacesm,
                 ]}
@@ -1324,7 +1368,7 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
                   styles.mtsm,
                   { fontWeight: "light" },
                   { fontFamily: "Sarabun" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   { display:"flex"},
                   { width:"80%"},
                 ]}
@@ -1335,14 +1379,14 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
 
             <View style={[
               styles.flexrow,
-              {width:"30%"}
+              {width:"35%"}
               ]}>
             <View style={styles.flexrowstart}>
                 <Text
                   style={[
                     { fontWeight: "extrabold" },
                     { fontFamily: "SarabunBold" },
-                    { fontSize: "12" },
+                    { fontSize: "11" },
                     styles.mtsm,
                     styles.spacesm,
                   ]}
@@ -1354,7 +1398,7 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
                   style={[
                     { fontWeight: "light" },
                     { fontFamily: "Sarabun" },
-                    { fontSize: "12" },
+                    { fontSize: "11" },
                     styles.mtsm,
                     styles.spacesm,
                   ]}
@@ -1368,13 +1412,13 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
           <View style={styles.flexrow}>
             <View style={[
               styles.flexrowstart,
-              {width:"70%"}
+              {width:"65%"}
               ]}>
               <Text
                 style={[
                   { fontWeight: "extrabold" },
                   { fontFamily: "SarabunBold" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   styles.mtsm,
                   styles.spacesm,
                 ]}
@@ -1386,7 +1430,7 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
                   styles.mtsm,
                   { fontWeight: "light" },
                   { fontFamily: "Sarabun" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   { display:"flex"},
                   { width:"80%"},
                 ]}
@@ -1397,14 +1441,14 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
 
             <View style={[
               styles.flexrow,
-              {width:"30%"}
+              {width:"35%"}
               ]}>
             <View style={styles.flexrowstart}>
                 <Text
                   style={[
                     { fontWeight: "extrabold" },
                     { fontFamily: "SarabunBold" },
-                    { fontSize: "12" },
+                    { fontSize: "11" },
                     styles.mtsm,
                     styles.spacesm,
                   ]}
@@ -1416,7 +1460,7 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
                   style={[
                     { fontWeight: "light" },
                     { fontFamily: "Sarabun" },
-                    { fontSize: "12" },
+                    { fontSize: "11" },
                     styles.mtsm,
                     styles.spacesm,
                   ]}
@@ -1433,7 +1477,7 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
                 style={[
                   { fontWeight: "extrabold" },
                   { fontFamily: "SarabunBold" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   styles.mtsm,
                   styles.spacesm,
                 ]}
@@ -1444,7 +1488,7 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
                 style={[
                   { fontWeight: "light" },
                   { fontFamily: "Sarabun" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   styles.mtsm,
                 ]}
               >
@@ -1540,7 +1584,7 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
                 style={[
                   { fontWeight: "extrabold" },
                   { fontFamily: "SarabunBold" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   styles.mtsm,
                   styles.spacesm,
                 ]}
@@ -1551,7 +1595,7 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
                 style={[
                   { fontWeight: "light" },
                   { fontFamily: "Sarabun" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   {width:""},
                   styles.mtsm,
                 ]}
@@ -1569,7 +1613,7 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
                   style={[
                     { fontWeight: "extrabold" },
                     { fontFamily: "SarabunBold" },
-                    { fontSize: "12" },
+                    { fontSize: "11" },
                     styles.mtsm,
                     styles.spacesm,
                   ]}
@@ -1580,7 +1624,7 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
                   style={[
                     { fontWeight: "light" },
                     { fontFamily: "Sarabun" },
-                    { fontSize: "12" },
+                    { fontSize: "11" },
                     styles.mtsm,
                     styles.spacesm,
                   ]}
@@ -1601,7 +1645,7 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
                 style={[
                   { fontWeight: "extrabold" },
                   { fontFamily: "SarabunBold" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   styles.mtsm,
                   styles.spacesm,
                 ]}
@@ -1613,7 +1657,7 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
                   styles.mtsm,
                   { fontWeight: "light" },
                   { fontFamily: "Sarabun" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   { display:"flex"},
                   { width:"80%"},
                 ]}
@@ -1631,7 +1675,7 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
                   style={[
                     { fontWeight: "extrabold" },
                     { fontFamily: "SarabunBold" },
-                    { fontSize: "12" },
+                    { fontSize: "11" },
                     styles.mtsm,
                     styles.spacesm,
                   ]}
@@ -1642,7 +1686,7 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
                   style={[
                     { fontWeight: "light" },
                     { fontFamily: "Sarabun" },
-                    { fontSize: "12" },
+                    { fontSize: "11" },
                     styles.mtsm,
                     styles.spacesm,
                   ]}
@@ -1662,7 +1706,7 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
                 style={[
                   { fontWeight: "extrabold" },
                   { fontFamily: "SarabunBold" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   styles.mtsm,
                   styles.spacesm,
                 ]}
@@ -1674,7 +1718,7 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
                   styles.mtsm,
                   { fontWeight: "light" },
                   { fontFamily: "Sarabun" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   { display:"flex"},
                   { width:"80%"},
                 ]}
@@ -1692,7 +1736,7 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
                   style={[
                     { fontWeight: "extrabold" },
                     { fontFamily: "SarabunBold" },
-                    { fontSize: "12" },
+                    { fontSize: "11" },
                     styles.mtsm,
                     styles.spacesm,
                   ]}
@@ -1703,7 +1747,7 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
                   style={[
                     { fontWeight: "light" },
                     { fontFamily: "Sarabun" },
-                    { fontSize: "12" },
+                    { fontSize: "11" },
                     styles.mtsm,
                     styles.spacesm,
                   ]}
@@ -1723,7 +1767,7 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
                 style={[
                   { fontWeight: "extrabold" },
                   { fontFamily: "SarabunBold" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   styles.mtsm,
                   styles.spacesm,
                 ]}
@@ -1734,7 +1778,7 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
                 style={[
                   { fontWeight: "light" },
                   { fontFamily: "Sarabun" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   {display:"flex"},
                   { width:"80%"},
                   styles.mtsm,
@@ -1745,41 +1789,63 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
             </View>
 
             <View style={[
-              styles.flexrow,
-              {width:"35%"}
-              ]}>
-            <View style={styles.flexrowstart}>
-                <Text
-                  style={[
-                    { fontWeight: "extrabold" },
-                    { fontFamily: "SarabunBold" },
-                    { fontSize: "12" },
-                    styles.mtsm,
-                    styles.spacesm,
-                  ]}
-                >
-                  บิลเล่มที่:{" "}
-                </Text>
-                <Text
-                  style={[
-                    { fontWeight: "light" },
-                    { fontFamily: "Sarabun" },
-                    { fontSize: "12" },
-                    { display:"flex"},
-                    { width:"60%"},
-                    styles.mtsm,
-                    // styles.spacesm,
-                  ]}
-                >
-                  {" "}
-                  {data.sale_auction_refer} / {data.sale_auction_num}
-                  {" "}
-                </Text>
-              </View>
-            </View>
+                styles.flexrow,
+                {width:"35%"}
+                ]}>
+              <View style={styles.flexrowstart}>
+                  <Text
+                    style={[
+                      { fontWeight: "extrabold" },
+                      { fontFamily: "SarabunBold" },
+                      { fontSize: "11" },
+                      styles.mtsm,
+                      styles.spacesm,
+                    ]}
+                  >
+                    บิลอ้างอิงเล่มที่:
+                  </Text>
+                  <Text
+                    style={[
+                      { fontWeight: "light" },
+                      { fontFamily: "Sarabun" },
+                      { fontSize: "11" },
+                      styles.mtsm,
+                      styles.spacesm,
+                    ]}
+                  >
+                 
+                 {data?.sale_auction_refer} 
+                  </Text>
+                </View>
+              <View style={styles.flexrowstart}>
+                  <Text
+                    style={[
+                      { fontWeight: "extrabold" },
+                      { fontFamily: "SarabunBold" },
+                      { fontSize: "11" },
+                      styles.mtsm,
+                      styles.spacesm,
+                    ]}
+                  >
+                    เล่มที่:
+                  </Text>
+                  <Text
+                    style={[
+                      { fontWeight: "light" },
+                      { fontFamily: "Sarabun" },
+                      { fontSize: "11" },
+                      styles.mtsm,
+                      styles.spacesm,
+                    ]}
+                  >
+                    {" "}
+                    {data?.sale_auction_num}
+                  </Text>
+                </View>
+                  </View>
           </View>
             {/*-----------  หัวตาราง ---------------------  */}
-          <View style={[styles.table, { marginTop: "15" }]}>
+            <View style={[styles.table, { marginTop: "5" }]}>
             <View style={styles.tableRow}>
               <Text style={styles.tableCell1}>ลำดับ </Text>
               <Text style={styles.tableCell2}>รายละเอียด </Text>
@@ -1795,9 +1861,9 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
                 {" "}
                 {data.product?.[0]?.product_name }{" "}
               </Text>
-              <Text style={styles.tableCell3}>{" "} {data.product?.[0]?.sale_auction_start_event_count_price }{" "} </Text>
+              <Text style={styles.tableCell3}>{" "} {data.product?.[0]?.sale_auction_start_event_count }{" "} </Text>
               <Text style={styles.tableCell4}> {" "} {data.product?.[0]?.product_count }{" "} </Text>
-              <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[0]?.sale_auction_start_event_count) ? '' : Number(data.product?.[0]?.sale_auction_start_event_count).toLocaleString() }{" "} </Text>
+              <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[0]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[0]?.sale_auction_start_event_count_price).toLocaleString() }{" "} </Text>
               <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[0]?.sale_auction_start_event_count_price) || isNaN(data.product?.[0]?.sale_auction_start_event_count) ? '' : (data.product?.[0]?.sale_auction_start_event_count_price * data.product?.[0]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
             </View>
             {/* row 2 */}
@@ -1807,9 +1873,9 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
                 {" "}
                 {data.product?.[1]?.product_name }{" "}
               </Text>
-              <Text style={styles.tableCell3}>{" "} {data.product?.[1]?.sale_auction_start_event_count_price }{" "} </Text>
+              <Text style={styles.tableCell3}>{" "} {data.product?.[1]?.sale_auction_start_event_count }{" "} </Text>
               <Text style={styles.tableCell4}> {" "} {data.product?.[1]?.product_count }{" "} </Text>
-              <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[1]?.sale_auction_start_event_count) ? '' : Number(data.product?.[1]?.sale_auction_start_event_count).toLocaleString() }{" "} </Text>
+              <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[1]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[1]?.sale_auction_start_event_count_price).toLocaleString() }{" "} </Text>
               <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[1]?.sale_auction_start_event_count_price) || isNaN(data.product?.[1]?.sale_auction_start_event_count) ? '' : (data.product?.[1]?.sale_auction_start_event_count_price * data.product?.[1]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
             </View>
             {/* row 3 */}
@@ -1819,9 +1885,9 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
                 {" "}
                 {data.product?.[2]?.product_name }{" "}
               </Text>
-              <Text style={styles.tableCell3}>{" "} {data.product?.[2]?.sale_auction_start_event_count_price }{" "} </Text>
+              <Text style={styles.tableCell3}>{" "} {data.product?.[2]?.sale_auction_start_event_count }{" "} </Text>
               <Text style={styles.tableCell4}> {" "} {data.product?.[2]?.product_count }{" "} </Text>
-              <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[2]?.sale_auction_start_event_count) ? '' : Number(data.product?.[2]?.sale_auction_start_event_count).toLocaleString() }{" "} </Text>
+              <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[2]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[2]?.sale_auction_start_event_count_price).toLocaleString() }{" "} </Text>
               <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[2]?.sale_auction_start_event_count_price) || isNaN(data.product?.[2]?.sale_auction_start_event_count) ? '' : (data.product?.[2]?.sale_auction_start_event_count_price * data.product?.[2]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
             </View>
             {/* row 4 */}
@@ -1831,9 +1897,9 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
                 {" "}
                 {data.product?.[3]?.product_name }{" "}
               </Text>
-              <Text style={styles.tableCell3}>{" "} {data.product?.[3]?.sale_auction_start_event_count_price }{" "} </Text>
+              <Text style={styles.tableCell3}>{" "} {data.product?.[3]?.sale_auction_start_event_count }{" "} </Text>
               <Text style={styles.tableCell4}> {" "} {data.product?.[3]?.product_count }{" "} </Text>
-              <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[3]?.sale_auction_start_event_count) ? '' : Number(data.product?.[3]?.sale_auction_start_event_count).toLocaleString() }{" "} </Text>
+              <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[3]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[3]?.sale_auction_start_event_count_price).toLocaleString() }{" "} </Text>
               <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[3]?.sale_auction_start_event_count_price) || isNaN(data.product?.[3]?.sale_auction_start_event_count) ? '' : (data.product?.[3]?.sale_auction_start_event_count_price * data.product?.[3]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
             </View>
             {/* row 5 */}
@@ -1843,9 +1909,9 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
                 {" "}
                 {data.product?.[4]?.product_name }{" "}
               </Text>
-              <Text style={styles.tableCell3}>{" "} {data.product?.[4]?.sale_auction_start_event_count_price }{" "} </Text>
+              <Text style={styles.tableCell3}>{" "} {data.product?.[4]?.sale_auction_start_event_count }{" "} </Text>
               <Text style={styles.tableCell4}> {" "} {data.product?.[4]?.product_count }{" "} </Text>
-              <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[4]?.sale_auction_start_event_count) ? '' : Number(data.product?.[4]?.sale_auction_start_event_count).toLocaleString() }{" "} </Text>
+              <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[4]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[4]?.sale_auction_start_event_count_price).toLocaleString() }{" "} </Text>
               <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[4]?.sale_auction_start_event_count_price) || isNaN(data.product?.[4]?.sale_auction_start_event_count) ? '' : (data.product?.[4]?.sale_auction_start_event_count_price * data.product?.[4]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
             </View>
             {/* row 6 */}
@@ -1855,9 +1921,9 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
                 {" "}
                 {data.product?.[5]?.product_name }{" "}
               </Text>
-              <Text style={styles.tableCell3}>{" "} {data.product?.[5]?.sale_auction_start_event_count_price }{" "} </Text>
+              <Text style={styles.tableCell3}>{" "} {data.product?.[5]?.sale_auction_start_event_count }{" "} </Text>
               <Text style={styles.tableCell4}> {" "} {data.product?.[5]?.product_count }{" "} </Text>
-              <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[5]?.sale_auction_start_event_count) ? '' : Number(data.product?.[5]?.sale_auction_start_event_count).toLocaleString() }{" "} </Text>
+              <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[5]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[5]?.sale_auction_start_event_count_price).toLocaleString() }{" "} </Text>
               <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[5]?.sale_auction_start_event_count_price) || isNaN(data.product?.[5]?.sale_auction_start_event_count) ? '' : (data.product?.[5]?.sale_auction_start_event_count_price * data.product?.[5]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
             </View>
             {/* row 7 */}
@@ -1867,9 +1933,9 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
                 {" "}
                 {data.product?.[6]?.product_name }{" "}
               </Text>
-              <Text style={styles.tableCell3}>{" "} {data.product?.[6]?.sale_auction_start_event_count_price }{" "} </Text>
+              <Text style={styles.tableCell3}>{" "} {data.product?.[6]?.sale_auction_start_event_count }{" "} </Text>
               <Text style={styles.tableCell4}> {" "} {data.product?.[6]?.product_count }{" "} </Text>
-              <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[6]?.sale_auction_start_event_count) ? '' : Number(data.product?.[6]?.sale_auction_start_event_count).toLocaleString() }{" "} </Text>
+              <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[6]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[6]?.sale_auction_start_event_count_price).toLocaleString() }{" "} </Text>
               <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[6]?.sale_auction_start_event_count_price) || isNaN(data.product?.[6]?.sale_auction_start_event_count) ? '' : (data.product?.[6]?.sale_auction_start_event_count_price * data.product?.[6]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
             </View>
             {/* row 8 */}
@@ -1879,14 +1945,14 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
                 {" "}
                 {data.product?.[7]?.product_name }{" "}
               </Text>
-              <Text style={styles.tableCell3}>{" "} {data.product?.[7]?.sale_auction_start_event_count_price }{" "} </Text>
+              <Text style={styles.tableCell3}>{" "} {data.product?.[7]?.sale_auction_start_event_count }{" "} </Text>
               <Text style={styles.tableCell4}> {" "} {data.product?.[7]?.product_count }{" "} </Text>
-              <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[7]?.sale_auction_start_event_count) ? '' : Number(data.product?.[7]?.sale_auction_start_event_count).toLocaleString() }{" "} </Text>
+              <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[7]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[7]?.sale_auction_start_event_count_price).toLocaleString() }{" "} </Text>
               <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[7]?.sale_auction_start_event_count_price) || isNaN(data.product?.[7]?.sale_auction_start_event_count) ? '' : (data.product?.[7]?.sale_auction_start_event_count_price * data.product?.[7]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
             </View>
             {/* สรุปรวม */}
             <View style={styles.tableRow}>
-              <Text style={styles.tableCellsum}> {" "}{thbText}{" "}  </Text>
+              <Text style={styles.tableCellsum}> {" "}{thbText? `( ${thbText} ) ` : ''}{" "}  </Text>
               <Text style={styles.tableCell3}>  </Text>
               <Text style={styles.tableCell4}>  </Text>
               <Text style={styles.tableCell5}> รวมเป็นเงิน  </Text>
@@ -1896,13 +1962,13 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
           <View style={styles.flexrow}>
             <View style={[
               styles.flexrowstart,
-              {width:"70%"}
+              {width:"65%"}
               ]}>
               <Text
                 style={[
                   { fontWeight: "extrabold" },
                   { fontFamily: "SarabunBold" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   styles.mtsm,
                   styles.spacesm,
                 ]}
@@ -1914,7 +1980,7 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
                   styles.mtsm,
                   { fontWeight: "light" },
                   { fontFamily: "Sarabun" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   { display:"flex"},
                   { width:"80%"},
                 ]}
@@ -1925,14 +1991,14 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
 
             <View style={[
               styles.flexrow,
-              {width:"30%"}
+              {width:"35%"}
               ]}>
             <View style={styles.flexrowstart}>
                 <Text
                   style={[
                     { fontWeight: "extrabold" },
                     { fontFamily: "SarabunBold" },
-                    { fontSize: "12" },
+                    { fontSize: "11" },
                     styles.mtsm,
                     styles.spacesm,
                   ]}
@@ -1944,7 +2010,7 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
                   style={[
                     { fontWeight: "light" },
                     { fontFamily: "Sarabun" },
-                    { fontSize: "12" },
+                    { fontSize: "11" },
                     styles.mtsm,
                     styles.spacesm,
                   ]}
@@ -1958,13 +2024,13 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
           <View style={styles.flexrow}>
             <View style={[
               styles.flexrowstart,
-              {width:"70%"}
+              {width:"65%"}
               ]}>
               <Text
                 style={[
                   { fontWeight: "extrabold" },
                   { fontFamily: "SarabunBold" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   styles.mtsm,
                   styles.spacesm,
                 ]}
@@ -1976,7 +2042,7 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
                   styles.mtsm,
                   { fontWeight: "light" },
                   { fontFamily: "Sarabun" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   { display:"flex"},
                   { width:"80%"},
                 ]}
@@ -1987,14 +2053,14 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
 
             <View style={[
               styles.flexrow,
-              {width:"30%"}
+              {width:"35%"}
               ]}>
             <View style={styles.flexrowstart}>
                 <Text
                   style={[
                     { fontWeight: "extrabold" },
                     { fontFamily: "SarabunBold" },
-                    { fontSize: "12" },
+                    { fontSize: "11" },
                     styles.mtsm,
                     styles.spacesm,
                   ]}
@@ -2006,7 +2072,7 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
                   style={[
                     { fontWeight: "light" },
                     { fontFamily: "Sarabun" },
-                    { fontSize: "12" },
+                    { fontSize: "11" },
                     styles.mtsm,
                     styles.spacesm,
                   ]}
@@ -2023,7 +2089,7 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
                 style={[
                   { fontWeight: "extrabold" },
                   { fontFamily: "SarabunBold" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   styles.mtsm,
                   styles.spacesm,
                 ]}
@@ -2034,7 +2100,7 @@ export const Receipt1 = ({reportData, sumTotal, thbText, receiptData}) => {
                 style={[
                   { fontWeight: "light" },
                   { fontFamily: "Sarabun" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   styles.mtsm,
                 ]}
               >

@@ -365,13 +365,13 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
           <View style={styles.flexrow}>
             <View style={[
               styles.flexrowstart,
-              {width:"70%"}
+              {width:"65%"}
               ]}>
               <Text
                 style={[
                   { fontWeight: "extrabold" },
                   { fontFamily: "SarabunBold" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   styles.mtmd,
                   styles.spacesm,
                 ]}
@@ -382,7 +382,7 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
                 style={[
                   { fontWeight: "light" },
                   { fontFamily: "Sarabun" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   {width:""},
                   styles.mtmd,
                 ]}
@@ -393,14 +393,14 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
 
             <View style={[
               styles.flexrow,
-              {width:"30%"}
+              {width:"35%"}
               ]}>
               <View style={styles.flexrowstart}>
                 <Text
                   style={[
                     { fontWeight: "extrabold" },
                     { fontFamily: "SarabunBold" },
-                    { fontSize: "12" },
+                    { fontSize: "11" },
                     styles.mtmd,
                     styles.spacesm,
                   ]}
@@ -411,7 +411,7 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
                   style={[
                     { fontWeight: "light" },
                     { fontFamily: "Sarabun" },
-                    { fontSize: "12" },
+                    { fontSize: "11" },
                     styles.mtmd,
                     styles.spacesm,
                   ]}
@@ -425,13 +425,13 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
           <View style={styles.flexrow}>
             <View style={[
               styles.flexrowstart,
-              {width:"70%"}
+              {width:"65%"}
               ]}>
               <Text
                 style={[
                   { fontWeight: "extrabold" },
                   { fontFamily: "SarabunBold" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   styles.mtsm,
                   styles.spacesm,
                 ]}
@@ -443,7 +443,7 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
                   styles.mtsm,
                   { fontWeight: "light" },
                   { fontFamily: "Sarabun" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   { display:"flex"},
                   { width:"80%"},
                 ]}
@@ -454,14 +454,14 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
 
             <View style={[
               styles.flexrow,
-              {width:"30%"}
+              {width:"35%"}
               ]}>
             <View style={styles.flexrowstart}>
                 <Text
                   style={[
                     { fontWeight: "extrabold" },
                     { fontFamily: "SarabunBold" },
-                    { fontSize: "12" },
+                    { fontSize: "11" },
                     styles.mtsm,
                     styles.spacesm,
                   ]}
@@ -472,7 +472,7 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
                   style={[
                     { fontWeight: "light" },
                     { fontFamily: "Sarabun" },
-                    { fontSize: "12" },
+                    { fontSize: "11" },
                     styles.mtsm,
                     styles.spacesm,
                   ]}
@@ -486,13 +486,13 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
           <View style={styles.flexrow}>
           <View style={[
               styles.flexrowstart,
-              {width:"70%"}
+              {width:"65%"}
               ]}>
                 <Text
                 style={[
                   { fontWeight: "extrabold" },
                   { fontFamily: "SarabunBold" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   styles.mtsm,
                   styles.spacesm,
                 ]}
@@ -504,7 +504,7 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
                   styles.mtsm,
                   { fontWeight: "light" },
                   { fontFamily: "Sarabun" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   { display:"flex"},
                   { width:"76%"},
                 ]}
@@ -514,46 +514,71 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
             </View>
 
             <View style={[
-              styles.flexrow,
-              {width:"30%"}
-              ]}>
-            <View style={styles.flexrowstart}>
-                <Text
-                  style={[
-                    { fontWeight: "extrabold" },
-                    { fontFamily: "SarabunBold" },
-                    { fontSize: "12" },
-                    styles.mtsm,
-                    styles.spacesm,
-                  ]}
-                >
-                  บิลเล่มที่:{" "}
-                </Text>
-                <Text
-                  style={[
-                    { fontWeight: "light" },
-                    { fontFamily: "Sarabun" },
-                    { fontSize: "12" },
-                    styles.mtsm,
-                    styles.spacesm,
-                  ]}
-                >
-                  {" "}
-                  {data.auction_refer} / {data.auction_num}
-                </Text>
-              </View>
-            </View>
+                styles.flexrow,
+                {width:"35%"}
+                ]}>
+              <View style={styles.flexrowstart}>
+                  <Text
+                    style={[
+                      { fontWeight: "extrabold" },
+                      { fontFamily: "SarabunBold" },
+                      { fontSize: "11" },
+                      styles.mtsm,
+                      styles.spacesm,
+                    ]}
+                  >
+                    บิลอ้างอิงเล่มที่:
+                  </Text>
+                  <Text
+                    style={[
+                      { fontWeight: "light" },
+                      { fontFamily: "Sarabun" },
+                      { fontSize: "11" },
+                      styles.mtsm,
+                      styles.spacesm,
+                    ]}
+                  >
+                 
+                 {data?.auction_refer} 
+                  </Text>
+                </View>
+              <View style={styles.flexrowstart}>
+                  <Text
+                    style={[
+                      { fontWeight: "extrabold" },
+                      { fontFamily: "SarabunBold" },
+                      { fontSize: "11" },
+                      styles.mtsm,
+                      styles.spacesm,
+                    ]}
+                  >
+                    เล่มที่:
+                  </Text>
+                  <Text
+                    style={[
+                      { fontWeight: "light" },
+                      { fontFamily: "Sarabun" },
+                      { fontSize: "11" },
+                      styles.mtsm,
+                      styles.spacesm,
+                    ]}
+                  >
+                    {" "}
+                    {data?.auction_num}
+                  </Text>
+                </View>
+                  </View>
           </View>
           <View style={styles.flexrow}>
           <View style={[
               styles.flexrowstart,
-              {width:"70%"}
+              {width:"65%"}
               ]}>
               <Text
                 style={[
                   { fontWeight: "extrabold" },
                   { fontFamily: "SarabunBold" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   styles.mtsm,
                   styles.spacesm,
                 ]}
@@ -564,7 +589,7 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
                 style={[
                   { fontWeight: "light" },
                   { fontFamily: "Sarabun" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   {display:"flex"},
                   { width:"80%"},
                   styles.mtsm,
@@ -675,7 +700,7 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
             </View>
             {/* สรุปรวม */}
             <View style={styles.tableRow}>
-              <Text style={styles.tableCellsum}> {" "}{thbText}{" "}  </Text>
+              <Text style={styles.tableCellsum}> {" "}{thbText? `( ${thbText} ) ` : ''}{" "}  </Text>
               <Text style={styles.tableCell3}>  </Text>
               <Text style={styles.tableCell4}> รวมเป็นเงิน  </Text>
               <Text style={styles.tableCell6}> {" "}{sumTotal.toLocaleString()}{" "}</Text>
@@ -690,7 +715,7 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
                 style={[
                   { fontWeight: "extrabold" },
                   { fontFamily: "SarabunBold" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   styles.mtsm,
                   styles.spacesm,
                 ]}
@@ -702,7 +727,7 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
                   styles.mtsm,
                   { fontWeight: "light" },
                   { fontFamily: "Sarabun" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   { display:"flex"},
                   { width:"76%"},
                 ]}
@@ -720,7 +745,7 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
                   style={[
                     { fontWeight: "extrabold" },
                     { fontFamily: "SarabunBold" },
-                    { fontSize: "12" },
+                    { fontSize: "11" },
                     styles.mtsm,
                     styles.spacesm,
                   ]}
@@ -731,7 +756,7 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
                   style={[
                     { fontWeight: "light" },
                     { fontFamily: "Sarabun" },
-                    { fontSize: "12" },
+                    { fontSize: "11" },
                     styles.mtsm,
                     styles.spacesm,
                   ]}
@@ -750,7 +775,7 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
                 style={[
                   { fontWeight: "extrabold" },
                   { fontFamily: "SarabunBold" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   styles.mtsm,
                   styles.spacesm,
                 ]}
@@ -762,7 +787,7 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
                   styles.mtsm,
                   { fontWeight: "light" },
                   { fontFamily: "Sarabun" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   { display:"flex"},
                   { width:"76%"},
                 ]}
@@ -780,7 +805,7 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
                   style={[
                     { fontWeight: "extrabold" },
                     { fontFamily: "SarabunBold" },
-                    { fontSize: "12" },
+                    { fontSize: "11" },
                     styles.mtsm,
                     styles.spacesm,
                   ]}
@@ -791,7 +816,7 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
                   style={[
                     { fontWeight: "light" },
                     { fontFamily: "Sarabun" },
-                    { fontSize: "12" },
+                    { fontSize: "11" },
                     styles.mtsm,
                     styles.spacesm,
                   ]}
@@ -807,7 +832,7 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
                 style={[
                   { fontWeight: "extrabold" },
                   { fontFamily: "SarabunBold" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   styles.mtsm,
                   styles.spacesm,
                 ]}
@@ -818,7 +843,7 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
                 style={[
                   { fontWeight: "light" },
                   { fontFamily: "Sarabun" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   {display:"flex"},
                   {width:"90%"},
                   styles.mtsm,
@@ -909,13 +934,13 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
           <View style={styles.flexrow}>
             <View style={[
               styles.flexrowstart,
-              {width:"70%"}
+              {width:"65%"}
               ]}>
               <Text
                 style={[
                   { fontWeight: "extrabold" },
                   { fontFamily: "SarabunBold" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   styles.mtmd,
                   styles.spacesm,
                 ]}
@@ -926,7 +951,7 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
                 style={[
                   { fontWeight: "light" },
                   { fontFamily: "Sarabun" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   {width:""},
                   styles.mtmd,
                 ]}
@@ -937,14 +962,14 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
 
             <View style={[
               styles.flexrow,
-              {width:"30%"}
+              {width:"35%"}
               ]}>
               <View style={styles.flexrowstart}>
                 <Text
                   style={[
                     { fontWeight: "extrabold" },
                     { fontFamily: "SarabunBold" },
-                    { fontSize: "12" },
+                    { fontSize: "11" },
                     styles.mtmd,
                     styles.spacesm,
                   ]}
@@ -955,7 +980,7 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
                   style={[
                     { fontWeight: "light" },
                     { fontFamily: "Sarabun" },
-                    { fontSize: "12" },
+                    { fontSize: "11" },
                     styles.mtmd,
                     styles.spacesm,
                   ]}
@@ -969,13 +994,13 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
           <View style={styles.flexrow}>
             <View style={[
               styles.flexrowstart,
-              {width:"70%"}
+              {width:"65%"}
               ]}>
               <Text
                 style={[
                   { fontWeight: "extrabold" },
                   { fontFamily: "SarabunBold" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   styles.mtsm,
                   styles.spacesm,
                 ]}
@@ -987,7 +1012,7 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
                   styles.mtsm,
                   { fontWeight: "light" },
                   { fontFamily: "Sarabun" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   { display:"flex"},
                   { width:"80%"},
                 ]}
@@ -998,14 +1023,14 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
 
             <View style={[
               styles.flexrow,
-              {width:"30%"}
+              {width:"35%"}
               ]}>
             <View style={styles.flexrowstart}>
                 <Text
                   style={[
                     { fontWeight: "extrabold" },
                     { fontFamily: "SarabunBold" },
-                    { fontSize: "12" },
+                    { fontSize: "11" },
                     styles.mtsm,
                     styles.spacesm,
                   ]}
@@ -1016,7 +1041,7 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
                   style={[
                     { fontWeight: "light" },
                     { fontFamily: "Sarabun" },
-                    { fontSize: "12" },
+                    { fontSize: "11" },
                     styles.mtsm,
                     styles.spacesm,
                   ]}
@@ -1030,13 +1055,13 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
           <View style={styles.flexrow}>
           <View style={[
               styles.flexrowstart,
-              {width:"70%"}
+              {width:"65%"}
               ]}>
                 <Text
                 style={[
                   { fontWeight: "extrabold" },
                   { fontFamily: "SarabunBold" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   styles.mtsm,
                   styles.spacesm,
                 ]}
@@ -1048,7 +1073,7 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
                   styles.mtsm,
                   { fontWeight: "light" },
                   { fontFamily: "Sarabun" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   { display:"flex"},
                   { width:"76%"},
                 ]}
@@ -1058,46 +1083,71 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
             </View>
 
             <View style={[
-              styles.flexrow,
-              {width:"30%"}
-              ]}>
-            <View style={styles.flexrowstart}>
-                <Text
-                  style={[
-                    { fontWeight: "extrabold" },
-                    { fontFamily: "SarabunBold" },
-                    { fontSize: "12" },
-                    styles.mtsm,
-                    styles.spacesm,
-                  ]}
-                >
-                  บิลเล่มที่:{" "}
-                </Text>
-                <Text
-                  style={[
-                    { fontWeight: "light" },
-                    { fontFamily: "Sarabun" },
-                    { fontSize: "12" },
-                    styles.mtsm,
-                    styles.spacesm,
-                  ]}
-                >
-                  {" "}
-                  {data.auction_refer} / {data.auction_num}
-                </Text>
-              </View>
-            </View>
+                styles.flexrow,
+                {width:"35%"}
+                ]}>
+              <View style={styles.flexrowstart}>
+                  <Text
+                    style={[
+                      { fontWeight: "extrabold" },
+                      { fontFamily: "SarabunBold" },
+                      { fontSize: "11" },
+                      styles.mtsm,
+                      styles.spacesm,
+                    ]}
+                  >
+                    บิลอ้างอิงเล่มที่:
+                  </Text>
+                  <Text
+                    style={[
+                      { fontWeight: "light" },
+                      { fontFamily: "Sarabun" },
+                      { fontSize: "11" },
+                      styles.mtsm,
+                      styles.spacesm,
+                    ]}
+                  >
+                 
+                 {data?.auction_refer} 
+                  </Text>
+                </View>
+              <View style={styles.flexrowstart}>
+                  <Text
+                    style={[
+                      { fontWeight: "extrabold" },
+                      { fontFamily: "SarabunBold" },
+                      { fontSize: "11" },
+                      styles.mtsm,
+                      styles.spacesm,
+                    ]}
+                  >
+                    เล่มที่:
+                  </Text>
+                  <Text
+                    style={[
+                      { fontWeight: "light" },
+                      { fontFamily: "Sarabun" },
+                      { fontSize: "11" },
+                      styles.mtsm,
+                      styles.spacesm,
+                    ]}
+                  >
+                    {" "}
+                    {data?.auction_num}
+                  </Text>
+                </View>
+                  </View>
           </View>
           <View style={styles.flexrow}>
           <View style={[
               styles.flexrowstart,
-              {width:"70%"}
+              {width:"65%"}
               ]}>
               <Text
                 style={[
                   { fontWeight: "extrabold" },
                   { fontFamily: "SarabunBold" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   styles.mtsm,
                   styles.spacesm,
                 ]}
@@ -1108,7 +1158,7 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
                 style={[
                   { fontWeight: "light" },
                   { fontFamily: "Sarabun" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   {display:"flex"},
                   { width:"80%"},
                   styles.mtsm,
@@ -1219,7 +1269,7 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
             </View>
             {/* สรุปรวม */}
             <View style={styles.tableRow}>
-              <Text style={styles.tableCellsum}> {" "}{thbText}{" "}  </Text>
+              <Text style={styles.tableCellsum}> {" "}{thbText? `( ${thbText} ) ` : ''}{" "}  </Text>
               <Text style={styles.tableCell3}>  </Text>
               <Text style={styles.tableCell4}> รวมเป็นเงิน  </Text>
               <Text style={styles.tableCell6}> {" "}{sumTotal.toLocaleString()}{" "}</Text>
@@ -1234,7 +1284,7 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
                 style={[
                   { fontWeight: "extrabold" },
                   { fontFamily: "SarabunBold" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   styles.mtsm,
                   styles.spacesm,
                 ]}
@@ -1246,7 +1296,7 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
                   styles.mtsm,
                   { fontWeight: "light" },
                   { fontFamily: "Sarabun" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   { display:"flex"},
                   { width:"76%"},
                 ]}
@@ -1264,7 +1314,7 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
                   style={[
                     { fontWeight: "extrabold" },
                     { fontFamily: "SarabunBold" },
-                    { fontSize: "12" },
+                    { fontSize: "11" },
                     styles.mtsm,
                     styles.spacesm,
                   ]}
@@ -1275,7 +1325,7 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
                   style={[
                     { fontWeight: "light" },
                     { fontFamily: "Sarabun" },
-                    { fontSize: "12" },
+                    { fontSize: "11" },
                     styles.mtsm,
                     styles.spacesm,
                   ]}
@@ -1294,7 +1344,7 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
                 style={[
                   { fontWeight: "extrabold" },
                   { fontFamily: "SarabunBold" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   styles.mtsm,
                   styles.spacesm,
                 ]}
@@ -1306,7 +1356,7 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
                   styles.mtsm,
                   { fontWeight: "light" },
                   { fontFamily: "Sarabun" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   { display:"flex"},
                   { width:"76%"},
                 ]}
@@ -1324,7 +1374,7 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
                   style={[
                     { fontWeight: "extrabold" },
                     { fontFamily: "SarabunBold" },
-                    { fontSize: "12" },
+                    { fontSize: "11" },
                     styles.mtsm,
                     styles.spacesm,
                   ]}
@@ -1335,7 +1385,7 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
                   style={[
                     { fontWeight: "light" },
                     { fontFamily: "Sarabun" },
-                    { fontSize: "12" },
+                    { fontSize: "11" },
                     styles.mtsm,
                     styles.spacesm,
                   ]}
@@ -1351,7 +1401,7 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
                 style={[
                   { fontWeight: "extrabold" },
                   { fontFamily: "SarabunBold" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   styles.mtsm,
                   styles.spacesm,
                 ]}
@@ -1362,7 +1412,7 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
                 style={[
                   { fontWeight: "light" },
                   { fontFamily: "Sarabun" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   {display:"flex"},
                   {width:"90%"},
                   styles.mtsm,
@@ -1454,13 +1504,13 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
           <View style={styles.flexrow}>
             <View style={[
               styles.flexrowstart,
-              {width:"70%"}
+              {width:"65%"}
               ]}>
               <Text
                 style={[
                   { fontWeight: "extrabold" },
                   { fontFamily: "SarabunBold" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   styles.mtmd,
                   styles.spacesm,
                 ]}
@@ -1471,7 +1521,7 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
                 style={[
                   { fontWeight: "light" },
                   { fontFamily: "Sarabun" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   {width:""},
                   styles.mtmd,
                 ]}
@@ -1482,14 +1532,14 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
 
             <View style={[
               styles.flexrow,
-              {width:"30%"}
+              {width:"35%"}
               ]}>
               <View style={styles.flexrowstart}>
                 <Text
                   style={[
                     { fontWeight: "extrabold" },
                     { fontFamily: "SarabunBold" },
-                    { fontSize: "12" },
+                    { fontSize: "11" },
                     styles.mtmd,
                     styles.spacesm,
                   ]}
@@ -1500,7 +1550,7 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
                   style={[
                     { fontWeight: "light" },
                     { fontFamily: "Sarabun" },
-                    { fontSize: "12" },
+                    { fontSize: "11" },
                     styles.mtmd,
                     styles.spacesm,
                   ]}
@@ -1514,13 +1564,13 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
           <View style={styles.flexrow}>
             <View style={[
               styles.flexrowstart,
-              {width:"70%"}
+              {width:"65%"}
               ]}>
               <Text
                 style={[
                   { fontWeight: "extrabold" },
                   { fontFamily: "SarabunBold" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   styles.mtsm,
                   styles.spacesm,
                 ]}
@@ -1532,7 +1582,7 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
                   styles.mtsm,
                   { fontWeight: "light" },
                   { fontFamily: "Sarabun" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   { display:"flex"},
                   { width:"80%"},
                 ]}
@@ -1543,14 +1593,14 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
 
             <View style={[
               styles.flexrow,
-              {width:"30%"}
+              {width:"35%"}
               ]}>
             <View style={styles.flexrowstart}>
                 <Text
                   style={[
                     { fontWeight: "extrabold" },
                     { fontFamily: "SarabunBold" },
-                    { fontSize: "12" },
+                    { fontSize: "11" },
                     styles.mtsm,
                     styles.spacesm,
                   ]}
@@ -1561,7 +1611,7 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
                   style={[
                     { fontWeight: "light" },
                     { fontFamily: "Sarabun" },
-                    { fontSize: "12" },
+                    { fontSize: "11" },
                     styles.mtsm,
                     styles.spacesm,
                   ]}
@@ -1575,13 +1625,13 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
           <View style={styles.flexrow}>
           <View style={[
               styles.flexrowstart,
-              {width:"70%"}
+              {width:"65%"}
               ]}>
                 <Text
                 style={[
                   { fontWeight: "extrabold" },
                   { fontFamily: "SarabunBold" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   styles.mtsm,
                   styles.spacesm,
                 ]}
@@ -1593,7 +1643,7 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
                   styles.mtsm,
                   { fontWeight: "light" },
                   { fontFamily: "Sarabun" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   { display:"flex"},
                   { width:"76%"},
                 ]}
@@ -1603,46 +1653,71 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
             </View>
 
             <View style={[
-              styles.flexrow,
-              {width:"30%"}
-              ]}>
-            <View style={styles.flexrowstart}>
-                <Text
-                  style={[
-                    { fontWeight: "extrabold" },
-                    { fontFamily: "SarabunBold" },
-                    { fontSize: "12" },
-                    styles.mtsm,
-                    styles.spacesm,
-                  ]}
-                >
-                  บิลเล่มที่:{" "}
-                </Text>
-                <Text
-                  style={[
-                    { fontWeight: "light" },
-                    { fontFamily: "Sarabun" },
-                    { fontSize: "12" },
-                    styles.mtsm,
-                    styles.spacesm,
-                  ]}
-                >
-                  {" "}
-                  {data.auction_refer} / {data.auction_num}
-                </Text>
-              </View>
-            </View>
+                styles.flexrow,
+                {width:"35%"}
+                ]}>
+              <View style={styles.flexrowstart}>
+                  <Text
+                    style={[
+                      { fontWeight: "extrabold" },
+                      { fontFamily: "SarabunBold" },
+                      { fontSize: "11" },
+                      styles.mtsm,
+                      styles.spacesm,
+                    ]}
+                  >
+                    บิลอ้างอิงเล่มที่:
+                  </Text>
+                  <Text
+                    style={[
+                      { fontWeight: "light" },
+                      { fontFamily: "Sarabun" },
+                      { fontSize: "11" },
+                      styles.mtsm,
+                      styles.spacesm,
+                    ]}
+                  >
+                 
+                 {data?.auction_refer} 
+                  </Text>
+                </View>
+              <View style={styles.flexrowstart}>
+                  <Text
+                    style={[
+                      { fontWeight: "extrabold" },
+                      { fontFamily: "SarabunBold" },
+                      { fontSize: "11" },
+                      styles.mtsm,
+                      styles.spacesm,
+                    ]}
+                  >
+                    เล่มที่:
+                  </Text>
+                  <Text
+                    style={[
+                      { fontWeight: "light" },
+                      { fontFamily: "Sarabun" },
+                      { fontSize: "11" },
+                      styles.mtsm,
+                      styles.spacesm,
+                    ]}
+                  >
+                    {" "}
+                    {data?.auction_num}
+                  </Text>
+                </View>
+                  </View>
           </View>
           <View style={styles.flexrow}>
           <View style={[
               styles.flexrowstart,
-              {width:"70%"}
+              {width:"65%"}
               ]}>
               <Text
                 style={[
                   { fontWeight: "extrabold" },
                   { fontFamily: "SarabunBold" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   styles.mtsm,
                   styles.spacesm,
                 ]}
@@ -1653,7 +1728,7 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
                 style={[
                   { fontWeight: "light" },
                   { fontFamily: "Sarabun" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   {display:"flex"},
                   { width:"80%"},
                   styles.mtsm,
@@ -1764,7 +1839,7 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
             </View>
             {/* สรุปรวม */}
             <View style={styles.tableRow}>
-              <Text style={styles.tableCellsum}> {" "}{thbText}{" "}  </Text>
+              <Text style={styles.tableCellsum}> {" "}{thbText? `( ${thbText} ) ` : ''}{" "}  </Text>
               <Text style={styles.tableCell3}>  </Text>
               <Text style={styles.tableCell4}> รวมเป็นเงิน  </Text>
               <Text style={styles.tableCell6}> {" "}{sumTotal.toLocaleString()}{" "}</Text>
@@ -1779,7 +1854,7 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
                 style={[
                   { fontWeight: "extrabold" },
                   { fontFamily: "SarabunBold" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   styles.mtsm,
                   styles.spacesm,
                 ]}
@@ -1791,7 +1866,7 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
                   styles.mtsm,
                   { fontWeight: "light" },
                   { fontFamily: "Sarabun" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   { display:"flex"},
                   { width:"76%"},
                 ]}
@@ -1809,7 +1884,7 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
                   style={[
                     { fontWeight: "extrabold" },
                     { fontFamily: "SarabunBold" },
-                    { fontSize: "12" },
+                    { fontSize: "11" },
                     styles.mtsm,
                     styles.spacesm,
                   ]}
@@ -1820,7 +1895,7 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
                   style={[
                     { fontWeight: "light" },
                     { fontFamily: "Sarabun" },
-                    { fontSize: "12" },
+                    { fontSize: "11" },
                     styles.mtsm,
                     styles.spacesm,
                   ]}
@@ -1839,7 +1914,7 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
                 style={[
                   { fontWeight: "extrabold" },
                   { fontFamily: "SarabunBold" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   styles.mtsm,
                   styles.spacesm,
                 ]}
@@ -1851,7 +1926,7 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
                   styles.mtsm,
                   { fontWeight: "light" },
                   { fontFamily: "Sarabun" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   { display:"flex"},
                   { width:"76%"},
                 ]}
@@ -1869,7 +1944,7 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
                   style={[
                     { fontWeight: "extrabold" },
                     { fontFamily: "SarabunBold" },
-                    { fontSize: "12" },
+                    { fontSize: "11" },
                     styles.mtsm,
                     styles.spacesm,
                   ]}
@@ -1880,7 +1955,7 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
                   style={[
                     { fontWeight: "light" },
                     { fontFamily: "Sarabun" },
-                    { fontSize: "12" },
+                    { fontSize: "11" },
                     styles.mtsm,
                     styles.spacesm,
                   ]}
@@ -1896,7 +1971,7 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
                 style={[
                   { fontWeight: "extrabold" },
                   { fontFamily: "SarabunBold" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   styles.mtsm,
                   styles.spacesm,
                 ]}
@@ -1907,7 +1982,7 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
                 style={[
                   { fontWeight: "light" },
                   { fontFamily: "Sarabun" },
-                  { fontSize: "12" },
+                  { fontSize: "11" },
                   {display:"flex"},
                   {width:"90%"},
                   styles.mtsm,

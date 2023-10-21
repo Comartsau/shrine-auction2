@@ -63,10 +63,22 @@ export const routes = [
         element: <Auctions />,
       },
       {
+        icon: <FaRegListAlt {...icon} />,
+        name: "รายการประมูล",
+        path: "/auctionsList",
+        element: <AuctionsList />,
+      },
+      {
         icon: <MdPointOfSale {...icon} />,
         name: "ขายสินค้า",
         path: "/sale",
         element: <Sale />,
+      },
+      {
+        icon: <LuClipboardList {...icon} />,
+        name: "รายการขายสินค้า",
+        path: "/saleList",
+        element: <SaleList />,
       },
       {
         icon: <FaMoneyCheckAlt {...icon} />,
@@ -74,20 +86,6 @@ export const routes = [
         path: "/account",
         element: <Account />,
       },
-      {
-        icon: <FaRegListAlt {...icon} />,
-        name: "รายการประมูล",
-        path: "/auctionsList",
-        element: <AuctionsList />,
-      },
-
-      {
-        icon: <LuClipboardList {...icon} />,
-        name: "รายการขายสินค้า",
-        path: "/saleList",
-        element: <SaleList />,
-      },
-    
     ]:[
       {
         icon: <MdPointOfSale {...icon} />,
