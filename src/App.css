@@ -4,42 +4,6 @@ body {
     /* font-family: 'Manrope', sans-serif; */
   }
 
-  /* @keyframes shake {
-    0% {
-      transform: translateX(0);
-    }
-    25% {
-      transform: translateX(-5px);
-    }
-    50% {
-      transform: translateX(5px);
-    }
-    75% {
-      transform: translateX(-5px);
-    }
-    100% {
-      transform: translateX(0);
-    }
-  }
-   */
-  /* @keyframes shake {
-    0% {
-      transform: translateY(0);
-    }
-    25% {
-      transform: translateY(-5px);
-    }
-    50% {
-      transform: translateY(5px);
-    }
-    75% {
-      transform: translateY(-5px);
-    }
-    100% {
-      transform: translateY(0);
-    }
-  } */
-
   @keyframes scale-up-down {
     0%, 100% {
       transform: scale(1);
@@ -48,7 +12,47 @@ body {
       transform: scale(1.15);
     }
   }
-  
+
+  .gradient-text {
+    background: linear-gradient(-176.5deg, #7E0800 100%, #7E0800 100%, #7E0800 100%, #7E0800 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: #7E0800;
+    -webkit-text-stroke: 3px white;
+    /* text-stroke: 3px white; */
+    font-family: 'Mitr', sans-serif !important;
+  }
+
+  .gradient-text1 {
+
+    background: linear-gradient(179.2deg, #FFB72B 100%,  #FFB72B 100%,  #FFB72B 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: #7D0707;
+    -webkit-text-stroke: 3px #7D0707;
+    text-stroke: 3px #7D0707;
+    font-family: 'Mitr', sans-serif !important;
+  }
+  .gradient-text11 {
+
+    background: linear-gradient(179.2deg, #FFB72B 100%,  #FFB72B 100%,  #FFB72B 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: #7D0707;
+    -webkit-text-stroke: 4px #7D0707;
+    text-stroke: 3px #7D0707;
+    font-family: 'Mitr', sans-serif !important;
+  }
+  .gradient-text2 {
+
+    background: linear-gradient(179.2deg, #7D0707 100%,  #7D0707 100%,  #7D0707 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color:  #FFB72B ;
+    -webkit-text-stroke: 2.5px #FFB72B;
+    text-stroke: 3px #FFB72B;
+    font-family: 'Mitr', sans-serif !important;
+  }
   
   
   

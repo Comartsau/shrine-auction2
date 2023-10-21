@@ -2,7 +2,7 @@ import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
 import { Dashboard, Auth } from "@/layouts";
 import axios from "axios";
 import { useEffect, useState } from "react";
-
+import "./App.css";
 
 
 import 'react-datepicker/dist/react-datepicker.css';
