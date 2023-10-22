@@ -54,6 +54,18 @@ body {
     font-family: 'Mitr', sans-serif !important;
   }
   
+  .gradient-text3 {
+
+    background:#7D0707 ;
+    /* background:black; */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color:  #FFff ;
+    -webkit-text-stroke: 2.5px #FFff;
+    text-stroke: 3px #FFff;
+    font-family: 'Mitr', sans-serif !important;
+  }
+  
   
   
   

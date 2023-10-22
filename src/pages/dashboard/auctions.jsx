@@ -30,6 +30,7 @@ export function Auctions() {
   const [selectedSavingsBond, setSelectedSavingsBond] = useState();
   const [selectedGovernmentBonds, setSelectedGovernmentBonds] = useState();
 
+  const [showBottonWin , setShowBottonWin] = useState(false)
   
 
   // ----------  หัวข้อตาราง -------------- //
@@ -1476,6 +1477,7 @@ const handleSendDataEDitAuction = async () => {
 
   // -----------  เปลี่ยน Icons ปุ่มเมื่อ Active  ประมูล -------- //
   const [activeButton, setActiveButton] = useState(null);
+ 
 
   const handleButtonClick = async (buttonNumber) => {
     setActiveButton(buttonNumber);
@@ -1488,9 +1490,8 @@ const handleSendDataEDitAuction = async () => {
     }
     if (buttonNumber == 2) return socket.emit('number_2')
     if (buttonNumber == 3) return socket.emit('number_3')
-    if (buttonNumber == 4) return socket.emit('number_4')
+    if (buttonNumber == 4) return (socket.emit('number_4') , setShowBottonWin(true))
 
-   
   };
 
 
@@ -3481,7 +3482,7 @@ const handleSendDataEDitAuction = async () => {
                       type="text"
                       autoComplete="off"
                       placeholder="เลือกผู้บริจาค"
-                      value={searchText6? searchText6 : null}
+                      value={searchText6? searchText6 : ''}
                       // value={searchText6? searchText6 : ''}
                       id="search6"
                       list="option"
@@ -3645,10 +3646,12 @@ const handleSendDataEDitAuction = async () => {
                 :
                 ''
                 }
+                {activeButton !== 4 ?
                     <Button
                       size="sm"
                       variant="gradient"
                       color="blue"
+                      disabled={activeButton == 4}
                       className="flex w-[130px] text-sm "
                       onClick={() => handleButtonClick(4)}
                     >
@@ -3657,6 +3660,9 @@ const handleSendDataEDitAuction = async () => {
                       </span>
                       โชวคนชนะ
                     </Button>
+                    :
+                    ''
+                    }
               </div>
             </Card>
           </div>

@@ -317,6 +317,7 @@ export function Display() {
         backgroundImage: `url(${bgImage})`,
         backgroundSize: "100% 100%",
         backgroundPosition: "center",
+        fontFamily:"'Mitr', sans-serif" 
       }}
     >
 
@@ -338,7 +339,7 @@ export function Display() {
         {!startAuction == true || '' ? (
           // --------  ขอร่วมประมูล -------------- //
           <div className="mt-40 flex w-full items-center justify-center py-6 text-center align-middle   text-3xl font-bold md:text-5xl lg:mt-40">
-            <div className="flex flex-col">
+            <div className="flex flex-col gradient-text3">
               <h1 className=" mb-2 sm:mb-10">ขอเชิญร่วมการประมูล</h1>
               <h1>ของมงคลได้ค่ะ</h1>
             </div>
@@ -349,33 +350,31 @@ export function Display() {
             {number !== "4" ? (
               //------------ Show  ประมูล --------------------//
               <div className="flex w-full    ">
-                <div className=" mx-5 mt-10 flex  overflow-y-scroll  w-full flex-col items-center   rounded-3xl bg-red-200 bg-opacity-40  h-[550px]   sm:h-[550px] md:h-[550px]  lg:h-[550px]   xl:h-[550px]">
+                <div className=" mx-14 mt-20 flex  overflow-y-scroll xl:overflow-y-hidden  w-full flex-col items-center   rounded-3xl bg-red-200 bg-opacity-40  h-[550px]   sm:h-[550px] md:h-[550px]  lg:h-[550px]   xl:h-[550px]">
                   <div className="flex mt-5  sm:mt-10 z-20   w-full justify-center md:mt-[30px] lg:mt-[30px] ">
                     <Typography className=" gradient-text text-center text-5xl font-extrabold  lg:text-7xl">
                       {Title ? Title : ""}
                     </Typography>
                   </div>
-                  <div className="mt-10 flex w-[90%] justify-center  text-center font-semibold sm:mt-5 sm:text-3xl md:mt-5 lg:py-3 lg:text-3xl ">
+                  <div className="mt-10 flex w-[90%] justify-center  text-center font-semibold sm:mt-5 sm:text-3xl md:mt-5 lg:py-3 lg:text-3xl  ">
                     {localStorage.getItem('aomsin')?.length > 0 || localStorage.getItem('product')?.length > 0 ? (
-                      <div className=" z-20">
-                        <Typography className="text-3xl font-bold gradient-text1">
+                      <div className=" z-20 mt-10 mx-20">
+                        <Typography className="text-4xl font-bold gradient-text1">
                           {localStorage.getItem('aomsin') || ''}/{localStorage.getItem('product') || ''}
                         </Typography>
                       </div>
                     ) : (
-                      <p>ของมงคล : ไม่มีรายการ</p>
+                      <p className="gradient-text1  text-4xl mt-10">ของมงคล : ไม่มีรายการ</p>
                     )}
                   </div>
                   {!localStorage.getItem('aomsin') && !localStorage.getItem('product')  && Number(customer1Price) == 0 ? (
                     
-                    <div className="mt-10 flex flex-col items-center justify-center gap-10">
-                    <Typography className="  text-center text-5xl font-bold">
-                      ขอเชิญร่วมการประมูล
-                    </Typography>
-                    <Typography className="text-center text-5xl font-bold">
-                      ของมงคลได้ค่ะ
-                    </Typography>
+                  <div className="mt-10 flex w-full items-center justify-center py-6 text-center align-middle   text-3xl font-bold md:text-5xl lg:mt-10">
+                  <div className="flex flex-col gradient-text3">
+                    <h1 className=" mb-2 sm:mb-10">ขอเชิญร่วมการประมูล</h1>
+                    <h1>ของมงคลได้ค่ะ</h1>
                   </div>
+                </div>
                   ) : (
                     <div></div>
                   )}
@@ -487,21 +486,21 @@ export function Display() {
               </div>
             ) : (
               // ---------- Show ชนะประมูล -------------------//
-              <div className="flex w-full   ">
-                <div className=" z-20 mx-3 mt-5 sm:mt-10 flex  h-[550px] xl:mt-10   w-full flex-col items-center justify-center overflow-y-scroll   sm:h-[500px] md:h-[480px]  lg:h-[500px]   xl:h-[500px]">
+              <div className="flex w-full mt-5   ">
+                <div className=" z-20 mx-3 mt-5 sm:mt-10 flex  h-[550px] xl:mt-10   w-full flex-col items-center justify-center overflow-y-scroll md:overflow-y-hidden  sm:h-[500px] md:h-[480px]  lg:h-[550px]   xl:h-[600px]">
                   <div className=" z-20 mt-[220px] flex w-full justify-center sm:mt-[50px] md:mt-[10px] lg:mt-[5px] ">
                   <div className="flex w-full justify-center align-bottom gap-5" >
                     <img src={p01} className="w-[15%] sm:w-[15%] md:w-[10%] xl:w-[8%] bg-white rounded-full " />
                     <img src={p02} className="w-[15%] sm:w-[15%] md:w-[10%] xl:w-[8%]  bg-white rounded-full" />
                   </div>
                   </div>
-                  <div className=" z-20 mt-[10px] flex w-full justify-center sm:mt-[10px] md:mt-[5px] lg:mt-[10px] ">
+                  <div className=" z-20 mt-[10px] flex w-full justify-center sm:mt-[10px] md:mt-[5px] lg:mt-[30px] ">
                     <Typography className=" gradient-text11 text-center text-5xl font-bold  sm:text-5xl">
                       ขอแสดงความยินดี
                     </Typography>
                   </div>
 
-                  <div className="mt-7  flex w-[90%] items-center justify-center rounded-lg border-4  text-center text-3xl text-white sm:w-[80%] py-4 sm:text-5xl md:w-[60%] lg:mt-5 lg:text-6xl"
+                  <div className="mt-7  flex w-[90%] items-center justify-center rounded-lg border-4  text-center text-3xl text-white sm:w-[80%] py-4 sm:text-5xl md:w-[60%] lg:mt-10 lg:text-6xl"
                           style={{
                             backgroundColor: "#8A0707",
                             borderColor: "#FFB72B"
@@ -513,13 +512,13 @@ export function Display() {
 
                   <div className="mt-10 xl:mt-5 flex w-full flex-col items-center gap-5 px-5  md:flex-row lg:justify-between lg:px-[80px]  ">
                     <div className="flex w-full flex-col items-center justify-center gap-5 md:flex-row   ">
-                      <Typography className="flex gradient-text text-5xl xl:text-6xl text-center font-bold ">
+                      <Typography className="flex gradient-text text-5xl xl:text-5xl text-center font-bold ">
                         {localStorage.getItem('auctionstarted_auction_topic') || ''}
                       </Typography>
                     </div>
                   </div>
-                  <div className="mt-5 xl:mt-5 flex w-full flex-col items-center justify-center  gap-5 px-5 md:flex-row lg:px-[80px]  ">
-                    <div className=" z-20">
+                  <div className="mt-5 xl:mt-7 flex w-full flex-col items-center justify-center  gap-5 px-5 md:flex-row lg:px-[80px]  ">
+                    <div className=" z-20 mx-32">
                       <Typography className="text-center text-xl xl:text-2xl font-bold" style={{ color: "#FFB72B" }} >
                         {/* {concatenatedAomsinData}/{concatenatedProductData} */}
                         {localStorage.getItem('aomsin') || ''}/{localStorage.getItem('product') || ''}
@@ -527,10 +526,10 @@ export function Display() {
                     </div>
                   </div>
 
-                  <div className="  mt-10 xl:mt-5 flex w-full flex-col items-center justify-center  gap-5 px-5 sm:flex-row  ">
+                  <div className="  mt-10 xl:mt-10 flex w-full flex-col items-center justify-center  gap-5 px-5 sm:flex-row  ">
                     <div className=" flex flex-col items-center justify-center gap-5 sm:flex-row    ">
                       <div className="">
-                        <Typography className="  flex text-4xl xl:text-5xl  font-bold gradient-text2  ">
+                        <Typography className="  flex text-4xl xl:text-4xl  font-bold gradient-text2  ">
                           มูลค่า
                         </Typography>
                       </div>
@@ -542,7 +541,7 @@ export function Display() {
                         </Typography>
                       </div>
                       <div>
-                        <Typography className="flex    text-4xl xl:text-5xl font-bold gradient-text2 ">
+                        <Typography className="flex    text-4xl xl:text-4xl font-bold gradient-text2 ">
                           บาท
                         </Typography>
                       </div>

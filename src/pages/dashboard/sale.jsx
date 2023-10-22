@@ -1157,6 +1157,8 @@ setSaveSelectedProductData(newData);
       }
     };
 
+    // console.log(billData)
+
   
 
     
@@ -2877,14 +2879,24 @@ setSaveSelectedProductData(newData);
             handler={handleCloseViewPayDialog}
             className="custom-dialog h-[580px] overflow-scroll "
           >
-            <DialogHeader className="bg-blue-700 py-3  px-2 text-center  text-base text-white opacity-80  ">
+            <DialogHeader className="bg-blue-700 py-3  px-5 text-center  justify-between  text-base text-white opacity-80  ">
               <div className="flex gap-3 ">
-                <Typography className="text-xl">ชำระเงิน</Typography>
+                <Typography className="text-xl">เลือกวิธีชำระเงิน</Typography>
+              </div>
+              <div className="flex gap-3 ">
+              <div className="flex w-full flex-col sm:flex-row gap-5 justify-center md:justify-end   mt-3 md:mt-0">
+                  <div>
+                    <Typography className="text-lg font-bold text-center ">บิลที่:</Typography>
+                  </div>
+                  <div>
+                    <Typography className="text-lg font-bold text-center ">{reportData.sale_code || ''}</Typography>
+                  </div>
+                  </div>
               </div>
             </DialogHeader>
             <DialogBody>
               <Card className=" h-full w-full px-3  ">
-                <div className="flex flex-col w-full  md:flex-row justify-between items-center">
+                {/* <div className="flex flex-col w-full  md:flex-row justify-between items-center">
                   <div className="flex flex-col md:flex-row w-full">
                   <div className="flex w-full  justify-center md:justify-start items-center">
                     <Typography className="text-lg font-bold "> ใบเสร็จ</Typography>
@@ -2898,7 +2910,7 @@ setSaveSelectedProductData(newData);
                   </div>
                   </div>
                   </div>
-                </div>
+                </div> */}
                 <div className="flex flex-col w-full  md:flex-row  items-center">
                   <div className="flex flex-col sm:flex-row w-full justify-center md:justify-start mt-3 gap-5">
                   <div className="flex justify-center">
