@@ -32,7 +32,7 @@ const DailySummaryProduct = () => {
           <Card className="mt-6 w-full">
             <CardBody>
               <div className="flex flex-col gap-4 md:flex-row">
-                <Button color="green">ประมูล</Button>
+                <Button color="green">ประมูล222</Button>
                 <Button color="green">ขายสินค้า</Button>
               </div>
 
