@@ -96,7 +96,7 @@ export function EditSale_cart(idAuctionReport) {
         `${import.meta.env.VITE_APP_API}/Sale/${id}/detail`
       );
 
-      // console.log(res.data);
+      console.log(res.data);
       setData(res.data);
       setProduct(res.data?.product);
 
@@ -355,7 +355,7 @@ export function EditSale_cart(idAuctionReport) {
               </Typography>
             </div>
             <div className="">
-              <Typography className="">{data[0]?.sale_code || ""}</Typography>
+              <Typography className="">{data?.sale_code || ""}</Typography>
             </div>
           </div>
 
@@ -611,7 +611,7 @@ export function EditSale_cart(idAuctionReport) {
                 }
               />
             </div>
-            <div className="flex flex-col  gap-4  p-3 md:flex-row lg:flex-row">
+            {/* <div className="flex flex-col  gap-4  p-3 md:flex-row lg:flex-row">
               <Input
                 type="text"
                 maxLength="10"
@@ -637,7 +637,7 @@ export function EditSale_cart(idAuctionReport) {
                   }))
                 }
               />
-            </div>
+            </div> */}
 
             <div className="flex flex-col justify-end  gap-4  p-3 md:flex-row lg:flex-row">
               <IconButton

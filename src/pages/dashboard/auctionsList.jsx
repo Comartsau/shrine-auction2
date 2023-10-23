@@ -15,6 +15,7 @@ import { ReceiveAuctions } from "./ReceiveAuctions";
 import DatePicker from "react-datepicker";
 
 
+
 import {
   Card,
   Typography,
@@ -70,11 +71,11 @@ export function AuctionsList() {
     try {
       let url = ''
       if ( (startDateExcel && endDateExcel) || searchQuery ) {
-        console.log(startDateExcel);
+        // console.log(startDateExcel);
         const formattedStartDate = formatDate1(startDateExcel, "YYYY-MM-DD");
         const formattedEndDate = formatDate1(endDateExcel, "YYYY-MM-DD");
-        console.log(formattedStartDate);
-        console.log(formattedEndDate);
+        // console.log(formattedStartDate);
+        // console.log(formattedEndDate);
          url = `${import.meta.env.VITE_APP_API}/Debtor?type_Data=1&receipt_number=${searchQuery}&start_date=${formattedStartDate}&end_date=${formattedEndDate}`;
         
       }
@@ -84,7 +85,7 @@ export function AuctionsList() {
           Authorization: `Token ${Token}`,
         },
       });
-      console.log(response.data)
+      // console.log(response.data)
       setListData(response.data);
       setNoData(false);
 
@@ -230,9 +231,9 @@ export function AuctionsList() {
      setOpenReceiveDialog(false);
    };
 
-   console.log(reportData)
-   console.log(sumTotal)
-   console.log(thbText)
+  //  console.log(reportData)
+  //  console.log(sumTotal)
+  //  console.log(thbText)
 
   //---------- Edit  รายการ -------------- //
       const [editView,setEditView] = useState('false')
@@ -248,7 +249,7 @@ export function AuctionsList() {
 
   const endBill = async (data) => {
     try  {
-      console.log(data)
+      // console.log(data)
       const billDataId = await (data.id_auction_report)
       // ถามครั้งที่ 1
       const result = await Swal.fire({
@@ -280,7 +281,7 @@ export function AuctionsList() {
 
         if (result2.isConfirmed) {
           // นำค่าที่กรอกจากครั้งที่ 1 ไปส่ง API
-          console.log(billDataId)
+          // console.log(billDataId)
           const data = {
             show_Id: billDataId,
             sale_auction_q: cancelNote,
@@ -330,14 +331,36 @@ export function AuctionsList() {
 
       setOpenEditParmoon(true)
       setIdAuctionReport(data.id_auction_report)
-      console.log(data.id_auction_report)
+      // console.log(data.id_auction_report)
 
     }
+
+    const [dataToExcel , setDataToExcel] = useState([])
+    // const headers = [
+    //   { label: 'Name', key: 'id' },
+    //   { label: 'Age', key: 'name' },
+     
+    // ];
+
+    const data = [
+      { Name: 'John จอห์น', Age: 30, Country: 'Thailand ประเทศไทย' },
+      { Name: 'Jane แจน', Age: 25, Country: 'Thailand ประเทศไทย' },
+    ];
+    
+    // Define the column headers
+    const headers = [
+      { label: 'ชื่อ', key: 'id' },
+      { label: 'อายุ', key: 'name' },
+    ];
+
+    
+
 
 
 
   return (
     <div>
+ 
       {openEditParmoon == true ? 
       <EditSale_Parmoon id={idAuctionReport}/>
     :

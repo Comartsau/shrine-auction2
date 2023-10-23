@@ -482,17 +482,20 @@ export function Account() {
                                     data?.id_receipt
                                   )
                             }
+                            
                           >
-                            <i className="fa-solid fa-eye px-2"> </i>
-                            รายละเอียด
+                            {/* <i className="fa-solid fa-eye px-2"> </i> */}
+                            <p className="px-3">รายละเอียด</p>
                           </MenuItem>
 
                           {data?.auction_report_Pay_status == 2 && (
                             <div>
-                              <MenuItem>
+                              {/* <MenuItem>
                                 <i className="fa-regular fa-file-excel pr-3"></i>
                                 ใบเสร็จ
-                              </MenuItem>
+                              </MenuItem> */}
+                               <i className="fa-regular fa-file-excel pr-3"></i>
+                                ใบเสร็จ
 
                               <MenuItem
                                 onClick={() =>
@@ -659,12 +662,12 @@ export function Account() {
                   data?.sale_auction_start_event === "สลากออมสิน" ? (
                     <p key={index} className="text-black">
                       {" "}
-                      สลากออมสิน {data?.auction_auction_start_event_count}
+                      สลากออมสิน {data?.auction_auction_start_event_count} ใบ
                     </p>
                   ) : (
                     <p key={index} className="text-black">
                       {" "}
-                      ล็อตเตอรี่ : {data?.auction_auction_start_event_count}
+                      ล็อตเตอรี่ : {data?.auction_auction_start_event_count} ใบ
                     </p>
                   )
                 )}
@@ -673,19 +676,19 @@ export function Account() {
                   data?.sale_auction_start_event == 1 ? (
                     <p key={index} className="text-black">
                       {" "}
-                      สลากออมสิน : {data?.sale_auction_start_event_count}
+                      สลากออมสิน : {data?.sale_auction_start_event_count} ใบ
                     </p>
                   ) : (
                     <p key={index} className="text-black">
                       {" "}
-                      ล็อตเตอรี่ : {data?.sale_auction_start_event_count}
+                      ล็อตเตอรี่ : {data?.sale_auction_start_event_count} ใบ
                     </p>
                   )
                 )}
               </div>
 
               <Card
-                style={{ backgroundColor: "lightgray" }}
+                style={{ backgroundColor: "#E7E7E7" }}
                 className=" h-60 w-full overflow-y-auto p-4  shadow-xl  "
               >
                 <b className="m-4 text-black">วัตถุมงคล</b>
