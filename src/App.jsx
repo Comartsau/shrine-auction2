@@ -12,6 +12,7 @@ import { format, parseISO, addYears, subYears } from 'date-fns';
 import { utcToZonedTime } from 'date-fns-tz';
 
 // Components
+import Excelexport_Sale from "./components/excel/Excelexport_Sale";
 
 registerLocale('th', th); // Register Thai locale
 setDefaultLocale('th'); // Set Thai locale as default
@@ -70,8 +71,7 @@ function App() {
       <Route path="/auth/*" element={<Auth />} />
       <Route path="/auth/sign-in" element={< SignIn />} />
       <Route path="*" element={<Navigate to="/auth/sign-in" replace />} />
-      {/* <Route path="/dashboard/edit-sale-parmoon/:id" element={<EditSale_Parmoon/>} /> */}
-      {/* <Route path="/dashboard/edit-sale-cart/:id" element={<EditSale_cart/>} /> */}
+      {/* <Route path="/excel" element={<Excelexport_Sale/>} /> */}
 
     </Routes>
   );

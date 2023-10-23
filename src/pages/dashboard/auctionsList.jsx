@@ -16,6 +16,9 @@ import DatePicker from "react-datepicker";
 import * as XLSX from "xlsx";
 import { Link } from "react-router-dom";
 
+import { ExcelFile, ExcelSheet } from 'react-data-export';
+
+
 import {
   Card,
   Typography,
@@ -402,8 +405,11 @@ export function AuctionsList() {
     }
 
 
+
   return (
     <div>
+
+
       {openEditParmoon == true ? 
       <EditSale_Parmoon id={idAuctionReport}/>
     :
