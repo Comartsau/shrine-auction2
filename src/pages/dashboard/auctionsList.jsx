@@ -13,10 +13,6 @@ import { PDFViewer } from "@react-pdf/renderer";
 import { ReceiveAuctions } from "./ReceiveAuctions";
 
 import DatePicker from "react-datepicker";
-import * as XLSX from "xlsx";
-import { Link } from "react-router-dom";
-
-import { ExcelFile, ExcelSheet } from 'react-data-export';
 
 
 import {
@@ -159,116 +155,50 @@ export function AuctionsList() {
   }
 
   // ----  ออก excel ----------------------------------- //
-  const exportToExcel = () => {
-    if (listData.length === 0) {
-      // Handle the case when there's no data to export
-      return;
+  
+  const exportToExcel = async () => {
+    try {
+      // console.log(searchData)
+      // console.log(searchQuery)
+
+      const url = `${
+        import.meta.env.VITE_APP_API
+      }/Customer-Excel/?search=${searchQuery}`;
+
+      // ตรวจสอบว่ามี Token หรือไม่
+      const Token = localStorage.getItem("token");
+      if (!Token) {
+        throw new Error("Token not found.");
+      }
+
+      // ส่งคำขอไปยัง API โดยใส่ Token ใน Header
+      const response = await axios.get(url, {
+        responseType: "blob", // ระบุ responseType เป็น 'blob'
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Token ${Token}`,
+        },
+      });
+      const blob = new Blob([response.data], {
+        type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      });
+      const downloadUrl = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = downloadUrl;
+      link.download = "Reports_Auction_Title.xlsx"; // ตั้งชื่อไฟล์ที่จะดาวน์โหลด
+      link.click();
+      URL.revokeObjectURL(downloadUrl);
+    } catch (error) {
+      console.error("Error exporting to Excel:", error);
+      Swal.fire({
+        icon: "error",
+        title: "ออก Excel ไม่สำเร็จ ",
+        text: "กรุณาลองใหม่อีกครั้ง",
+        confirmButtonText: "ตกลง",
+      });
     }
-  
-    // สร้างข้อมูลสำหรับ Excel
-    const excelData = [];
-  
-    // เพิ่มหัวข้อใน Excel
-    const headers = [
-      "เลขที่ใบรับของ",
-      "หัวข้อประมูล",
-      "ผู้บริจาค",
-      "จำนวนเงิน",
-      "วันที่ประมูล",
-      "การชำระเงิน",
-      "วันที่ชำระเงิน",
-      "สลากออมสิน/ใบ",
-      "ล็อตเตอรี่/ใบ",
-      "วัตถุมงคล",
-      "จำนวน",
-      "หน่วยนับ",
-      "โทรศัพท์",
-      "จำนวน",
-      "หน่วยนับ",
-      "เครื่องใช้สำนักงาน",
-      "จำนวน",
-      "หน่วยนับ",
-      "เครื่องใช้ไฟฟ้า",
-      "จำนวน",
-      "หน่วยนับ",
-      "อื่นๆ",
-      "จำนวน",
-      "หน่วยนับ",
-    ];
-  
-    excelData.push(headers);
-  
-    // เพิ่มข้อมูลจาก listData ลงใน Excel
-    listData.forEach(item => {
-      const rowData = [
-        item.number || "",
-        item.auction_report_auctionstarted || "",
-        item.auction_report_user_auction || "",
-        item.auction_report_price || "",
-        item.auction_report_date? formatDate2(item.auction_report_date) || "" :'',
-        item.auction_report_Pay_status == "1" ? "เงินสด" : item.auction_report_Pay_status == "2" ? "เงินโอน" : item.auction_report_Pay_status == "3" ? "เช็ค" : "",
-        item.auction_report_date_Pay_Date? formatDate2(item.auction_report_date_Pay_Date) || "":'',
-        item.aomsin1[0]?.auction_auction_start_event_count || "",
-        item.aomsin1[1]?.auction_auction_start_event_count || "",
-      ];
-  
-      // ระบุลำดับของข้อมูลเพื่อให้เหมือนกันใน rowData และ newRowData
-      const productOrder = ["วัตถุมงคล", "โทรศัพท์", "เครื่องใช้สำนักงาน", "เครื่องใช้ไฟฟ้า", "อื่นๆ"];
-  
-      productOrder.forEach(productType => {
-        const itemsOfType = item?.product1?.filter(product => product.auction_product_start_event_cat === productType);
-  
-        if (itemsOfType.length > 0) {
-          itemsOfType.forEach(itemOfType => {
-            rowData.push(itemOfType.auction_product_start_event);
-            rowData.push(itemOfType.auction_product_start_event_count);
-            rowData.push(itemOfType.auction_product_start_event_cat_count);
-          });
-        } else {
-          // ถ้าไม่มีข้อมูลในหมวดหมู่นี้ ให้ใส่ค่าว่างใน rowData
-          rowData.push("", "", "");
-        }
-      });
-  
-      // สร้าง newRowData ที่มีข้อมูลเรียงลำดับเหมือนกันใน rowData
-      const newRowData = [
-        item.number || "",
-        item.auction_report_auctionstarted || "",
-        item.auction_report_user_auction || "",
-        item.auction_report_price || "",
-        formatDate2(item.auction_report_date) || "",
-        item.auction_report_Pay_status == "1" ? "เงินสด" : item.auction_report_Pay_status == "2" ? "เงินโอน" : item.auction_report_Pay_status == "3" ? "เช็ค" : "",
-        formatDate2(item.auction_report_date_Pay_Date) || "",
-        item.aomsin1[0]?.auction_auction_start_event_count || "",
-        item.aomsin1[1]?.auction_auction_start_event_count || "",
-      ];
-  
-      productOrder.forEach(productType => {
-        const itemsOfType = item?.product1?.filter(product => product.auction_product_start_event_cat === productType);
-  
-        if (itemsOfType.length > 0) {
-          itemsOfType.forEach(itemOfType => {
-            newRowData.push(itemOfType.auction_product_start_event);
-            newRowData.push(itemOfType.auction_product_start_event_count);
-            newRowData.push(itemOfType.auction_product_start_event_cat_count);
-          });
-        } else {
-          // ถ้าไม่มีข้อมูลในหมวดหมู่นี้ ให้ใส่ค่าว่างใน newRowData
-          newRowData.push("", "", "");
-        }
-      });
-  
-      excelData.push(newRowData);
-    });
-  
-    // สร้าง workbook และ worksheet
-    const ws = XLSX.utils.aoa_to_sheet(excelData);
-    const wb = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(wb, ws, "ข้อมูล");
-  
-    // สร้างไฟล์ Excel
-    XLSX.writeFile(wb, "ข้อมูล.xlsx");
-  };
+  }; 
+
 
    //---------- Dialog  ดูข้อมูลรายการ -------------- //
    const [openViewDialog, setOpenViewDialog] = useState(false);
@@ -408,8 +338,6 @@ export function AuctionsList() {
 
   return (
     <div>
-
-
       {openEditParmoon == true ? 
       <EditSale_Parmoon id={idAuctionReport}/>
     :

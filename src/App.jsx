@@ -12,10 +12,10 @@ import { format, parseISO, addYears, subYears } from 'date-fns';
 import { utcToZonedTime } from 'date-fns-tz';
 
 // Components
-import Excelexport_Sale from "./components/excel/Excelexport_Sale";
+// import Excelexport_Sale from "./components/excel/Excelexport_Sale";
 
-registerLocale('th', th); // Register Thai locale
-setDefaultLocale('th'); // Set Thai locale as default
+// registerLocale('th', th); // Register Thai locale
+// setDefaultLocale('th'); // Set Thai locale as default
 
 import "./App.css"
 import { SignIn } from "./pages/auth";
