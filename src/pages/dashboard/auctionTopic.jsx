@@ -2,6 +2,8 @@ import { useState, useEffect, useMemo } from "react";
 import Swal from 'sweetalert2';
 import "react-datepicker/dist/react-datepicker.css";
 import DatePicker from "react-datepicker"
+import "react-datepicker/dist/react-datepicker.css";
+import th from "date-fns/locale/th";
 import { PencilIcon } from "@heroicons/react/24/solid";
 import { BsLayoutTextWindow } from "react-icons/bs";
 import { SiMicrosoftexcel } from "react-icons/si";
@@ -347,7 +349,7 @@ export function AuctionTopic() {
       // showMonthDropdown
       // scrollableYearDropdown
       // scrollableMonthDropdown
-      locale="th"
+      locale={th}
       dateFormat="วันเริ่มต้น dd/MM/yyyy"
       onChange={(date) => setStartDateExcel(date)}
       className="w-full border border-gray-400 rounded-md p-2   shadow-sm  text-gray-600 focus:outline-none focus:border-blue-500"
@@ -356,6 +358,7 @@ export function AuctionTopic() {
       <div className="flex justify-center">
       <DatePicker
       selected={endDateExcel}
+      locale={th}
       dateFormat="วันสิ้นสุด dd/MM/yyyy"
       onChange={(date) => setEndDateExcel(date)}
       className="w-full border border-gray-400 rounded-md p-2  shadow-sm  text-gray-600 focus:outline-none focus:border-blue-500"
@@ -423,6 +426,7 @@ export function AuctionTopic() {
             <div className="mt-3 sm:mt-0">
             <DatePicker
             isClearable
+            locale={th}
             dateFormat="dd/MM/yyyy"
             selected={newAuctionDate}
             onChange={(date) => setNewAuctionDate(date)}
@@ -510,6 +514,7 @@ export function AuctionTopic() {
             <div>
             <DatePicker
             isClearable
+            locale={th}
             disabled={selectedEditData?.status_auction_topic}
             dateFormat="dd/MM/yyyy"
             selected={

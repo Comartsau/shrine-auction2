@@ -29,7 +29,6 @@ export function DashboardNavbar() {
   const Token = localStorage.getItem("token");
   const userName = localStorage.getItem("username");
 
-
   const handleSignOut = async () => {
     try {
       const shouldLogout = await Swal.fire({
@@ -60,7 +59,6 @@ export function DashboardNavbar() {
     }
   };
   
-
   // const handleSignOut = async () => {
   //   try {
   //     const response = await axios.post(

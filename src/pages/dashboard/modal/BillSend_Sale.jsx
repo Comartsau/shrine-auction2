@@ -262,7 +262,7 @@ const BillSend_Sale = ({ open3, handleOpen3, data, statusModal }) => {
     setDataPay(data)
   }, [open3]);
 
-  console.log(dataPay)
+  // console.log(dataPay)
 
   const currentDate = new Date();
 
@@ -291,7 +291,7 @@ const BillSend_Sale = ({ open3, handleOpen3, data, statusModal }) => {
     // คำนวณผลรวมของราคาทั้งหมด
     const totalPrice = productPrices.reduce((acc, currentPrice) => acc + currentPrice, 0);
 
-    console.log(totalPrice)
+    // console.log(totalPrice)
 
   
   return (
@@ -310,7 +310,7 @@ const BillSend_Sale = ({ open3, handleOpen3, data, statusModal }) => {
         <Page size="A4" style={styles.page} >
                 <View style={styles.flexrowbetween}>
                   <View style={styles.flexrow}>
-                    <Text style={[styles.textsm, styles.spacesm]}> </Text>
+                    <Text style={[styles.textsm, styles.spacesm]}>{""} </Text>
                     <Text
                       style={[
                         styles.textbase,
@@ -722,8 +722,8 @@ const BillSend_Sale = ({ open3, handleOpen3, data, statusModal }) => {
                   {/* สรุปรวม */}
                   <View style={styles.tableRow}>
                     <Text style={styles.tableCellsum}> {" "}{` ( ${THBText(totalPrice)} )` || ''}{" "}   </Text>
-                    <Text style={styles.tableCell3}>  </Text>
-                    <Text style={styles.tableCell4}>  </Text>
+                    <Text style={styles.tableCell3}>{""}  </Text>
+                    <Text style={styles.tableCell4}>{""}  </Text>
                     <Text style={styles.tableCell5}> รวมเป็นเงิน  </Text>
                     <Text style={styles.tableCell6}>  {Number(totalPrice).toLocaleString() || ''} </Text>
                   </View>
@@ -885,7 +885,7 @@ const BillSend_Sale = ({ open3, handleOpen3, data, statusModal }) => {
         <Page size="A4" style={styles.page} >
         <View style={styles.flexrowbetween}>
           <View style={styles.flexrow}>
-            <Text style={[styles.textsm, styles.spacesm]}> </Text>
+            <Text style={[styles.textsm, styles.spacesm]}>{""} </Text>
             <Text
               style={[
                 styles.textbase,
@@ -1297,8 +1297,8 @@ const BillSend_Sale = ({ open3, handleOpen3, data, statusModal }) => {
           {/* สรุปรวม */}
           <View style={styles.tableRow}>
             <Text style={styles.tableCellsum}> {" "}{` ( ${THBText(totalPrice)} )` || ''}{" "}   </Text>
-            <Text style={styles.tableCell3}>  </Text>
-            <Text style={styles.tableCell4}>  </Text>
+            <Text style={styles.tableCell3}>{""}  </Text>
+            <Text style={styles.tableCell4}> {""} </Text>
             <Text style={styles.tableCell5}> รวมเป็นเงิน  </Text>
             <Text style={styles.tableCell6}>  {Number(totalPrice).toLocaleString() || ''} </Text>
           </View>
@@ -1465,7 +1465,7 @@ const BillSend_Sale = ({ open3, handleOpen3, data, statusModal }) => {
         <Page size="A4" style={styles.page} >
         <View style={styles.flexrowbetween}>
           <View style={styles.flexrow}>
-            <Text style={[styles.textsm, styles.spacesm]}> </Text>
+            <Text style={[styles.textsm, styles.spacesm]}>{""} </Text>
             <Text
               style={[
                 styles.textbase,
@@ -1877,8 +1877,8 @@ const BillSend_Sale = ({ open3, handleOpen3, data, statusModal }) => {
           {/* สรุปรวม */}
           <View style={styles.tableRow}>
             <Text style={styles.tableCellsum}> {" "}{` ( ${THBText(totalPrice)} )` || ''}{" "}   </Text>
-            <Text style={styles.tableCell3}>  </Text>
-            <Text style={styles.tableCell4}>  </Text>
+            <Text style={styles.tableCell3}> {""} </Text>
+            <Text style={styles.tableCell4}>{""}  </Text>
             <Text style={styles.tableCell5}> รวมเป็นเงิน  </Text>
             <Text style={styles.tableCell6}>  {Number(totalPrice).toLocaleString() || ''} </Text>
           </View>

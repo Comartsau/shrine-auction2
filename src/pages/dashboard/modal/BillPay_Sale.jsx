@@ -266,18 +266,18 @@ const BillPay_Sale = ({ open5, handleOpen5, data, statusModal  }) => {
     if (data.id_receipt){
       try {
         const res = await axios.get(`${import.meta.env.VITE_APP_API}/Receipt/${data.id_receipt}/detail`)
-        console.log(res.data[0]);
+        // console.log(res.data[0]);
         setDataPay(res.data[0])
         
       } catch (error) {
-        console.log(error);
+        console.error(error);
       }
     }
   }
 
 
   useEffect(() => {
-    console.log(data);
+    // console.log(data);
     fethDataPay()
   }, [open5]);
 
@@ -308,7 +308,7 @@ const BillPay_Sale = ({ open5, handleOpen5, data, statusModal  }) => {
     // คำนวณผลรวมของราคาทั้งหมด
     const totalPrice = productPrices.reduce((acc, currentPrice) => acc + currentPrice, 0);
 
-    console.log(totalPrice)
+    // console.log(totalPrice)
 
 
 
@@ -329,7 +329,7 @@ const BillPay_Sale = ({ open5, handleOpen5, data, statusModal  }) => {
            <Page size="A4" style={styles.page} >
               <View style={styles.flexrowbetween}>
                 <View style={styles.flexrow}>
-                  <Text style={[styles.textsm, styles.spacesm]}> </Text>
+                  <Text style={[styles.textsm, styles.spacesm]}>{""} </Text>
                   <Text
                     style={[
                       styles.textbase,
@@ -774,8 +774,8 @@ const BillPay_Sale = ({ open5, handleOpen5, data, statusModal  }) => {
                   {/* สรุปรวม */}
                   <View style={styles.tableRow}>
                     <Text style={styles.tableCellsum}> {" "}{` ( ${THBText(totalPrice)} )` || ''}{" "}   </Text>
-                    <Text style={styles.tableCell3}>  </Text>
-                    <Text style={styles.tableCell4}>  </Text>
+                    <Text style={styles.tableCell3}> {""} </Text>
+                    <Text style={styles.tableCell4}>{""}  </Text>
                     <Text style={styles.tableCell5}> รวมเป็นเงิน  </Text>
                     <Text style={styles.tableCell6}>  {Number(totalPrice).toLocaleString() || ''} </Text>
                   </View>
@@ -1004,7 +1004,7 @@ const BillPay_Sale = ({ open5, handleOpen5, data, statusModal  }) => {
               <Page size="A4" style={styles.page} >
               <View style={styles.flexrowbetween}>
                 <View style={styles.flexrow}>
-                  <Text style={[styles.textsm, styles.spacesm]}> </Text>
+                  <Text style={[styles.textsm, styles.spacesm]}>{""} </Text>
                   <Text
                     style={[
                       styles.textbase,
@@ -1449,8 +1449,8 @@ const BillPay_Sale = ({ open5, handleOpen5, data, statusModal  }) => {
                   {/* สรุปรวม */}
                   <View style={styles.tableRow}>
                     <Text style={styles.tableCellsum}> {" "}{` ( ${THBText(totalPrice)} )` || ''}{" "}   </Text>
-                    <Text style={styles.tableCell3}>  </Text>
-                    <Text style={styles.tableCell4}>  </Text>
+                    <Text style={styles.tableCell3}> {""} </Text>
+                    <Text style={styles.tableCell4}>{""}  </Text>
                     <Text style={styles.tableCell5}> รวมเป็นเงิน  </Text>
                     <Text style={styles.tableCell6}>  {Number(totalPrice).toLocaleString() || ''} </Text>
                   </View>
@@ -1682,7 +1682,7 @@ const BillPay_Sale = ({ open5, handleOpen5, data, statusModal  }) => {
                <Page size="A4" style={styles.page} >
                <View style={styles.flexrowbetween}>
                  <View style={styles.flexrow}>
-                   <Text style={[styles.textsm, styles.spacesm]}> </Text>
+                   <Text style={[styles.textsm, styles.spacesm]}>{""} </Text>
                    <Text
                      style={[
                        styles.textbase,
@@ -2127,8 +2127,8 @@ const BillPay_Sale = ({ open5, handleOpen5, data, statusModal  }) => {
                    {/* สรุปรวม */}
                    <View style={styles.tableRow}>
                      <Text style={styles.tableCellsum}> {" "}{` ( ${THBText(totalPrice)} )` || ''}{" "}   </Text>
-                     <Text style={styles.tableCell3}>  </Text>
-                     <Text style={styles.tableCell4}>  </Text>
+                     <Text style={styles.tableCell3}>{""}  </Text>
+                     <Text style={styles.tableCell4}>{""}  </Text>
                      <Text style={styles.tableCell5}> รวมเป็นเงิน  </Text>
                      <Text style={styles.tableCell6}>  {Number(totalPrice).toLocaleString() || ''} </Text>
                    </View>

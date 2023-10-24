@@ -276,7 +276,7 @@ const BillSend_Parmoon = ({ open3, handleOpen3, data, statusModal }) => {
 
   }, [open3]);
 
-  console.log(dataPay)
+  // console.log(dataPay)
 
   const currentDate = new Date();
 
@@ -310,7 +310,7 @@ const BillSend_Parmoon = ({ open3, handleOpen3, data, statusModal }) => {
             <Page size="A4" style={styles.page} >
           <View style={styles.flexrowbetween}>
             <View style={styles.flexrow}>
-              <Text style={[styles.textsm, styles.spacesm]}> </Text>
+              <Text style={[styles.textsm, styles.spacesm]}>{""} </Text>
               <Text
                 style={[
                   styles.textbase,
@@ -635,7 +635,7 @@ const BillSend_Parmoon = ({ open3, handleOpen3, data, statusModal }) => {
                   {dataPay?.auction_report_auctionstarted }{" "}
                 </Text>
                 <Text style={styles.tableCell3}>{" "} 1 {" "} </Text>
-                <Text style={styles.tableCell4}> {" "} {" "} </Text>
+                <Text style={styles.tableCell4}> {" "}{""} {" "} </Text>
                 <Text style={styles.tableCell6}> {" "} {Number(dataPay?.auction_report_price).toLocaleString()}{" "}</Text>
               </View>
               {/* row 2 */}
@@ -646,8 +646,8 @@ const BillSend_Parmoon = ({ open3, handleOpen3, data, statusModal }) => {
                   {dataPay?.aomsin1?.[0]?.auction_auction_start_event }{" "}
                 </Text>
                 <Text style={styles.tableCell3}>{" "} {dataPay?.aomsin1?.[0]?.auction_auction_start_event_count }{" "} </Text>
-                <Text style={styles.tableCell4}> {" "} {" "} </Text>
-                <Text style={styles.tableCell6}> {" "} {" "}</Text>
+                <Text style={styles.tableCell4}> {" "}{""} {" "} </Text>
+                <Text style={styles.tableCell6}> {" "}{""} {" "}</Text>
               </View>
               {/* row 3 */}
               <View style={styles.tableRow}>
@@ -657,8 +657,8 @@ const BillSend_Parmoon = ({ open3, handleOpen3, data, statusModal }) => {
                   {dataPay?.aomsin1?.[1]?.auction_auction_start_event }{" "}
                 </Text>
                 <Text style={styles.tableCell3}>{" "} {dataPay?.aomsin1?.[1]?.auction_auction_start_event_count }{" "} </Text>
-                <Text style={styles.tableCell4}> {" "} {" "} </Text>
-                <Text style={styles.tableCell6}> {" "} {" "}</Text>
+                <Text style={styles.tableCell4}> {" "}{""} {" "} </Text>
+                <Text style={styles.tableCell6}> {" "} {""}{" "}</Text>
               </View>
               {/* row 4 */}
               <View style={styles.tableRow}>
@@ -669,7 +669,7 @@ const BillSend_Parmoon = ({ open3, handleOpen3, data, statusModal }) => {
                 </Text>
                 <Text style={styles.tableCell3}>{" "} {dataPay?.product1?.[0]?.auction_product_start_event_count }{" "} </Text>
                 <Text style={styles.tableCell4}> {" "} {dataPay?.product1?.[0]?.auction_product_start_event_cat_count }{" "} </Text>
-                <Text style={styles.tableCell6}> {" "} {" "}</Text>
+                <Text style={styles.tableCell6}> {" "}{""} {" "}</Text>
               </View>
               {/* row 5 */}
               <View style={styles.tableRow}>
@@ -680,7 +680,7 @@ const BillSend_Parmoon = ({ open3, handleOpen3, data, statusModal }) => {
                 </Text>
                 <Text style={styles.tableCell3}>{" "} {dataPay?.product1?.[1]?.auction_product_start_event_count }{" "} </Text>
                 <Text style={styles.tableCell4}> {" "} {dataPay?.product1?.[1]?.auction_product_start_event_cat_count }{" "} </Text>
-                <Text style={styles.tableCell6}> {" "} {" "}</Text>
+                <Text style={styles.tableCell6}> {" "} {""}{" "}</Text>
               </View>
               {/* row 6 */}
               <View style={styles.tableRow}>
@@ -691,7 +691,7 @@ const BillSend_Parmoon = ({ open3, handleOpen3, data, statusModal }) => {
                 </Text>
                 <Text style={styles.tableCell3}>{" "} {dataPay?.product1?.[2]?.auction_product_start_event_count }{" "} </Text>
                 <Text style={styles.tableCell4}> {" "} {dataPay?.product1?.[2]?.auction_product_start_event_cat_count }{" "} </Text>
-                <Text style={styles.tableCell6}> {" "} {" "}</Text>
+                <Text style={styles.tableCell6}> {" "}{""} {" "}</Text>
               </View>
               {/* row 7 */}
               <View style={styles.tableRow}>
@@ -702,7 +702,7 @@ const BillSend_Parmoon = ({ open3, handleOpen3, data, statusModal }) => {
                 </Text>
                 <Text style={styles.tableCell3}>{" "} {dataPay?.product1?.[3]?.auction_product_start_event_count }{" "} </Text>
                 <Text style={styles.tableCell4}> {" "} {dataPay?.product1?.[3]?.auction_product_start_event_cat_count }{" "} </Text>
-                <Text style={styles.tableCell6}> {" "} {" "}</Text>
+                <Text style={styles.tableCell6}> {" "}{""} {" "}</Text>
               </View>
               {/* row 8 */}
               <View style={styles.tableRow}>
@@ -713,12 +713,12 @@ const BillSend_Parmoon = ({ open3, handleOpen3, data, statusModal }) => {
                 </Text>
                 <Text style={styles.tableCell3}>{" "} {dataPay?.product1?.[4]?.auction_product_start_event_count }{" "} </Text>
                 <Text style={styles.tableCell4}> {" "} {dataPay?.product1?.[4]?.auction_product_start_event_cat_count }{" "} </Text>
-                <Text style={styles.tableCell6}> {" "} {" "}</Text>
+                <Text style={styles.tableCell6}> {" "}{""} {" "}</Text>
               </View>
               {/* สรุปรวม */}
               <View style={styles.tableRow}>
                 <Text style={styles.tableCellsum}> {" "}{`( ${THBText(dataPay?.auction_report_price)} )`}{" "}  </Text>
-                <Text style={styles.tableCell3}>  </Text>
+                <Text style={styles.tableCell3}>{""}  </Text>
                 <Text style={styles.tableCell4}> รวมเป็นเงิน  </Text>
                 <Text style={styles.tableCell6}> {" "}{Number(dataPay?.auction_report_price).toLocaleString()}{" "}</Text>
               </View>
@@ -881,7 +881,7 @@ const BillSend_Parmoon = ({ open3, handleOpen3, data, statusModal }) => {
             <Page size="A4" style={styles.page} >
             <View style={styles.flexrowbetween}>
               <View style={styles.flexrow}>
-                <Text style={[styles.textsm, styles.spacesm]}> </Text>
+                <Text style={[styles.textsm, styles.spacesm]}>{""} </Text>
                 <Text
                   style={[
                     styles.textbase,
@@ -1206,7 +1206,7 @@ const BillSend_Parmoon = ({ open3, handleOpen3, data, statusModal }) => {
                     {dataPay?.auction_report_auctionstarted }{" "}
                   </Text>
                   <Text style={styles.tableCell3}>{" "} 1 {" "} </Text>
-                  <Text style={styles.tableCell4}> {" "} {" "} </Text>
+                  <Text style={styles.tableCell4}> {" "}{""} {" "} </Text>
                   <Text style={styles.tableCell6}> {" "} {Number(dataPay?.auction_report_price).toLocaleString()}{" "}</Text>
                 </View>
                 {/* row 2 */}
@@ -1217,8 +1217,8 @@ const BillSend_Parmoon = ({ open3, handleOpen3, data, statusModal }) => {
                     {dataPay?.aomsin1?.[0]?.auction_auction_start_event }{" "}
                   </Text>
                   <Text style={styles.tableCell3}>{" "} {dataPay?.aomsin1?.[0]?.auction_auction_start_event_count }{" "} </Text>
-                  <Text style={styles.tableCell4}> {" "} {" "} </Text>
-                  <Text style={styles.tableCell6}> {" "} {" "}</Text>
+                  <Text style={styles.tableCell4}> {" "} {""}{" "} </Text>
+                  <Text style={styles.tableCell6}> {" "}{""} {" "}</Text>
                 </View>
                 {/* row 3 */}
                 <View style={styles.tableRow}>
@@ -1228,8 +1228,8 @@ const BillSend_Parmoon = ({ open3, handleOpen3, data, statusModal }) => {
                     {dataPay?.aomsin1?.[1]?.auction_auction_start_event }{" "}
                   </Text>
                   <Text style={styles.tableCell3}>{" "} {dataPay?.aomsin1?.[1]?.auction_auction_start_event_count }{" "} </Text>
-                  <Text style={styles.tableCell4}> {" "} {" "} </Text>
-                  <Text style={styles.tableCell6}> {" "} {" "}</Text>
+                  <Text style={styles.tableCell4}> {" "}{""} {" "} </Text>
+                  <Text style={styles.tableCell6}> {" "}{""} {" "}</Text>
                 </View>
                 {/* row 4 */}
                 <View style={styles.tableRow}>
@@ -1240,7 +1240,7 @@ const BillSend_Parmoon = ({ open3, handleOpen3, data, statusModal }) => {
                   </Text>
                   <Text style={styles.tableCell3}>{" "} {dataPay?.product1?.[0]?.auction_product_start_event_count }{" "} </Text>
                   <Text style={styles.tableCell4}> {" "} {dataPay?.product1?.[0]?.auction_product_start_event_cat_count }{" "} </Text>
-                  <Text style={styles.tableCell6}> {" "} {" "}</Text>
+                  <Text style={styles.tableCell6}> {" "} {""}{" "}</Text>
                 </View>
                 {/* row 5 */}
                 <View style={styles.tableRow}>
@@ -1251,7 +1251,7 @@ const BillSend_Parmoon = ({ open3, handleOpen3, data, statusModal }) => {
                   </Text>
                   <Text style={styles.tableCell3}>{" "} {dataPay?.product1?.[1]?.auction_product_start_event_count }{" "} </Text>
                   <Text style={styles.tableCell4}> {" "} {dataPay?.product1?.[1]?.auction_product_start_event_cat_count }{" "} </Text>
-                  <Text style={styles.tableCell6}> {" "} {" "}</Text>
+                  <Text style={styles.tableCell6}> {" "}{""} {" "}</Text>
                 </View>
                 {/* row 6 */}
                 <View style={styles.tableRow}>
@@ -1262,7 +1262,7 @@ const BillSend_Parmoon = ({ open3, handleOpen3, data, statusModal }) => {
                   </Text>
                   <Text style={styles.tableCell3}>{" "} {dataPay?.product1?.[2]?.auction_product_start_event_count }{" "} </Text>
                   <Text style={styles.tableCell4}> {" "} {dataPay?.product1?.[2]?.auction_product_start_event_cat_count }{" "} </Text>
-                  <Text style={styles.tableCell6}> {" "} {" "}</Text>
+                  <Text style={styles.tableCell6}> {" "}{""} {" "}</Text>
                 </View>
                 {/* row 7 */}
                 <View style={styles.tableRow}>
@@ -1273,7 +1273,7 @@ const BillSend_Parmoon = ({ open3, handleOpen3, data, statusModal }) => {
                   </Text>
                   <Text style={styles.tableCell3}>{" "} {dataPay?.product1?.[3]?.auction_product_start_event_count }{" "} </Text>
                   <Text style={styles.tableCell4}> {" "} {dataPay?.product1?.[3]?.auction_product_start_event_cat_count }{" "} </Text>
-                  <Text style={styles.tableCell6}> {" "} {" "}</Text>
+                  <Text style={styles.tableCell6}> {" "}{""} {" "}</Text>
                 </View>
                 {/* row 8 */}
                 <View style={styles.tableRow}>
@@ -1284,12 +1284,12 @@ const BillSend_Parmoon = ({ open3, handleOpen3, data, statusModal }) => {
                   </Text>
                   <Text style={styles.tableCell3}>{" "} {dataPay?.product1?.[4]?.auction_product_start_event_count }{" "} </Text>
                   <Text style={styles.tableCell4}> {" "} {dataPay?.product1?.[4]?.auction_product_start_event_cat_count }{" "} </Text>
-                  <Text style={styles.tableCell6}> {" "} {" "}</Text>
+                  <Text style={styles.tableCell6}> {" "}{""} {" "}</Text>
                 </View>
                 {/* สรุปรวม */}
                 <View style={styles.tableRow}>
                   <Text style={styles.tableCellsum}> {" "}{`( ${THBText(dataPay?.auction_report_price)} )`}{" "}  </Text>
-                  <Text style={styles.tableCell3}>  </Text>
+                  <Text style={styles.tableCell3}> {""} </Text>
                   <Text style={styles.tableCell4}> รวมเป็นเงิน  </Text>
                   <Text style={styles.tableCell6}> {" "}{Number(dataPay?.auction_report_price).toLocaleString()}{" "}</Text>
                 </View>
@@ -1454,7 +1454,7 @@ const BillSend_Parmoon = ({ open3, handleOpen3, data, statusModal }) => {
             <Page size="A4" style={styles.page} >
             <View style={styles.flexrowbetween}>
               <View style={styles.flexrow}>
-                <Text style={[styles.textsm, styles.spacesm]}> </Text>
+                <Text style={[styles.textsm, styles.spacesm]}>{""} </Text>
                 <Text
                   style={[
                     styles.textbase,
@@ -1779,7 +1779,7 @@ const BillSend_Parmoon = ({ open3, handleOpen3, data, statusModal }) => {
                     {dataPay?.auction_report_auctionstarted }{" "}
                   </Text>
                   <Text style={styles.tableCell3}>{" "} 1 {" "} </Text>
-                  <Text style={styles.tableCell4}> {" "} {" "} </Text>
+                  <Text style={styles.tableCell4}> {" "}{""} {" "} </Text>
                   <Text style={styles.tableCell6}> {" "} {Number(dataPay?.auction_report_price).toLocaleString()}{" "}</Text>
                 </View>
                 {/* row 2 */}
@@ -1790,8 +1790,8 @@ const BillSend_Parmoon = ({ open3, handleOpen3, data, statusModal }) => {
                     {dataPay?.aomsin1?.[0]?.auction_auction_start_event }{" "}
                   </Text>
                   <Text style={styles.tableCell3}>{" "} {dataPay?.aomsin1?.[0]?.auction_auction_start_event_count }{" "} </Text>
-                  <Text style={styles.tableCell4}> {" "} {" "} </Text>
-                  <Text style={styles.tableCell6}> {" "} {" "}</Text>
+                  <Text style={styles.tableCell4}> {" "}{""} {" "} </Text>
+                  <Text style={styles.tableCell6}> {" "}{""} {" "}</Text>
                 </View>
                 {/* row 3 */}
                 <View style={styles.tableRow}>
@@ -1801,8 +1801,8 @@ const BillSend_Parmoon = ({ open3, handleOpen3, data, statusModal }) => {
                     {dataPay?.aomsin1?.[1]?.auction_auction_start_event }{" "}
                   </Text>
                   <Text style={styles.tableCell3}>{" "} {dataPay?.aomsin1?.[1]?.auction_auction_start_event_count }{" "} </Text>
-                  <Text style={styles.tableCell4}> {" "} {" "} </Text>
-                  <Text style={styles.tableCell6}> {" "} {" "}</Text>
+                  <Text style={styles.tableCell4}> {" "}{""} {" "} </Text>
+                  <Text style={styles.tableCell6}> {" "}{""} {" "}</Text>
                 </View>
                 {/* row 4 */}
                 <View style={styles.tableRow}>
@@ -1813,7 +1813,7 @@ const BillSend_Parmoon = ({ open3, handleOpen3, data, statusModal }) => {
                   </Text>
                   <Text style={styles.tableCell3}>{" "} {dataPay?.product1?.[0]?.auction_product_start_event_count }{" "} </Text>
                   <Text style={styles.tableCell4}> {" "} {dataPay?.product1?.[0]?.auction_product_start_event_cat_count }{" "} </Text>
-                  <Text style={styles.tableCell6}> {" "} {" "}</Text>
+                  <Text style={styles.tableCell6}> {" "}{""} {" "}</Text>
                 </View>
                 {/* row 5 */}
                 <View style={styles.tableRow}>
@@ -1824,7 +1824,7 @@ const BillSend_Parmoon = ({ open3, handleOpen3, data, statusModal }) => {
                   </Text>
                   <Text style={styles.tableCell3}>{" "} {dataPay?.product1?.[1]?.auction_product_start_event_count }{" "} </Text>
                   <Text style={styles.tableCell4}> {" "} {dataPay?.product1?.[1]?.auction_product_start_event_cat_count }{" "} </Text>
-                  <Text style={styles.tableCell6}> {" "} {" "}</Text>
+                  <Text style={styles.tableCell6}> {" "}{""} {" "}</Text>
                 </View>
                 {/* row 6 */}
                 <View style={styles.tableRow}>
@@ -1835,7 +1835,7 @@ const BillSend_Parmoon = ({ open3, handleOpen3, data, statusModal }) => {
                   </Text>
                   <Text style={styles.tableCell3}>{" "} {dataPay?.product1?.[2]?.auction_product_start_event_count }{" "} </Text>
                   <Text style={styles.tableCell4}> {" "} {dataPay?.product1?.[2]?.auction_product_start_event_cat_count }{" "} </Text>
-                  <Text style={styles.tableCell6}> {" "} {" "}</Text>
+                  <Text style={styles.tableCell6}> {" "}{""} {" "}</Text>
                 </View>
                 {/* row 7 */}
                 <View style={styles.tableRow}>
@@ -1846,7 +1846,7 @@ const BillSend_Parmoon = ({ open3, handleOpen3, data, statusModal }) => {
                   </Text>
                   <Text style={styles.tableCell3}>{" "} {dataPay?.product1?.[3]?.auction_product_start_event_count }{" "} </Text>
                   <Text style={styles.tableCell4}> {" "} {dataPay?.product1?.[3]?.auction_product_start_event_cat_count }{" "} </Text>
-                  <Text style={styles.tableCell6}> {" "} {" "}</Text>
+                  <Text style={styles.tableCell6}> {" "} {""}{" "}</Text>
                 </View>
                 {/* row 8 */}
                 <View style={styles.tableRow}>
@@ -1857,12 +1857,12 @@ const BillSend_Parmoon = ({ open3, handleOpen3, data, statusModal }) => {
                   </Text>
                   <Text style={styles.tableCell3}>{" "} {dataPay?.product1?.[4]?.auction_product_start_event_count }{" "} </Text>
                   <Text style={styles.tableCell4}> {" "} {dataPay?.product1?.[4]?.auction_product_start_event_cat_count }{" "} </Text>
-                  <Text style={styles.tableCell6}> {" "} {" "}</Text>
+                  <Text style={styles.tableCell6}> {" "}{""} {" "}</Text>
                 </View>
                 {/* สรุปรวม */}
                 <View style={styles.tableRow}>
                   <Text style={styles.tableCellsum}> {" "}{`( ${THBText(dataPay?.auction_report_price)} )`}{" "}  </Text>
-                  <Text style={styles.tableCell3}>  </Text>
+                  <Text style={styles.tableCell3}>{""}  </Text>
                   <Text style={styles.tableCell4}> รวมเป็นเงิน  </Text>
                   <Text style={styles.tableCell6}> {" "}{Number(dataPay?.auction_report_price).toLocaleString()}{" "}</Text>
                 </View>

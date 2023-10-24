@@ -64,7 +64,7 @@ const Product_modal = ({
       // console.log(res.data);
       setDataTitle(res.data);
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
   const searchDataTitle = async (e) => {
@@ -75,7 +75,7 @@ const Product_modal = ({
       );
       setDataTitle(res.data);
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
   const inputPriceTitle = (e, index) => {
@@ -110,7 +110,7 @@ const Product_modal = ({
 
 
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
   const searchDataProduct = async (e) => {
@@ -121,12 +121,12 @@ const Product_modal = ({
       );
       setDataProduct(res.data);
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
   const handleProduct = (id) => {
     const res = dataProduct.find((data) => data.id == id);
-    console.log(products.length);
+    // console.log(products.length);
 
     if (products.length <= 6) {
       type === 1 &&
@@ -157,7 +157,7 @@ const Product_modal = ({
    
        
     } else {
-      console.log("ไม่ได้ เกิน 8 แถวแล้วง");
+      // console.log("ไม่ได้ เกิน 8 แถวแล้วง");
       Swal.fire({
         icon: 'error',
         title: 'ไม่สามารถทำรายการได้',
@@ -208,7 +208,7 @@ const Product_modal = ({
           setNewProduct({});
           // console.log(products);
         } else {
-          console.log("ไม่ได้ เกิน 8 แถวแล้วง");
+          // console.log("ไม่ได้ เกิน 8 แถวแล้วง");
           Swal.fire({
             icon: 'error',
             title: 'ไม่สามารถทำรายการได้',
@@ -217,7 +217,7 @@ const Product_modal = ({
         }
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
       setMessage(error.response.data.message);
     }
   };
@@ -293,7 +293,7 @@ const Product_modal = ({
         setProductPrice("")
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 

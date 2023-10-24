@@ -13,6 +13,8 @@ import { PDFViewer } from "@react-pdf/renderer";
 import { ReceiveAuctions } from "./ReceiveAuctions";
 
 import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import th from "date-fns/locale/th";
 
 
 
@@ -391,7 +393,7 @@ export function AuctionsList() {
                 // showMonthDropdown
                 // scrollableYearDropdown
                 // scrollableMonthDropdown
-                locale="th"
+                locale={th}
                 dateFormat=" วันเริ่มต้น dd/MM/yyyy"
                 label="วันสิ้นสุด"
                 onChange={(date) => setStartDateExcel(date)}
@@ -401,6 +403,7 @@ export function AuctionsList() {
             <div className="flex justify-center ">
               <DatePicker
                 selected={endDateExcel}
+                locale={th}
                 dateFormat="วันสิ้นสุด dd/MM/yyyy"
                 onChange={(date) => setEndDateExcel(date)}
                 className="w-full rounded-md border border-gray-400 p-2 shadow-sm  text-gray-600 focus:border-blue-500 focus:outline-none"

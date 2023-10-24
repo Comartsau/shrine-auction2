@@ -89,7 +89,7 @@ export function Member() {
         },
       });
 
-      console.log(response.data)
+      // console.log(response.data)
       fetchData()
     } catch (error) {
       console.error(error);
@@ -138,7 +138,7 @@ export function Member() {
             Authorization: `Token ${Token}`,
           },
         });
-        console.log(response.data)
+        // console.log(response.data)
         fetchData()
         setNewUser("")
         setNewPassword("")

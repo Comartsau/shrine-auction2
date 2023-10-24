@@ -116,7 +116,7 @@ export function Account() {
         }
       );
       setData(res?.data);
-      console.log(res.data);
+      // console.log(res.data);
 
       if (number) {
         const response = await axios.get(
@@ -140,7 +140,7 @@ export function Account() {
         URL.revokeObjectURL(downloadUrl);
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 
@@ -207,10 +207,10 @@ export function Account() {
       try {
         const res = await axios.get(apiForSaleDetail);
         setDataPay(res.data);
-        console.log(res.data);
+        // console.log(res.data);
         type != "excel" && setOpen(!open);
       } catch (error) {
-        console.log(error);
+        console.error(error);
       }
     } else {
       setDataPay([]);
@@ -223,8 +223,8 @@ export function Account() {
   };
 
   const OpenReceipt = (id, number, id_receipt, statusModal) => {
-    console.log(id);
-    console.log(number);
+    // console.log(id);
+    // console.log(number);
 
     number === 1 && id_receipt &&  (handleOpen2() );
       

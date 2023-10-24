@@ -23,6 +23,8 @@ import { PiReceipt } from "react-icons/pi";
 import { AiFillDelete, AiOutlinePlus } from "react-icons/ai";
 import THBText from 'thai-baht-text'
 import DatePicker from "react-datepicker"
+import "react-datepicker/dist/react-datepicker.css";
+import th from "date-fns/locale/th";
 
 import axios from "axios";
 import Swal from "sweetalert2";
@@ -822,7 +824,7 @@ setSaveSelectedProductData(newData);
 
       }));
 
-      console.log(productData)
+      // console.log(productData)
 
       const saleData = {
         sale_code_customer_name: selectCustomerData.customer_name || '',
@@ -881,7 +883,7 @@ setSaveSelectedProductData(newData);
         },
         // data:saleData
       });
-      console.log(response.data)
+      // console.log(response.data)
       setBillData(response.data)
       setBillDataId(response.data.id)
       await fetchUpdatedData(response.data.id);
@@ -897,7 +899,7 @@ setSaveSelectedProductData(newData);
       }
       
     } catch (error) {
-      console.log(error)
+      console.error(error)
     }
   }
 
@@ -1023,7 +1025,7 @@ setSaveSelectedProductData(newData);
         },
       });
   
-      console.log(response.data)
+      // console.log(response.data)
       setReportData(response.data)
     } catch (error) {
       console.error('เกิดข้อผิดพลาดในการดึงข้อมูล:', error);
@@ -1095,7 +1097,7 @@ setSaveSelectedProductData(newData);
         formData.append("sale_receipt_status", Number(payStatus));
         formData.append("sale_receipt_image", selectedFile || "");
 
-        console.log("FormData:", JSON.stringify([...formData.entries()]));
+        // console.log("FormData:", JSON.stringify([...formData.entries()]));
 
     
         const response = await axios.post(
@@ -1108,7 +1110,7 @@ setSaveSelectedProductData(newData);
             },
           }
         );
-        console.log(response.data)
+        // console.log(response.data)
         setReceiptId(response.data.id);
         setReceiptStatusId(response.data.sale_receipt_status);
         setOpenViewPayDialog(false);
@@ -1149,7 +1151,7 @@ setSaveSelectedProductData(newData);
           },
         });
     
-        console.log(response.data)
+        // console.log(response.data)
         setReceiptData(response.data)
       } catch (error) {
         console.error('เกิดข้อผิดพลาดในการดึงข้อมูล:', error);
@@ -2578,7 +2580,6 @@ setSaveSelectedProductData(newData);
                                 label="หมวดหมู่"
                                 value={newProductCategory || ""}
                                 onChange={(e) => {
-                                  // console.log(e);
                                   setNewProductCategory(e);
                                 }}
                                 // onChange={handleNewProductCategory}
@@ -3021,6 +3022,7 @@ setSaveSelectedProductData(newData);
                          <DatePicker
                          selected={payDate}
                          dateFormat="dd/MM/yyyy"
+                         locale={th}
                           onChange={(date) => setPayDate(date)}
                           className="w-full border-2 border-gray-300 rounded-md p-2   shadow-sm focus:outline-none focus:border-blue-500"
                           />
@@ -3079,6 +3081,7 @@ setSaveSelectedProductData(newData);
                         <div className="mt-3 sm:mt-0 md:w-[300px] lg:w-[300px] xl:w-[200px]  2xl:w-[200px]">
                           <DatePicker
                           selected={payDate}
+                          locale={th}
                           dateFormat="dd/MM/yyyy"
                            onChange={(date) => setPayDate(date)}
                            className="w-full border-2 border-gray-300 rounded-md p-2   shadow-sm focus:outline-none focus:border-blue-500"
@@ -3197,6 +3200,7 @@ setSaveSelectedProductData(newData);
                        <div className="mt-3 sm:mt-0 md:w-[300px] lg:w-[300px] xl:w-[200px]  2xl:w-[250px]">
                          <DatePicker
                          selected={payDate}
+                         locale={th}
                          dateFormat="dd/MM/yyyy"
                           onChange={(date) => setPayDate(date)}
                           className="w-full border-2 border-gray-300 rounded-md p-2   shadow-sm focus:outline-none focus:border-blue-500"

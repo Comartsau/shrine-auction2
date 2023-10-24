@@ -96,7 +96,7 @@ export function Display() {
 
     // Display_1
     socket.on("show_display_1", (newData) => {
-      console.log(newData)
+      // console.log(newData)
       newData.map((data) => {return setTitle(data.auctionstarted_auction_topic);});
       localStorage.setItem("auctionstarted_auction_topic",newData?.[0].auctionstarted_auction_topic);
       localStorage.setItem("status_123", newData?.[0].status_123);
@@ -107,7 +107,7 @@ export function Display() {
       setStartAuction(true);
       localStorage.setItem("startAuction", true )
       
-      console.log(newData);
+      // console.log(newData);
       if(newData?.[0].aomsin){
         setAomsin(newData?.[0].aomsin);
       }
@@ -119,7 +119,7 @@ export function Display() {
 
     // display_3
     socket.on("show_display_3", (newData) => {
-      console.log(newData);
+      // console.log(newData);
       setListShowTop(newData.main);
       if (listShowTop) {
         localStorage.setItem("auctionstarted_auction_topic", newData.main?.[0]?.auction_result_auctionstarted);
@@ -151,7 +151,7 @@ export function Display() {
       }
     });
 
-    console.log(listShowTop)
+    // console.log(listShowTop)
 
     // number 0
     socket.on("show_number_0", (newData) => {
@@ -165,7 +165,7 @@ export function Display() {
 
     // number 1
     socket.on("show_number_1", (newData) => {
-      console.log(newData.number)
+      // console.log(newData.number)
 
       localStorage.setItem("status_123", newData.number);
       setNumber(newData.number)
@@ -220,7 +220,7 @@ export function Display() {
 
     // number 4
     socket.on("show_number_4", (newData) => {
-      console.log(newData)
+      // console.log(newData)
       localStorage.setItem("status_123", newData.data);
       setNumber(newData.data)
       localStorage.setItem("winname", newData.main.data[0].user_auction);

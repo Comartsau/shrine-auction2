@@ -269,7 +269,7 @@ const BillPay_Parmoon = ({ open5, handleOpen5, data, statusModal  }) => {
         setTotalPrice(res.data[0].sale_auction.auction_report_price)
         
       } catch (error) {
-        console.log(error);
+        console.error(error);
       }
     }
   }
@@ -279,8 +279,8 @@ const BillPay_Parmoon = ({ open5, handleOpen5, data, statusModal  }) => {
     fethDataPay()
   }, [open5]);
 
-  console.log(dataPay)
-  console.log(totalPrice)
+  // console.log(dataPay)
+  // console.log(totalPrice)
 
   const currentDate = new Date();
 
@@ -326,7 +326,7 @@ const BillPay_Parmoon = ({ open5, handleOpen5, data, statusModal  }) => {
              <Page size="A4" style={styles.page} >
                <View style={styles.flexrowbetween}>
                  <View style={styles.flexrow}>
-                   <Text style={[styles.textsm, styles.spacesm]}> </Text>
+                   <Text style={[styles.textsm, styles.spacesm]}>{""} </Text>
                    <Text
                      style={[
                        styles.textbase,
@@ -691,7 +691,7 @@ const BillPay_Parmoon = ({ open5, handleOpen5, data, statusModal  }) => {
                      </Text>
                      <Text style={styles.tableCell3}>{" "} {dataPay?.sale_auction?.aomsin1?.[0]?.auction_auction_start_event_count }{" "} </Text>
                      <Text style={styles.tableCell4}> {dataPay?.sale_auction?.aomsin1?.[0]?.auction_auction_start_event_count ? "ใบ" : '' }  </Text>
-                     <Text style={styles.tableCell5}> </Text>
+                     <Text style={styles.tableCell5}>{""} </Text>
                     
                    </View>
                    {/* row 3 */}
@@ -703,7 +703,7 @@ const BillPay_Parmoon = ({ open5, handleOpen5, data, statusModal  }) => {
                      </Text>
                      <Text style={styles.tableCell3}>{" "} {dataPay?.sale_auction?.aomsin1?.[1]?.auction_auction_start_event_count }{" "} </Text>
                      <Text style={styles.tableCell4}> {" "} {dataPay?.sale_auction?.aomsin1?.[1]?.auction_auction_start_event_count ? "ใบ" : '' }{" "} </Text>
-                     <Text style={styles.tableCell5}>  </Text>
+                     <Text style={styles.tableCell5}> {""} </Text>
                    </View>
                    {/* row 4 */}
                    <View style={styles.tableRow}>
@@ -714,7 +714,7 @@ const BillPay_Parmoon = ({ open5, handleOpen5, data, statusModal  }) => {
                      </Text>
                      <Text style={styles.tableCell3}>{" "} {dataPay?.sale_auction?.product1?.[0]?.auction_product_start_event_count }{" "} </Text>
                      <Text style={styles.tableCell4}> {" "}  {dataPay?.sale_auction?.product1?.[0]?.auction_product_start_event_cat_count }{" "} </Text>
-                     <Text style={styles.tableCell5}>  </Text>
+                     <Text style={styles.tableCell5}>{""}  </Text>
                      
                    </View>
                    {/* row 5 */}
@@ -726,7 +726,7 @@ const BillPay_Parmoon = ({ open5, handleOpen5, data, statusModal  }) => {
                      </Text>
                      <Text style={styles.tableCell3}>{" "} {dataPay?.sale_auction?.product1?.[1]?.auction_product_start_event_count }{" "} </Text>
                      <Text style={styles.tableCell4}> {" "}  {dataPay?.sale_auction?.product1?.[1]?.auction_product_start_event_cat_count }{" "} </Text>
-                     <Text style={styles.tableCell5}>  </Text>
+                     <Text style={styles.tableCell5}> {""} </Text>
                      
                    </View>
                    {/* row 6 */}
@@ -738,7 +738,7 @@ const BillPay_Parmoon = ({ open5, handleOpen5, data, statusModal  }) => {
                      </Text>
                      <Text style={styles.tableCell3}>{" "} {dataPay?.sale_auction?.product1?.[2]?.auction_product_start_event_count }{" "} </Text>
                      <Text style={styles.tableCell4}> {" "}  {dataPay?.sale_auction?.product1?.[2]?.auction_product_start_event_cat_count }{" "} </Text>
-                     <Text style={styles.tableCell5}>  </Text>
+                     <Text style={styles.tableCell5}> {""} </Text>
                    </View>
                    {/* row 7 */}
                    <View style={styles.tableRow}>
@@ -749,7 +749,7 @@ const BillPay_Parmoon = ({ open5, handleOpen5, data, statusModal  }) => {
                      </Text>
                      <Text style={styles.tableCell3}>{" "} {dataPay?.sale_auction?.product1?.[3]?.auction_product_start_event_count }{" "} </Text>
                      <Text style={styles.tableCell4}> {" "}  {dataPay?.sale_auction?.product1?.[3]?.auction_product_start_event_cat_count }{" "} </Text>
-                     <Text style={styles.tableCell5}>  </Text>
+                     <Text style={styles.tableCell5}> {""} </Text>
                    </View>
                    {/* row 8 */}
                    <View style={styles.tableRow}>
@@ -760,12 +760,12 @@ const BillPay_Parmoon = ({ open5, handleOpen5, data, statusModal  }) => {
                      </Text>
                      <Text style={styles.tableCell3}>{" "} {dataPay?.sale_auction?.product1?.[4]?.auction_product_start_event_count }{" "} </Text>
                      <Text style={styles.tableCell4}> {" "}  {dataPay?.sale_auction?.product1?.[4]?.auction_product_start_event_cat_count }{" "} </Text>
-                     <Text style={styles.tableCell5}>  </Text>
+                     <Text style={styles.tableCell5}> {""} </Text>
                    </View>
                    {/* สรุปรวม */}
                    <View style={styles.tableRow}>
                      <Text style={styles.tableCellsum}> {" "}{` ( ${THBText(totalPrice)} )` || ''}{" "}   </Text>
-                     <Text style={styles.tableCell3}>  </Text>
+                     <Text style={styles.tableCell3}>{""}  </Text>
                      <Text style={styles.tableCell4}> รวมเป็นเงิน  </Text>
                      <Text style={styles.tableCell5}>  {Number(totalPrice).toLocaleString() || ''} </Text>
                    </View>
@@ -992,7 +992,7 @@ const BillPay_Parmoon = ({ open5, handleOpen5, data, statusModal  }) => {
              <Page size="A4" style={styles.page} >
              <View style={styles.flexrowbetween}>
                <View style={styles.flexrow}>
-                 <Text style={[styles.textsm, styles.spacesm]}> </Text>
+                 <Text style={[styles.textsm, styles.spacesm]}>{""} </Text>
                  <Text
                    style={[
                      styles.textbase,
@@ -1357,7 +1357,7 @@ const BillPay_Parmoon = ({ open5, handleOpen5, data, statusModal  }) => {
                    </Text>
                    <Text style={styles.tableCell3}>{" "} {dataPay?.sale_auction?.aomsin1?.[0]?.auction_auction_start_event_count }{" "} </Text>
                    <Text style={styles.tableCell4}> {dataPay?.sale_auction?.aomsin1?.[0]?.auction_auction_start_event_count ? "ใบ" : '' }  </Text>
-                   <Text style={styles.tableCell5}> </Text>
+                   <Text style={styles.tableCell5}>{""} </Text>
                   
                  </View>
                  {/* row 3 */}
@@ -1369,7 +1369,7 @@ const BillPay_Parmoon = ({ open5, handleOpen5, data, statusModal  }) => {
                    </Text>
                    <Text style={styles.tableCell3}>{" "} {dataPay?.sale_auction?.aomsin1?.[1]?.auction_auction_start_event_count }{" "} </Text>
                    <Text style={styles.tableCell4}> {" "} {dataPay?.sale_auction?.aomsin1?.[1]?.auction_auction_start_event_count ? "ใบ" : '' }{" "} </Text>
-                   <Text style={styles.tableCell5}>  </Text>
+                   <Text style={styles.tableCell5}> {""} </Text>
                  </View>
                  {/* row 4 */}
                  <View style={styles.tableRow}>
@@ -1380,7 +1380,7 @@ const BillPay_Parmoon = ({ open5, handleOpen5, data, statusModal  }) => {
                    </Text>
                    <Text style={styles.tableCell3}>{" "} {dataPay?.sale_auction?.product1?.[0]?.auction_product_start_event_count }{" "} </Text>
                    <Text style={styles.tableCell4}> {" "}  {dataPay?.sale_auction?.product1?.[0]?.auction_product_start_event_cat_count }{" "} </Text>
-                   <Text style={styles.tableCell5}>  </Text>
+                   <Text style={styles.tableCell5}> {""} </Text>
                    
                  </View>
                  {/* row 5 */}
@@ -1392,7 +1392,7 @@ const BillPay_Parmoon = ({ open5, handleOpen5, data, statusModal  }) => {
                    </Text>
                    <Text style={styles.tableCell3}>{" "} {dataPay?.sale_auction?.product1?.[1]?.auction_product_start_event_count }{" "} </Text>
                    <Text style={styles.tableCell4}> {" "}  {dataPay?.sale_auction?.product1?.[1]?.auction_product_start_event_cat_count }{" "} </Text>
-                   <Text style={styles.tableCell5}>  </Text>
+                   <Text style={styles.tableCell5}> {""} </Text>
                    
                  </View>
                  {/* row 6 */}
@@ -1404,7 +1404,7 @@ const BillPay_Parmoon = ({ open5, handleOpen5, data, statusModal  }) => {
                    </Text>
                    <Text style={styles.tableCell3}>{" "} {dataPay?.sale_auction?.product1?.[2]?.auction_product_start_event_count }{" "} </Text>
                    <Text style={styles.tableCell4}> {" "}  {dataPay?.sale_auction?.product1?.[2]?.auction_product_start_event_cat_count }{" "} </Text>
-                   <Text style={styles.tableCell5}>  </Text>
+                   <Text style={styles.tableCell5}>{""}  </Text>
                  </View>
                  {/* row 7 */}
                  <View style={styles.tableRow}>
@@ -1415,7 +1415,7 @@ const BillPay_Parmoon = ({ open5, handleOpen5, data, statusModal  }) => {
                    </Text>
                    <Text style={styles.tableCell3}>{" "} {dataPay?.sale_auction?.product1?.[3]?.auction_product_start_event_count }{" "} </Text>
                    <Text style={styles.tableCell4}> {" "}  {dataPay?.sale_auction?.product1?.[3]?.auction_product_start_event_cat_count }{" "} </Text>
-                   <Text style={styles.tableCell5}>  </Text>
+                   <Text style={styles.tableCell5}>{""}  </Text>
                  </View>
                  {/* row 8 */}
                  <View style={styles.tableRow}>
@@ -1426,12 +1426,12 @@ const BillPay_Parmoon = ({ open5, handleOpen5, data, statusModal  }) => {
                    </Text>
                    <Text style={styles.tableCell3}>{" "} {dataPay?.sale_auction?.product1?.[4]?.auction_product_start_event_count }{" "} </Text>
                    <Text style={styles.tableCell4}> {" "}  {dataPay?.sale_auction?.product1?.[4]?.auction_product_start_event_cat_count }{" "} </Text>
-                   <Text style={styles.tableCell5}>  </Text>
+                   <Text style={styles.tableCell5}> {""} </Text>
                  </View>
                  {/* สรุปรวม */}
                  <View style={styles.tableRow}>
                    <Text style={styles.tableCellsum}> {" "}{` ( ${THBText(totalPrice)} )` || ''}{" "}   </Text>
-                   <Text style={styles.tableCell3}>  </Text>
+                   <Text style={styles.tableCell3}>{""}  </Text>
                    <Text style={styles.tableCell4}> รวมเป็นเงิน  </Text>
                    <Text style={styles.tableCell5}>  {Number(totalPrice).toLocaleString() || ''} </Text>
                  </View>
@@ -1661,7 +1661,7 @@ const BillPay_Parmoon = ({ open5, handleOpen5, data, statusModal  }) => {
              <Page size="A4" style={styles.page} >
              <View style={styles.flexrowbetween}>
                <View style={styles.flexrow}>
-                 <Text style={[styles.textsm, styles.spacesm]}> </Text>
+                 <Text style={[styles.textsm, styles.spacesm]}>{""} </Text>
                  <Text
                    style={[
                      styles.textbase,
@@ -2026,7 +2026,7 @@ const BillPay_Parmoon = ({ open5, handleOpen5, data, statusModal  }) => {
                    </Text>
                    <Text style={styles.tableCell3}>{" "} {dataPay?.sale_auction?.aomsin1?.[0]?.auction_auction_start_event_count }{" "} </Text>
                    <Text style={styles.tableCell4}> {dataPay?.sale_auction?.aomsin1?.[0]?.auction_auction_start_event_count ? "ใบ" : '' }  </Text>
-                   <Text style={styles.tableCell5}> </Text>
+                   <Text style={styles.tableCell5}>{""} </Text>
                   
                  </View>
                  {/* row 3 */}
@@ -2038,7 +2038,7 @@ const BillPay_Parmoon = ({ open5, handleOpen5, data, statusModal  }) => {
                    </Text>
                    <Text style={styles.tableCell3}>{" "} {dataPay?.sale_auction?.aomsin1?.[1]?.auction_auction_start_event_count }{" "} </Text>
                    <Text style={styles.tableCell4}> {" "} {dataPay?.sale_auction?.aomsin1?.[1]?.auction_auction_start_event_count ? "ใบ" : '' }{" "} </Text>
-                   <Text style={styles.tableCell5}>  </Text>
+                   <Text style={styles.tableCell5}>{""}  </Text>
                  </View>
                  {/* row 4 */}
                  <View style={styles.tableRow}>
@@ -2049,7 +2049,7 @@ const BillPay_Parmoon = ({ open5, handleOpen5, data, statusModal  }) => {
                    </Text>
                    <Text style={styles.tableCell3}>{" "} {dataPay?.sale_auction?.product1?.[0]?.auction_product_start_event_count }{" "} </Text>
                    <Text style={styles.tableCell4}> {" "}  {dataPay?.sale_auction?.product1?.[0]?.auction_product_start_event_cat_count }{" "} </Text>
-                   <Text style={styles.tableCell5}>  </Text>
+                   <Text style={styles.tableCell5}>{""}  </Text>
                    
                  </View>
                  {/* row 5 */}
@@ -2061,7 +2061,7 @@ const BillPay_Parmoon = ({ open5, handleOpen5, data, statusModal  }) => {
                    </Text>
                    <Text style={styles.tableCell3}>{" "} {dataPay?.sale_auction?.product1?.[1]?.auction_product_start_event_count }{" "} </Text>
                    <Text style={styles.tableCell4}> {" "}  {dataPay?.sale_auction?.product1?.[1]?.auction_product_start_event_cat_count }{" "} </Text>
-                   <Text style={styles.tableCell5}>  </Text>
+                   <Text style={styles.tableCell5}>{""}  </Text>
                    
                  </View>
                  {/* row 6 */}
@@ -2073,7 +2073,7 @@ const BillPay_Parmoon = ({ open5, handleOpen5, data, statusModal  }) => {
                    </Text>
                    <Text style={styles.tableCell3}>{" "} {dataPay?.sale_auction?.product1?.[2]?.auction_product_start_event_count }{" "} </Text>
                    <Text style={styles.tableCell4}> {" "}  {dataPay?.sale_auction?.product1?.[2]?.auction_product_start_event_cat_count }{" "} </Text>
-                   <Text style={styles.tableCell5}>  </Text>
+                   <Text style={styles.tableCell5}> {""} </Text>
                  </View>
                  {/* row 7 */}
                  <View style={styles.tableRow}>
@@ -2084,7 +2084,7 @@ const BillPay_Parmoon = ({ open5, handleOpen5, data, statusModal  }) => {
                    </Text>
                    <Text style={styles.tableCell3}>{" "} {dataPay?.sale_auction?.product1?.[3]?.auction_product_start_event_count }{" "} </Text>
                    <Text style={styles.tableCell4}> {" "}  {dataPay?.sale_auction?.product1?.[3]?.auction_product_start_event_cat_count }{" "} </Text>
-                   <Text style={styles.tableCell5}>  </Text>
+                   <Text style={styles.tableCell5}> {""} </Text>
                  </View>
                  {/* row 8 */}
                  <View style={styles.tableRow}>
@@ -2095,12 +2095,12 @@ const BillPay_Parmoon = ({ open5, handleOpen5, data, statusModal  }) => {
                    </Text>
                    <Text style={styles.tableCell3}>{" "} {dataPay?.sale_auction?.product1?.[4]?.auction_product_start_event_count }{" "} </Text>
                    <Text style={styles.tableCell4}> {" "}  {dataPay?.sale_auction?.product1?.[4]?.auction_product_start_event_cat_count }{" "} </Text>
-                   <Text style={styles.tableCell5}>  </Text>
+                   <Text style={styles.tableCell5}> {""} </Text>
                  </View>
                  {/* สรุปรวม */}
                  <View style={styles.tableRow}>
                    <Text style={styles.tableCellsum}> {" "}{` ( ${THBText(totalPrice)} )` || ''}{" "}   </Text>
-                   <Text style={styles.tableCell3}>  </Text>
+                   <Text style={styles.tableCell3}> {""} </Text>
                    <Text style={styles.tableCell4}> รวมเป็นเงิน  </Text>
                    <Text style={styles.tableCell5}>  {Number(totalPrice).toLocaleString() || ''} </Text>
                  </View>

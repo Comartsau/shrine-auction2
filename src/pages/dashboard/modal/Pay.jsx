@@ -49,21 +49,21 @@ const Pay = ({ openPay, handleOpen3, dataPayModal, fetchData }) => {
       formData.append("sale_receipt_check", sendData?.sale_receipt_check || "");
       formData.append("sale_receipt_status", Number(statusRadio) || "");
 
-        console.log("FormData:", JSON.stringify([...formData.entries()]));
+        // console.log("FormData:", JSON.stringify([...formData.entries()]));
 
       const res = await axios.post(url, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
       });
-    console.log(res.data);
+    // console.log(res.data);
       handleOpen3();
       setStatusRadio(1);
       fetchData()
 
 
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 

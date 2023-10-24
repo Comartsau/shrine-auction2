@@ -15,6 +15,8 @@ import { ReceiveSale } from "./ReceiveSale";
 import EditSale_Cart from "../dashboard/edit/EditSale_cart";
 
 import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import th from "date-fns/locale/th";
 import {
   Card,
   Typography,
@@ -69,11 +71,11 @@ export function SaleList() {
     try {
       let url = ''
       if ( (startDateExcel && endDateExcel) || searchQuery ) {
-        console.log(startDateExcel);
+        // console.log(startDateExcel);
         const formattedStartDate = formatDate1(startDateExcel, "YYYY-MM-DD");
         const formattedEndDate = formatDate1(endDateExcel, "YYYY-MM-DD");
-        console.log(formattedStartDate);
-        console.log(formattedEndDate);
+        // console.log(formattedStartDate);
+        // console.log(formattedEndDate);
          url = `${import.meta.env.VITE_APP_API}/Debtor?type_Data=2&receipt_number=${searchQuery}&start_date=${formattedStartDate}&end_date=${formattedEndDate}`;
         
       }
@@ -83,7 +85,7 @@ export function SaleList() {
           Authorization: `Token ${Token}`,
         },
       });
-      console.log(response.data)
+      // console.log(response.data)
       setListData(response.data);
       setNoData(false);
 
@@ -192,7 +194,7 @@ export function SaleList() {
      setOpenViewDialog(false);
    };
 
-   console.log(dataSale)
+  //  console.log(dataSale)
 
 
   //------------  Print  Receive ---------------//
@@ -210,9 +212,9 @@ export function SaleList() {
      setOpenReceiveDialog(false);
    };
 
-   console.log(reportData)
-   console.log(sumTotal)
-   console.log(thbText)
+  //  console.log(reportData)
+  //  console.log(sumTotal)
+  //  console.log(thbText)
 
   //---------- Edit  รายการ -------------- //
       const [editView,setEditView] = useState('false')
@@ -304,10 +306,10 @@ export function SaleList() {
 
   
     const handleEditSale = (data)=> {
-      console.log(data)
+      // console.log(data)
       setOpenEditSale(true)
       setIdAuctionReport(data.id)
-      console.log(data.id)
+      // console.log(data.id)
 
     }
 
@@ -345,7 +347,7 @@ export function SaleList() {
                    // showMonthDropdown
                    // scrollableYearDropdown
                    // scrollableMonthDropdown
-                   locale="th"
+                   locale={th}
                    dateFormat=" วันเริ่มต้น dd/MM/yyyy"
                    label="วันสิ้นสุด"
                    onChange={(date) => setStartDateExcel(date)}
@@ -355,6 +357,7 @@ export function SaleList() {
                <div className="flex justify-center ">
                  <DatePicker
                    selected={endDateExcel}
+                   locale={th}
                    dateFormat="วันสิ้นสุด dd/MM/yyyy"
                    onChange={(date) => setEndDateExcel(date)}
                    className="w-full rounded-md border border-gray-400 p-2 shadow-sm  text-gray-600 focus:border-blue-500 focus:outline-none"

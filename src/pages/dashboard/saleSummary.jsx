@@ -9,6 +9,8 @@ import { GiCancel } from "react-icons/gi";
 import { RiDeleteBin5Line } from "react-icons/ri";
 
 import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import th from "date-fns/locale/th";
 import {
   Card,
   Typography,
@@ -54,11 +56,11 @@ export function SaleSummary() {
     try {
       let url = ''
       if ( (startDateExcel && endDateExcel) || searchQuery ) {
-        console.log(startDateExcel);
+        // console.log(startDateExcel);
         const formattedStartDate = formatDate1(startDateExcel, "YYYY-MM-DD");
         const formattedEndDate = formatDate1(endDateExcel, "YYYY-MM-DD");
-        console.log(formattedStartDate);
-        console.log(formattedEndDate);
+        // console.log(formattedStartDate);
+        // console.log(formattedEndDate);
         //  url = `${import.meta.env.VITE_APP_API}/search-report-sale/`;
          url = `${import.meta.env.VITE_APP_API}/search-sale/?search=${searchQuery},${formattedStartDate},${formattedEndDate}`;
         
@@ -69,7 +71,7 @@ export function SaleSummary() {
           Authorization: `Token ${Token}`,
         },
       });
-      console.log(response.data)
+      // console.log(response.data)
       setListData(response.data);
       setNoData(false);
 
@@ -163,10 +165,6 @@ export function SaleSummary() {
     }
   };
 
-
-
-  
-
   const dateObject = new Date(reportData.sale_auction_date);
 
   // รับค่าวันที่, เดือน, และปี
@@ -207,7 +205,7 @@ export function SaleSummary() {
                   // showMonthDropdown
                   // scrollableYearDropdown
                   // scrollableMonthDropdown
-                  locale="th"
+                  locale={th}
                   dateFormat=" วันเริ่มต้น dd/MM/yyyy"
                   label="วันสิ้นสุด"
                   onChange={(date) => setStartDateExcel(date)}
@@ -217,6 +215,7 @@ export function SaleSummary() {
               <div className="flex justify-center ">
                 <DatePicker
                   selected={endDateExcel}
+                  locale={th}
                   dateFormat="วันสิ้นสุด dd/MM/yyyy"
                   onChange={(date) => setEndDateExcel(date)}
                   className="w-full rounded-md border border-gray-400 p-2 shadow-sm  text-gray-600 focus:border-blue-500 focus:outline-none"

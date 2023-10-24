@@ -122,7 +122,7 @@ export function EditSale1(idAuctionReport) {
       });
       // console.log(customerData);
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 
@@ -132,7 +132,7 @@ export function EditSale1(idAuctionReport) {
       //   console.log('customer : ', res.data);
       setDataAllCustomer(res.data);
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 
@@ -205,7 +205,7 @@ export function EditSale1(idAuctionReport) {
       );
       // console.log(res.data);
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 

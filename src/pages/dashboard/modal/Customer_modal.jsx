@@ -61,10 +61,10 @@ const Customer_modal = ({
         fetchdataCustomer();
         setDataSend({});
       } catch (error) {
-        console.log(error);
+        console.error(error);
       }
     } else {
-      console.log("กรุฯากรอก ชื่อผู้บริจาค");
+      // console.log("กรุฯากรอก ชื่อผู้บริจาค");
     }
   };
 
@@ -126,7 +126,7 @@ const Customer_modal = ({
       handleOpen();
       setDataSend({});
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 
@@ -163,7 +163,7 @@ const Customer_modal = ({
       handleOpen();
       setDataSend({});
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 

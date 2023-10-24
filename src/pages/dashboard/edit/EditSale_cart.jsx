@@ -88,7 +88,7 @@ export function EditSale_cart(idAuctionReport) {
   // const params = useParams();
   const id = idAuctionReport.id;
 
-  console.log(id)
+  // console.log(id)
 
   const fetchData = async () => {
     try {
@@ -96,7 +96,7 @@ export function EditSale_cart(idAuctionReport) {
         `${import.meta.env.VITE_APP_API}/Sale/${id}/detail`
       );
 
-      console.log(res.data);
+      // console.log(res.data);
       setData(res.data);
       setProduct(res.data?.product);
 
@@ -128,7 +128,7 @@ export function EditSale_cart(idAuctionReport) {
 
       // console.log(customerData);
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 
@@ -138,7 +138,7 @@ export function EditSale_cart(idAuctionReport) {
       setDataAllCustomer(res.data);
       //   console.log(res.data);
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 
@@ -220,7 +220,7 @@ export function EditSale_cart(idAuctionReport) {
         });
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 
@@ -254,7 +254,7 @@ export function EditSale_cart(idAuctionReport) {
               show_Id: data?.id,
               sale_auction_q: cancelNote,
             };
-            console.log(dataSend);
+            // console.log(dataSend);
             const response = axios.put(
               `${import.meta.env.VITE_APP_API}/Cancel-Sale`,
               dataSend,

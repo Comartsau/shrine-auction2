@@ -285,7 +285,7 @@ export const Receipt3 = ({reportData, sumTotal, thbText, receiptData}) => {
       <Page size="A4" style={styles.page} >
         <View style={styles.flexrowbetween}>
           <View style={styles.flexrow}>
-            <Text style={[styles.textsm, styles.spacesm]}> </Text>
+            <Text style={[styles.textsm, styles.spacesm]}>{""} </Text>
             <Text
               style={[
                 styles.textbase,
@@ -732,8 +732,8 @@ export const Receipt3 = ({reportData, sumTotal, thbText, receiptData}) => {
             {/* สรุปรวม */}
             <View style={styles.tableRow}>
               <Text style={styles.tableCellsum}> {" "}{thbText? `( ${thbText} ) ` : ''}{" "}  </Text>
-              <Text style={styles.tableCell3}>  </Text>
-              <Text style={styles.tableCell4}>  </Text>
+              <Text style={styles.tableCell3}>{""}  </Text>
+              <Text style={styles.tableCell4}>{""}  </Text>
               <Text style={styles.tableCell5}> รวมเป็นเงิน  </Text>
               <Text style={styles.tableCell6}> {" "}{sumTotal.toLocaleString()}{" "}</Text>
             </View>
@@ -958,7 +958,7 @@ export const Receipt3 = ({reportData, sumTotal, thbText, receiptData}) => {
       <Page size="A4" style={styles.page} >
         <View style={styles.flexrowbetween}>
           <View style={styles.flexrow}>
-            <Text style={[styles.textsm, styles.spacesm]}> </Text>
+            <Text style={[styles.textsm, styles.spacesm]}>{""} </Text>
             <Text
               style={[
                 styles.textbase,
@@ -1405,8 +1405,8 @@ export const Receipt3 = ({reportData, sumTotal, thbText, receiptData}) => {
             {/* สรุปรวม */}
             <View style={styles.tableRow}>
               <Text style={styles.tableCellsum}> {" "}{thbText? `( ${thbText} ) ` : ''}{" "}  </Text>
-              <Text style={styles.tableCell3}>  </Text>
-              <Text style={styles.tableCell4}>  </Text>
+              <Text style={styles.tableCell3}>{""}  </Text>
+              <Text style={styles.tableCell4}> {""} </Text>
               <Text style={styles.tableCell5}> รวมเป็นเงิน  </Text>
               <Text style={styles.tableCell6}> {" "}{sumTotal.toLocaleString()}{" "}</Text>
             </View>
@@ -1632,7 +1632,7 @@ export const Receipt3 = ({reportData, sumTotal, thbText, receiptData}) => {
       <Page size="A4" style={styles.page} >
         <View style={styles.flexrowbetween}>
           <View style={styles.flexrow}>
-            <Text style={[styles.textsm, styles.spacesm]}> </Text>
+            <Text style={[styles.textsm, styles.spacesm]}>{""} </Text>
             <Text
               style={[
                 styles.textbase,
@@ -2079,8 +2079,8 @@ export const Receipt3 = ({reportData, sumTotal, thbText, receiptData}) => {
             {/* สรุปรวม */}
             <View style={styles.tableRow}>
               <Text style={styles.tableCellsum}> {" "}{thbText? `( ${thbText} ) ` : ''}{" "}  </Text>
-              <Text style={styles.tableCell3}>  </Text>
-              <Text style={styles.tableCell4}>  </Text>
+              <Text style={styles.tableCell3}>{""}  </Text>
+              <Text style={styles.tableCell4}> {""} </Text>
               <Text style={styles.tableCell5}> รวมเป็นเงิน  </Text>
               <Text style={styles.tableCell6}> {" "}{sumTotal.toLocaleString()}{" "}</Text>
             </View>

@@ -264,7 +264,7 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
     
   }, [reportData]);
   
-  console.log(data);
+  // console.log(data);
 
 
 
@@ -293,7 +293,7 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
       <Page size="A4" style={styles.page} >
         <View style={styles.flexrowbetween}>
           <View style={styles.flexrow}>
-            <Text style={[styles.textsm, styles.spacesm]}> </Text>
+            <Text style={[styles.textsm, styles.spacesm]}>{""} </Text>
             <Text
               style={[
                 styles.textbase,
@@ -618,7 +618,7 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
                 {data.auction_report_auctionstarted }{" "}
               </Text>
               <Text style={styles.tableCell3}>{" "} 1 {" "} </Text>
-              <Text style={styles.tableCell4}> {" "} {" "} </Text>
+              <Text style={styles.tableCell4}> {" "}{""} {" "} </Text>
               <Text style={styles.tableCell6}> {" "} {Number(data.auction_report_price).toLocaleString()}{" "}</Text>
             </View>
             {/* row 2 */}
@@ -629,8 +629,8 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
                 {data.aomsin1?.[0]?.auction_auction_start_event }{" "}
               </Text>
               <Text style={styles.tableCell3}>{" "} {data.aomsin1?.[0]?.auction_auction_start_event_count }{" "} </Text>
-              <Text style={styles.tableCell4}> {" "} {" "} </Text>
-              <Text style={styles.tableCell6}> {" "} {" "}</Text>
+              <Text style={styles.tableCell4}> {" "}{""} {" "} </Text>
+              <Text style={styles.tableCell6}> {" "}{""} {" "}</Text>
             </View>
             {/* row 3 */}
             <View style={styles.tableRow}>
@@ -640,8 +640,8 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
                 {data.aomsin1?.[1]?.auction_auction_start_event }{" "}
               </Text>
               <Text style={styles.tableCell3}>{" "} {data.aomsin1?.[1]?.auction_auction_start_event_count }{" "} </Text>
-              <Text style={styles.tableCell4}> {" "} {" "} </Text>
-              <Text style={styles.tableCell6}> {" "} {" "}</Text>
+              <Text style={styles.tableCell4}> {" "}{""} {" "} </Text>
+              <Text style={styles.tableCell6}> {" "}{""} {" "}</Text>
             </View>
             {/* row 4 */}
             <View style={styles.tableRow}>
@@ -652,7 +652,7 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
               </Text>
               <Text style={styles.tableCell3}>{" "} {data.product1?.[0]?.auction_product_start_event_count }{" "} </Text>
               <Text style={styles.tableCell4}> {" "} {data.product1?.[0]?.auction_product_start_event_cat_count }{" "} </Text>
-              <Text style={styles.tableCell6}> {" "} {" "}</Text>
+              <Text style={styles.tableCell6}> {" "}{""} {" "}</Text>
             </View>
             {/* row 5 */}
             <View style={styles.tableRow}>
@@ -663,7 +663,7 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
               </Text>
               <Text style={styles.tableCell3}>{" "} {data.product1?.[1]?.auction_product_start_event_count }{" "} </Text>
               <Text style={styles.tableCell4}> {" "} {data.product1?.[1]?.auction_product_start_event_cat_count }{" "} </Text>
-              <Text style={styles.tableCell6}> {" "} {" "}</Text>
+              <Text style={styles.tableCell6}> {" "}{""} {" "}</Text>
             </View>
             {/* row 6 */}
             <View style={styles.tableRow}>
@@ -674,7 +674,7 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
               </Text>
               <Text style={styles.tableCell3}>{" "} {data.product1?.[2]?.auction_product_start_event_count }{" "} </Text>
               <Text style={styles.tableCell4}> {" "} {data.product1?.[2]?.auction_product_start_event_cat_count }{" "} </Text>
-              <Text style={styles.tableCell6}> {" "} {" "}</Text>
+              <Text style={styles.tableCell6}> {" "}{""} {" "}</Text>
             </View>
             {/* row 7 */}
             <View style={styles.tableRow}>
@@ -685,7 +685,7 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
               </Text>
               <Text style={styles.tableCell3}>{" "} {data.product1?.[3]?.auction_product_start_event_count }{" "} </Text>
               <Text style={styles.tableCell4}> {" "} {data.product1?.[3]?.auction_product_start_event_cat_count }{" "} </Text>
-              <Text style={styles.tableCell6}> {" "} {" "}</Text>
+              <Text style={styles.tableCell6}> {" "}{""} {" "}</Text>
             </View>
             {/* row 8 */}
             <View style={styles.tableRow}>
@@ -696,12 +696,12 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
               </Text>
               <Text style={styles.tableCell3}>{" "} {data.product1?.[4]?.auction_product_start_event_count }{" "} </Text>
               <Text style={styles.tableCell4}> {" "} {data.product1?.[4]?.auction_product_start_event_cat_count }{" "} </Text>
-              <Text style={styles.tableCell6}> {" "} {" "}</Text>
+              <Text style={styles.tableCell6}> {" "}{""} {" "}</Text>
             </View>
             {/* สรุปรวม */}
             <View style={styles.tableRow}>
               <Text style={styles.tableCellsum}> {" "}{thbText? `( ${thbText} ) ` : ''}{" "}  </Text>
-              <Text style={styles.tableCell3}>  </Text>
+              <Text style={styles.tableCell3}> {""} </Text>
               <Text style={styles.tableCell4}> รวมเป็นเงิน  </Text>
               <Text style={styles.tableCell6}> {" "}{sumTotal.toLocaleString()}{" "}</Text>
             </View>
@@ -862,7 +862,7 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
       <Page size="A4" style={styles.page} >
         <View style={styles.flexrowbetween}>
           <View style={styles.flexrow}>
-            <Text style={[styles.textsm, styles.spacesm]}> </Text>
+            <Text style={[styles.textsm, styles.spacesm]}>{""} </Text>
             <Text
               style={[
                 styles.textbase,
@@ -1187,7 +1187,7 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
                 {data.auction_report_auctionstarted }{" "}
               </Text>
               <Text style={styles.tableCell3}>{" "} 1 {" "} </Text>
-              <Text style={styles.tableCell4}> {" "} {" "} </Text>
+              <Text style={styles.tableCell4}> {" "}{""} {" "} </Text>
               <Text style={styles.tableCell6}> {" "} {Number(data.auction_report_price).toLocaleString()}{" "}</Text>
             </View>
             {/* row 2 */}
@@ -1198,8 +1198,8 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
                 {data.aomsin1?.[0]?.auction_auction_start_event }{" "}
               </Text>
               <Text style={styles.tableCell3}>{" "} {data.aomsin1?.[0]?.auction_auction_start_event_count }{" "} </Text>
-              <Text style={styles.tableCell4}> {" "} {" "} </Text>
-              <Text style={styles.tableCell6}> {" "} {" "}</Text>
+              <Text style={styles.tableCell4}> {" "}{""} {" "} </Text>
+              <Text style={styles.tableCell6}> {" "}{""} {" "}</Text>
             </View>
             {/* row 3 */}
             <View style={styles.tableRow}>
@@ -1209,8 +1209,8 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
                 {data.aomsin1?.[1]?.auction_auction_start_event }{" "}
               </Text>
               <Text style={styles.tableCell3}>{" "} {data.aomsin1?.[1]?.auction_auction_start_event_count }{" "} </Text>
-              <Text style={styles.tableCell4}> {" "} {" "} </Text>
-              <Text style={styles.tableCell6}> {" "} {" "}</Text>
+              <Text style={styles.tableCell4}> {" "} {""}{" "} </Text>
+              <Text style={styles.tableCell6}> {" "}{""} {" "}</Text>
             </View>
             {/* row 4 */}
             <View style={styles.tableRow}>
@@ -1221,7 +1221,7 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
               </Text>
               <Text style={styles.tableCell3}>{" "} {data.product1?.[0]?.auction_product_start_event_count }{" "} </Text>
               <Text style={styles.tableCell4}> {" "} {data.product1?.[0]?.auction_product_start_event_cat_count }{" "} </Text>
-              <Text style={styles.tableCell6}> {" "} {" "}</Text>
+              <Text style={styles.tableCell6}> {" "}{""} {" "}</Text>
             </View>
             {/* row 5 */}
             <View style={styles.tableRow}>
@@ -1232,7 +1232,7 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
               </Text>
               <Text style={styles.tableCell3}>{" "} {data.product1?.[1]?.auction_product_start_event_count }{" "} </Text>
               <Text style={styles.tableCell4}> {" "} {data.product1?.[1]?.auction_product_start_event_cat_count }{" "} </Text>
-              <Text style={styles.tableCell6}> {" "} {" "}</Text>
+              <Text style={styles.tableCell6}> {" "}{""} {" "}</Text>
             </View>
             {/* row 6 */}
             <View style={styles.tableRow}>
@@ -1243,7 +1243,7 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
               </Text>
               <Text style={styles.tableCell3}>{" "} {data.product1?.[2]?.auction_product_start_event_count }{" "} </Text>
               <Text style={styles.tableCell4}> {" "} {data.product1?.[2]?.auction_product_start_event_cat_count }{" "} </Text>
-              <Text style={styles.tableCell6}> {" "} {" "}</Text>
+              <Text style={styles.tableCell6}> {" "}{""} {" "}</Text>
             </View>
             {/* row 7 */}
             <View style={styles.tableRow}>
@@ -1254,7 +1254,7 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
               </Text>
               <Text style={styles.tableCell3}>{" "} {data.product1?.[3]?.auction_product_start_event_count }{" "} </Text>
               <Text style={styles.tableCell4}> {" "} {data.product1?.[3]?.auction_product_start_event_cat_count }{" "} </Text>
-              <Text style={styles.tableCell6}> {" "} {" "}</Text>
+              <Text style={styles.tableCell6}> {" "} {""}{" "}</Text>
             </View>
             {/* row 8 */}
             <View style={styles.tableRow}>
@@ -1265,12 +1265,12 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
               </Text>
               <Text style={styles.tableCell3}>{" "} {data.product1?.[4]?.auction_product_start_event_count }{" "} </Text>
               <Text style={styles.tableCell4}> {" "} {data.product1?.[4]?.auction_product_start_event_cat_count }{" "} </Text>
-              <Text style={styles.tableCell6}> {" "} {" "}</Text>
+              <Text style={styles.tableCell6}> {" "}{""} {" "}</Text>
             </View>
             {/* สรุปรวม */}
             <View style={styles.tableRow}>
               <Text style={styles.tableCellsum}> {" "}{thbText? `( ${thbText} ) ` : ''}{" "}  </Text>
-              <Text style={styles.tableCell3}>  </Text>
+              <Text style={styles.tableCell3}> {""} </Text>
               <Text style={styles.tableCell4}> รวมเป็นเงิน  </Text>
               <Text style={styles.tableCell6}> {" "}{sumTotal.toLocaleString()}{" "}</Text>
             </View>
@@ -1432,7 +1432,7 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
       <Page size="A4" style={styles.page} >
         <View style={styles.flexrowbetween}>
           <View style={styles.flexrow}>
-            <Text style={[styles.textsm, styles.spacesm]}> </Text>
+            <Text style={[styles.textsm, styles.spacesm]}>{""} </Text>
             <Text
               style={[
                 styles.textbase,
@@ -1757,7 +1757,7 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
                 {data.auction_report_auctionstarted }{" "}
               </Text>
               <Text style={styles.tableCell3}>{" "} 1 {" "} </Text>
-              <Text style={styles.tableCell4}> {" "} {" "} </Text>
+              <Text style={styles.tableCell4}> {" "}{""} {" "} </Text>
               <Text style={styles.tableCell6}> {" "} {Number(data.auction_report_price).toLocaleString()}{" "}</Text>
             </View>
             {/* row 2 */}
@@ -1768,8 +1768,8 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
                 {data.aomsin1?.[0]?.auction_auction_start_event }{" "}
               </Text>
               <Text style={styles.tableCell3}>{" "} {data.aomsin1?.[0]?.auction_auction_start_event_count }{" "} </Text>
-              <Text style={styles.tableCell4}> {" "} {" "} </Text>
-              <Text style={styles.tableCell6}> {" "} {" "}</Text>
+              <Text style={styles.tableCell4}> {" "}{""} {" "} </Text>
+              <Text style={styles.tableCell6}> {" "}{""} {" "}</Text>
             </View>
             {/* row 3 */}
             <View style={styles.tableRow}>
@@ -1779,8 +1779,8 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
                 {data.aomsin1?.[1]?.auction_auction_start_event }{" "}
               </Text>
               <Text style={styles.tableCell3}>{" "} {data.aomsin1?.[1]?.auction_auction_start_event_count }{" "} </Text>
-              <Text style={styles.tableCell4}> {" "} {" "} </Text>
-              <Text style={styles.tableCell6}> {" "} {" "}</Text>
+              <Text style={styles.tableCell4}> {" "}{""} {" "} </Text>
+              <Text style={styles.tableCell6}> {" "}{""} {" "}</Text>
             </View>
             {/* row 4 */}
             <View style={styles.tableRow}>
@@ -1791,7 +1791,7 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
               </Text>
               <Text style={styles.tableCell3}>{" "} {data.product1?.[0]?.auction_product_start_event_count }{" "} </Text>
               <Text style={styles.tableCell4}> {" "} {data.product1?.[0]?.auction_product_start_event_cat_count }{" "} </Text>
-              <Text style={styles.tableCell6}> {" "} {" "}</Text>
+              <Text style={styles.tableCell6}> {" "}{""} {" "}</Text>
             </View>
             {/* row 5 */}
             <View style={styles.tableRow}>
@@ -1802,7 +1802,7 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
               </Text>
               <Text style={styles.tableCell3}>{" "} {data.product1?.[1]?.auction_product_start_event_count }{" "} </Text>
               <Text style={styles.tableCell4}> {" "} {data.product1?.[1]?.auction_product_start_event_cat_count }{" "} </Text>
-              <Text style={styles.tableCell6}> {" "} {" "}</Text>
+              <Text style={styles.tableCell6}> {" "}{""} {" "}</Text>
             </View>
             {/* row 6 */}
             <View style={styles.tableRow}>
@@ -1813,7 +1813,7 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
               </Text>
               <Text style={styles.tableCell3}>{" "} {data.product1?.[2]?.auction_product_start_event_count }{" "} </Text>
               <Text style={styles.tableCell4}> {" "} {data.product1?.[2]?.auction_product_start_event_cat_count }{" "} </Text>
-              <Text style={styles.tableCell6}> {" "} {" "}</Text>
+              <Text style={styles.tableCell6}> {" "}{""} {" "}</Text>
             </View>
             {/* row 7 */}
             <View style={styles.tableRow}>
@@ -1824,7 +1824,7 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
               </Text>
               <Text style={styles.tableCell3}>{" "} {data.product1?.[3]?.auction_product_start_event_count }{" "} </Text>
               <Text style={styles.tableCell4}> {" "} {data.product1?.[3]?.auction_product_start_event_cat_count }{" "} </Text>
-              <Text style={styles.tableCell6}> {" "} {" "}</Text>
+              <Text style={styles.tableCell6}> {" "} {""}{" "}</Text>
             </View>
             {/* row 8 */}
             <View style={styles.tableRow}>
@@ -1835,12 +1835,12 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
               </Text>
               <Text style={styles.tableCell3}>{" "} {data.product1?.[4]?.auction_product_start_event_count }{" "} </Text>
               <Text style={styles.tableCell4}> {" "} {data.product1?.[4]?.auction_product_start_event_cat_count }{" "} </Text>
-              <Text style={styles.tableCell6}> {" "} {" "}</Text>
+              <Text style={styles.tableCell6}> {" "}{""} {" "}</Text>
             </View>
             {/* สรุปรวม */}
             <View style={styles.tableRow}>
               <Text style={styles.tableCellsum}> {" "}{thbText? `( ${thbText} ) ` : ''}{" "}  </Text>
-              <Text style={styles.tableCell3}>  </Text>
+              <Text style={styles.tableCell3}> {""} </Text>
               <Text style={styles.tableCell4}> รวมเป็นเงิน  </Text>
               <Text style={styles.tableCell6}> {" "}{sumTotal.toLocaleString()}{" "}</Text>
             </View>

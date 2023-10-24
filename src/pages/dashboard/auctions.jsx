@@ -1264,7 +1264,7 @@ export function Auctions() {
       );
       // console.log(response);
       await fetchDataChooseCustomer();
-      console.log(response.data)
+      // console.log(response.data)
       setCustomerId(response.data.id);
       setSearchText6(response.data.customer_name);
       // console.log(response.data.id)
@@ -1564,7 +1564,7 @@ const handleSendDataEDitAuction = async () => {
         }
       );
       // console.log(response.data);
-      fetchDataGift()
+      // fetchDataGift()
       handleClosePreViewDialog()
 
       // Socket
@@ -1622,29 +1622,29 @@ const handleSendDataEDitAuction = async () => {
 
   const [product, setProduct] = useState([]);
 
-  const fetchDataGift = async () => {
-    try {
-      let url = `${import.meta.env.VITE_APP_API}/Show`;
+  // const fetchDataGift = async () => {
+  //   try {
+  //     // let url = `${import.meta.env.VITE_APP_API}/Show`;
 
-      const response = await axios.get(url, {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Token ${Token}`,
-        },
-      });
+  //     const response = await axios.get(`${import.meta.env.VITE_APP_API}/Show`, {
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //         Authorization: `Token ${Token}`,
+  //       },
+  //     });
 
-      setProduct(response.data?.[0].product);
+  //     setProduct(response.data?.[0].product);
 
-    } catch (error) {
-      // console.error(error);
-    }
-  };
+  //   } catch (error) {
+  //     // console.error(error);
+  //   }
+  // };
 
 
 
-  useEffect(() => {
-      fetchDataGift();
-  }, []);
+  // useEffect(() => {
+  //     fetchDataGift();
+  // }, []);
 
   
   const filteredProducts = product.filter(
