@@ -9,9 +9,17 @@ import {
   MenuList,
   MenuItem,
 } from "@material-tailwind/react";
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 
-const TABLE_HEAD = ["Name", "Job", "Employed", "111", "222", "3333"];
+const TABLE_HEAD = [
+  "ลำดับ",
+  "ชื่อสินค้า",
+  "จำนวน",
+  "หน่วยนับ",
+  "ราคา/หน่วย",
+  "ราคารวม",
+];
 
 const TABLE_ROWS = [
   {
@@ -25,15 +33,127 @@ const TABLE_ROWS = [
 ];
 
 const DailySummaryProduct = () => {
+  const [selectData, setSelectData] = useState({
+    type_Data: 1,
+  });
+  const [data, setData] = useState([]);
+  const [sumData, setSumData] = useState({});
+
+  const [endData, setEndData] = useState({});
+  const [qty, setQty] = useState(0);
+  const [total, setTotal] = useState(0);
+
+  const fetchData = async () => {
+    let url = "";
+
+    if (selectData?.type_Data) {
+      url = `${import.meta.env.VITE_APP_API}/Sum/search/?type_Data=${
+        selectData?.type_Data
+      }`;
+
+      if (selectData?.category) {
+        url = `${import.meta.env.VITE_APP_API}/Sum/search/?type_Data=${
+          selectData?.type_Data
+        }&category=${selectData?.category}`;
+      }
+    }
+
+    try {
+      const res = await axios.get(url);
+      console.log(res.data);
+      setData(res.data);
+      sumData2(res.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const fetchSum = async () => {
+    try {
+      const res = await axios.get(`${import.meta.env.VITE_APP_API}/Sum`);
+      console.log(res.data);
+      setSumData(res.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const sumData2 = (dataFetch) => {
+    let qty = 0;
+    let total = 0;
+
+    dataFetch?.map(
+      (item, index) => (
+        (qty += 
+          item?.auction_product_start_event_count
+            ? Number(item?.auction_product_start_event_count)
+            : Number(item?.sale_auction_start_event_count)
+        ),
+        selectData.type_Data === 2 &&
+          (total += Number(
+            item?.sale_auction_start_event_count_price
+              ? item?.sale_auction_start_event_count_price
+              : 0
+          ))
+      )
+    );
+    setQty(qty);
+    setTotal(total);
+    // setEndData((prev) => ({
+    //   ...prev,
+    //   qty,
+    //   total,
+    // }));
+  };
+
+  const fetchExcel = async(number)=>{
+    let urlExcel = ""
+    if(number === 1 ){
+      urlExcel = `${import.meta.env.VITE_APP_API}/Sum/excel/?type_Data=${selectData?.type_Data}`
+    }else {
+      if(selectData.category){
+        urlExcel = `${import.meta.env.VITE_APP_API}/Sum/excel/?type_Data=${selectData.type_Data}&category=${selectData.category}`
+      }
+    }
+    try {
+      console.log(urlExcel);
+      const res = await axios.get(urlExcel)
+      console.log(res.data);
+      
+    } catch (error) {
+      console.log(error);
+    }
+
+  }
+
+  useEffect(() => {
+    fetchData();
+    fetchSum();
+  }, [selectData]);
+
   return (
     <div>
       <div className="flex flex-col gap-4 md:flex-row ">
-        <div className="w-full md:w-64">
+        <div className="w-full md:w-96">
           <Card className="mt-6 w-full">
             <CardBody>
               <div className="flex flex-col gap-4 md:flex-row">
-                <Button color="green">ประมูล222</Button>
-                <Button color="green">ขายสินค้า</Button>
+                <Button
+                  color="green"
+                  onClick={() =>
+                    setSelectData((prev) => ({ ...prev, type_Data: 1 }))
+                  }
+                >
+                  ประมูล
+                </Button>
+                <Button
+                  color="green"
+                  onClick={() =>
+                    setSelectData((prev) => ({ ...prev, type_Data: 2 }))
+                  }
+                >
+                  ขายสินค้า
+                </Button>
               </div>
 
               <Typography
@@ -41,19 +161,25 @@ const DailySummaryProduct = () => {
                 color="green"
                 className="mb-2 mt-4 flex justify-end"
               >
-                เงินสด 0 บาท
+                {selectData.type_Data === 1 && `สลากออมสิน : ${sumData?.auction_aomsin2} ใบ`}
+                {selectData.type_Data === 2 && `สลากออมสิน : ${sumData?.sale_aomsin2} ใบ`}
               </Typography>
               <Typography
                 variant="lead"
                 color="red"
                 className="mb-2 mt-4 flex justify-end"
               >
-                เงินเชื่อ 0 บาท
+                {selectData.type_Data === 1 && `ล็อตเตอรี่ : ${sumData?.auction_aomsin1} ใบ`}
+                {selectData.type_Data === 2 && `ล็อตเตอรี่ : ${sumData?.sale_aomsin1} ใบ`}
+
               </Typography>
             </CardBody>
           </Card>
+
+          {JSON.stringify(selectData)}
         </div>
-        <div className="w-auto">
+
+        <div className="w-full">
           <Card className="mt-6 w-full">
             <CardBody>
               <div className="felx-col flex gap-5 md:flex-row">
@@ -70,16 +196,23 @@ const DailySummaryProduct = () => {
                       name="country"
                       autoComplete="country-name"
                       className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
+                      onChange={(e) =>
+                        setSelectData((prev) => ({
+                          ...prev,
+                          category: e.target.value,
+                        }))
+                      }
                     >
                       <option value="">ทั้งหมด</option>
-                      <option value="xxx">สลากออมสิน</option>
-                      <option value="xxx">ล็อตเตอรี่</option>
-                      <option value="xxx">วัตถุมงคล</option>
-                      <option value="xxx">โทรศัพท์</option>
-                      <option value="xxx">เครื่องใช้สำนักงาน</option>
-                      <option value="xxx">เครื่องใช้ไฟฟ้า</option>
-                      <option value="xxx">อื่นๆ</option>
-
+                      <option value="สลากออมสิน">สลากออมสิน</option>
+                      <option value="ล็อตเตอรี่">ล็อตเตอรี่</option>
+                      <option value="วัตถุมงคล">วัตถุมงคล</option>
+                      <option value="โทรศัพท์">โทรศัพท์</option>
+                      <option value="เครื่องใช้สำนักงาน">
+                        เครื่องใช้สำนักงาน
+                      </option>
+                      <option value="เครื่องใช้ไฟฟ้า">เครื่องใช้ไฟฟ้า</option>
+                      <option value="อื่นๆ">อื่นๆ</option>
                     </select>
                   </div>
                 </div>
@@ -97,10 +230,16 @@ const DailySummaryProduct = () => {
                       name="country"
                       autoComplete="country-name"
                       className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
+                      onChange={(e) =>
+                        setSelectData((prev) => ({
+                          ...prev,
+                          pay: e.target.value,
+                        }))
+                      }
                     >
                       <option value="">ทั้งหมด</option>
-                      <option>ชำระแล้ว</option>
-                      <option>ยังไม่ชำระ</option>
+                      <option value="1">ชำระแล้ว</option>
+                      <option value="2">ยังไม่ชำระ</option>
                     </select>
                   </div>
                 </div>
@@ -112,15 +251,15 @@ const DailySummaryProduct = () => {
                         <Button color="green">Excel</Button>
                       </MenuHandler>
                       <MenuList>
-                        <MenuItem>ทั้งหมด</MenuItem>
-                        <MenuItem>เฉพาะที่เลือก</MenuItem>
+                        <MenuItem onClick={()=>fetchExcel(1)}>ทั้งหมด</MenuItem>
+                        <MenuItem onClick={()=>fetchExcel(2)}>เฉพาะที่เลือก</MenuItem>
                       </MenuList>
                     </Menu>
                   </div>
                 </div>
               </div>
 
-              <Card className="mt-4 h-full w-full overflow-scroll">
+              <Card className="mt-4 h-80 w-full overflow-scroll">
                 <table className="w-full min-w-max table-auto text-left">
                   <thead>
                     <tr>
@@ -141,77 +280,88 @@ const DailySummaryProduct = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {TABLE_ROWS.map(
-                      ({ name, job, date1, date2, date3, date4 }, index) => (
-                        <tr key={name} className="even:bg-blue-gray-50/50">
-                          <td className="p-4">
-                            <Typography
-                              variant="small"
-                              color="blue-gray"
-                              className="font-normal"
-                            >
-                              {name}
-                            </Typography>
-                          </td>
-                          <td className="p-4">
-                            <Typography
-                              variant="small"
-                              color="blue-gray"
-                              className="font-normal"
-                            >
-                              {job}
-                            </Typography>
-                          </td>
-                          <td className="p-4">
-                            <Typography
-                              variant="small"
-                              color="blue-gray"
-                              className="font-normal"
-                            >
-                              {date1}
-                            </Typography>
-                          </td>
-                          <td className="p-4">
-                            <Typography
-                              variant="small"
-                              color="blue-gray"
-                              className="font-normal"
-                            >
-                              {date2}
-                            </Typography>
-                          </td>
-                          <td className="p-4">
-                            <Typography
-                              variant="small"
-                              color="blue-gray"
-                              className="font-normal"
-                            >
-                              {date3}
-                            </Typography>
-                          </td>
-                          <td className="p-4">
-                            <Typography
-                              variant="small"
-                              color="blue-gray"
-                              className="font-normal"
-                            >
-                              {date4}
-                            </Typography>
-                          </td>
-                        </tr>
-                      )
-                    )}
+                    {data?.map((data, index) => (
+                      <tr key={data?.id} className="even:bg-blue-gray-50/50">
+                        <td className="p-4">
+                          <Typography
+                            variant="small"
+                            color="blue-gray"
+                            className="font-normal"
+                          >
+                            {index + 1}
+                          </Typography>
+                        </td>
+                        <td className="p-4">
+                          <Typography
+                            variant="small"
+                            color="blue-gray"
+                            className="font-normal"
+                          >
+                            {data?.auction_product_start_event
+                              ? data?.auction_product_start_event
+                              : data?.sale_auction_start_event}
+                          </Typography>
+                        </td>
+                        <td className="p-4">
+                          <Typography
+                            variant="small"
+                            color="blue-gray"
+                            className="font-normal"
+                          >
+                            {data?.auction_product_start_event_count
+                              ? data?.auction_product_start_event_count
+                              : data?.sale_auction_start_event_count}
+                          </Typography>
+                        </td>
+                        <td className="p-4">
+                          <Typography
+                            variant="small"
+                            color="blue-gray"
+                            className="font-normal"
+                          >
+                            {data?.auction_product_start_event_cat_count
+                              ? data?.auction_product_start_event_cat_count
+                              : data?.sale_auction_start_event_count_unit}
+                          </Typography>
+                        </td>
+                        <td className="p-4">
+                          <Typography
+                            variant="small"
+                            color="blue-gray"
+                            className="font-normal"
+                          >
+                            {data?.sale_auction_start_event_count_price
+                              ? data?.sale_auction_start_event_count_price
+                              : "-"}
+                          </Typography>
+                        </td>
+                        <td className="p-4">
+                          <Typography
+                            variant="small"
+                            color="blue-gray"
+                            className="font-normal"
+                          >
+                            {data?.sale_auction_start_event_count_price
+                              ? // data?.sale_auction_start_event_count_price * Number(data?.sale_auction_start_event_count)
+                                0
+                              : "-"}
+                          </Typography>
+                        </td>
+                      </tr>
+                    ))}
                   </tbody>
                 </table>
               </Card>
 
-              <div className="flex flex-col   mt-4" >
-              <div className="flex justify-end">
-              <Typography>จำนวนทั้งหมด : xxxxx รายการ</Typography>
-              </div>
-              <div className="flex justify-end">
-              <Typography>ราคาสุทธิ : xxxxx บาท</Typography>
-              </div>
+              <div className="mt-4 flex   flex-col">
+                <div className="flex justify-end">
+                  <Typography>จำนวนทั้งหมด : {qty} รายการ</Typography>
+                </div>
+                <div className="flex justify-end">
+                  <Typography>
+                    ราคาสุทธิ : {selectData.type_Data === 1 ? 0 : total} บาท
+                  </Typography>
+                </div>
               </div>
             </CardBody>
           </Card>

@@ -84,14 +84,14 @@ export function EditSale1(idAuctionReport) {
   };
 
   // const params = useParams();
-  const id = idAuctionReport.id
+  const id = idAuctionReport.id;
 
   const fetchData = async () => {
     try {
       const res = await axios.get(
         `${import.meta.env.VITE_APP_API}/Debtor-Auction/${id}/detail`
       );
-      // console.log(res.data);
+      console.log(res.data);
       setData(res.data);
       setProduct(res.data[0]?.product1);
 
@@ -176,7 +176,7 @@ export function EditSale1(idAuctionReport) {
         auction_report_date: data[0]?.auction_report_date,
         auction_refer: customerData?.auction_refer,
         auction_num: customerData?.auction_num,
-        auction_report_customer_id : customerData?.id ,
+        auction_report_customer_id: customerData?.id,
         product1: products,
         aomsin1: [
           {
@@ -204,6 +204,15 @@ export function EditSale1(idAuctionReport) {
         sendData
       );
       // console.log(res.data);
+
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'บันทึกสำเร็จ !!',
+        showConfirmButton: false,
+        timer: 1500
+      })
+
     } catch (error) {
       console.error(error);
     }
@@ -237,7 +246,7 @@ export function EditSale1(idAuctionReport) {
           if (result.isConfirmed) {
             const dataSend = {
               show_Id: data[0]?.id_auction_report,
-              action_report_q : cancelNote,
+              action_report_q: cancelNote,
             };
             const response = axios.put(
               `${import.meta.env.VITE_APP_API}/Cancel-Auctions`,
@@ -335,9 +344,7 @@ export function EditSale1(idAuctionReport) {
           </div>
 
           <div className="flex  flex-wrap gap-4 md:flex-row lg:flex-row">
-
-            
-          <Button
+            <Button
               size="sm"
               variant="gradient"
               color="green"
@@ -350,7 +357,6 @@ export function EditSale1(idAuctionReport) {
               บันทึก
             </Button>
 
-            
             <Button
               size="sm"
               variant="gradient"
@@ -364,21 +370,21 @@ export function EditSale1(idAuctionReport) {
               ยกเลิก
             </Button>
 
-            {data[0]?.auction_report_Pay_status === 1 && (
-              <Button
+            <Button
                 size="sm"
                 variant="gradient"
                 color="purple"
                 className=" flex w-[120px] items-center align-middle  text-sm"
                 onClick={handlePay}
+                disabled={data[0]?.auction_report_Pay_status === 2}
               >
                 <span className="mr-2 flex text-base">
                   <MdOutlinePayment />
                 </span>
                 ชำระเงิน
               </Button>
-            )}
 
+    
             <Menu>
               <MenuHandler>
                 <Button
@@ -405,21 +411,32 @@ export function EditSale1(idAuctionReport) {
 
 
 
-            {/* <Button
-              size="sm"
-              variant="gradient"
-              color="yellow"
-              className=" flex w-[140px] items-center align-middle  text-sm"
-            >
-              <span className="mr-2 flex text-base">
-                <PiReceipt />
-              </span>
-              สร้างบิลใหม่
-            </Button> */}
+            <Menu>
+              <MenuHandler>
+                <Button
+                  size="sm"
+                  variant="gradient"
+                  color="orange"
+                  className=" flex w-[110px] items-center align-middle  text-sm"
+                  disabled={data[0]?.auction_report_Pay_status === 1}
+                >
+                  <span className="mr-2 flex text-base">
+                    <PiReceipt />
+                  </span>
+                  ใบเสร็จ
+                </Button>
+              </MenuHandler>
+              <MenuList>
+                <MenuItem onClick={() => handleOpen5(1)}>
+                  เครื่องพิมพ์หัวเข็ม{" "}
+                </MenuItem>
+                <MenuItem onClick={() => handleOpen5(2)}>
+                  เครื่องพิมพ์ธรรมดา
+                </MenuItem>
+              </MenuList>
+            </Menu>
 
-     
-
-            {data[0]?.auction_report_Pay_status === 2 && (
+            {/* {data[0]?.auction_report_Pay_status === 2 && (
               <Menu>
                 <MenuHandler>
                   <Button
@@ -443,7 +460,7 @@ export function EditSale1(idAuctionReport) {
                   </MenuItem>
                 </MenuList>
               </Menu>
-            )}
+            )} */}
           </div>
         </div>
         {/* {JSON.stringify(customerData)} */}
@@ -479,6 +496,9 @@ export function EditSale1(idAuctionReport) {
                 >
                   <AiOutlinePlus className="text-2xl" />
                 </IconButton>
+              </div>
+              <div>
+                <small>เพิ่ม/แก้ไข ผู้บริจาค</small>
               </div>
             </div>
             <div className="flex flex-col  gap-4  p-3 md:flex-row lg:flex-row">
@@ -520,8 +540,7 @@ export function EditSale1(idAuctionReport) {
             </div>
 
             <div className="flex flex-col  gap-4  p-3 md:flex-row lg:flex-row">
-
-            <div>
+              <div>
                 <Typography
                   className="flex w-[110px] text-sm font-bold"
                   value="xxxxx"
@@ -534,9 +553,6 @@ export function EditSale1(idAuctionReport) {
                   {customerData?.auction_report_customer_tel || ""}
                 </Typography>
               </div>
-
-
-         
             </div>
           </div>
 
@@ -552,13 +568,13 @@ export function EditSale1(idAuctionReport) {
               </div>
               <div>
                 <Typography className="flex  text-sm " value="xxxxx">
-                  {data[0]?.auction_report_date  || ""}
+                  {data[0]?.auction_report_date || ""}
                 </Typography>
               </div>
             </div>
 
             <div className="flex flex-col  gap-4  p-3 md:flex-row lg:flex-row">
-            <div>
+              <div>
                 <Typography className="flex w-[110px] text-sm font-bold">
                   ออกสลากในนาม:
                 </Typography>
@@ -626,6 +642,9 @@ export function EditSale1(idAuctionReport) {
             </div>
 
             <div className="flex flex-col justify-end  gap-4  p-3 md:flex-row lg:flex-row">
+              <div>
+                <small>เพิ่ม/แก้ไข สินค้า</small>
+              </div>
               <IconButton
                 color="green"
                 size="sm"
@@ -646,7 +665,9 @@ export function EditSale1(idAuctionReport) {
                   className="text-md flex text-sm  font-bold text-red-500"
                   value="xxxxx"
                 >
-                  {Number(titleProduct?.auction_report_price).toLocaleString() || " "}
+                  {Number(
+                    titleProduct?.auction_report_price
+                  ).toLocaleString() || " "}
                 </Typography>
                 <Typography
                   className="text-md flex  font-bold text-red-500"
@@ -735,7 +756,9 @@ export function EditSale1(idAuctionReport) {
                       color="blue-gray"
                       className="font-normal"
                     >
-                      {Number(titleProduct?.auction_report_price).toLocaleString() || " "}
+                      {Number(
+                        titleProduct?.auction_report_price
+                      ).toLocaleString() || " "}
                     </Typography>
                   </td>
                   <td className="border-b border-blue-gray-50 p-4">
@@ -744,7 +767,9 @@ export function EditSale1(idAuctionReport) {
                       color="blue-gray"
                       className="font-normal"
                     >
-                      {Number(titleProduct?.auction_report_price).toLocaleString() || " "}
+                      {Number(
+                        titleProduct?.auction_report_price
+                      ).toLocaleString() || " "}
                     </Typography>
                   </td>
                 </tr>

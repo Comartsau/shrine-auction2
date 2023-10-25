@@ -10,6 +10,8 @@ import {
 } from "@material-tailwind/react";
 import moment from "moment";
 import axios from "axios";
+import Swal from "sweetalert2";
+
 
 const Pay = ({ openPay, handleOpen3, dataPayModal, fetchData }) => {
   let currentDate = moment().format("DD MM YYYY");
@@ -48,15 +50,27 @@ const Pay = ({ openPay, handleOpen3, dataPayModal, fetchData }) => {
       formData.append("sale_receipt_bank", sendData?.sale_receipt_bank || "");
       formData.append("sale_receipt_check", sendData?.sale_receipt_check || "");
       formData.append("sale_receipt_status", Number(statusRadio) || "");
+      formData.append("sale_receipt_name_export", sendData?.sale_receipt_name_export || "")
 
         // console.log("FormData:", JSON.stringify([...formData.entries()]));
+
 
       const res = await axios.post(url, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
       });
+
     // console.log(res.data);
+
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'บันทึกสำเร็จ !',
+      showConfirmButton: false,
+      timer: 1500
+    })
+
       handleOpen3();
       setStatusRadio(1);
       fetchData()
@@ -178,6 +192,17 @@ const Pay = ({ openPay, handleOpen3, dataPayModal, fetchData }) => {
             )}
 
             <div className="mt-4 flex flex-col gap-4 md:flex-row lg:flex-row">
+            <Input
+                type="text"
+                label="ผู้ออกบิล"
+                onChange={(e) =>
+                  setSendData((prev) => ({
+                    ...prev,
+                    sale_receipt_name_export: e.target.value,
+                  }))
+                }
+              />
+
               <Input
                 type="text"
                 label="เลขที่อ้างอิง"
@@ -188,6 +213,7 @@ const Pay = ({ openPay, handleOpen3, dataPayModal, fetchData }) => {
                   }))
                 }
               />
+              
             </div>
 
             <div className="mt-4 flex justify-end gap-1 md:flex-row lg:flex-row">

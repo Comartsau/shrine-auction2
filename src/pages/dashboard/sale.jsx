@@ -1222,6 +1222,7 @@ setSaveSelectedProductData(newData);
                   </div>
                 </div>
                 <div className="flex w-auto justify-center border-green-500 text-center sm:justify-start">
+                  
                   <IconButton
                     color="green"
                     size="sm"
@@ -1231,6 +1232,7 @@ setSaveSelectedProductData(newData);
                     <AiOutlinePlus className="text-2xl" />
                   </IconButton>
                 </div>
+                <small >เพิ่ม/แก้ไข ผู้บริจาค</small>
               </div>
               <div className="mt-5 flex flex-col  items-center gap-5 sm:flex-row ">
                 <div>
@@ -1471,6 +1473,7 @@ setSaveSelectedProductData(newData);
                 </div>
               </div>
               <div className="mt-5 flex flex-col  items-center gap-5 sm:flex-row ">
+              <small >เพิ่ม/แก้ไข สินค้า</small>
                 <div className="flex w-auto justify-center border-green-500 text-center sm:justify-start">
                   <IconButton
                     color="green"
@@ -1481,6 +1484,7 @@ setSaveSelectedProductData(newData);
                     <AiOutlinePlus className="text-2xl" />
                   </IconButton>
                 </div>
+                
                 <div className="flex gap-3">
                   <Typography className="text-md flex text-sm font-bold text-red-500">
                     ราคาทั้งหมด:

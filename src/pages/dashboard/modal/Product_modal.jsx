@@ -41,7 +41,6 @@ const Product_modal = ({
 
   let sum = 0;
 
-  const TABLE_HEAD_1 = ["#", "ชื่อหัวข้อประมูล", "ราคา", "เลือก"];
   const TABLE_HEAD_2 =
     type === 1
       ? ["#", "ชื่อสินค้า", "จำนวน", "หน่วยนับ", "หม่วดหมู่", "เลือก"]
@@ -82,21 +81,21 @@ const Product_modal = ({
     // console.log(e.target.value);
     setTitlePrice(e.target.value);
   };
-  const handleTitle = (auction_topic_id) => {
-    const res = dataTitle.find(
-      (data) => data.auction_topic_id == auction_topic_id
-    );
-    let TitlePrice = "";
+  const handleTitle = () => {
+    // const res = dataTitle.find(
+    //   (data) => data.auction_topic_id == auction_topic_id
+    // );
+    // let TitlePrice = "";
 
-    if (titlePrice) {
-      TitlePrice = titlePrice;
-    } else {
-      TitlePrice = titleProduct?.auction_report_price;
-    }
+    // if (titlePrice) {
+    //   TitlePrice = titlePrice;
+    // } else {
+    //   TitlePrice = titleProduct?.auction_report_price;
+    // }
 
     setTitleProduct({
-      auction_report_auctionstarted: res?.title_auction_topic,
-      auction_report_price: TitlePrice,
+      // auction_report_auctionstarted: res?.title_auction_topic,
+      auction_report_price: titlePrice,
     });
     handleOpen2();
   };
@@ -106,9 +105,6 @@ const Product_modal = ({
       const res = await axios.get(`${import.meta.env.VITE_APP_API}/Product`);
       setDataProduct(res.data);
       // console.log(res.data);
-
-
-
     } catch (error) {
       console.error(error);
     }
@@ -153,21 +149,16 @@ const Product_modal = ({
             sale_auction_start_event_count_price: productPrice || 0,
           },
         ]);
-
-   
-       
     } else {
       // console.log("ไม่ได้ เกิน 8 แถวแล้วง");
       Swal.fire({
-        icon: 'error',
-        title: 'ไม่สามารถทำรายการได้',
-        text: 'มีรายการสินค้าครบ 8 รายการแล้ว',
-      })
-       
+        icon: "error",
+        title: "ไม่สามารถทำรายการได้",
+        text: "มีรายการสินค้าครบ 8 รายการแล้ว",
+      });
     }
 
     handleOpen2();
-
   };
   const handleNewProduct = async () => {
     try {
@@ -210,10 +201,10 @@ const Product_modal = ({
         } else {
           // console.log("ไม่ได้ เกิน 8 แถวแล้วง");
           Swal.fire({
-            icon: 'error',
-            title: 'ไม่สามารถทำรายการได้',
-            text: 'มีรายการสินค้าครบ 8 รายการแล้ว',
-          })
+            icon: "error",
+            title: "ไม่สามารถทำรายการได้",
+            text: "มีรายการสินค้าครบ 8 รายการแล้ว",
+          });
         }
       }
     } catch (error) {
@@ -236,13 +227,14 @@ const Product_modal = ({
         product_name: res?.product_name,
         product_category: res?.product_category,
         product_count: res?.product_count,
-        sale_auction_start_event_count_price: res?.sale_auction_start_event_count_price
+        sale_auction_start_event_count_price:
+          res?.sale_auction_start_event_count_price,
       });
-      
+
     type === 1 && setProductQty(res?.auction_product_start_event_count);
-    type === 2 && (
-      setProductQty(res?.sale_auction_start_event_count) , setProductPrice(res?.sale_auction_start_event_count_price)
-    );
+    type === 2 &&
+      (setProductQty(res?.sale_auction_start_event_count),
+      setProductPrice(res?.sale_auction_start_event_count_price));
 
     setIdProduct(id);
   };
@@ -277,20 +269,19 @@ const Product_modal = ({
               product_category: newProduct?.product_category,
               sale_auction_start_event_count: productQty || 0,
               sale_auction_start_event_count_price: productPrice || 0,
-
             };
           }
           return data;
         });
 
         // console.log(productQty);
-        
+
         setProduct(newData);
         setMessage("");
         handleOpen2();
         setNewProduct({});
-        setProductQty("")
-        setProductPrice("")
+        setProductQty("");
+        setProductPrice("");
       }
     } catch (error) {
       console.error(error);
@@ -378,99 +369,36 @@ const Product_modal = ({
                 <div>
                   <div className="flex w-full  flex-col items-center gap-6 md:flex-row  lg:flex-row">
                     <div>
-                      <Input
-                        size="md"
-                        label="ค้นหาหัวข้อประมูล"
-                        className=""
-                        onChange={(e) => searchDataTitle(e)}
-                      />
-                    </div>
-                    <div>
                       <Typography
                         variant="h4"
                         color="blue-gray"
                         className="font-normal leading-none opacity-70"
                       >
-                        {`ราคาปัจจุบัน : ${Number(titleProduct?.auction_report_price).toLocaleString()} บาท`}
+                        {`ราคาปัจจุบัน : ${Number(
+                          titleProduct?.auction_report_price
+                        ).toLocaleString()} บาท`}
                       </Typography>
                     </div>
+
+                    <div>
+                      <Input
+                        size="md"
+                        label="กรอกราคาใหม่"
+                        className=""
+                        onChange={(e) => setTitlePrice(e.target.value)}
+                      />
+                    </div>
+
+                    <Button
+                      color="green"
+                      variant="filled"
+                      size="sm"
+                      className=" rounded-full  border-4  border-green-500 "
+                      onClick={() => handleTitle()}
+                    >
+                      บันทึก
+                    </Button>
                   </div>
-
-                  <Card className="mt-6 h-80 w-full overflow-scroll">
-                    <table className="w-full min-w-max table-auto text-left">
-                      <thead>
-                        <tr>
-                          {TABLE_HEAD_1.map((head) => (
-                            <th
-                              key={head}
-                              className="border-b border-blue-gray-100 bg-blue-gray-50 p-4"
-                            >
-                              <Typography
-                                variant="small"
-                                color="blue-gray"
-                                className="font-normal leading-none opacity-70"
-                              >
-                                {head}
-                              </Typography>
-                            </th>
-                          ))}
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {dataTitle?.map((data, index) => {
-                          const isLast = index === dataTitle.length - 1;
-                          const classes = isLast
-                            ? "p-4"
-                            : "p-4 border-b border-blue-gray-50";
-
-                          return (
-                            <tr key={data?.auction_topic_id}>
-                              <td className={classes}>
-                                <Typography
-                                  variant="small"
-                                  color="blue-gray"
-                                  className="font-normal"
-                                >
-                                  {index + 1}
-                                </Typography>
-                              </td>
-                              <td className={classes}>
-                                <Typography
-                                  variant="small"
-                                  color="blue-gray"
-                                  className="font-normal"
-                                >
-                                  {data?.title_auction_topic}
-                                </Typography>
-                              </td>
-                              <td className={classes}>
-                                <div className="w-40">
-                                  <Input
-                                    size="md"
-                                    label="จำนวนเงิน"
-                                    onKeyUp={(e) => inputPriceTitle(e)}
-                                  />
-                                </div>
-                              </td>
-                              <td className={classes}>
-                                <IconButton
-                                  color="green"
-                                  variant="filled"
-                                  size="sm"
-                                  className=" rounded-full  border-4  border-green-500 "
-                                  onClick={() =>
-                                    handleTitle(data?.auction_topic_id)
-                                  }
-                                >
-                                  <AiOutlinePlus className="text-2xl" />
-                                </IconButton>
-                              </td>
-                            </tr>
-                          );
-                        })}
-                      </tbody>
-                    </table>
-                  </Card>
                 </div>
               )}
 
@@ -727,9 +655,7 @@ const Product_modal = ({
                           type="number"
                           // value={newProduct?. sale_auction_start_event_count_price || ""}
                           value={productPrice || ""}
-
                           onChange={(e) => setProductPrice(e.target.value)}
-                        
                         />
                       </div>
                     )}
@@ -740,7 +666,7 @@ const Product_modal = ({
                         label="จำนวน (เฉพาะบิลนี้)"
                         className=""
                         type="number"
-                        value={productQty   || ""}
+                        value={productQty || ""}
                         onChange={(e) => setProductQty(e.target.value)}
                       />
                     </div>
@@ -844,7 +770,9 @@ const Product_modal = ({
                                     color="blue-gray"
                                     className="font-normal"
                                   >
-                                    {Number(data?.sale_auction_start_event_count_price).toLocaleString()}
+                                    {Number(
+                                      data?.sale_auction_start_event_count_price
+                                    ).toLocaleString()}
                                   </Typography>
                                 </td>
                               )}

@@ -568,6 +568,7 @@ export function SaleList() {
                      <td className={classes} >
                        <div className="flex justify-center">
                        <IconButton 
+                       variant="filled"
                          size="sm"
                          className=" rounded-full"
                          onClick={() => handleViewClick(data)}

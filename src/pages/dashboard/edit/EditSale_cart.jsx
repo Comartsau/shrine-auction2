@@ -386,20 +386,21 @@ export function EditSale_cart(idAuctionReport) {
               ยกเลิก
             </Button>
 
-            {data?.status_sale === 1 && (
-              <Button
+            <Button
                 size="sm"
                 variant="gradient"
                 color="purple"
                 className=" flex w-[120px] items-center align-middle  text-sm"
                 onClick={handlePay}
+                disabled={data?.status_sale === 2}
               >
                 <span className="mr-2 flex text-base">
                   <MdOutlinePayment />
                 </span>
                 ชำระเงิน
               </Button>
-            )}
+
+          
 
             <Menu>
               <MenuHandler>
@@ -425,26 +426,14 @@ export function EditSale_cart(idAuctionReport) {
               </MenuList>
             </Menu>
 
-            {/* <Button
-              size="sm"
-              variant="gradient"
-              color="yellow"
-              className=" flex w-[140px] items-center align-middle  text-sm"
-            >
-              <span className="mr-2 flex text-base">
-                <PiReceipt />
-              </span>
-              สร้างบิลใหม่
-            </Button> */}
-
-            {data?.status_sale === 2 && (
-              <Menu>
+            <Menu>
                 <MenuHandler>
                   <Button
                     size="sm"
                     variant="gradient"
                     color="orange"
                     className=" flex w-[110px] items-center align-middle  text-sm"
+                    disabled={data?.status_sale === 1}
                   >
                     <span className="mr-2 flex text-base">
                       <PiReceipt />
@@ -461,7 +450,9 @@ export function EditSale_cart(idAuctionReport) {
                   </MenuItem>
                 </MenuList>
               </Menu>
-            )}
+
+
+          
           </div>
         </div>
         {/* {JSON.stringify(customerData)} */}
@@ -490,6 +481,7 @@ export function EditSale_cart(idAuctionReport) {
               </div>
               <div>
                 <IconButton
+                variant="filled"
                   color="green"
                   size="sm"
                   className=" rounded-full border-4  border-green-500 "
@@ -498,6 +490,7 @@ export function EditSale_cart(idAuctionReport) {
                   <AiOutlinePlus className="text-2xl" />
                 </IconButton>
               </div>
+              <div><small >เพิ่ม/แก้ไข ผู้บริจาค</small></div>
             </div>
             <div className="flex flex-col  gap-4  p-3 md:flex-row lg:flex-row">
               <div>
@@ -640,7 +633,9 @@ export function EditSale_cart(idAuctionReport) {
             </div> */}
 
             <div className="flex flex-col justify-end  gap-4  p-3 md:flex-row lg:flex-row">
+            <div><small >เพิ่ม/แก้ไข สินค้า</small></div>
               <IconButton
+              variant="filled"
                 color="green"
                 size="sm"
                 className=" rounded-full border-4  border-green-500 "
