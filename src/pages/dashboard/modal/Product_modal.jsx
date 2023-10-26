@@ -507,6 +507,7 @@ const Product_modal = ({
                               </td>
                               <td className={classes}>
                                 <IconButton
+                                variant="filled"
                                   color="green"
                                   size="sm"
                                   className=" rounded-full  border-4  border-green-500 "
@@ -790,6 +791,7 @@ const Product_modal = ({
                               </td>
                               <td className={classes}>
                                 <IconButton
+                                variant="filled"
                                   color="green"
                                   size="sm"
                                   className=" rounded-full  border-4  border-green-500 "

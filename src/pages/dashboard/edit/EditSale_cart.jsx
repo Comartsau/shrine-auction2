@@ -55,6 +55,7 @@ export function EditSale_cart(idAuctionReport) {
   const [statusModal, setStatusModal] = useState(1);
 
   const [totalPriceData, setTotalPriceData] = useState(0);
+  const [dataAomsin, setDataAomsin] = useState({});
 
   const TABLE_HEAD = [
     "#",
@@ -165,11 +166,12 @@ export function EditSale_cart(idAuctionReport) {
   const handleSave = async () => {
     try {
       const modifyProduct = products.map((data, index) => ({
-        sale_auction_start_event: data.product_name,
-        sale_auction_start_event_count: data.product_count,
+        sale_auction_start_event: data?.product_name,
+        sale_auction_start_event_count: data?.sale_auction_start_event_count,
         sale_auction_start_event_count_price:
-          data.sale_auction_start_event_count_price,
-        sale_auction_start_event_count_pay: data.sale_auction_start_event_count,
+          data?.sale_auction_start_event_count_price,
+        sale_auction_start_event_count_unit: data?.product_count,
+        sale_auction_start_event_count_cat: data?.product_category
       }));
 
       const sendData = {
@@ -192,23 +194,25 @@ export function EditSale_cart(idAuctionReport) {
         aomsin: [
           {
             sale_auction_start_event: 1,
-            sale_auction_start_event_count: "13",
+            sale_auction_start_event_count: dataAomsin?.aomsin_2,
           },
           {
             sale_auction_start_event: 2,
-            sale_auction_start_event_count: "13",
+            sale_auction_start_event_count: dataAomsin?.aomsin_1,
           },
         ],
       };
 
       // console.log(data[0]);
-      //   console.log(sendData);
+      console.log(products);
+
+      console.log(sendData);
 
       const res = await axios.put(
         `${import.meta.env.VITE_APP_API}/Sale/${data.id}/edit`,
         sendData
       );
-      //   console.log(res.data);
+      console.log(res.data);
 
       if (res) {
         Swal.fire({
@@ -289,33 +293,58 @@ export function EditSale_cart(idAuctionReport) {
     handleOpen4();
   };
 
+  const checkAomsinData = () => {
+    products?.map((data, index) => {
+      if (data?.product_name == "สลากออมสิน") {
+        setDataAomsin((prev) => ({
+          ...prev,
+          aomsin_1: data?.sale_auction_start_event_count,
+        }));
+      } else if (data?.product_name == "ล็อตเตอรี่") {
+        setDataAomsin((prev) => ({
+          ...prev,
+          aomsin_2: data?.sale_auction_start_event_count,
+        }));
+      } else {
+        console.log("0000");
+      }
+    });
+
+    // console.log(dataAomsin);
+    
+  };
+
   useEffect(() => {
     fetchData();
     fetchdataCustomer();
   }, []);
 
+  useEffect(() => {
+    checkAomsinData();
+  }, [products]);
+
   const newBill = () => {
     Swal.fire({
-      title:"ต้องการสร้างบิลใหม่ ?",
+      title: "ต้องการสร้างบิลใหม่ ?",
       showCancelButton: true,
-      cancelButtonText: 'ยกเลิก',
-      confirmButtonText: 'ยืนยัน',
+      cancelButtonText: "ยกเลิก",
+      confirmButtonText: "ยืนยัน",
       preConfirm: (note) => {
         // นำค่าที่กรอกเก็บลงใน state หรือทำอะไรกับมันตามความเหมาะสม
         setCancelNote(note);
       },
       allowOutsideClick: () => !Swal.isLoading(),
     }).then((result) => {
-      if  (result.isConfirmed) {
-        navigate("/dashboard/sale")
+      if (result.isConfirmed) {
+        navigate("/dashboard/sale");
         setTimeout(() => {
-          navigate("/dashboard/saleList")
+          navigate("/dashboard/saleList");
         }, 100);
       } else if (result.dismiss === Swal.DismissReason.cancel) {
         // ผู้ใช้กดยกเลิก
       }
     });
-  }
+  };
 
   return (
     <>
@@ -360,8 +389,6 @@ export function EditSale_cart(idAuctionReport) {
         statusModal={statusModal}
       />
 
-     
-
       <Pay
         handleOpen3={handleOpen4}
         openPay={openPay}
@@ -383,18 +410,18 @@ export function EditSale_cart(idAuctionReport) {
           </div>
 
           <div className="flex  flex-wrap gap-4 md:flex-row lg:flex-row">
-          <Button
-                        size="sm"
-                        variant="outlined"
-                        color="green"
-                        className=" flex w-[135px] items-center align-middle  text-sm"
-                        onClick={newBill}
-                      >
-                        <span className="mr-2 flex text-base">
-                          <PiReceipt />
-                        </span>
-                        สร้างบิลใหม่
-                      </Button> 
+            <Button
+              size="sm"
+              variant="outlined"
+              color="green"
+              className=" flex w-[170px] items-center align-middle  text-sm"
+              onClick={newBill}
+            >
+              <span className="mr-2 flex text-base">
+                <PiReceipt />
+              </span>
+              รายการขายสินค้า
+            </Button>
             <Button
               size="sm"
               variant="gradient"
@@ -422,20 +449,18 @@ export function EditSale_cart(idAuctionReport) {
             </Button>
 
             <Button
-                size="sm"
-                variant="gradient"
-                color="purple"
-                className=" flex w-[120px] items-center align-middle  text-sm"
-                onClick={handlePay}
-                disabled={data?.status_sale === 2}
-              >
-                <span className="mr-2 flex text-base">
-                  <MdOutlinePayment />
-                </span>
-                ชำระเงิน
-              </Button>
-
-          
+              size="sm"
+              variant="gradient"
+              color="purple"
+              className=" flex w-[120px] items-center align-middle  text-sm"
+              onClick={handlePay}
+              disabled={data?.status_sale === 2}
+            >
+              <span className="mr-2 flex text-base">
+                <MdOutlinePayment />
+              </span>
+              ชำระเงิน
+            </Button>
 
             <Menu>
               <MenuHandler>
@@ -462,32 +487,29 @@ export function EditSale_cart(idAuctionReport) {
             </Menu>
 
             <Menu>
-                <MenuHandler>
-                  <Button
-                    size="sm"
-                    variant="gradient"
-                    color="orange"
-                    className=" flex w-[110px] items-center align-middle  text-sm"
-                    disabled={data?.status_sale === 1}
-                  >
-                    <span className="mr-2 flex text-base">
-                      <PiReceipt />
-                    </span>
-                    ใบเสร็จ
-                  </Button>
-                </MenuHandler>
-                <MenuList>
-                  <MenuItem onClick={() => handleOpen5(1)}>
-                    เครื่องพิมพ์หัวเข็ม{" "}
-                  </MenuItem>
-                  <MenuItem onClick={() => handleOpen5(2)}>
-                    เครื่องพิมพ์ธรรมดา
-                  </MenuItem>
-                </MenuList>
-              </Menu>
-
-
-          
+              <MenuHandler>
+                <Button
+                  size="sm"
+                  variant="gradient"
+                  color="orange"
+                  className=" flex w-[110px] items-center align-middle  text-sm"
+                  disabled={data?.status_sale === 1}
+                >
+                  <span className="mr-2 flex text-base">
+                    <PiReceipt />
+                  </span>
+                  ใบเสร็จ
+                </Button>
+              </MenuHandler>
+              <MenuList>
+                <MenuItem onClick={() => handleOpen5(1)}>
+                  เครื่องพิมพ์หัวเข็ม{" "}
+                </MenuItem>
+                <MenuItem onClick={() => handleOpen5(2)}>
+                  เครื่องพิมพ์ธรรมดา
+                </MenuItem>
+              </MenuList>
+            </Menu>
           </div>
         </div>
         {/* {JSON.stringify(customerData)} */}
@@ -516,7 +538,7 @@ export function EditSale_cart(idAuctionReport) {
               </div>
               <div>
                 <IconButton
-                variant="filled"
+                  variant="filled"
                   color="green"
                   size="sm"
                   className=" rounded-full border-4  border-green-500 "
@@ -525,7 +547,9 @@ export function EditSale_cart(idAuctionReport) {
                   <AiOutlinePlus className="text-2xl" />
                 </IconButton>
               </div>
-              <div><small >เพิ่ม/แก้ไข ผู้บริจาค</small></div>
+              <div>
+                <small>เพิ่ม/แก้ไข ผู้บริจาค</small>
+              </div>
             </div>
             <div className="flex flex-col  gap-4  p-3 md:flex-row lg:flex-row">
               <div>
@@ -668,9 +692,11 @@ export function EditSale_cart(idAuctionReport) {
             </div> */}
 
             <div className="flex flex-col justify-end  gap-4  p-3 md:flex-row lg:flex-row">
-            <div><small >เพิ่ม/แก้ไข สินค้า</small></div>
+              <div>
+                <small>เพิ่ม/แก้ไข สินค้า</small>
+              </div>
               <IconButton
-              variant="filled"
+                variant="filled"
                 color="green"
                 size="sm"
                 className=" rounded-full border-4  border-green-500 "

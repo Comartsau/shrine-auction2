@@ -56,11 +56,24 @@ const DailySummaryProduct = () => {
           selectData?.type_Data
         }&category=${selectData?.category}`;
       }
+
+      if (selectData?.pay) {
+        url = `${import.meta.env.VITE_APP_API}/Sum/search/?type_Data=${
+          selectData?.type_Data
+        }&pay=${selectData?.pay}`;
+      }
+
+      if (selectData?.pay && selectData?.category) {
+        url = `${import.meta.env.VITE_APP_API}/Sum/search/?type_Data=${
+          selectData?.type_Data
+        }&category=${selectData?.category}&pay=${selectData?.pay}`;
+      }
+
     }
 
     try {
       const res = await axios.get(url);
-      console.log(res.data);
+      // console.log(res.data);
       setData(res.data);
       sumData2(res.data);
     } catch (error) {
@@ -71,7 +84,7 @@ const DailySummaryProduct = () => {
   const fetchSum = async () => {
     try {
       const res = await axios.get(`${import.meta.env.VITE_APP_API}/Sum`);
-      console.log(res.data);
+      // console.log(res.data);
       setSumData(res.data);
     } catch (error) {
       console.log(error);
@@ -84,11 +97,9 @@ const DailySummaryProduct = () => {
 
     dataFetch?.map(
       (item, index) => (
-        (qty += 
-          item?.auction_product_start_event_count
-            ? Number(item?.auction_product_start_event_count)
-            : Number(item?.sale_auction_start_event_count)
-        ),
+        (qty += item?.auction_product_start_event_count
+          ? Number(item?.auction_product_start_event_count)
+          : Number(item?.sale_auction_start_event_count)),
         selectData.type_Data === 2 &&
           (total += Number(
             item?.sale_auction_start_event_count_price
@@ -106,25 +117,46 @@ const DailySummaryProduct = () => {
     // }));
   };
 
-  const fetchExcel = async(number)=>{
-    let urlExcel = ""
-    if(number === 1 ){
-      urlExcel = `${import.meta.env.VITE_APP_API}/Sum/excel/?type_Data=${selectData?.type_Data}`
-    }else {
-      if(selectData.category){
-        urlExcel = `${import.meta.env.VITE_APP_API}/Sum/excel/?type_Data=${selectData.type_Data}&category=${selectData.category}`
+  const fetchExcel = async (number) => {
+    let urlExcel = "";
+    const Token = localStorage.getItem("token");
+    if (number === 1) {
+      urlExcel = `${import.meta.env.VITE_APP_API}/Sum/excel/?type_Data=${
+        selectData?.type_Data
+      } `;
+    } else {
+      if (selectData.category) {
+        urlExcel = `${import.meta.env.VITE_APP_API}/Sum/excel/?type_Data=${
+          selectData.type_Data
+        }&category=${selectData.category}`;
       }
     }
     try {
-      console.log(urlExcel);
-      const res = await axios.get(urlExcel)
-      console.log(res.data);
-      
+      // console.log(urlExcel);
+      const res = await axios.get(urlExcel, {
+        responseType: "blob", // ระบุ responseType เป็น 'blob'
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Token ${Token}`,
+        },
+      });
+      // console.log(res.data);
+
+      const blob = new Blob([res.data], {
+        type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      });
+      const downloadUrl = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = downloadUrl;
+      link.download = "Reports_Auction_Title.xlsx"; // ตั้งชื่อไฟล์ที่จะดาวน์โหลด
+      link.click();
+      URL.revokeObjectURL(downloadUrl);
     } catch (error) {
       console.log(error);
     }
 
-  }
+    // sssssssssssssssssssssss
+  };
 
   useEffect(() => {
     fetchData();
@@ -143,6 +175,7 @@ const DailySummaryProduct = () => {
                   onClick={() =>
                     setSelectData((prev) => ({ ...prev, type_Data: 1 }))
                   }
+                  variant={selectData.type_Data === 1 ? "outlined" : "filled"}
                 >
                   ประมูล
                 </Button>
@@ -151,6 +184,7 @@ const DailySummaryProduct = () => {
                   onClick={() =>
                     setSelectData((prev) => ({ ...prev, type_Data: 2 }))
                   }
+                  variant={selectData.type_Data === 2 ? "outlined" : "filled"}
                 >
                   ขายสินค้า
                 </Button>
@@ -161,18 +195,38 @@ const DailySummaryProduct = () => {
                 color="green"
                 className="mb-2 mt-4 flex justify-end"
               >
-                {selectData.type_Data === 1 && `สลากออมสิน : ${sumData?.auction_aomsin2} ใบ`}
-                {selectData.type_Data === 2 && `สลากออมสิน : ${sumData?.sale_aomsin2} ใบ`}
+                {selectData.type_Data === 1 &&
+                  `สลากออมสิน : ${sumData?.auction_aomsin2} ใบ`}
+                {selectData.type_Data === 2 &&
+                  `สลากออมสิน : ${sumData?.sale_aomsin1} ใบ`}
               </Typography>
               <Typography
                 variant="lead"
                 color="red"
                 className="mb-2 mt-4 flex justify-end"
               >
-                {selectData.type_Data === 1 && `ล็อตเตอรี่ : ${sumData?.auction_aomsin1} ใบ`}
-                {selectData.type_Data === 2 && `ล็อตเตอรี่ : ${sumData?.sale_aomsin1} ใบ`}
-
+                {selectData.type_Data === 1 &&
+                  `ล็อตเตอรี่ : ${sumData?.auction_aomsin1} ใบ`}
+                {selectData.type_Data === 2 &&
+                  `ล็อตเตอรี่ : ${sumData?.sale_aomsin2} ใบ`}
               </Typography>
+
+              <hr />
+
+              <div className="mt-4 flex   flex-col">
+                <div className="flex justify-end">
+                  <Typography>จำนวนทั้งหมด : {qty} รายการ</Typography>
+                </div>
+                <div className="flex justify-end">
+                  <Typography>
+                    ราคาสุทธิ :{" "}
+                    {selectData.type_Data === 1
+                      ? 0
+                      : Number(total).toLocaleString()}{" "}
+                    บาท
+                  </Typography>
+                </div>
+              </div>
             </CardBody>
           </Card>
 
@@ -204,8 +258,6 @@ const DailySummaryProduct = () => {
                       }
                     >
                       <option value="">ทั้งหมด</option>
-                      <option value="สลากออมสิน">สลากออมสิน</option>
-                      <option value="ล็อตเตอรี่">ล็อตเตอรี่</option>
                       <option value="วัตถุมงคล">วัตถุมงคล</option>
                       <option value="โทรศัพท์">โทรศัพท์</option>
                       <option value="เครื่องใช้สำนักงาน">
@@ -238,8 +290,8 @@ const DailySummaryProduct = () => {
                       }
                     >
                       <option value="">ทั้งหมด</option>
-                      <option value="1">ชำระแล้ว</option>
-                      <option value="2">ยังไม่ชำระ</option>
+                      <option value="1">ยังไม่ชำระ</option>
+                      <option value="2">ชำระแล้ว</option>
                     </select>
                   </div>
                 </div>
@@ -251,8 +303,12 @@ const DailySummaryProduct = () => {
                         <Button color="green">Excel</Button>
                       </MenuHandler>
                       <MenuList>
-                        <MenuItem onClick={()=>fetchExcel(1)}>ทั้งหมด</MenuItem>
-                        <MenuItem onClick={()=>fetchExcel(2)}>เฉพาะที่เลือก</MenuItem>
+                        <MenuItem onClick={() => fetchExcel(1)}>
+                          ทั้งหมด
+                        </MenuItem>
+                        <MenuItem onClick={() => fetchExcel(2)}>
+                          เฉพาะที่เลือก
+                        </MenuItem>
                       </MenuList>
                     </Menu>
                   </div>
@@ -260,7 +316,7 @@ const DailySummaryProduct = () => {
               </div>
 
               <Card className="mt-4 h-80 w-full overflow-scroll">
-                <table className="w-full min-w-max table-auto text-left">
+                <table className="w-full min-w-max table-auto text-center">
                   <thead>
                     <tr>
                       {TABLE_HEAD.map((head) => (
@@ -280,89 +336,86 @@ const DailySummaryProduct = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {data?.map((data, index) => (
-                      <tr key={data?.id} className="even:bg-blue-gray-50/50">
-                        <td className="p-4">
-                          <Typography
-                            variant="small"
-                            color="blue-gray"
-                            className="font-normal"
-                          >
-                            {index + 1}
-                          </Typography>
-                        </td>
-                        <td className="p-4">
-                          <Typography
-                            variant="small"
-                            color="blue-gray"
-                            className="font-normal"
-                          >
-                            {data?.auction_product_start_event
-                              ? data?.auction_product_start_event
-                              : data?.sale_auction_start_event}
-                          </Typography>
-                        </td>
-                        <td className="p-4">
-                          <Typography
-                            variant="small"
-                            color="blue-gray"
-                            className="font-normal"
-                          >
-                            {data?.auction_product_start_event_count
-                              ? data?.auction_product_start_event_count
-                              : data?.sale_auction_start_event_count}
-                          </Typography>
-                        </td>
-                        <td className="p-4">
-                          <Typography
-                            variant="small"
-                            color="blue-gray"
-                            className="font-normal"
-                          >
-                            {data?.auction_product_start_event_cat_count
-                              ? data?.auction_product_start_event_cat_count
-                              : data?.sale_auction_start_event_count_unit}
-                          </Typography>
-                        </td>
-                        <td className="p-4">
-                          <Typography
-                            variant="small"
-                            color="blue-gray"
-                            className="font-normal"
-                          >
-                            {data?.sale_auction_start_event_count_price
-                              ? data?.sale_auction_start_event_count_price
-                              : "-"}
-                          </Typography>
-                        </td>
-                        <td className="p-4">
-                          <Typography
-                            variant="small"
-                            color="blue-gray"
-                            className="font-normal"
-                          >
-                            {data?.sale_auction_start_event_count_price
-                              ? // data?.sale_auction_start_event_count_price * Number(data?.sale_auction_start_event_count)
-                                0
-                              : "-"}
-                          </Typography>
-                        </td>
-                      </tr>
-                    ))}
+                    {data?.map((data, index) => {
+                      const price = Number(
+                        data.sale_auction_start_event_count_price
+                      );
+                      const count = Number(data.sale_auction_start_event_count);
+                      const result = price * count;
+                      return (
+                        <tr key={data?.id} className="even:bg-blue-gray-50/50">
+                          <td className="p-4">
+                            <Typography
+                              variant="small"
+                              color="blue-gray"
+                              className="font-normal"
+                            >
+                              {index + 1}
+                            </Typography>
+                          </td>
+                          <td className="p-4">
+                            <Typography
+                              variant="small"
+                              color="blue-gray"
+                              className="font-normal"
+                            >
+                              {data?.auction_product_start_event
+                                ? data?.auction_product_start_event
+                                : data?.sale_auction_start_event}
+                            </Typography>
+                          </td>
+                          <td className="p-4">
+                            <Typography
+                              variant="small"
+                              color="blue-gray"
+                              className="font-normal"
+                            >
+                              {data?.auction_product_start_event_count
+                                ? data?.auction_product_start_event_count
+                                : data?.sale_auction_start_event_count}
+                            </Typography>
+                          </td>
+                          <td className="p-4">
+                            <Typography
+                              variant="small"
+                              color="blue-gray"
+                              className="font-normal"
+                            >
+                              {data?.auction_product_start_event_cat_count
+                                ? data?.auction_product_start_event_cat_count
+                                : data?.sale_auction_start_event_count_unit}
+                            </Typography>
+                          </td>
+                          <td className="p-4">
+                            <Typography
+                              variant="small"
+                              color="blue-gray"
+                              className="font-normal"
+                            >
+                              {data?.sale_auction_start_event_count_price
+                                ? Number(
+                                    data?.sale_auction_start_event_count_price
+                                  ).toLocaleString()
+                                : "-"}
+                            </Typography>
+                          </td>
+                          <td className="p-4">
+                            <Typography
+                              variant="small"
+                              color="blue-gray"
+                              className="font-normal"
+                            >
+                              {data?.sale_auction_start_event_count_price
+                                ? result.toLocaleString()
+                                : "-"}
+                            </Typography>
+                          </td>
+                        </tr>
+                      );
+                    })}
                   </tbody>
                 </table>
               </Card>
-
-              <div className="mt-4 flex   flex-col">
-                <div className="flex justify-end">
-                  <Typography>จำนวนทั้งหมด : {qty} รายการ</Typography>
-                </div>
-                <div className="flex justify-end">
-                  <Typography>
-                    ราคาสุทธิ : {selectData.type_Data === 1 ? 0 : total} บาท
-                  </Typography>
-                </div>
-              </div>
             </CardBody>
           </Card>
         </div>

@@ -279,7 +279,7 @@ const BillPay_Parmoon = ({ open5, handleOpen5, data, statusModal  }) => {
     fethDataPay()
   }, [open5]);
 
-  console.log(dataPay)
+  // console.log(dataPay)
   // console.log(totalPrice)
 
   const currentDate = new Date();

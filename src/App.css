@@ -1,7 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300&display=swap');
+/* body {
+   
+    font-family: 'Prompt', sans-serif !important;
+   
+  } */
 
-body {
-    font-family: 'IBM Plex Sans Thai Looped', sans-serif;
-    /* font-family: 'Manrope', sans-serif; */
+
+  p,ul,li, button , h2 {
+    font-family: 'Prompt', sans-serif !important;
   }
 
   @keyframes scale-up-down {
@@ -21,6 +27,9 @@ body {
     -webkit-text-stroke: 3px white;
     /* text-stroke: 3px white; */
     font-family: 'Mitr', sans-serif !important;
+    
+    
+
   }
 
   .gradient-text1 {

@@ -206,13 +206,12 @@ export function EditSale1(idAuctionReport) {
       // console.log(res.data);
 
       Swal.fire({
-        position: 'center',
-        icon: 'success',
-        title: 'บันทึกสำเร็จ !!',
+        position: "center",
+        icon: "success",
+        title: "บันทึกสำเร็จ !!",
         showConfirmButton: false,
-        timer: 1500
-      })
-
+        timer: 1500,
+      });
     } catch (error) {
       console.error(error);
     }
@@ -290,26 +289,26 @@ export function EditSale1(idAuctionReport) {
 
   const newBill = () => {
     Swal.fire({
-      title:"ต้องการสร้างบิลใหม่ ?",
+      title: "ต้องการสร้างบิลใหม่ ?",
       showCancelButton: true,
-      cancelButtonText: 'ยกเลิก',
-      confirmButtonText: 'ยืนยัน',
+      cancelButtonText: "ยกเลิก",
+      confirmButtonText: "ยืนยัน",
       preConfirm: (note) => {
         // นำค่าที่กรอกเก็บลงใน state หรือทำอะไรกับมันตามความเหมาะสม
         setCancelNote(note);
       },
       allowOutsideClick: () => !Swal.isLoading(),
     }).then((result) => {
-      if  (result.isConfirmed) {
-        navigate("/dashboard/sale")
-        setTimeout(() => { 
-          navigate("/dashboard/auctionsList")
+      if (result.isConfirmed) {
+        navigate("/dashboard/sale");
+        setTimeout(() => {
+          navigate("/dashboard/auctionsList");
         }, 100);
       } else if (result.dismiss === Swal.DismissReason.cancel) {
         // ผู้ใช้กดยกเลิก
       }
     });
-  }
+  };
 
   return (
     <>
@@ -367,18 +366,21 @@ export function EditSale1(idAuctionReport) {
           </div>
 
           <div className="flex  flex-wrap gap-4 md:flex-row lg:flex-row">
-          <Button
-                        size="sm"
-                        variant="outlined"
-                        color="green"
-                        className=" flex w-[135px] items-center align-middle  text-sm"
-                        onClick={newBill}
-                      >
-                        <span className="mr-2 flex text-base">
-                          <PiReceipt />
-                        </span>
-                        สร้างบิลใหม่
-                      </Button> 
+   
+              <Button
+                size="sm"
+                variant="outlined"
+                color="green"
+                className=" flex w-[150px] items-center align-middle  text-sm"
+                onClick={newBill}
+              >
+                <span className="mr-2 flex text-base">
+                  <PiReceipt />
+                </span>
+                รายการประมูล
+              </Button>
+          
+
             <Button
               size="sm"
               variant="gradient"
@@ -406,20 +408,19 @@ export function EditSale1(idAuctionReport) {
             </Button>
 
             <Button
-                size="sm"
-                variant="gradient"
-                color="purple"
-                className=" flex w-[120px] items-center align-middle  text-sm"
-                onClick={handlePay}
-                disabled={data[0]?.auction_report_Pay_status === 2}
-              >
-                <span className="mr-2 flex text-base">
-                  <MdOutlinePayment />
-                </span>
-                ชำระเงิน
-              </Button>
+              size="sm"
+              variant="gradient"
+              color="purple"
+              className=" flex w-[120px] items-center align-middle  text-sm"
+              onClick={handlePay}
+              disabled={data[0]?.auction_report_Pay_status === 2}
+            >
+              <span className="mr-2 flex text-base">
+                <MdOutlinePayment />
+              </span>
+              ชำระเงิน
+            </Button>
 
-    
             <Menu>
               <MenuHandler>
                 <Button
@@ -443,8 +444,6 @@ export function EditSale1(idAuctionReport) {
                 </MenuItem>
               </MenuList>
             </Menu>
-
-
 
             <Menu>
               <MenuHandler>
