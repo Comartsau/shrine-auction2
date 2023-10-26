@@ -805,6 +805,46 @@ export const Receipt3 = ({reportData, sumTotal, thbText, receiptData}) => {
               styles.flexrowstart,
               {width:"65%"}
               ]}>
+              
+            </View>
+
+            <View style={[
+              styles.flexrow,
+              {width:"35%"}
+              ]}>
+            <View style={styles.flexrowstart}>
+                <Text
+                  style={[
+                    { fontWeight: "extrabold" },
+                    { fontFamily: "SarabunBold" },
+                    { fontSize: "11" },
+                    styles.mtsm,
+                    styles.spacesm,
+                  ]}
+                >
+                  ผู้ออกบิล:{" "}
+
+                </Text>
+                <Text
+                  style={[
+                    { fontWeight: "light" },
+                    { fontFamily: "Sarabun" },
+                    { fontSize: "11" },
+                    styles.mtsm,
+                    styles.spacesm,
+                  ]}
+                >
+                
+                {dataReceipt.sale_receipt_name_export}.{" "}
+                </Text>
+              </View>
+            </View>
+          </View>
+          <View style={styles.flexrow}>
+            <View style={[
+              styles.flexrowstart,
+              {width:"65%"}
+              ]}>
               <Text
                 style={[
                   { fontWeight: "extrabold" },
@@ -1406,7 +1446,7 @@ export const Receipt3 = ({reportData, sumTotal, thbText, receiptData}) => {
             <View style={styles.tableRow}>
               <Text style={styles.tableCellsum}> {" "}{thbText? `( ${thbText} ) ` : ''}{" "}  </Text>
               <Text style={styles.tableCell3}>{""}  </Text>
-              <Text style={styles.tableCell4}> {""} </Text>
+              <Text style={styles.tableCell4}>{""}  </Text>
               <Text style={styles.tableCell5}> รวมเป็นเงิน  </Text>
               <Text style={styles.tableCell6}> {" "}{sumTotal.toLocaleString()}{" "}</Text>
             </View>
@@ -1469,6 +1509,46 @@ export const Receipt3 = ({reportData, sumTotal, thbText, receiptData}) => {
                 >
                 
                   {dataReceipt.sale_receipt_name}.{" "}
+                </Text>
+              </View>
+            </View>
+          </View>
+          <View style={styles.flexrow}>
+            <View style={[
+              styles.flexrowstart,
+              {width:"65%"}
+              ]}>
+              
+            </View>
+
+            <View style={[
+              styles.flexrow,
+              {width:"35%"}
+              ]}>
+            <View style={styles.flexrowstart}>
+                <Text
+                  style={[
+                    { fontWeight: "extrabold" },
+                    { fontFamily: "SarabunBold" },
+                    { fontSize: "11" },
+                    styles.mtsm,
+                    styles.spacesm,
+                  ]}
+                >
+                  ผู้ออกบิล:{" "}
+
+                </Text>
+                <Text
+                  style={[
+                    { fontWeight: "light" },
+                    { fontFamily: "Sarabun" },
+                    { fontSize: "11" },
+                    styles.mtsm,
+                    styles.spacesm,
+                  ]}
+                >
+                
+                {dataReceipt.sale_receipt_name_export}.{" "}
                 </Text>
               </View>
             </View>
@@ -1625,9 +1705,8 @@ export const Receipt3 = ({reportData, sumTotal, thbText, receiptData}) => {
           </View>
         </View>
       </Page>
-     
       
-    
+     
       {/* สำเนา2 */}
       <Page size="A4" style={styles.page} >
         <View style={styles.flexrowbetween}>
@@ -2080,7 +2159,7 @@ export const Receipt3 = ({reportData, sumTotal, thbText, receiptData}) => {
             <View style={styles.tableRow}>
               <Text style={styles.tableCellsum}> {" "}{thbText? `( ${thbText} ) ` : ''}{" "}  </Text>
               <Text style={styles.tableCell3}>{""}  </Text>
-              <Text style={styles.tableCell4}> {""} </Text>
+              <Text style={styles.tableCell4}>{""}  </Text>
               <Text style={styles.tableCell5}> รวมเป็นเงิน  </Text>
               <Text style={styles.tableCell6}> {" "}{sumTotal.toLocaleString()}{" "}</Text>
             </View>
@@ -2143,6 +2222,46 @@ export const Receipt3 = ({reportData, sumTotal, thbText, receiptData}) => {
                 >
                 
                   {dataReceipt.sale_receipt_name}.{" "}
+                </Text>
+              </View>
+            </View>
+          </View>
+          <View style={styles.flexrow}>
+            <View style={[
+              styles.flexrowstart,
+              {width:"65%"}
+              ]}>
+              
+            </View>
+
+            <View style={[
+              styles.flexrow,
+              {width:"35%"}
+              ]}>
+            <View style={styles.flexrowstart}>
+                <Text
+                  style={[
+                    { fontWeight: "extrabold" },
+                    { fontFamily: "SarabunBold" },
+                    { fontSize: "11" },
+                    styles.mtsm,
+                    styles.spacesm,
+                  ]}
+                >
+                  ผู้ออกบิล:{" "}
+
+                </Text>
+                <Text
+                  style={[
+                    { fontWeight: "light" },
+                    { fontFamily: "Sarabun" },
+                    { fontSize: "11" },
+                    styles.mtsm,
+                    styles.spacesm,
+                  ]}
+                >
+                
+                {dataReceipt.sale_receipt_name_export}.{" "}
                 </Text>
               </View>
             </View>
@@ -2299,6 +2418,7 @@ export const Receipt3 = ({reportData, sumTotal, thbText, receiptData}) => {
           </View>
         </View>
       </Page>
+     
     
      
     </Document>
