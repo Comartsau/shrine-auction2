@@ -3587,10 +3587,10 @@ const handleSendDataEDitAuction = async () => {
                   </div>
                 </div>
               </div>
-              {activeButton !== 4 ?
                  <div className="mt-5 flex flex-col  items-center   justify-center  gap-3  ">
                  <div className="flex items-center gap-3">
                    <IconButton
+                   disabled={activeButton == 4}
                      className={`h-12 w-12 rounded-full ${
                        activeButton === 1 ? "bg-red-600" : "bg-black"
                      }`}
@@ -3603,6 +3603,7 @@ const handleSendDataEDitAuction = async () => {
                      )}
                    </IconButton>
                    <IconButton
+                   disabled={activeButton == 4}
                      className={`h-12 w-12 rounded-full ${
                        activeButton === 2 ? "bg-red-600" : "bg-black"
                      }`}
@@ -3615,6 +3616,7 @@ const handleSendDataEDitAuction = async () => {
                      )}
                    </IconButton>
                    <IconButton
+                   disabled={activeButton == 4}
                      className={`h-12 w-12 rounded-full ${
                        activeButton === 3 ? "bg-red-600" : "bg-black"
                      }`}
@@ -3628,25 +3630,20 @@ const handleSendDataEDitAuction = async () => {
                    </IconButton>
                  </div>
                </div>
-              :
-            ''
-              }
+     
               <div className="mt-5 flex w-full  flex-col mb-5   justify-center sm:flex-row gap-3 ">
-                {activeButton !== 4 ?
                  <Button
                  size="sm"
                  color="red"
                  className="flex w-[130px] text-sm  "
                  onClick={() => handleButtonClick(0)}
+                 disabled={activeButton == 4}
                >
                  <span className=" flex w-full text-sm justify-center ">
                    รีเซ็ท 1-2-3
                  </span>
                </Button>
-                :
-                ''
-                }
-                {activeButton !== 4 ?
+           
                     <Button
                       size="sm"
                       variant="gradient"
@@ -3660,9 +3657,7 @@ const handleSendDataEDitAuction = async () => {
                       </span>
                       โชวคนชนะ
                     </Button>
-                    :
-                    ''
-                    }
+            
               </div>
             </Card>
           </div>

@@ -43,6 +43,16 @@ body {
     text-stroke: 3px #7D0707;
     font-family: 'Mitr', sans-serif !important;
   }
+  .gradient-text12 {
+    background: linear-gradient(179.2deg, #FFB72B 100%,  #FFB72B 100%,  #FFB72B 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: #7D0707;
+    -webkit-text-stroke: 3px #7D0707;
+    text-stroke: 3px #7D0707;
+    font-family: 'Mitr', sans-serif !important;
+    line-height: 48px !important; /* เปลี่ยนค่าตามที่คุณต้องการ */
+  }
   .gradient-text2 {
 
     background: linear-gradient(179.2deg, #7D0707 100%,  #7D0707 100%,  #7D0707 100%);

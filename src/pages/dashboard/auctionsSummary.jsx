@@ -18,25 +18,23 @@ import {
   CardFooter,
   IconButton,
   Input,
-  Dialog,
-  DialogHeader,
-  DialogBody,
-  DialogFooter,
+  Select,
+  Option,
 } from "@material-tailwind/react";
 import axios from "axios";
 
 export function AuctionsSummary() {
   const [listData, setListData] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
+  const [searchQueryPay, setSearchQueryPay] = useState("");
   const [noData, setNoData] = useState(true);
   const [reportData, setReportData] = useState([]);
 
-  const [billData,setBillData] = useState([])
-  const [billDataId,setBillDataId] = useState('')
+  const [billData, setBillData] = useState([]);
+  const [billDataId, setBillDataId] = useState("");
 
   const [startDateExcel, setStartDateExcel] = useState(new Date());
   const [endDateExcel, setEndDateExcel] = useState(new Date());
-
 
   // ---------  Token ------------------------ //
   const Token = localStorage.getItem("token");
@@ -54,16 +52,17 @@ export function AuctionsSummary() {
   //---------- แสดงข้อมูลในตาราง --------------- //
   const fetchData = async () => {
     try {
-      let url = ''
-      if ( (startDateExcel && endDateExcel) || searchQuery ) {
+      let url = "";
+      if ((startDateExcel && endDateExcel) || searchQuery) {
         // console.log(startDateExcel);
         const formattedStartDate = formatDate1(startDateExcel, "YYYY-MM-DD");
         const formattedEndDate = formatDate1(endDateExcel, "YYYY-MM-DD");
         // console.log(formattedStartDate);
         // console.log(formattedEndDate);
         //  url = `${import.meta.env.VITE_APP_API}/search-report-sale/`;
-         url = `${import.meta.env.VITE_APP_API}/search-report-sale/?search=${searchQuery},${formattedStartDate},${formattedEndDate}`;
-        
+        url = `${
+          import.meta.env.VITE_APP_API
+        }/search-report-sale/?search=${searchQuery},${formattedStartDate},${formattedEndDate}&pay=${searchQueryPay}`;
       }
       const response = await axios.get(url, {
         headers: {
@@ -71,10 +70,9 @@ export function AuctionsSummary() {
           Authorization: `Token ${Token}`,
         },
       });
-      // console.log(response.data)
+      console.log(response.data)
       setListData(response.data);
       setNoData(false);
-
     } catch (error) {
       console.error(error);
       setNoData(true);
@@ -83,8 +81,7 @@ export function AuctionsSummary() {
 
   useEffect(() => {
     fetchData();
-  }, [searchQuery,startDateExcel,
-    endDateExcel,]);
+  }, [searchQuery, searchQueryPay, startDateExcel, endDateExcel]);
 
   //------------- แปลง วันที่ ------------------------------------- //
 
@@ -165,10 +162,6 @@ export function AuctionsSummary() {
     }
   };
 
-
-
-  
-
   const dateObject = new Date(reportData.sale_auction_date);
 
   // รับค่าวันที่, เดือน, และปี
@@ -181,14 +174,13 @@ export function AuctionsSummary() {
     .toString()
     .padStart(2, "0")}/${year}`;
 
-
   return (
     <div>
       {/* <p>ข้อมูลผู้บริจาค</p> */}
       <div className="mx-3 mt-3 flex w-full  flex-col justify-center  gap-5 xl:justify-start xl:gap-3 2xl:flex-row  ">
-        <div className="flex  flex-col justify-center items-center  gap-5 sm:justify-start md:flex-row ">
+        <div className="flex  flex-col items-center justify-center  gap-5 sm:justify-start md:flex-row ">
           <div className="flex flex-col justify-center  gap-5  md:flex-row xl:justify-start xl:gap-2 ">
-            <div className="flex    ">
+            <div className="flex">
               <div className="flex w-[80%] sm:w-[430px] md:w-[300px] lg:w-[350px] 2xl:w-[210px] ">
                 <Input
                   type="text"
@@ -198,6 +190,19 @@ export function AuctionsSummary() {
                   onChange={(e) => setSearchQuery(e.target.value)}
                 />
               </div>
+            </div>
+            <div className="flex  ">
+              <Select
+                label="ค้นหาชำระ/ยังไม่ชำระ"
+                onChange={(e) => {
+                  // console.log(e)
+                  setSearchQueryPay(e);
+                }}
+              >
+                <Option value="">ทั้งหมด</Option>
+                <Option value="2">ชำระแล้ว</Option>
+                <Option value="1">ยังไม่ชำระ</Option>
+              </Select>
             </div>
             <div className="flex  justify-center gap-5 md:justify-start xl:gap-2">
               <div className="flex justify-center ">
@@ -213,7 +218,7 @@ export function AuctionsSummary() {
                   dateFormat=" วันเริ่มต้น dd/MM/yyyy"
                   label="วันสิ้นสุด"
                   onChange={(date) => setStartDateExcel(date)}
-                  className="w-full rounded-md border border-gray-400 p-2 shadow-sm  text-gray-600 focus:border-blue-500 focus:outline-none"
+                  className="w-full rounded-md border border-gray-400 p-2 text-gray-600  shadow-sm focus:border-blue-500 focus:outline-none"
                 />
               </div>
               <div className="flex justify-center ">
@@ -222,21 +227,21 @@ export function AuctionsSummary() {
                   locale={th}
                   dateFormat="วันสิ้นสุด dd/MM/yyyy"
                   onChange={(date) => setEndDateExcel(date)}
-                  className="w-full rounded-md border border-gray-400 p-2 shadow-sm  text-gray-600 focus:border-blue-500 focus:outline-none"
+                  className="w-full rounded-md border border-gray-400 p-2 text-gray-600  shadow-sm focus:border-blue-500 focus:outline-none"
                 />
               </div>
               <div className="flex justify-center">
-              <Button
-                fullWidth
-                className="flex w-[200px] items-center justify-center bg-green-500 align-middle text-base md:w-[120px]     lg:w-[150px]"
-                onClick={exportToExcel}
-              >
-                <span className="mr-2 text-xl">
-                  <SiMicrosoftexcel />
-                </span>
-                Excel
-              </Button>
-            </div>
+                <Button
+                  fullWidth
+                  className="flex w-[200px] items-center justify-center bg-green-500 align-middle text-base md:w-[120px]     lg:w-[150px]"
+                  onClick={exportToExcel}
+                >
+                  <span className="mr-2 text-xl">
+                    <SiMicrosoftexcel />
+                  </span>
+                  Excel
+                </Button>
+              </div>
             </div>
           </div>
         </div>
@@ -318,6 +323,18 @@ export function AuctionsSummary() {
                   color="blue-gray"
                   className="flex font-normal leading-none opacity-70"
                 >
+                  สถานะ
+                </Typography>
+              </th>
+              <th
+                // key={head}
+                className="border-y border-blue-gray-100 bg-blue-gray-50/50 p-3"
+              >
+                <Typography
+                  variant="small"
+                  color="blue-gray"
+                  className="flex font-normal leading-none opacity-70"
+                >
                   จำนวนเงิน
                 </Typography>
               </th>
@@ -352,7 +369,7 @@ export function AuctionsSummary() {
                           color="blue-gray"
                           className="font-bold "
                         >
-                          {pageIndex + 1 || ''}
+                          {pageIndex + 1 || ""}
                         </Typography>
                       </div>
                     </td>
@@ -362,7 +379,7 @@ export function AuctionsSummary() {
                         color="blue-gray"
                         className="font-normal "
                       >
-                        {formatDate(data?.auction_report_date) || ''}
+                        {formatDate(data?.auction_report_date) || ""}
                       </Typography>
                     </td>
                     <td className={classes}>
@@ -371,7 +388,7 @@ export function AuctionsSummary() {
                         color="blue-gray"
                         className="font-normal "
                       >
-                        {data.auction_report_auctionstarted || ''}
+                        {data.auction_report_auctionstarted || ""}
                       </Typography>
                     </td>
                     <td className={classes}>
@@ -380,7 +397,7 @@ export function AuctionsSummary() {
                         color="blue-gray"
                         className="font-normal "
                       >
-                        {data?.auction_report_user_auction || ''}
+                        {data?.auction_report_user_auction || ""}
                       </Typography>
                     </td>
                     <td className={classes}>
@@ -389,7 +406,24 @@ export function AuctionsSummary() {
                         color="blue-gray"
                         className="font-normal "
                       >
-                        {data?.number || ''}
+                        {data?.number || ""}
+                      </Typography>
+                    </td>
+                    <td className={classes}>
+                      <Typography
+                        variant="small"
+                        style={{
+                          color:
+                            data?.status_sale === 1 ||
+                            data?.auction_report_Pay_status === 1
+                              ? "red"
+                              : "green",
+                        }}
+                        className="font-normal"
+                      >
+                        {data?.auction_report_Pay_status === 1
+                          ? "ยังไม่ชำระ"
+                          : "ชำระแล้ว"}
                       </Typography>
                     </td>
                     <td className={classes}>
@@ -398,22 +432,33 @@ export function AuctionsSummary() {
                         color="blue-gray"
                         className="font-normal "
                       >
-                        {Number(data?.auction_report_price).toLocaleString() || ''}
+                        {Number(data?.auction_report_price).toLocaleString() ||
+                          ""}
                       </Typography>
                     </td>
                   </tr>
                 );
               })}
-          <tr >
-            <td>
-            <div className="mt-5"></div>
-            </td>
-        </tr>
-          <tr >
-            <td colSpan="5" className="text-right  pr-3 font-bold ">รวมจำนวนเงิน:</td>
-            <td className="font-bold">
-              {listData.reduce((total, data) => total + Number(data.auction_report_price),0).toLocaleString()}{" "}  บาท</td>
-        </tr>
+              <tr>
+                <td>
+                  <div className="mt-5"></div>
+                </td>
+              </tr>
+              <tr>
+                <td colSpan="5" className="pr-3  text-right font-bold ">
+                  รวมจำนวนเงิน:
+                </td>
+                <td className="font-bold">
+                  {listData
+                    .reduce(
+                      (total, data) =>
+                        total + Number(data.auction_report_price),
+                      0
+                    )
+                    .toLocaleString()}{" "}
+                  บาท
+                </td>
+              </tr>
             </tbody>
           )}
         </table>
@@ -451,8 +496,6 @@ export function AuctionsSummary() {
           </Button>
         </CardFooter>
       </Card>
-
-
     </div>
   );
 }

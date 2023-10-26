@@ -288,6 +288,29 @@ export function EditSale1(idAuctionReport) {
     fetchdataCustomer();
   }, []);
 
+  const newBill = () => {
+    Swal.fire({
+      title:"ต้องการสร้างบิลใหม่ ?",
+      showCancelButton: true,
+      cancelButtonText: 'ยกเลิก',
+      confirmButtonText: 'ยืนยัน',
+      preConfirm: (note) => {
+        // นำค่าที่กรอกเก็บลงใน state หรือทำอะไรกับมันตามความเหมาะสม
+        setCancelNote(note);
+      },
+      allowOutsideClick: () => !Swal.isLoading(),
+    }).then((result) => {
+      if  (result.isConfirmed) {
+        navigate("/dashboard/sale")
+        setTimeout(() => { 
+          navigate("/dashboard/auctionsList")
+        }, 100);
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        // ผู้ใช้กดยกเลิก
+      }
+    });
+  }
+
   return (
     <>
       <Customer_modal
@@ -344,6 +367,18 @@ export function EditSale1(idAuctionReport) {
           </div>
 
           <div className="flex  flex-wrap gap-4 md:flex-row lg:flex-row">
+          <Button
+                        size="sm"
+                        variant="outlined"
+                        color="green"
+                        className=" flex w-[135px] items-center align-middle  text-sm"
+                        onClick={newBill}
+                      >
+                        <span className="mr-2 flex text-base">
+                          <PiReceipt />
+                        </span>
+                        สร้างบิลใหม่
+                      </Button> 
             <Button
               size="sm"
               variant="gradient"

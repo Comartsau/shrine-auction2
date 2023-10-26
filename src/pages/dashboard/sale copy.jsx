@@ -1203,7 +1203,7 @@ setSaveSelectedProductData(newData);
                   </Typography>
                 </div>
                 <div className="flex items-center justify-center align-middle">
-                  <div className="relative flex  justify-center">
+                  <div className="relative flex w-[200px] justify-center">
                     <input
                       type="text"
                       placeholder="ค้นหาผู้บริจาค"
@@ -1232,7 +1232,7 @@ setSaveSelectedProductData(newData);
                     )}
                   </div>
                 </div>
-                <div className="flex  justify-center border-green-500 text-center sm:justify-start">
+                <div className="flex w-auto justify-center border-green-500 text-center sm:justify-start">
                   
                   <IconButton
                     color="green"
@@ -1240,10 +1240,10 @@ setSaveSelectedProductData(newData);
                     className=" rounded-full border-4  border-green-500 "
                     onClick={handleViewCustomerClick}
                   >
-                    <AiOutlinePlus  className="text-2xl" />
+                    <AiOutlinePlus className="text-2xl" />
                   </IconButton>
                 </div>
-                <small  >เพิ่ม/แก้ไข ผู้บริจาค</small>
+                <small >เพิ่ม/แก้ไข ผู้บริจาค</small>
               </div>
               <div className="mt-5 flex flex-col  items-center gap-5 sm:flex-row ">
                 <div>
@@ -1297,6 +1297,7 @@ setSaveSelectedProductData(newData);
 
             {/* บนขวา */}
             <div className="flex flex-col items-center lg:items-end">
+              {editBill === true ? (
                 <div className="mt-5 flex flex-col  items-center gap-5 md:flex-row lg:flex-col xl:gap-3 2xl:flex-row ">
                   <div className="flex gap-3">
                   <div className="flex w-full items-center justify-center align-middle md:justify-start">
@@ -1304,8 +1305,7 @@ setSaveSelectedProductData(newData);
                         size="sm"
                         variant="outlined"
                         color="green"
-                        disabled={!editBill}
-                        className=" flex w-[135px] items-center align-middle  text-sm"
+                        className=" flex w-[140px] items-center align-middle  text-sm"
                         onClick={newBill}
                       >
                         <span className="mr-2 flex text-base">
@@ -1334,7 +1334,6 @@ setSaveSelectedProductData(newData);
                         size="sm"
                         variant="gradient"
                         color="red"
-                        disabled={!editBill}
                         className=" flex items-center align-middle text-sm"
                         onClick={endBill}
                       >
@@ -1346,13 +1345,14 @@ setSaveSelectedProductData(newData);
                     </div>
                   </div>
                   <div className="flex gap-3">
-           
+                    {reportData.status_sale == 2 ? 
+                      ''
+                    :
                     <div className="flex w-full items-center justify-center align-middle md:justify-start">
                       <Button
                         size="sm"
                         variant="gradient"
                         color="purple"
-                        disabled={!editBill || reportData?.status_sale == 2}
                         className=" flex w-[120px] items-center align-middle  text-sm"
                         onClick={handleViewPayClick}
                       >
@@ -1362,14 +1362,13 @@ setSaveSelectedProductData(newData);
                         ชำระเงิน
                       </Button>
                     </div>
-                  
+                    }
 
                   <div className="flex w-full items-center justify-center align-middle lg:justify-start">
                       <Button
                         size="sm"
                         variant="gradient"
                         color="light-blue"
-                        disabled={!editBill}
                         className=" flex w-[120px] items-center align-middle text-sm"
                         onClick={handleViewReceiptClick}
                       >
@@ -1379,6 +1378,8 @@ setSaveSelectedProductData(newData);
                         ใบรับของ
                       </Button>
                   </div>
+                  
+                    {reportData.status_sale == 2 ? 
                       <div className="flex w-full items-center justify-center align-middle md:justify-start">
                         <div className="flex gap-5 ">
                           <div>
@@ -1386,7 +1387,6 @@ setSaveSelectedProductData(newData);
                         size="sm"
                         variant="gradient"
                         color="amber"
-                        disabled={reportData?.status_sale !== 2 || !editBill }
                         className=" flex w-[110px] items-center align-middle  text-sm"
                         onClick={handleViewReceiptClick1}
                       >
@@ -1401,9 +1401,29 @@ setSaveSelectedProductData(newData);
             
                     </div>
                     
+                  :
+                  ''
+                  } 
                   </div>
                 </div>
-          
+              ) : (
+                <div className="mt-5 flex flex-col  items-center gap-5 sm:flex-row ">
+                  <div className="flex w-full items-center justify-center align-middle md:justify-start">
+                    <Button
+                      size="sm"
+                      variant="gradient"
+                      color="green"
+                      className=" flex items-center align-middle text-sm"
+                      onClick={sendAllData}
+                    >
+                      <span className="mr-2 flex text-base">
+                        <IoIosSave />
+                      </span>
+                      บันทึก
+                    </Button>
+                  </div>
+                </div>
+              )}
               <div className="mt-5 flex flex-col items-center gap-5 sm:flex-row  ">
                 <div>
                   <Typography className="flex w-[40px] text-sm font-bold">

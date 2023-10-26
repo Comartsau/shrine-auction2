@@ -18,16 +18,15 @@ import {
   CardFooter,
   IconButton,
   Input,
-  Dialog,
-  DialogHeader,
-  DialogBody,
-  DialogFooter,
+  Select,
+  Option,
 } from "@material-tailwind/react";
 import axios from "axios";
 
 export function SaleSummary() {
   const [listData, setListData] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
+  const [searchQueryPay, setSearchQueryPay] = useState("");
   const [noData, setNoData] = useState(true);
   const [reportData, setReportData] = useState([]);
 
@@ -59,10 +58,10 @@ export function SaleSummary() {
         // console.log(startDateExcel);
         const formattedStartDate = formatDate1(startDateExcel, "YYYY-MM-DD");
         const formattedEndDate = formatDate1(endDateExcel, "YYYY-MM-DD");
-        // console.log(formattedStartDate);
-        // console.log(formattedEndDate);
+        console.log(formattedStartDate);
+        console.log(formattedEndDate);
         //  url = `${import.meta.env.VITE_APP_API}/search-report-sale/`;
-         url = `${import.meta.env.VITE_APP_API}/search-sale/?search=${searchQuery},${formattedStartDate},${formattedEndDate}`;
+         url = `${import.meta.env.VITE_APP_API}/search-sale/?search=${searchQuery},${formattedStartDate},${formattedEndDate}&pay=${searchQueryPay}`;
         
       }
       const response = await axios.get(url, {
@@ -71,7 +70,7 @@ export function SaleSummary() {
           Authorization: `Token ${Token}`,
         },
       });
-      // console.log(response.data)
+      console.log(response.data)
       setListData(response.data);
       setNoData(false);
 
@@ -83,7 +82,7 @@ export function SaleSummary() {
 
   useEffect(() => {
     fetchData();
-  }, [searchQuery,startDateExcel,
+  }, [searchQuery,searchQueryPay,startDateExcel,
     endDateExcel,]);
 
   //------------- แปลง วันที่ ------------------------------------- //
@@ -195,6 +194,19 @@ export function SaleSummary() {
                 />
               </div>
             </div>
+              <div className="flex  ">
+              <Select
+                label="ค้นหาชำระ/ยังไม่ชำระ"
+                onChange={(e) => {
+                  // console.log(e)
+                  setSearchQueryPay(e);
+                }}
+              >
+                <Option value="">ทั้งหมด</Option>
+                <Option value="2">ชำระแล้ว</Option>
+                <Option value="1">ยังไม่ชำระ</Option>
+              </Select>
+            </div>
             <div className="flex  justify-center gap-5 md:justify-start xl:gap-2">
               <div className="flex justify-center ">
                 <DatePicker
@@ -301,6 +313,18 @@ export function SaleSummary() {
                   color="blue-gray"
                   className="flex font-normal leading-none opacity-70"
                 >
+                  สถานะ
+                </Typography>
+              </th>
+              <th
+                // key={head}
+                className="border-y border-blue-gray-100 bg-blue-gray-50/50 p-3"
+              >
+                <Typography
+                  variant="small"
+                  color="blue-gray"
+                  className="flex font-normal leading-none opacity-70"
+                >
                   จำนวนเงิน
                 </Typography>
               </th>
@@ -364,6 +388,22 @@ export function SaleSummary() {
                         className="font-normal "
                       >
                         {data?.sale_code || ''}
+                      </Typography>
+                    </td>
+                    <td className={classes}>
+                      <Typography
+                        variant="small"
+                        style={{
+                          color:
+                            data?.status_sale === 1 
+                              ? "red"
+                              : "green",
+                        }}
+                        className="font-normal"
+                      >
+                        {data?.status_sale === 1
+                          ? "ยังไม่ชำระ"
+                          : "ชำระแล้ว"}
                       </Typography>
                     </td>
                     <td className={classes}>
