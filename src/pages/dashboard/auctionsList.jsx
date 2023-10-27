@@ -159,48 +159,48 @@ export function AuctionsList() {
 
   // ----  ออก excel ----------------------------------- //
   
-  const exportToExcel = async () => {
-    try {
-      // console.log(searchData)
-      // console.log(searchQuery)
+  // const exportToExcel = async () => {
+  //   try {
+  //     // console.log(searchData)
+  //     // console.log(searchQuery)
 
-      const url = `${
-        import.meta.env.VITE_APP_API
-      }/Customer-Excel/?search=${searchQuery}`;
+  //     const url = `${
+  //       import.meta.env.VITE_APP_API
+  //     }/Customer-Excel/?search=${searchQuery}`;
 
-      // ตรวจสอบว่ามี Token หรือไม่
-      const Token = localStorage.getItem("token");
-      if (!Token) {
-        throw new Error("Token not found.");
-      }
+  //     // ตรวจสอบว่ามี Token หรือไม่
+  //     const Token = localStorage.getItem("token");
+  //     if (!Token) {
+  //       throw new Error("Token not found.");
+  //     }
 
-      // ส่งคำขอไปยัง API โดยใส่ Token ใน Header
-      const response = await axios.get(url, {
-        responseType: "blob", // ระบุ responseType เป็น 'blob'
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Token ${Token}`,
-        },
-      });
-      const blob = new Blob([response.data], {
-        type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-      });
-      const downloadUrl = URL.createObjectURL(blob);
-      const link = document.createElement("a");
-      link.href = downloadUrl;
-      link.download = "Reports_Auction_Title.xlsx"; // ตั้งชื่อไฟล์ที่จะดาวน์โหลด
-      link.click();
-      URL.revokeObjectURL(downloadUrl);
-    } catch (error) {
-      console.error("Error exporting to Excel:", error);
-      Swal.fire({
-        icon: "error",
-        title: "ออก Excel ไม่สำเร็จ ",
-        text: "กรุณาลองใหม่อีกครั้ง",
-        confirmButtonText: "ตกลง",
-      });
-    }
-  }; 
+  //     // ส่งคำขอไปยัง API โดยใส่ Token ใน Header
+  //     const response = await axios.get(url, {
+  //       responseType: "blob", // ระบุ responseType เป็น 'blob'
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //         Authorization: `Token ${Token}`,
+  //       },
+  //     });
+  //     const blob = new Blob([response.data], {
+  //       type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+  //     });
+  //     const downloadUrl = URL.createObjectURL(blob);
+  //     const link = document.createElement("a");
+  //     link.href = downloadUrl;
+  //     link.download = "Reports_Auction_Title.xlsx"; // ตั้งชื่อไฟล์ที่จะดาวน์โหลด
+  //     link.click();
+  //     URL.revokeObjectURL(downloadUrl);
+  //   } catch (error) {
+  //     console.error("Error exporting to Excel:", error);
+  //     Swal.fire({
+  //       icon: "error",
+  //       title: "ออก Excel ไม่สำเร็จ ",
+  //       text: "กรุณาลองใหม่อีกครั้ง",
+  //       confirmButtonText: "ตกลง",
+  //     });
+  //   }
+  // }; 
 
 
    //---------- Dialog  ดูข้อมูลรายการ -------------- //
@@ -409,7 +409,7 @@ export function AuctionsList() {
                 className="w-full rounded-md border border-gray-400 p-2 shadow-sm  text-gray-600 focus:border-blue-500 focus:outline-none"
               />
             </div>
-            <div className="flex justify-center">
+            {/* <div className="flex justify-center">
             <Button
               size="sm"
               className="flex w-[200px] items-center justify-center bg-green-500 align-middle text-base md:w-[120px] lg:w-[150px]"
@@ -420,7 +420,7 @@ export function AuctionsList() {
               </span>
               Excel
             </Button>
-          </div>
+          </div> */}
           </div>
         </div>
       </div>

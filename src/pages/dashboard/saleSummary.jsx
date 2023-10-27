@@ -123,12 +123,15 @@ export function SaleSummary() {
 
   const exportToExcel = async () => {
     try {
-      // console.log(searchData)
-      // console.log(searchQuery)
+
+
+      const formattedStartDate = formatDate1(startDateExcel, "DD/MM/YYYY");
+      const formattedEndDate = formatDate1(endDateExcel, "DD/MM/YYYY");
 
       const url = `${
         import.meta.env.VITE_APP_API
-      }/Customer-Excel/?search=${searchQuery}`;
+      // }/Customer-Excel/?search=${searchQuery}`;
+      }/search-sale-excel/?search=${searchQuery},${formattedStartDate},${formattedEndDate}&pay=${searchQueryPay}`;
 
       // ตรวจสอบว่ามี Token หรือไม่
       const Token = localStorage.getItem("token");
@@ -150,7 +153,7 @@ export function SaleSummary() {
       const downloadUrl = URL.createObjectURL(blob);
       const link = document.createElement("a");
       link.href = downloadUrl;
-      link.download = "Reports_Auction_Title.xlsx"; // ตั้งชื่อไฟล์ที่จะดาวน์โหลด
+      link.download = "Reports.xlsx"; // ตั้งชื่อไฟล์ที่จะดาวน์โหลด
       link.click();
       URL.revokeObjectURL(downloadUrl);
     } catch (error) {

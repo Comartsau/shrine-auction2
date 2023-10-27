@@ -384,7 +384,7 @@ export function Auctioneer() {
       const downloadUrl = URL.createObjectURL(blob);
       const link = document.createElement('a');
       link.href = downloadUrl;
-      link.download = 'Reports_Auction_Title.xlsx'; // ตั้งชื่อไฟล์ที่จะดาวน์โหลด
+      link.download = 'Reports.xlsx'; // ตั้งชื่อไฟล์ที่จะดาวน์โหลด
       link.click();
       URL.revokeObjectURL(downloadUrl);
     } catch (error) {
