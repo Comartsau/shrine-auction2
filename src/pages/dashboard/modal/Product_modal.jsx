@@ -93,10 +93,11 @@ const Product_modal = ({
     //   TitlePrice = titleProduct?.auction_report_price;
     // }
 
-    setTitleProduct({
+    setTitleProduct((prev) => ({
       // auction_report_auctionstarted: res?.title_auction_topic,
+      ...prev,
       auction_report_price: titlePrice,
-    });
+    }));
     handleOpen2();
   };
 
@@ -126,16 +127,24 @@ const Product_modal = ({
 
     if (products.length <= 6) {
       type === 1 &&
-        setProduct([
-          ...products,
-          {
-            id,
-            auction_product_start_event: res?.product_name,
-            auction_product_start_event_cat_count: res?.product_count,
-            auction_product_start_event_cat: res?.product_category,
-            auction_product_start_event_count: productQty || 0,
-          },
-        ]);
+        (res.product_name === "สลากออมสิน" || res.product_name === "ล็อตเตอรี่"
+          ? (handleOpen2(),
+            Swal.fire({
+              icon: "error",
+              title: "ไม่สามารถทำรายการได้",
+              text: "สลากออมสิน ล็อตเตรี่ สำหรับบิลประมูลสามารถเพิ่มได้จากข้างนอกได้เลย !",
+            }))
+          : setProduct([
+              ...products,
+              {
+                id,
+                auction_product_start_event: res?.product_name,
+                auction_product_start_event_cat_count: res?.product_count,
+                auction_product_start_event_cat: res?.product_category,
+                auction_product_start_event_count: productQty || 0,
+              },
+            ]),
+        handleOpen2());
 
       type === 2 &&
         setProduct([
@@ -150,7 +159,6 @@ const Product_modal = ({
           },
         ]);
     } else {
-      // console.log("ไม่ได้ เกิน 8 แถวแล้วง");
       Swal.fire({
         icon: "error",
         title: "ไม่สามารถทำรายการได้",
@@ -158,7 +166,7 @@ const Product_modal = ({
       });
     }
 
-    handleOpen2();
+    // handleOpen2();
   };
   const handleNewProduct = async () => {
     try {
@@ -308,8 +316,7 @@ const Product_modal = ({
     <>
       <Dialog open={open2} size="xl" handler={handleOpen2}>
         <DialogHeader>
-          จัดการข้อมูลสินค้า :
-          {status === 1 && type === 1 && " ค้นหาหัวข้อประมูล"}
+          จัดการข้อมูลสินค้า :{status === 1 && type === 1 && " แก้ไขราคา"}
           {status === 2 && " ค้นหาสินค้า"}
           {status === 3 && " เพิ่มสินค้าใหม่"}
           {status === 4 && " แก้ไขข้อมูลสินค้า"}
@@ -328,7 +335,7 @@ const Product_modal = ({
                     variant={status == 1 ? "outlined" : "gradient"}
                     className="text-lg"
                   >
-                    ค้นหาหัวข้อประมูล
+                    แก้ไขราคา
                   </Button>
                 )}
 
@@ -507,7 +514,7 @@ const Product_modal = ({
                               </td>
                               <td className={classes}>
                                 <IconButton
-                                variant="filled"
+                                  variant="filled"
                                   color="green"
                                   size="sm"
                                   className=" rounded-full  border-4  border-green-500 "
@@ -791,7 +798,7 @@ const Product_modal = ({
                               </td>
                               <td className={classes}>
                                 <IconButton
-                                variant="filled"
+                                  variant="filled"
                                   color="green"
                                   size="sm"
                                   className=" rounded-full  border-4  border-green-500 "

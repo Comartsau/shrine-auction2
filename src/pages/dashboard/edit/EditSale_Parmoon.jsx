@@ -182,12 +182,12 @@ export function EditSale1(idAuctionReport) {
           {
             auction_auction_start_event: "สลากออมสิน",
             auction_auction_start_event_count:
-              customerData?.auction_auction_start_event_count_1,
+              customerData?.auction_auction_start_event_count_2,
           },
           {
             auction_auction_start_event: "ล็อตเตอรี่",
             auction_auction_start_event_count:
-              customerData?.auction_auction_start_event_count_2,
+              customerData?.auction_auction_start_event_count_1,
           },
         ],
         auction_report_q: customerData?.auction_report_q,

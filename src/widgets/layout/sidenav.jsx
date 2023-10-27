@@ -63,7 +63,7 @@ export function Sidenav({ brandImg, brandName, routes }) {
         </IconButton>
       </div>
       <div className="mx-2 justify-center align-middle ">
-        <div className="text-center text-3xl text-white font-bold mb-2 py-5 ">
+        <div className="text-center text-lg text-white font-bold  py-5 ">
           {userName || ''}
         </div>
         {routes.map(({ layout, title, pages }, key) => (
