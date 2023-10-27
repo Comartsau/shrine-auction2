@@ -38,9 +38,6 @@ const icon = {
 };
 
 let check = localStorage.getItem("check" || "");
-// let userName = localStorage.getItem("username" || "");
-
-// const isAdmin = userName === "admin";
 const isAdmin = check == "1";
 
 export const routes = [
@@ -76,8 +73,7 @@ export const routes = [
 
   {
     layout: "dashboard",
-    pages: isAdmin
-      ? [
+    pages: isAdmin ? [
           {
             icon: <PiBellSimpleRingingBold {...icon} />,
             name: "เริ่มการประมูล",
@@ -103,7 +99,7 @@ export const routes = [
 
   {
     layout: "dashboard",
-    pages: isAdmin && [
+    pages:  [
       {
         icon: <MdPointOfSale {...icon} />,
         name: "ขายสินค้า",
@@ -116,7 +112,8 @@ export const routes = [
         path: "/saleList",
         element: <SaleList />,
       },
-    ],
+    ]
+  
   },
 
   {
@@ -150,14 +147,16 @@ export const routes = [
   },
   {
     layout: "dashboard",
-    pages: isAdmin && [
+    pages: isAdmin ? [
       {
         icon: <FaUserTie {...icon} />,
         name: "ข้อมูล Member",
         path: "/member",
         element: <Member />,
       },
-    ],
+    ]
+    :
+    []
   },
 ];
 

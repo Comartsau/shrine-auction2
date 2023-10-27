@@ -34,6 +34,8 @@ export function Dashboard() {
         >
           <Cog6ToothIcon className="h-5 w-5" />
         </IconButton> */}
+
+
         <Routes>
           {routes.map(
             ({ layout, pages }) =>
@@ -43,6 +45,7 @@ export function Dashboard() {
               ))
           )}
         </Routes>
+
         {/* <div className="text-blue-gray-600">
           <Footer />
         </div> */}

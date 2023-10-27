@@ -62,9 +62,9 @@ export function Sidenav({ brandImg, brandName, routes }) {
           <XMarkIcon strokeWidth={2.5} className="h-5 w-5 text-white" />
         </IconButton>
       </div>
-      <div className="mt-2 mx-2 justify-center align-middle ">
-        <div className="text-center text-white font-bold mb-2">
-          {userName}
+      <div className="mx-2 justify-center align-middle ">
+        <div className="text-center text-3xl text-white font-bold mb-2 py-5 ">
+          {userName || ''}
         </div>
         {routes.map(({ layout, title, pages }, key) => (
           <ul key={key} className="mb-4 flex flex-col gap-1">
@@ -85,7 +85,6 @@ export function Sidenav({ brandImg, brandName, routes }) {
                  <NavLink
                   //  to={`/${layout}${path}`}>
                   to={idAuctionStarted ? `/Dashboard/auctions` : `/${layout}${path}`}
-                  // hidden={idAuctionStarted}
                   >
                  {({ isActive }) => (
                    <Button
@@ -100,7 +99,6 @@ export function Sidenav({ brandImg, brandName, routes }) {
                      className="flex items-center gap-4   capitalize align-middle p-[5px]"
                      fullWidth
                      disabled={idAuctionStarted}
-                    //  hidden={idAuctionStarted}
                    >
                      {icon}
                      <Typography

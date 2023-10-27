@@ -386,12 +386,12 @@ export function Display() {
                        <div className="flex w-full   flex-col items-center  gap-5  md:flex-row md:px-[20px]  lg:px-[80px]  ">
                        <div className="flex w-full   flex-col items-center gap-5 md:flex-row   lg:justify-start  ">
                          <div className="flex ">
-                           <Typography className="flex text-3xl gradient-text     md:text-4xl xl:text-5xl font-bold ">
+                           <Typography className="flex text-3xl gradient-text     md:text-4xl xl:text-5xl ">
                            {customer1Name ? "1." : ""}
                            </Typography>
                          </div>
                          <div>
-                           <Typography className="flex w-full text-3xl   gradient-text   md:text-4xl xl:text-5xl     font-bold lg:justify-start ">
+                           <Typography className="flex w-full text-3xl   gradient-text   md:text-4xl xl:text-5xl   lg:justify-start ">
                              {/* {listShowTop?.[0].user_auction} */}
                              {customer1Name || ''}
                            </Typography>
@@ -399,7 +399,7 @@ export function Display() {
                        </div>
                        <div className="flex w-auto flex-col items-center justify-center gap-5 md:flex-row lg:items-end lg:justify-end">
                          <div className="flex">
-                           <Typography className="flex   text-3xl gradient-text   md:text-4xl xl:text-5xl  font-bold ">
+                           <Typography className="flex   text-3xl gradient-text   md:text-4xl xl:text-5xl    ">
                              {/* {listShowTop?.[0]?.auction_result_price.toLocaleString()} */}
                              {customer1Price ? Number(customer1Price).toLocaleString() : ''}
                            </Typography>
@@ -411,19 +411,17 @@ export function Display() {
                          </div>
                        </div>
                      </div>
-               
-                     
                       {customer2Price  > 0  ? (
                            <div className="flex w-full   flex-col items-center  gap-5  md:flex-row md:px-[20px]  lg:px-[80px]   ">
                            <div className="flex w-full  flex-col items-center gap-5 md:flex-row   lg:justify-start  ">
                              <div className="flex">
-                               <Typography className="flex text-2xl    md:text-3xl xl:text-4xl  font-bold ">
+                               <Typography className="flex text-2xl    md:text-3xl xl:text-4xl  font-extrabold ">
                                  {/* {listShowTop?.[1] ? "2" : ""}. */}
                                  {customer2Name ? "2" : ""}.
                                </Typography>
                              </div>
                              <div>
-                               <Typography className="flex w-full text-2xl    md:text-3xl xl:text-4xl    font-bold lg:justify-start ">
+                               <Typography className="flex w-full text-2xl    md:text-3xl xl:text-4xl font-extrabold lg:justify-start ">
                                  {/* {listShowTop?.[1].user_auction} */}
                                  {customer2Name || ''}
                                </Typography>
@@ -431,7 +429,7 @@ export function Display() {
                            </div>
                            <div className="flex w-auto flex-col items-center justify-center gap-5 md:flex-row lg:items-end lg:justify-end">
                              <div>
-                               <Typography className="flex   text-2xl    md:text-3xl xl:text-4xl  font-bold ">
+                               <Typography className="flex   text-2xl    md:text-3xl xl:text-4xl  font-extrabold  ">
                                  {/* {listShowTop?.[1].auction_result_price.toLocaleString()} */}
                                  {Number(customer2Price).toLocaleString() || ''}
                                </Typography>
