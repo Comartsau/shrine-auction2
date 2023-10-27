@@ -157,7 +157,8 @@ const Product_modal = ({
             sale_auction_start_event_count: productQty || 0,
             sale_auction_start_event_count_price: productPrice || 0,
           },
-        ]);
+        ]) 
+        handleOpen2()
     } else {
       Swal.fire({
         icon: "error",

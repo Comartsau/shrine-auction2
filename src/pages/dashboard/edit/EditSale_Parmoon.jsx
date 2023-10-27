@@ -212,6 +212,7 @@ export function EditSale1(idAuctionReport) {
         showConfirmButton: false,
         timer: 1500,
       });
+      fetchData()
     } catch (error) {
       console.error(error);
     }

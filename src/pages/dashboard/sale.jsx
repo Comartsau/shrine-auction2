@@ -1212,7 +1212,7 @@ setSaveSelectedProductData(newData);
                       onChange={(e) => handleSearch(e.target.value)}
                       className=" w-full rounded border border-gray-400  p-1 text-sm text-gray-600 focus:border-blue-500 focus:outline-none"
                       onFocus={() => setIsOpen(true)} // แสดงเมื่อ Input ค้นหา active
-                      onBlur={() => setTimeout(() => setIsOpen(false), 100)}
+                      onBlur={() => setTimeout(() => setIsOpen(false), 1000)}
                     />
                     {isOpen && filteredOptions.length > 0 && (
                       <div

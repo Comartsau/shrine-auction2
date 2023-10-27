@@ -212,7 +212,7 @@ export function EditSale_cart(idAuctionReport) {
         `${import.meta.env.VITE_APP_API}/Sale/${data.id}/edit`,
         sendData
       );
-      console.log(res.data);
+      // console.log(res.data);
 
       if (res) {
         Swal.fire({
@@ -223,6 +223,7 @@ export function EditSale_cart(idAuctionReport) {
           timer: 1500,
         });
       }
+      fetchData()
     } catch (error) {
       console.error(error);
     }
@@ -300,7 +301,7 @@ export function EditSale_cart(idAuctionReport) {
           ...prev,
           aomsin_1: data?.sale_auction_start_event_count,
         }));
-      } else if (data?.product_name == "ล็อตเตอรี่") {
+      } else if (data?.product_name == "ล็อตเตอรี่" || data?.product_name == "ลอตเตอรี่") {
         setDataAomsin((prev) => ({
           ...prev,
           aomsin_2: data?.sale_auction_start_event_count,

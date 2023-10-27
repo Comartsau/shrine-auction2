@@ -68,7 +68,6 @@ const DailySummaryProduct = () => {
           selectData?.type_Data
         }&category=${selectData?.category}&pay=${selectData?.pay}`;
       }
-
     }
 
     try {
@@ -95,26 +94,21 @@ const DailySummaryProduct = () => {
     let qty = 0;
     let total = 0;
 
-    dataFetch?.map(
-      (item, index) => (
-        (qty += item?.auction_product_start_event_count
-          ? Number(item?.auction_product_start_event_count)
-          : Number(item?.sale_auction_start_event_count)),
+    dataFetch?.map((item, index) => {
+      const price = Number(item?.sale_auction_start_event_count_price);
+      const count = Number(item?.sale_auction_start_event_count);
+      const result = price * count;
+      (qty += item?.auction_product_start_event_count
+        ? Number(item?.auction_product_start_event_count)
+        : Number(item?.sale_auction_start_event_count)),
         selectData.type_Data === 2 &&
           (total += Number(
-            item?.sale_auction_start_event_count_price
-              ? item?.sale_auction_start_event_count_price
-              : 0
-          ))
-      )
-    );
+            item?.sale_auction_start_event_count_price ? result : 0
+          ));
+    });
+
     setQty(qty);
     setTotal(total);
-    // setEndData((prev) => ({
-    //   ...prev,
-    //   qty,
-    //   total,
-    // }));
   };
 
   const fetchExcel = async (number) => {
@@ -230,7 +224,6 @@ const DailySummaryProduct = () => {
             </CardBody>
           </Card>
 
-          {JSON.stringify(selectData)}
         </div>
 
         <div className="w-full">

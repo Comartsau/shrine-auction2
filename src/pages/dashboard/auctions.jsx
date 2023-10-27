@@ -1688,7 +1688,7 @@ const handleSendDataEDitAuction = async () => {
                     onChange={(e) => handleSearch(e.target.value)}
                     className=" w-full rounded border border-gray-400 p-1  py-2 text-sm text-gray-600 focus:border-blue-500 focus:outline-none"
                     onFocus={() => setIsOpen(true)} // แสดงเมื่อ Input ค้นหา active
-                    onBlur={() => setTimeout(() => setIsOpen(false), 100)}
+                    onBlur={() => setTimeout(() => setIsOpen(false), 500)}
                   />
                   {isOpen && (
                     <div
@@ -1800,7 +1800,7 @@ const handleSendDataEDitAuction = async () => {
                   onChange={(e) => handleSearch1(e.target.value)}
                   className="w-full rounded  border border-gray-400 p-1 text-sm text-gray-600 focus:border-blue-500 focus:outline-none"
                   onFocus={() => setIsOpen1(true)} // แสดงเมื่อ Input ค้นหา active
-                  onBlur={() => setTimeout(() => setIsOpen1(false), 100)}
+                  onBlur={() => setTimeout(() => setIsOpen1(false), 1000)}
                 />
                 {isOpen1 && (
                   <div
@@ -1894,7 +1894,7 @@ const handleSendDataEDitAuction = async () => {
                   onChange={(e) => handleSearch2(e.target.value)}
                   className="w-full rounded  border border-gray-400 p-1 text-sm text-gray-600 focus:border-blue-500 focus:outline-none"
                   onFocus={() => setIsOpen2(true)} // แสดงเมื่อ Input ค้นหา active
-                  onBlur={() => setTimeout(() => setIsOpen2(false), 100)}
+                  onBlur={() => setTimeout(() => setIsOpen2(false), 1000)}
                 />
                 {isOpen2 && (
                   <div
@@ -1987,7 +1987,7 @@ const handleSendDataEDitAuction = async () => {
                   onChange={(e) => handleSearch3(e.target.value)}
                   className="w-full rounded  border border-gray-400 p-1 text-sm text-gray-600 focus:border-blue-500 focus:outline-none"
                   onFocus={() => setIsOpen3(true)} // แสดงเมื่อ Input ค้นหา active
-                  onBlur={() => setTimeout(() => setIsOpen3(false), 100)}
+                  onBlur={() => setTimeout(() => setIsOpen3(false), 1000)}
                 />
                 {isOpen3 && (
                       <div
@@ -2081,7 +2081,7 @@ const handleSendDataEDitAuction = async () => {
                   onChange={(e) => handleSearch4(e.target.value)}
                   className="w-full rounded  border border-gray-400 p-1 text-sm text-gray-600 focus:border-blue-500 focus:outline-none"
                   onFocus={() => setIsOpen4(true)} // แสดงเมื่อ Input ค้นหา active
-                  onBlur={() => setTimeout(() => setIsOpen4(false), 100)}
+                  onBlur={() => setTimeout(() => setIsOpen4(false), 1000)}
                 />
                 {isOpen4 && (
                       <div
@@ -2174,7 +2174,7 @@ const handleSendDataEDitAuction = async () => {
                   onChange={(e) => handleSearch5(e.target.value)}
                   className="w-full rounded  border border-gray-400 p-1 text-sm text-gray-600 focus:border-blue-500 focus:outline-none"
                   onFocus={() => setIsOpen5(true)} // แสดงเมื่อ Input ค้นหา active
-                  onBlur={() => setTimeout(() => setIsOpen5(false), 100)}
+                  onBlur={() => setTimeout(() => setIsOpen5(false), 1000)}
                 />
                 {isOpen5 && (
                       <div
@@ -3489,7 +3489,7 @@ const handleSendDataEDitAuction = async () => {
                       onChange={(e) => handleSearch6(e.target.value)}
                       className=" w-full rounded border border-gray-400  p-1 text-sm text-gray-600 focus:border-blue-500 focus:outline-none"
                       onFocus={() => setIsOpen6(true)} // แสดงเมื่อ Input ค้นหา active
-                      onBlur={() => setTimeout(() => setIsOpen6(false), 100)}
+                      onBlur={() => setTimeout(() => setIsOpen6(false), 1000)}
                     />
                     {isOpen6 && (
                       <div
