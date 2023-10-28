@@ -225,72 +225,82 @@ export function SaleList() {
 
 
     //------------ ยกเลิก  bill ------------------//
-  const [cancelNote,setCancelNote] = useState('')
 
 
-  const endBill = async (data) => {
-    try  {
-      const billDataId = await (data.id)
-      // ถามครั้งที่ 1
-      const result = await Swal.fire({
-        title: 'กรอกหมายเหตุ',
-        titleText: `ยกเลิกบิลเลขที่: ${data.sale_code}`,
-        input: 'text',
-        inputPlaceholder: 'กรอกหมายเหตุที่ยกเลิก',
-        showCancelButton: true,
-        cancelButtonText: 'ยกเลิก',
-        confirmButtonText: 'ยืนยัน',
-        preConfirm: (note) => {
-          // นำค่าที่กรอกเก็บลงใน state หรือทำอะไรกับมันตามความเหมาะสม
-            setCancelNote(note);
-        },
-        allowOutsideClick: () => !Swal.isLoading(),
-      });
-
-      if (result.isConfirmed) {
-        // ถามครั้งที่ 2
-        const result2 = await Swal.fire({
-          title: 'แน่ใจหรือไม่ที่จะยกเลิก',
-          icon: 'warning',
+    const endBill = async (data) => {
+      try {
+        const billDataId = data.id;
+    
+        // ถามครั้งที่ 1
+        const result = await Swal.fire({
+          title: 'กรอกหมายเหตุ',
+          titleText: `ยกเลิกบิลเลขที่: ${data.sale_code}`,
+          input: 'text',
+          inputPlaceholder: 'กรอกหมายเหตุที่ยกเลิก',
           showCancelButton: true,
           cancelButtonText: 'ยกเลิก',
           confirmButtonText: 'ยืนยัน',
+          preConfirm: (note) => {
+            if (note) {
+              // ถามครั้งที่ 2 หลังจากผู้ใช้กดยืนยันครั้งแรก
+              return Swal.fire({
+                title: 'แน่ใจหรือไม่ที่จะยกเลิก',
+                icon: 'warning',
+                showCancelButton: true,
+                cancelButtonText: 'ยกเลิก',
+                confirmButtonText: 'ยืนยัน',
+              }).then((result2) => {
+                if (result2.isConfirmed) {
+                  // ส่งข้อมูลไปยัง API
+                  const data = {
+                    show_Id: billDataId,
+                    sale_auction_q: note, // ใช้ค่าปัจจุบันของ note
+                  };
+                  console.log(data);
+    
+                  axios
+                    .put(`${import.meta.env.VITE_APP_API}/Cancel-Sale`, data, {
+                      headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Token ${Token}`,
+                      },
+                    })
+                    .then((response) => {
+                      // แสดงข้อความหลังจากส่งข้อมูลสำเร็จ
+                      Swal.fire({
+                        title: 'สำเร็จ',
+                        text: 'บิลถูกยกเลิกแล้ว',
+                        icon: 'success',
+                        showConfirmButton: false,
+                        timer: 1500,
+                      });
+    
+                      fetchData();
+                    })
+                    .catch((error) => {
+                      // กรณีเกิดข้อผิดพลาดในการส่งข้อมูล
+                      Swal.fire(
+                        'เกิดข้อผิดพลาด',
+                        'ไม่สามารถยกเลิกบิลได้ในขณะนี้',
+                        'error'
+                      );
+                    });
+                } else if (result2.dismiss === Swal.DismissReason.cancel) {
+                  // ผู้ใช้กดยกเลิกครั้งที่ 2
+                }
+              });
+            } else {
+              Swal.showValidationMessage('โปรดกรอกหมายเหตุ'); // แสดงข้อความแจ้งเตือน
+            }
+          },
+          allowOutsideClick: () => !Swal.isLoading(),
         });
-
-        if (result2.isConfirmed) {
-          // นำค่าที่กรอกจากครั้งที่ 1 ไปส่ง API
-          // console.log(billDataId)
-          const data = {
-            show_Id: billDataId,
-            sale_auction_q: cancelNote,
-         
-          }
-          const response = await axios.put(`${import.meta.env.VITE_APP_API}/Cancel-Sale`, data,
-            {
-              headers: {
-                "Content-Type": "application/json",
-                Authorization: `Token ${Token}`,
-              },
-            });
-
-          // แสดงข้อความหลังจากส่งข้อมูลสำเร็จ
-          Swal.fire({
-            title: 'สำเร็จ',
-            text: 'บิลถูกยกเลิกแล้ว',
-            icon: 'success',
-            showConfirmButton: false,
-            timer: 1500,
-          });
-          fetchData()
-        } else if (result2.dismiss === Swal.DismissReason.cancel) {
-          // ผู้ใช้กดยกเลิก
-        }
+      } catch (error) {
+        // กรณีเกิดข้อผิดพลาดในการส่งข้อมูล
+        Swal.fire('เกิดข้อผิดพลาด', 'ไม่สามารถยกเลิกบิลได้ในขณะนี้', 'error');
       }
-    } catch (error) {
-      // กรณีเกิดข้อผิดพลาดในการส่งข้อมูล
-      Swal.fire('เกิดข้อผิดพลาด', 'ไม่สามารถยกเลิกบิลได้ในขณะนี้', 'error');
-    }
-  };
+    };
+    
 
   const dateObject = new Date(reportData.sale_auction_date);
 
@@ -807,7 +817,7 @@ export function SaleList() {
                  <div className="flex w-full flex-col items-center justify-center gap-2 sm:flex-row md:w-[240px] md:justify-start lg:w-[180px] xl:w-[290px] 2xl:w-[180px]">
                      <div className="flex font-bold">หมายเหตุ:</div>
                      <div className="flex">
-                       {dataSale.auction_report_q || ''}
+                       {dataSale.sale_auction_q || ''}
                      </div>
                  </div>
                </div>

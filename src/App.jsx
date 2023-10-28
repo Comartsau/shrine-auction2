@@ -55,7 +55,7 @@ function App() {
     } catch (error) {
       // console.log(error.response.status);
       localStorage.clear();
-      navigate("/auth/sign-in")
+      // navigate("/auth/sign-in")
     }
   };
 
