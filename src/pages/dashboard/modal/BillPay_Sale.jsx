@@ -281,6 +281,8 @@ const BillPay_Sale = ({ open5, handleOpen5, data, statusModal  }) => {
     fethDataPay()
   }, [open5]);
 
+  console.log(dataPay)
+
   const currentDate = new Date();
 
   const buddhistYear = currentDate.getFullYear() + 543;
@@ -452,7 +454,7 @@ const BillPay_Sale = ({ open5, handleOpen5, data, statusModal  }) => {
                           styles.spacesm,
                         ]}
                       >
-                        {" "}{dataPay?.status_sale == 1 ? "เงินสด" : data?.status_sale == 2 ? "เงินโอน" : data?.status_sale == 3 ? "เช็ค" : "" }
+                        {" "}{dataPay?.sale_receipt_status == 1 ? "เงินสด" : dataPay?.sale_receipt_status == 2 ? "เงินโอน" : dataPay?.sale_receipt_status == 3 ? "เช็ค" : "" }
                       </Text>
                     </View>
                   </View>
@@ -1168,7 +1170,7 @@ const BillPay_Sale = ({ open5, handleOpen5, data, statusModal  }) => {
                          styles.spacesm,
                        ]}
                      >
-                       {" "}{dataPay?.status_sale == 1 ? "เงินสด" : data?.status_sale == 2 ? "เงินโอน" : data?.status_sale == 3 ? "เช็ค" : "" }
+                       {" "}{dataPay?.sale_receipt_status == 1 ? "เงินสด" : dataPay?.sale_receipt_status == 2 ? "เงินโอน" : dataPay?.sale_receipt_status == 3 ? "เช็ค" : "" }
                      </Text>
                    </View>
                  </View>
@@ -1887,7 +1889,7 @@ const BillPay_Sale = ({ open5, handleOpen5, data, statusModal  }) => {
                              styles.spacesm,
                            ]}
                          >
-                           {" "}{dataPay?.status_sale == 1 ? "เงินสด" : data?.status_sale == 2 ? "เงินโอน" : data?.status_sale == 3 ? "เช็ค" : "" }
+                           {" "}{dataPay?.sale_receipt_status == 1 ? "เงินสด" : dataPay?.sale_receipt_status == 2 ? "เงินโอน" : dataPay?.sale_receipt_status == 3 ? "เช็ค" : "" }
                          </Text>
                        </View>
                      </View>

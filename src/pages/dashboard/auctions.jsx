@@ -254,6 +254,10 @@ export function Auctions() {
     setFilteredOptions1(listDataTitle1);
   }, [listDataTitle1]);
 
+  useEffect(()=>{
+    console.log(saveSelectedOption1)
+  },[saveSelectedOption1])
+
 
   const handleSearch1 = (inputText) => {
     // console.log(inputText);
@@ -304,6 +308,8 @@ export function Auctions() {
     setSaveSelectedOption1((prevOptions) => [...prevOptions, savedOption]);
     setShowSendName1(searchText1)
 
+  
+
     if (selectedOptionId1 == "") {
       try {
         const data = {
@@ -323,7 +329,9 @@ export function Auctions() {
             },
           }
         );
-        // console.log(response);
+        console.log(response.data.Data.id);
+        const newId = response.data.Data.id
+        savedOption.id = newId;
         setShowSendName1(searchText1)
         await fatchDataAmulet();
       } catch (error) {
@@ -485,19 +493,6 @@ export function Auctions() {
       count: selectedOptionCount2,
     };
 
-    // if (Array.isArray(saveSelectedOption2)) {
-    //   // ตรวจสอบว่าข้อมูลซ้ำกันหรือไม่
-    //   const isDuplicate = saveSelectedOption2.some(
-    //     (option) => option.id === savedOption.id
-    //   );
-
-    //   if (isDuplicate) {
-    //     console.log("Duplicate data. Ignoring...");
-    //     return; // ออกจากฟังก์ชันเพื่อไม่ทำการเพิ่มข้อมูล
-    //   }
-    // }
-
-    // ทำการเพิ่มข้อมูลใหม่เข้าไปใน array เดิม
     setSaveSelectedOption2((prevOptions) => [...prevOptions, savedOption]);
     setShowSendName2(searchText2)
 
@@ -521,6 +516,8 @@ export function Auctions() {
           }
         );
         // console.log(response);
+        const newId = response.data.Data.id
+        savedOption.id = newId;
         setShowSendName2(searchText2)
         await fatchDataTel();
       } catch (error) {
@@ -709,6 +706,8 @@ export function Auctions() {
           }
         );
         // console.log(response);
+        const newId = response.data.Data.id
+        savedOption.id = newId;
         setShowSendName3(searchText3)
         await fatchDataOffice();
       } catch (error) {
@@ -898,6 +897,8 @@ export function Auctions() {
           }
         );
         // console.log(response);
+        const newId = response.data.Data.id
+        savedOption.id = newId;
         setShowSendName4(searchText4)
         await fatchDataPower();
       } catch (error) {
@@ -1085,6 +1086,8 @@ export function Auctions() {
           }
         )
         // console.log(response);
+        const newId = response.data.Data.id
+        savedOption.id = newId;
         setShowSendName5(searchText5)
         await fatchDataEtc();
       } catch (error) {
@@ -1166,6 +1169,7 @@ export function Auctions() {
   const [isOpen6, setIsOpen6] = useState(false);
   const [selectedOption6, setSelectedOption6] = useState("");
   const [searchText6, setSearchText6] = useState("");
+  const [showName, setShowName] = useState("");
   const [filteredOptions6, setFilteredOptions6] = useState(listDataCustomer);
 
   const fetchDataChooseCustomer = async () => {
@@ -1211,14 +1215,12 @@ export function Auctions() {
   };
   
 
-  
-  
-
   // ฟังก์ชันเลือกตัวเลือก
   const handleSelect6 = (value) => {
     // console.log(value)
     setSelectedOption6(value.customer_name);
     setSearchText6(value.customer_name);
+    setShowName(value.customer_name);
     setCustomerId(value.id)
     setIsOpen6(false);
     // clear input value
@@ -1266,7 +1268,7 @@ export function Auctions() {
       await fetchDataChooseCustomer();
       // console.log(response.data)
       setCustomerId(response.data.id);
-      setSearchText6(response.data.customer_name);
+      setShowName(response.data.customer_name);
       // console.log(response.data.id)
       // clear input value
       const search6 = document.getElementById("search6");
@@ -1506,7 +1508,7 @@ const handleSendDataEDitAuction = async () => {
 
 
   const handleViewClick = () => {
-    // console.log(saveSelectedOption1)
+    console.log(saveSelectedOption1)
     setDataPreviewAmulet(saveSelectedOption1 || [])
     setDataPreviewTel(saveSelectedOption2 || [])
     setDataPreviewOffice(saveSelectedOption3 || [])
@@ -1528,8 +1530,8 @@ const handleSendDataEDitAuction = async () => {
         ...saveSelectedOption4,
         ...saveSelectedOption5,
       ]
-      // console.log(productData)
-      // console.log(dataPreviewAmulet)
+      console.log(productData)
+      console.log(dataPreviewAmulet)
       const productToSend = productData.map(item => ({
         auction_product_start_count_2: item.id,
         auction_product_start_event_count: item.amount
@@ -1553,7 +1555,7 @@ const handleSendDataEDitAuction = async () => {
         "products": productToSend,
         "aomsin":aomsinData
       }
-      // console.log(data)
+      console.log(data)
       const response = await axios.put(
        `${import.meta.env.VITE_APP_API}/Show`,data,
         {
@@ -1563,7 +1565,7 @@ const handleSendDataEDitAuction = async () => {
           },
         }
       );
-      // console.log(response.data);
+      console.log(response.data);
       // fetchDataGift()
       handleClosePreViewDialog()
 
@@ -3489,7 +3491,7 @@ const handleSendDataEDitAuction = async () => {
                       onChange={(e) => handleSearch6(e.target.value)}
                       className=" w-full rounded border border-gray-400  p-1 text-sm text-gray-600 focus:border-blue-500 focus:outline-none"
                       onFocus={() => setIsOpen6(true)} // แสดงเมื่อ Input ค้นหา active
-                      onBlur={() => setTimeout(() => setIsOpen6(false), 1000)}
+                      onBlur={() => setTimeout(() => setIsOpen6(false), 300)}
                     />
                     {isOpen6 && (
                       <div
@@ -3530,7 +3532,8 @@ const handleSendDataEDitAuction = async () => {
                   </div>
                   <div className="flex w-auto justify-center gap-3 text-center sm:justify-start">
                     <Typography className="font-bold text-blue-500">
-                      {searchText6 || ''}
+                      {/* {searchText6 || ''} */}
+                      {showName || ''}
                     </Typography>
                   </div>
                 </div>

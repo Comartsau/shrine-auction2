@@ -87,7 +87,7 @@ export function AuctionsList() {
           Authorization: `Token ${Token}`,
         },
       });
-      // console.log(response.data)
+      console.log(response.data)
       setListData(response.data);
       setNoData(false);
 
@@ -659,7 +659,7 @@ export function AuctionsList() {
                       size="sm"
                       color="red"
                       className=" rounded-full"
-                      disabled={data?.auction_report_Pay_status === 0 }
+                      disabled={data?.auction_report_Pay_status === 0 || data?.auction_report_Pay_status == 2 }
                       onClick={()=>endBill(data)}
                     >
                         <RiDeleteBin5Line className="text-xl"/>

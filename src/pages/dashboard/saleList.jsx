@@ -85,7 +85,7 @@ export function SaleList() {
           Authorization: `Token ${Token}`,
         },
       });
-      // console.log(response.data)
+      console.log(response.data)
       setListData(response.data);
       setNoData(false);
 
@@ -583,7 +583,7 @@ export function SaleList() {
                          variant="text"
                          size="sm"
                          className=" rounded-full"
-                         disabled={data.status_sale === 0}
+                         disabled={data?.status_sale === 0}
                          onClick={() => handleReceiveClick(data)}
                          
                        >
@@ -597,7 +597,7 @@ export function SaleList() {
                          variant="text"
                          size="sm"
                          className=" rounded-full"
-                         disabled={data.status_sale === 0}
+                         disabled={data?.status_sale === 0}
                          onClick={() => handleEditSale(data)}
                        >
                         {/* <Link to={`/dashboard/edit-sale-cart/${data?.id}`}> */}
@@ -614,7 +614,7 @@ export function SaleList() {
                          size="sm"
                          color="red"
                          className=" rounded-full"
-                         disabled={data.status_sale === 0}
+                         disabled={data?.status_sale === 0 || data?.status_sale == 2}
                          onClick={()=>endBill(data)}
                        >
                            <RiDeleteBin5Line className="text-xl"/>

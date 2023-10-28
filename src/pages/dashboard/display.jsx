@@ -485,7 +485,7 @@ export function Display() {
             ) : (
               // ---------- Show ชนะประมูล -------------------//
               <div className="flex w-full    ">
-                <div className=" z-20 mx-3 mt-5 sm:mt-10 flex  h-[550px] xl:mt-10   w-full flex-col items-center justify-center overflow-y-scroll md:overflow-y-hidden  sm:h-[500px] md:h-[480px]  lg:h-[550px]   xl:h-[600px]">
+                <div className=" z-20 mx-3 mt-5 sm:mt-10 flex  h-[550px] xl:mt-10   w-full flex-col items-center justify-center overflow-y-scroll  md:overflow-auto  sm:h-[500px] md:h-[480px]  lg:h-[550px]   xl:h-[600px]">
                   <div className=" z-20 mt-[220px] flex w-full justify-center sm:mt-[50px] md:mt-[10px] lg:mt-[5px] ">
                   <div className="flex w-full justify-center align-bottom gap-5" >
                     <img src={p01} className="w-[15%] sm:w-[15%] md:w-[10%] xl:w-[10%] bg-white rounded-full " />
@@ -517,7 +517,7 @@ export function Display() {
                   </div>
                   <div className="mt-5 xl:mt-7 flex w-full flex-col items-center justify-center  gap-5 px-5 md:flex-row lg:px-[80px]  ">
                     <div className=" z-20 mx-32">
-                      <Typography className="text-center text-xl xl:text-4xl  font-bold gradient-text12"  >
+                      <Typography className="text-center text-3xl xl:text-3xl  font-bold gradient-text12"  >
                         {/* {concatenatedAomsinData}/{concatenatedProductData} */}
                         {localStorage.getItem('aomsin') || ''}/{localStorage.getItem('product') || ''}
                       </Typography>

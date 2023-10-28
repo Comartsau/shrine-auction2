@@ -1302,8 +1302,8 @@ setSaveSelectedProductData(newData);
                   <div className="flex w-full items-center justify-center align-middle md:justify-start">
                     <Button
                         size="sm"
-                        variant="outlined"
-                        color="green"
+                        variant="gradient"
+                        color="blue"
                         disabled={!editBill}
                         className=" flex w-[135px] items-center align-middle  text-sm"
                         onClick={newBill}
@@ -1368,7 +1368,7 @@ setSaveSelectedProductData(newData);
                       <Button
                         size="sm"
                         variant="gradient"
-                        color="light-blue"
+                        color="orange"
                         disabled={!editBill}
                         className=" flex w-[120px] items-center align-middle text-sm"
                         onClick={handleViewReceiptClick}
@@ -2583,8 +2583,8 @@ setSaveSelectedProductData(newData);
                                 {/* <Option value="">ทั้งหมด</Option> */}
                                 {/* <Option value="สลากออมสิน">สลากออมสิน</Option> */}
                                 {/* <Option value="ล็อตเตอรี่">ล็อตเตอรี่</Option> */}
-                                <Option value="ล็อตเตอรรี่">ล็อตเตอรรี่</Option>
-                                <Option value="สลากออมสิน">สลากออมสิน</Option>
+                                {/* <Option value="ล็อตเตอรรี่">ล็อตเตอรรี่</Option>
+                                <Option value="สลากออมสิน">สลากออมสิน</Option> */}
                                 <Option value="วัตถุมงคล">วัตถุมงคล</Option>
                                 <Option value="โทรศัพท์">โทรศัพท์</Option>
                                 <Option value="เครื่องใช้สำนักงาน">เครื่องใช้สำนักงาน</Option>
@@ -2681,8 +2681,8 @@ setSaveSelectedProductData(newData);
                                 <Option value="">-</Option>
                                 {/* <Option value="สลากออมสิน">สลากออมสิน</Option>
                                 <Option value="ล็อตเตอรี่">ล็อตเตอรี่</Option> */}
-                                <Option value="ล็อตเตอรรี่">ล็อตเตอรรี่</Option>
-                                <Option value="สลากออมสิน">สลากออมสิน</Option>
+                                {/* <Option value="ล็อตเตอรรี่">ล็อตเตอรรี่</Option>
+                                <Option value="สลากออมสิน">สลากออมสิน</Option> */}
                                 <Option value="วัตถุมงคล">วัตถุมงคล</Option>
                                 <Option value="โทรศัพท์">โทรศัพท์</Option>
                                 <Option value="เครื่องใช้สำนักงาน">เครื่องใช้สำนักงาน</Option>
@@ -3334,7 +3334,7 @@ setSaveSelectedProductData(newData);
                     <span className="mr-2 flex text-xl">
                       <GiCancel />
                     </span>
-                    ใบเสร็จ
+                    ชำระเงิน
                   </Button>
                 </div>
               </div>
