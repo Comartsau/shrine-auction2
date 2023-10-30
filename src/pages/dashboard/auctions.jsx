@@ -172,6 +172,7 @@ export function Auctions() {
       setShowSendName3('')
       setShowSendName4('')
       setShowSendName5('')
+      setShowName('')
       setProduct([])
       document.getElementById("savingsBond").value = "";
       document.getElementById("governmentBonds").value = "";
