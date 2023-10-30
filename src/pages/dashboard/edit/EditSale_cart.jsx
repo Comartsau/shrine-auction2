@@ -39,7 +39,7 @@ import BillPay_Parmoon from "../modal/BillPay_Parmoon";
 import BillSend_Sale from "../modal/BillSend_Sale";
 import BillPay_Sale from "../modal/BillPay_Sale";
 
-export function EditSale_cart(idAuctionReport) {
+export function EditSale_cart({idAuctionReport, setOpenEditSale, fetchDataIndex}) {
   const Token = localStorage.getItem("token");
 
   const [data, setData] = useState([]);
@@ -87,7 +87,7 @@ export function EditSale_cart(idAuctionReport) {
   };
 
   // const params = useParams();
-  const id = idAuctionReport.id;
+  const id = idAuctionReport;
 
   // console.log(id)
 
@@ -230,6 +230,7 @@ export function EditSale_cart(idAuctionReport) {
   };
 
   const endBill = async () => {
+    let cancelNote; // Declare cancelNote in the outer scope
     try {
       // ถามครั้งที่ 1
       const result = await Swal.fire({
@@ -241,7 +242,7 @@ export function EditSale_cart(idAuctionReport) {
         cancelButtonText: "ยกเลิก",
         confirmButtonText: "ยืนยัน",
         preConfirm: (note) => {
-          return setCancelNote(note);
+          cancelNote = note; // Set the cancelNote variable here
         },
         allowOutsideClick: () => !Swal.isLoading(),
       });
@@ -259,6 +260,7 @@ export function EditSale_cart(idAuctionReport) {
               show_Id: data?.id,
               sale_auction_q: cancelNote,
             };
+
             // console.log(dataSend);
             const response = axios.put(
               `${import.meta.env.VITE_APP_API}/Cancel-Sale`,
@@ -270,13 +272,17 @@ export function EditSale_cart(idAuctionReport) {
                 },
               }
             );
+
             Swal.fire("ยกเลิกสำเร็จ !", "", "success");
 
+            fetchDataIndex();
             setTimeout(() => {
-              navigate("/dashboard/saleList");
-            }, 1500);
+              setOpenEditSale(false);
+            }, 1300);
+
+    
           } else if (result.isDenied) {
-            Swal.fire("Changes are not saved", "", "info");
+            Swal.fire("บิลยังไม่ถูกยกเลิก !", "", "info");
           }
         });
       }
@@ -413,8 +419,8 @@ export function EditSale_cart(idAuctionReport) {
           <div className="flex  flex-wrap gap-4 md:flex-row lg:flex-row">
             <Button
               size="sm"
-              variant="outlined"
-              color="green"
+              variant="filled"
+              color="blue"
               className=" flex w-[170px] items-center align-middle  text-sm"
               onClick={newBill}
             >
@@ -442,6 +448,7 @@ export function EditSale_cart(idAuctionReport) {
               color="red"
               className=" flex items-center align-middle text-sm"
               onClick={endBill}
+              disabled={data?.status_sale === 2}
             >
               <span className="mr-2 flex text-base">
                 <GiCancel />
@@ -468,7 +475,7 @@ export function EditSale_cart(idAuctionReport) {
                 <Button
                   size="sm"
                   variant="gradient"
-                  color="light-blue"
+                  color="orange"
                   className=" flex w-[120px] items-center align-middle text-sm"
                 >
                   <span className="mr-2 flex text-base">
@@ -492,7 +499,7 @@ export function EditSale_cart(idAuctionReport) {
                 <Button
                   size="sm"
                   variant="gradient"
-                  color="orange"
+                  color="yellow"
                   className=" flex w-[110px] items-center align-middle  text-sm"
                   disabled={data?.status_sale === 1}
                 >

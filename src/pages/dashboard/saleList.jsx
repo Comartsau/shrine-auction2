@@ -328,7 +328,7 @@ export function SaleList() {
   return (
     <div>
       {openEditSale == true ?
-      <EditSale_Cart id={idAuctionReport}/>
+      <EditSale_Cart idAuctionReport={idAuctionReport} setOpenEditSale={setOpenEditSale} fetchDataIndex={fetchData}/>
       :
       <div >
        {/* <p>ข้อมูลผู้บริจาค</p> */}

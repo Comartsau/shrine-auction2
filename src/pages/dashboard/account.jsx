@@ -60,13 +60,11 @@ export function Account() {
     "action",
   ];
 
-
   // Modal
   const handleOpen = () => setOpen(!open);
   const handleOpen2 = () => setOpenReceipt(!openReceipt);
   const handleOpen3 = () => setOpenPay(!openPay);
   const handleOpen4 = () => setOpen4(!open4);
-
 
   const [open, setOpen] = useState(false);
   const [openReceipt, setOpenReceipt] = useState(false);
@@ -120,9 +118,11 @@ export function Account() {
 
       if (number) {
         const response = await axios.get(
-          `${import.meta.env.VITE_APP_API}/Debtor-Excel${apiUrl} `,
+          `${
+            import.meta.env.VITE_APP_API
+          }/Debtor-Excel${apiUrl}&text=${number} `,
           {
-            responseType: "blob", // ระบุ responseType เป็น 'blob'
+            responseType: "blob",
             headers: {
               "Content-Type": "application/json",
               Authorization: `Token ${Token}`,
@@ -135,7 +135,7 @@ export function Account() {
         const downloadUrl = URL.createObjectURL(blob);
         const link = document.createElement("a");
         link.href = downloadUrl;
-        link.download = "Reports.xlsx"; // ตั้งชื่อไฟล์ที่จะดาวน์โหลด
+        link.download = "Reports.xlsx";
         link.click();
         URL.revokeObjectURL(downloadUrl);
       }
@@ -226,13 +226,12 @@ export function Account() {
     // console.log(id);
     // console.log(number);
 
-    number === 1 && id_receipt &&  (handleOpen2() );
-      
-    number === 2 && id_receipt &&  (handleOpen4());
+    number === 1 && id_receipt && handleOpen2();
 
-     
-    fetchDataModal(id, number, id_receipt, "excel")
-    
+    number === 2 && id_receipt && handleOpen4();
+
+    fetchDataModal(id, number, id_receipt, "excel");
+
     setStatusModal(statusModal);
   };
 
@@ -482,7 +481,6 @@ export function Account() {
                                     data?.id_receipt
                                   )
                             }
-                            
                           >
                             {/* <i className="fa-solid fa-eye px-2"> </i> */}
                             <p className="px-3">รายละเอียด</p>
@@ -494,9 +492,8 @@ export function Account() {
                                 <i className="fa-regular fa-file-excel pr-3"></i>
                                 ใบเสร็จ
                               </MenuItem> */}
-                               <i className="fa-regular fa-file-excel pr-3"></i>
-                                ใบเสร็จ
-
+                              <i className="fa-regular fa-file-excel pr-3"></i>
+                              ใบเสร็จ
                               <MenuItem
                                 onClick={() =>
                                   data?.id

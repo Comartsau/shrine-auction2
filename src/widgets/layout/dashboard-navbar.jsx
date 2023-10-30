@@ -34,6 +34,7 @@ export function DashboardNavbar() {
   const navigate = useNavigate();
   const Token = localStorage.getItem("token");
   const userName = localStorage.getItem("username");
+  const check = localStorage.getItem('check')
 
 
   const handleSignOut = async () => {
@@ -87,6 +88,7 @@ export function DashboardNavbar() {
       console.log(error);
     }
   };
+  
 
 
 
@@ -138,7 +140,7 @@ export function DashboardNavbar() {
               <UserCircleIcon className="h-5 w-5 text-blue-gray-500" />
             </IconButton>
 
-            <IconButton size="sm" color="red" onClick={checkRoomError}>
+            <IconButton disabled={check === "2"}   size="sm" color="red" onClick={checkRoomError}>
               <HomeIcon className="h-4 w-4" />
             </IconButton>
 

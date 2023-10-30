@@ -100,7 +100,7 @@ export function AuctionsList() {
   useEffect(() => {
     fetchData();
   }, [searchQuery,startDateExcel,
-    endDateExcel,]);
+    endDateExcel, openEditParmoon]);
 
   //------------- แปลง วันที่ ------------------------------------- //
 
@@ -366,13 +366,11 @@ export function AuctionsList() {
     
 
 
-
-
   return (
     <div>
  
       {openEditParmoon == true ? 
-      <EditSale_Parmoon id={idAuctionReport}/>
+      <EditSale_Parmoon idAuctionReport={idAuctionReport} setOpenEditParmoon={setOpenEditParmoon} fetchDataIndex={fetchData}  />
     :
     <div >
     {/* <p>ข้อมูลผู้บริจาค</p> */}
@@ -436,7 +434,7 @@ export function AuctionsList() {
 
     {/* ------------ table  ----------------------------------------- */}
 
-    <Card className="mt-5 h-full w-full overflow-scroll">
+    <Card className="mt-5 h-full w-full overflow-x-hidden">
       <table className="w-full min-w-max table-auto text-left">
         <thead>
           <tr>

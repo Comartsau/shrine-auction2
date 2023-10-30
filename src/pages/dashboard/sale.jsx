@@ -9,7 +9,7 @@ import {
   Option,
   IconButton,
   Button,
-  Radio ,
+  Radio,
   Dialog,
   DialogHeader,
   DialogBody,
@@ -21,8 +21,8 @@ import { BiReceipt } from "react-icons/bi";
 import { MdOutlinePayment } from "react-icons/md";
 import { PiReceipt } from "react-icons/pi";
 import { AiFillDelete, AiOutlinePlus } from "react-icons/ai";
-import THBText from 'thai-baht-text'
-import DatePicker from "react-datepicker"
+import THBText from "thai-baht-text";
+import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import th from "date-fns/locale/th";
 
@@ -31,21 +31,19 @@ import Swal from "sweetalert2";
 
 import { PDFViewer } from "@react-pdf/renderer";
 import { Receive } from "./Receive";
-import {Receipt1} from "./Receipt1"
-import {Receipt2} from "./Receipt2"
-import {Receipt3} from "./Receipt3"
- 
+import { Receipt1 } from "./Receipt1";
+import { Receipt2 } from "./Receipt2";
+import { Receipt3 } from "./Receipt3";
+
 export function Sale() {
   const Token = localStorage.getItem("token");
   const [editBill, setEditBill] = useState(false);
 
-  const [selectedSavingsBond,setSelectedSavingsBond] = useState(0)
-  const [selectedGovernmentBonds,setSelectedGovernmentBonds] = useState(0)
+  const [selectedSavingsBond, setSelectedSavingsBond] = useState(0);
+  const [selectedGovernmentBonds, setSelectedGovernmentBonds] = useState(0);
 
   // console.log(selectedGovernmentBonds)
   // console.log(selectedSavingsBond)
-
-
 
   //----- จัดการแสดงข้อมูล / หน้า -------------- //
   //---------- แสดงข้อมูลในตาราง --------------- //
@@ -57,19 +55,21 @@ export function Sale() {
   const [selectCustomerData, setSelectCustomerData] = useState([]);
   const [selectedEditCustomerData, setSelectedEditCustomerData] =
     useState(null);
-  const [selectedNewCustomerData, setSelectedNewCustomerData] =
-    useState(null);
+  const [selectedNewCustomerData, setSelectedNewCustomerData] = useState(null);
   const [billRefNo, setBillRefNo] = useState("");
   const [billNo, setBillNo] = useState("");
 
   const fetchData = async () => {
     try {
-      const response = await axios.get(`${import.meta.env.VITE_APP_API}/Customer`, {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Token ${Token}`,
-        },
-      });
+      const response = await axios.get(
+        `${import.meta.env.VITE_APP_API}/Customer`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Token ${Token}`,
+          },
+        }
+      );
       setListData(response.data);
       // console.log(listData);
     } catch (error) {
@@ -107,7 +107,6 @@ export function Sale() {
     setSelectedEditCustomerData(selectedCustomer);
   };
   // console.log(selectCustomerData)
-
 
   const handleClear = () => {
     setSearchText("");
@@ -151,7 +150,7 @@ export function Sale() {
         }
       );
       // console.log(response.data);
-      setSelectedNewCustomerData(response.data)
+      setSelectedNewCustomerData(response.data);
       setNewCustomerName("");
       setNewCustomerAddress("");
       setNewCustomerDelivery("");
@@ -205,7 +204,9 @@ export function Sale() {
       // console.log(Token);
 
       const response = await axios.put(
-        `${import.meta.env.VITE_APP_API}/Customer/${selectedEditCustomerData.id}/edit`,
+        `${import.meta.env.VITE_APP_API}/Customer/${
+          selectedEditCustomerData.id
+        }/edit`,
         data,
         {
           headers: {
@@ -252,7 +253,6 @@ export function Sale() {
         customer_line: "aaaa",
       };
       // console.log(data);
-      
 
       await fetchData();
     } catch (error) {
@@ -265,7 +265,6 @@ export function Sale() {
       });
     }
   };
-
 
   useEffect(() => {
     if (selectedEditCustomerData) {
@@ -290,10 +289,8 @@ export function Sale() {
         customer_number,
       });
       setSearchText(customer_name);
-    } 
-
+    }
   }, [selectedEditCustomerData]);
-
 
   useEffect(() => {
     if (selectedNewCustomerData) {
@@ -318,10 +315,8 @@ export function Sale() {
         customer_number,
       });
       setSearchText(customer_name);
-    } 
-
+    }
   }, [selectedNewCustomerData]);
-
 
   // ----------  หัวข้อตาราง -------------- //
   const TABLE_HEAD = [
@@ -335,13 +330,7 @@ export function Sale() {
     "ลบ",
   ];
 
-  const TABLE_HEAD1 = [
-    "ลำดับ",
-    "ชื่อสินค้า",
-    "หน่วยนับ",
-    "หมวดหมู่",
-    "เลือก",
-  ];
+  const TABLE_HEAD1 = ["ลำดับ", "ชื่อสินค้า", "หน่วยนับ", "หมวดหมู่", "เลือก"];
   // -------------------------------------- //
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -367,11 +356,11 @@ export function Sale() {
 
   const [selectedEditData, setSelectedEditData] = useState(null);
 
-  const [saveSelectedProductData,setSaveSelectedProductData] = useState([])
-  const [note,setNote] = useState('')
+  const [saveSelectedProductData, setSaveSelectedProductData] = useState([]);
+  const [note, setNote] = useState("");
 
-  const [billData,setBillData] = useState([])
-  const [billDataId,setBillDataId] = useState('')
+  const [billData, setBillData] = useState([]);
+  const [billDataId, setBillDataId] = useState("");
 
   const fetchProductData = async () => {
     try {
@@ -379,7 +368,9 @@ export function Sale() {
 
       if (searchQueryProductName) {
         // console.log(searchQueryProductName);
-        url = `${import.meta.env.VITE_APP_API}/Search-Product/?search=${searchQueryProductName}`;
+        url = `${
+          import.meta.env.VITE_APP_API
+        }/Search-Product/?search=${searchQueryProductName}`;
       }
       const response = await axios.get(url, {
         headers: {
@@ -398,7 +389,6 @@ export function Sale() {
 
   useEffect(() => {
     fetchProductData();
-    
   }, [searchQueryProductName]);
 
   //-------------- เพิ่มสินค้า ------------------- //
@@ -411,49 +401,48 @@ export function Sale() {
         product_name: newProductName,
         product_count: newProductCount,
         product_category: newProductCategory,
-      }
+      };
 
       // console.log(data)
-      const response = await axios.post(`${import.meta.env.VITE_APP_API}/Product`,
-      data,
-      {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Token ${Token}`,
-        },
-      });
+      const response = await axios.post(
+        `${import.meta.env.VITE_APP_API}/Product`,
+        data,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Token ${Token}`,
+          },
+        }
+      );
       // console.log(response.data.Data)
-      setNewProductName(""); 
-      setNewProductCount(""); 
-      setNewProductCategory(""); 
-      await fetchData()
-      setSearchQueryProductName('')
+      setNewProductName("");
+      setNewProductCount("");
+      setNewProductCategory("");
+      await fetchData();
+      setSearchQueryProductName("");
       Swal.fire({
         // position: 'top-end',
-        icon: 'success',
-        title: 'เพิ่มสินค้าเรียบร้อย',
+        icon: "success",
+        title: "เพิ่มสินค้าเรียบร้อย",
         showConfirmButton: false,
-        timer: 1500
-      })
+        timer: 1500,
+      });
 
-        // เพิ่มรายการสินค้าที่เพิ่มเข้ามาใน saveSelectedProductData
-        // const newData = { product_category: response.data.product_category, product_name: response.data.product_name, product_count: response.data.product_count  , amount: 0, unit:0, total: 0 };
-        const newData = { ...response.data.Data, amount: 0, unit:0, total: 0 };
-        setSaveSelectedProductData([...saveSelectedProductData, newData]);
-      
+      // เพิ่มรายการสินค้าที่เพิ่มเข้ามาใน saveSelectedProductData
+      // const newData = { product_category: response.data.product_category, product_name: response.data.product_name, product_count: response.data.product_count  , amount: 0, unit:0, total: 0 };
+      const newData = { ...response.data.Data, amount: 0, unit: 0, total: 0 };
+      setSaveSelectedProductData([...saveSelectedProductData, newData]);
     } catch (error) {
       console.error("ไม่สามารถเพิ่มสินค้าได้", error);
-      setSearchQueryProductName('')
+      setSearchQueryProductName("");
       Swal.fire({
-        icon: 'error',
-        title: 'เพิ่มสินค้าไม่สำเร็จ ',
-        text: 'กรุณาลองใหม่อีกครั้ง',
-        confirmButtonText: 'ตกลง',
+        icon: "error",
+        title: "เพิ่มสินค้าไม่สำเร็จ ",
+        text: "กรุณาลองใหม่อีกครั้ง",
+        confirmButtonText: "ตกลง",
       });
     }
   };
-
- 
 
   // ------  แก้ไขหัวข้อสินค้า ------------- //
   const editProduct = async () => {
@@ -463,14 +452,14 @@ export function Sale() {
         console.error("No data selected for editing or missing ID.");
         return;
       }
-  
+
       const data = {
         product_name: selectedEditData.product_name,
         product_count: selectedEditData.product_count,
         product_category: selectedEditData.product_category,
       };
       // console.log(data)
-  
+
       const response = await axios.put(
         `${import.meta.env.VITE_APP_API}/Product/${selectedEditData.id}/edit`,
         data,
@@ -481,14 +470,16 @@ export function Sale() {
           },
         }
       );
-  
+
       if (response.status === 200) {
         // console.log("Product edited successfully.");
         // ทำการอัปเดต state หรือตัวแปรที่ใช้เก็บข้อมูลตารางด้านล่าง
         setSaveSelectedProductData((prevData) => {
           const updatedData = [...prevData];
           // หาตำแหน่งของข้อมูลที่แก้ไข
-          const dataIndex = updatedData.findIndex((item) => item.id === selectedEditData.id);
+          const dataIndex = updatedData.findIndex(
+            (item) => item.id === selectedEditData.id
+          );
           if (dataIndex !== -1) {
             updatedData[dataIndex] = {
               ...updatedData[dataIndex],
@@ -500,7 +491,7 @@ export function Sale() {
           }
           return updatedData;
         });
-  
+
         setSearchQueryProductName("");
         Swal.fire({
           icon: "success",
@@ -529,17 +520,13 @@ export function Sale() {
       });
     }
   };
-  
 
   // -------------------------------------------------- //
 
-  
   const handleEditClick = (data) => {
-      // console.log(data)
-      setSelectedEditData(data)
+    // console.log(data)
+    setSelectedEditData(data);
   };
-
-  
 
   //----- จัดการแสดงข้อมูล / หน้า -------------- //
   const [currentProductPage, setCurrentProductPage] = useState(1);
@@ -556,16 +543,14 @@ export function Sale() {
     listProductData.length / itemsProductPerPage
   );
 
-
   const saveSelectedProduct = (data) => {
     // console.log(data);
-  
-    // ตรวจสอบว่าข้อมูลที่ถูกเลือกไม่ซ้ำกับข้อมูลที่มีอยู่แล้วใน saveSelectedProductData
-    if (!saveSelectedProductData.some(item => item.id === data.id)) {
-      if (saveSelectedProductData.length < 8) {
-        const newData = { ...data, amount: 0, unit:0, total: 0 };
-      setSaveSelectedProductData([...saveSelectedProductData, newData]);
 
+    // ตรวจสอบว่าข้อมูลที่ถูกเลือกไม่ซ้ำกับข้อมูลที่มีอยู่แล้วใน saveSelectedProductData
+    if (!saveSelectedProductData.some((item) => item.id === data.id)) {
+      if (saveSelectedProductData.length < 8) {
+        const newData = { ...data, amount: 0, unit: 0, total: 0 };
+        setSaveSelectedProductData([...saveSelectedProductData, newData]);
       } else {
         // setOpenViewProductDialog(false);
         Swal.fire({
@@ -586,83 +571,75 @@ export function Sale() {
       });
     }
     setOpenViewProductDialog(false);
-  }
-  
+  };
 
-// สร้างฟังก์ชันที่จะใช้ในการอัปเดต amount และ unit และคำนวณค่า total
-const [sumTotal, setSumTotal] = useState(0);
-const [thbText, setThbText] = useState('');
+  // สร้างฟังก์ชันที่จะใช้ในการอัปเดต amount และ unit และคำนวณค่า total
+  const [sumTotal, setSumTotal] = useState(0);
+  const [thbText, setThbText] = useState("");
 
-const handleInputChangeAmount = (value, index) => {
-  // ทำการสร้างรายการใหม่ที่มีข้อมูลเดิมและเปลี่ยนค่า amount
-  const updatedData = [...saveSelectedProductData];
-  updatedData[index].amount = parseInt(value, 10); // แปลงค่าเป็นตัวเลขจำนวนเต็ม
+  const handleInputChangeAmount = (value, index) => {
+    // ทำการสร้างรายการใหม่ที่มีข้อมูลเดิมและเปลี่ยนค่า amount
+    const updatedData = [...saveSelectedProductData];
+    updatedData[index].amount = parseInt(value, 10); // แปลงค่าเป็นตัวเลขจำนวนเต็ม
 
-  const amount = updatedData[index].amount || 0;
-  const unit = updatedData[index].unit || 0;
-  updatedData[index].total = amount * unit;
+    const amount = updatedData[index].amount || 0;
+    const unit = updatedData[index].unit || 0;
+    updatedData[index].total = amount * unit;
 
-  let newSumTotal = 0;
-  updatedData.forEach(item => {
-    newSumTotal += item.total || 0;
-  });
+    let newSumTotal = 0;
+    updatedData.forEach((item) => {
+      newSumTotal += item.total || 0;
+    });
 
-  // อัปเดตค่า sumtotal ใน state
-  setSumTotal(newSumTotal);
-  setThbText(THBText(newSumTotal))
-  
-  setSaveSelectedProductData(updatedData);
-};
+    // อัปเดตค่า sumtotal ใน state
+    setSumTotal(newSumTotal);
+    setThbText(THBText(newSumTotal));
 
-// console.log(thbText)
+    setSaveSelectedProductData(updatedData);
+  };
 
-const handleInputChangeUint = (value, index) => {
-  // ทำการสร้างรายการใหม่ที่มีข้อมูลเดิมและเปลี่ยนค่า amount
-  const updatedData = [...saveSelectedProductData];
-  updatedData[index].unit = parseInt(value, 10); // แปลงค่าเป็นตัวเลขจำนวนเต็ม
+  // console.log(thbText)
 
-  const amount = updatedData[index].amount || 0;
-  const unit = updatedData[index].unit || 0;
-  updatedData[index].total = amount * unit;
+  const handleInputChangeUint = (value, index) => {
+    // ทำการสร้างรายการใหม่ที่มีข้อมูลเดิมและเปลี่ยนค่า amount
+    const updatedData = [...saveSelectedProductData];
+    updatedData[index].unit = parseInt(value, 10); // แปลงค่าเป็นตัวเลขจำนวนเต็ม
 
-  let newSumTotal = 0;
-  updatedData.forEach(item => {
-    newSumTotal += item.total || 0;
-  });
+    const amount = updatedData[index].amount || 0;
+    const unit = updatedData[index].unit || 0;
+    updatedData[index].total = amount * unit;
 
-  // อัปเดตค่า sumtotal ใน state
-  setSumTotal(newSumTotal);
-  setThbText(THBText(newSumTotal))
+    let newSumTotal = 0;
+    updatedData.forEach((item) => {
+      newSumTotal += item.total || 0;
+    });
 
-  setSaveSelectedProductData(updatedData);
-};
+    // อัปเดตค่า sumtotal ใน state
+    setSumTotal(newSumTotal);
+    setThbText(THBText(newSumTotal));
 
+    setSaveSelectedProductData(updatedData);
+  };
 
+  // -----  ลบสินค้า  ------------------------//
 
+  const deleteProduct = (index) => {
+    // const newData = saveSelectedProductData.filter((_, i) => i !== index);
+    // setSaveSelectedProductData(newData);
 
+    const deletedProduct = saveSelectedProductData[index];
+    const newData = saveSelectedProductData.filter((_, i) => i !== index);
 
-// -----  ลบสินค้า  ------------------------//
+    // คำนวณ sumtotal ใหม่โดยลบค่า total ของรายการที่ถูกลบออกจากค่า sumtotal เดิม
+    const newSumTotal = sumTotal - (deletedProduct.total || 0);
 
-const deleteProduct = (index) => {
-  // const newData = saveSelectedProductData.filter((_, i) => i !== index);
-  // setSaveSelectedProductData(newData);
+    // อัปเดตค่า sumtotal ใน state
+    setSumTotal(newSumTotal);
+    setThbText(THBText(newSumTotal));
 
-  const deletedProduct = saveSelectedProductData[index];
-const newData = saveSelectedProductData.filter((_, i) => i !== index);
-
-// คำนวณ sumtotal ใหม่โดยลบค่า total ของรายการที่ถูกลบออกจากค่า sumtotal เดิม
-const newSumTotal = sumTotal - (deletedProduct.total || 0);
-
-// อัปเดตค่า sumtotal ใน state
-setSumTotal(newSumTotal);
-setThbText(THBText(newSumTotal))
-
-// อัปเดตข้อมูลที่ saveSelectedProductData
-setSaveSelectedProductData(newData);
-}
-
-
-
+    // อัปเดตข้อมูลที่ saveSelectedProductData
+    setSaveSelectedProductData(newData);
+  };
 
   // ---------- แสดงวันที่ปัจจุบัน ------------//
 
@@ -702,7 +679,7 @@ setSaveSelectedProductData(newData);
   const [dialogSizeViewCustomer, setDialogSizeViewCustomer] = useState("xl");
 
   const handleViewCustomerClick = () => {
-    setActiveCustomerMenu('menu1')
+    setActiveCustomerMenu("menu1");
     setSelectedViewCustomerData(); // นำข้อมูลไปใช้งานภายใน modal / dialog
     setOpenViewCustomerDialog(true);
   };
@@ -718,7 +695,9 @@ setSaveSelectedProductData(newData);
     setSearchQueryCustomer(text);
     setIsOpen(true);
     const displayedData = listData.filter((data) =>
-      data.Product_name.toLowerCase().includes(searchQueryCustomer.toLowerCase())
+      data.Product_name.toLowerCase().includes(
+        searchQueryCustomer.toLowerCase()
+      )
     );
   };
 
@@ -729,7 +708,7 @@ setSaveSelectedProductData(newData);
   const [dialogSizeViewProduct, setDialogSizeViewProduct] = useState("xl");
 
   const handleViewProductClick = () => {
-    setActiveProductMenu("menu1")
+    setActiveProductMenu("menu1");
     setSelectedViewProductData(); // นำข้อมูลไปใช้งานภายใน modal / dialog
     setOpenViewProductDialog(true);
   };
@@ -771,162 +750,164 @@ setSaveSelectedProductData(newData);
     setOpenViewReceiptDialog(false);
   };
 
+  //---------- Dialog  ใบรับเสร็จรับเงิน -------------- //
+  const [selectedViewReceiptData1, setSelectedViewReceiptData1] =
+    useState(null);
+  const [openViewReceiptDialog1, setOpenViewReceiptDialog1] = useState(false);
+  const [dialogSizeViewReceipt1, setDialogSizeViewReceipt1] = useState("lg");
 
-    //---------- Dialog  ใบรับเสร็จรับเงิน -------------- //
-    const [selectedViewReceiptData1, setSelectedViewReceiptData1] = useState(null);
-    const [openViewReceiptDialog1, setOpenViewReceiptDialog1] = useState(false);
-    const [dialogSizeViewReceipt1, setDialogSizeViewReceipt1] = useState("lg");
-    
-  
-    const handleViewReceiptClick1 = () => {
-      setSelectedViewReceiptData1(billData); // นำข้อมูลไปใช้งานภายใน modal / dialog
-      setOpenViewReceiptDialog1(true);
-    };
-  
-    const handleCloseViewReceiptDialog1 = () => {
-      setSelectedViewReceiptData1(null);
-      setOpenViewReceiptDialog1(false);
-    };
+  const handleViewReceiptClick1 = () => {
+    setSelectedViewReceiptData1(billData); // นำข้อมูลไปใช้งานภายใน modal / dialog
+    setOpenViewReceiptDialog1(true);
+  };
 
-    useEffect(() => {
-      saveSelectedProductData.forEach((product) => {
-        if (product.product_name === "ล็อตเตอรี่") {
-          setSelectedSavingsBond(product.amount);
-        } else if (product.product_name === "สลากออมสิน") {
-          setSelectedGovernmentBonds(product.amount);
-        }
-      });
-    }, [saveSelectedProductData]);
-  
- 
+  const handleCloseViewReceiptDialog1 = () => {
+    setSelectedViewReceiptData1(null);
+    setOpenViewReceiptDialog1(false);
+  };
+
+  useEffect(() => {
+    saveSelectedProductData.forEach((product) => {
+      if (product.product_name === "ล็อตเตอรี่") {
+        setSelectedSavingsBond(product.amount);
+      } else if (product.product_name === "สลากออมสิน") {
+        setSelectedGovernmentBonds(product.amount);
+      }
+    });
+  }, [saveSelectedProductData]);
+
   const sendAllData = async () => {
     try {
-
       // ตรวจสอบว่า saveSelectedProductData และ selectCustomerData.customer_name มีค่าหรือไม่
-    if (!saveSelectedProductData.length || !selectCustomerData.customer_name) {
-      // ถ้าไม่มีค่าหรือค่าว่าง ให้แสดงข้อความแจ้งเตือน
-      Swal.fire({
-        icon: "error",
-        title: "ต้องมีผู้บริจาคและรายการสินค้า",
-        text: "กรุณาทำใหม่",
-        confirmButtonText: "ตกลง",
-      });
-      return;
-    }
-    console.log(saveSelectedProductData)
+      if (
+        !saveSelectedProductData.length ||
+        !selectCustomerData.customer_name
+      ) {
+        // ถ้าไม่มีค่าหรือค่าว่าง ให้แสดงข้อความแจ้งเตือน
+        Swal.fire({
+          icon: "error",
+          title: "ต้องมีผู้บริจาคและรายการสินค้า",
+          text: "กรุณาทำใหม่",
+          confirmButtonText: "ตกลง",
+        });
+        return;
+      }
+      console.log(saveSelectedProductData);
 
       const productData = saveSelectedProductData.map((product) => ({
-
         // sale_auction_start_event: product.product_name, // ID สินค้า
-        // sale_auction_start_event_count: product.unit.toString(), 
+        // sale_auction_start_event_count: product.unit.toString(),
         // sale_auction_start_event_count_price: product.amount.toString(),
         // sale_auction_start_event_count_cat: product.product_category,
         // sale_auction_start_event_count_unit: product.product_count
 
         sale_auction_start_event: product.product_name, // ID สินค้า
-        sale_auction_start_event_count:  product.amount.toString(),
+        sale_auction_start_event_count: product.amount.toString(),
         sale_auction_start_event_count_price: product.unit.toString(),
         sale_auction_start_event_count_cat: product.product_category,
-        sale_auction_start_event_count_unit: product.product_count
-
+        sale_auction_start_event_count_unit: product.product_count,
       }));
 
-      console.log(selectedSavingsBond)
-      console.log(selectedGovernmentBonds)
+      console.log(selectedSavingsBond);
+      console.log(selectedGovernmentBonds);
 
       const saleData = {
-        sale_code_customer_name: selectCustomerData.customer_name || '',
-        sale_code_customer_address: selectCustomerData.customer_address || '',
-        sale_code_customer_delivery: selectCustomerData.customer_delivery || '',
-        sale_code_customer_contract: selectCustomerData.customer_contract || '',
-        sale_code_customer_noun: selectCustomerData.customer_noun || '',
-        sale_code_customer_number: selectCustomerData.customer_number || '',
-        sale_code_customer_tel: selectCustomerData.customer_tel || '',
-        sale_code_customer_line: 'aaa',
-        sale_auction_refer: billRefNo, 
-        sale_auction_num: billNo, 
+        sale_code_customer_name: selectCustomerData.customer_name || "",
+        sale_code_customer_address: selectCustomerData.customer_address || "",
+        sale_code_customer_delivery: selectCustomerData.customer_delivery || "",
+        sale_code_customer_contract: selectCustomerData.customer_contract || "",
+        sale_code_customer_noun: selectCustomerData.customer_noun || "",
+        sale_code_customer_number: selectCustomerData.customer_number || "",
+        sale_code_customer_tel: selectCustomerData.customer_tel || "",
+        sale_code_customer_line: "aaa",
+        sale_auction_refer: billRefNo,
+        sale_auction_num: billNo,
         sale_auction_q: note,
         product: productData,
         sale_auction_price: sumTotal.toString(),
-        sale_code_id : 23, 
-      
+        sale_code_id: 23,
+
         aomsin: [
           {
-            sale_auction_start_event: 1, 
-            sale_auction_start_event_count: selectedSavingsBond.toString()
+            sale_auction_start_event: 1,
+            sale_auction_start_event_count: selectedSavingsBond.toString(),
           },
           {
-            sale_auction_start_event: 2, 
-            sale_auction_start_event_count: selectedGovernmentBonds.toString()
-          }
-        ]
-      };
-      
-      console.log(saleData)
-
-      if(billDataId) {
-        const response = await axios.put(`${import.meta.env.VITE_APP_API}/Sale/${billDataId}/edit`,saleData,
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Token ${Token}`,
+            sale_auction_start_event: 2,
+            sale_auction_start_event_count: selectedGovernmentBonds.toString(),
           },
-        });
-        setBillData(response.data)
+        ],
+      };
+
+      console.log(saleData);
+
+      if (billDataId) {
+        const response = await axios.put(
+          `${import.meta.env.VITE_APP_API}/Sale/${billDataId}/edit`,
+          saleData,
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Token ${Token}`,
+            },
+          }
+        );
+        setBillData(response.data);
         await fetchUpdatedData(billDataId);
-        await fetchData()
-        setEditBill(true)
+        await fetchData();
+        setEditBill(true);
         Swal.fire({
           icon: "success",
           title: "บันทึกข้อมูลเรียบร้อย",
           showConfirmButton: false,
           timer: 1500,
-        })
+        });
       } else {
-      const response = await axios.post(`${import.meta.env.VITE_APP_API}/Sale`,saleData,
-      {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Token ${Token}`,
-        },
-        // data:saleData
-      });
-      // console.log(response.data)
-      setBillData(response.data)
-      setBillDataId(response.data.id)
-      await fetchUpdatedData(response.data.id);
-      await fetchData()
-      setEditBill(true)
-      Swal.fire({
-        icon: "success",
-        title: "บันทึกข้อมูลเรียบร้อย",
-        showConfirmButton: false,
-        timer: 1500,
-      })
-
+        const response = await axios.post(
+          `${import.meta.env.VITE_APP_API}/Sale`,
+          saleData,
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Token ${Token}`,
+            },
+            // data:saleData
+          }
+        );
+        // console.log(response.data)
+        setBillData(response.data);
+        setBillDataId(response.data.id);
+        await fetchUpdatedData(response.data.id);
+        await fetchData();
+        setEditBill(true);
+        Swal.fire({
+          icon: "success",
+          title: "บันทึกข้อมูลเรียบร้อย",
+          showConfirmButton: false,
+          timer: 1500,
+        });
       }
-      
     } catch (error) {
-      console.error(error)
+      console.error(error);
     }
-  }
+  };
 
-  const [cancelNote,setCancelNote] = useState('')
+  const [cancelNote, setCancelNote] = useState("");
 
   const endBill = async () => {
     try {
       // ถามครั้งที่ 1
       const result = await Swal.fire({
-        title: 'กรอกหมายเหตุ',
+        title: "กรอกหมายเหตุ",
         titleText: `ยกเลิกบิลเลขที่: ${billDataId}`,
-        input: 'text',
-        inputPlaceholder: 'กรอกหมายเหตุที่ยกเลิก',
+        input: "text",
+        inputPlaceholder: "กรอกหมายเหตุที่ยกเลิก",
         showCancelButton: true,
-        cancelButtonText: 'ยกเลิก',
-        confirmButtonText: 'ยืนยัน',
+        cancelButtonText: "ยกเลิก",
+        confirmButtonText: "ยืนยัน",
         preConfirm: (note) => {
           // นำค่าที่กรอกเก็บลงใน state หรือทำอะไรกับมันตามความเหมาะสม
-            setCancelNote(note);
+          setCancelNote(note);
         },
         allowOutsideClick: () => !Swal.isLoading(),
       });
@@ -934,11 +915,11 @@ setSaveSelectedProductData(newData);
       if (result.isConfirmed) {
         // ถามครั้งที่ 2
         const result2 = await Swal.fire({
-          title: 'แน่ใจหรือไม่ที่จะยกเลิก',
-          icon: 'warning',
+          title: "แน่ใจหรือไม่ที่จะยกเลิก",
+          icon: "warning",
           showCancelButton: true,
-          cancelButtonText: 'ยกเลิก',
-          confirmButtonText: 'ยืนยัน',
+          cancelButtonText: "ยกเลิก",
+          confirmButtonText: "ยืนยัน",
         });
 
         if (result2.isConfirmed) {
@@ -946,36 +927,38 @@ setSaveSelectedProductData(newData);
           const data = {
             show_Id: billDataId,
             sale_auction_q: cancelNote,
-         
-          }
-          const response = await axios.post(`${import.meta.env.VITE_APP_API}/Cancel-Sale`, data,
+          };
+          const response = await axios.post(
+            `${import.meta.env.VITE_APP_API}/Cancel-Sale`,
+            data,
             {
               headers: {
                 "Content-Type": "application/json",
                 Authorization: `Token ${Token}`,
               },
-            });
+            }
+          );
 
           // console.log(response.data)
 
           // อัปเดต state หรือทำอย่างอื่นตามที่ต้องการ
-          setBillDataId('');
-          setSumTotal('');
-          setSearchText('');
-          setPayStatus('1')
-          document.getElementById('billRefNo').value = '';
-          document.getElementById('billNo').value = '';
+          setBillDataId("");
+          setSumTotal("");
+          setSearchText("");
+          setPayStatus("1");
+          document.getElementById("billRefNo").value = "";
+          document.getElementById("billNo").value = "";
           setBillData([]);
           setSaveSelectedProductData([]);
           setSelectedEditCustomerData([]);
-          document.getElementById('note').value = '';
+          document.getElementById("note").value = "";
           setEditBill(false);
 
           // แสดงข้อความหลังจากส่งข้อมูลสำเร็จ
           Swal.fire({
-            title: 'สำเร็จ',
-            text: 'บิลถูกยกเลิกแล้ว',
-            icon: 'success',
+            title: "สำเร็จ",
+            text: "บิลถูกยกเลิกแล้ว",
+            icon: "success",
             showConfirmButton: false,
             timer: 1500,
           });
@@ -985,32 +968,32 @@ setSaveSelectedProductData(newData);
       }
     } catch (error) {
       // กรณีเกิดข้อผิดพลาดในการส่งข้อมูล
-      Swal.fire('เกิดข้อผิดพลาด', 'ไม่สามารถยกเลิกบิลได้ในขณะนี้', 'error');
+      Swal.fire("เกิดข้อผิดพลาด", "ไม่สามารถยกเลิกบิลได้ในขณะนี้", "error");
     }
   };
   const newBill = () => {
     Swal.fire({
-      title:"ต้องการสร้างบิลใหม่ ?",
+      title: "ต้องการสร้างบิลใหม่ ?",
       showCancelButton: true,
-      cancelButtonText: 'ยกเลิก',
-      confirmButtonText: 'ยืนยัน',
+      cancelButtonText: "ยกเลิก",
+      confirmButtonText: "ยืนยัน",
       preConfirm: (note) => {
         // นำค่าที่กรอกเก็บลงใน state หรือทำอะไรกับมันตามความเหมาะสม
         setCancelNote(note);
       },
       allowOutsideClick: () => !Swal.isLoading(),
     }).then((result) => {
-      if  (result.isConfirmed) {
-        setBillDataId('');
-        setSumTotal('');
-        setSearchText('');
-        setPayStatus('1')
-        document.getElementById('billRefNo').value = '';
-        document.getElementById('billNo').value = '';
+      if (result.isConfirmed) {
+        setBillDataId("");
+        setSumTotal("");
+        setSearchText("");
+        setPayStatus("1");
+        document.getElementById("billRefNo").value = "";
+        document.getElementById("billNo").value = "";
         setBillData([]);
         setSaveSelectedProductData([]);
         setSelectedEditCustomerData([]);
-        document.getElementById('note').value = '';
+        document.getElementById("note").value = "";
         setEditBill(false);
         // document.getElementById("note").value = "";
 
@@ -1019,31 +1002,33 @@ setSaveSelectedProductData(newData);
         // ผู้ใช้กดยกเลิก
       }
     });
-  }
+  };
 
-  const [reportData,setReportData] = useState([])
+  const [reportData, setReportData] = useState([]);
 
   const fetchUpdatedData = async (billDataId) => {
     // console.log(billDataId)
     try {
       // console.log(billDataId)
-      const response = await axios.get(`${import.meta.env.VITE_APP_API}/Sale/${billDataId}/detail`, {
-        headers: {
-          Authorization: `Token ${Token}`,
-        },
-      });
-  
+      const response = await axios.get(
+        `${import.meta.env.VITE_APP_API}/Sale/${billDataId}/detail`,
+        {
+          headers: {
+            Authorization: `Token ${Token}`,
+          },
+        }
+      );
+
       // console.log(response.data)
-      setReportData(response.data)
+      setReportData(response.data);
     } catch (error) {
-      console.error('เกิดข้อผิดพลาดในการดึงข้อมูล:', error);
+      console.error("เกิดข้อผิดพลาดในการดึงข้อมูล:", error);
     }
   };
 
   // useEffect(()=>{
   //   fetchUpdatedData()
   // },[payStatus])
-  
 
   //---------- Dialog  ชำระเงิน -------------- //
   const [activePayMenu, setActivePayMenu] = useState("menu1");
@@ -1055,16 +1040,15 @@ setSaveSelectedProductData(newData);
   const [payBillIssuer, setPayBillIssuer] = useState("");
   const [payDate, setPayDate] = useState("");
   const [payRef, setPayRef] = useState("");
-  const [payStatus, setPayStatus] = useState('1');
-  const [payAcc, setPayAcc] = useState('');
-  const [payBank, setPayBank] = useState('');
-  const [payCheck, setPayCheck] = useState('');
-  const [receiptId,setReceiptId] = useState('')
-  const [receiptStatusId,setReceiptStatusId] = useState('')
-
+  const [payStatus, setPayStatus] = useState("1");
+  const [payAcc, setPayAcc] = useState("");
+  const [payBank, setPayBank] = useState("");
+  const [payCheck, setPayCheck] = useState("");
+  const [receiptId, setReceiptId] = useState("");
+  const [receiptStatusId, setReceiptStatusId] = useState("");
 
   const handleViewPayClick = () => {
-    setActivePayMenu("menu1")
+    setActivePayMenu("menu1");
     setSelectedViewPayData(); // นำข้อมูลไปใช้งานภายใน modal / dialog
     setOpenViewPayDialog(true);
   };
@@ -1086,95 +1070,91 @@ setSaveSelectedProductData(newData);
     .toString()
     .padStart(2, "0")}/${year}`;
 
+  // console.log(formatDate(payDate))
 
-    // console.log(formatDate(payDate))
+  const [selectedFile, setSelectedFile] = useState(null);
+  const sendPay = async () => {
+    try {
+      // สร้าง FormData เพื่อแนบไฟล์
+      // console.log(payStatus)
+      const formData = new FormData();
+      formData.append("sale_auction", billDataId);
+      // formData.append("sale_auction", billData.sale_code);
+      formData.append("sale_receipt_name", payCustomerPayee);
+      formData.append("sale_receipt_name_export", payBillIssuer);
+      formData.append("sale_receipt_date_pay", formatDate(payDate));
+      formData.append("sale_receipt_number", payRef);
+      formData.append("sale_receipt_bank", payBank);
+      formData.append("sale_receipt_acc", payAcc);
+      formData.append("sale_receipt_check", payCheck);
+      formData.append("sale_receipt_status", Number(payStatus));
+      formData.append("sale_receipt_image", selectedFile || "");
 
-    const [selectedFile, setSelectedFile] = useState(null);
-    const sendPay = async () => {
-      try {
-        // สร้าง FormData เพื่อแนบไฟล์
-        // console.log(payStatus)
-        const formData = new FormData();
-        formData.append("sale_auction", billDataId);
-        // formData.append("sale_auction", billData.sale_code);
-        formData.append("sale_receipt_name", payCustomerPayee);
-        formData.append("sale_receipt_name_export", payBillIssuer);
-        formData.append("sale_receipt_date_pay", formatDate(payDate));
-        formData.append("sale_receipt_number", payRef);
-        formData.append("sale_receipt_bank", payBank);
-        formData.append("sale_receipt_acc", payAcc);
-        formData.append("sale_receipt_check", payCheck);
-        formData.append("sale_receipt_status", Number(payStatus));
-        formData.append("sale_receipt_image", selectedFile || "");
+      // console.log("FormData:", JSON.stringify([...formData.entries()]));
 
-        // console.log("FormData:", JSON.stringify([...formData.entries()]));
+      const response = await axios.post(
+        `${import.meta.env.VITE_APP_API}/Receipt`,
+        formData,
+        {
+          headers: {
+            Authorization: `Token ${Token}`,
+            "Content-Type": "multipart/form-data", // ระบุ Content-Type เป็น multipart/form-data
+          },
+        }
+      );
+      console.log(response.data);
+      setReceiptId(response.data.id);
+      setReceiptStatusId(response.data.sale_receipt_status);
+      setOpenViewPayDialog(false);
+      await fetchUpdatedData(billDataId);
+      await fetchReceiptData(response.data.id);
+      setPayRef("");
+      setPayCustomerPayee("");
+      setPayBillIssuer("");
+      setPayDate("");
+      setPayAcc("");
+      setPayBank("");
+      setPayCheck("");
+      setSelectedFile(null); // เคลียร์ไฟล์ที่เลือก
+      Swal.fire({
+        icon: "success",
+        title: "บันทึกข้อมูลใบเสร็จเรียบร้อย",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    } catch (error) {
+      setOpenViewPayDialog(false);
+      Swal.fire({
+        icon: "error",
+        title: "บันทึกข้อมูลใบเสร็จไม่สำเร็จ",
+        text: "กรุณาลองใหม่อีกครั้ง (กรุณาใส่ข้อมูลให้ครบถ้วน)",
+        confirmButtonText: "ตกลง",
+      });
+    }
+  };
 
-    
-        const response = await axios.post(
-          `${import.meta.env.VITE_APP_API}/Receipt`,
-          formData,
-          {
-            headers: {
-              Authorization: `Token ${Token}`,
-              "Content-Type": "multipart/form-data", // ระบุ Content-Type เป็น multipart/form-data
-            },
-          }
-        );
-        console.log(response.data)
-        setReceiptId(response.data.id);
-        setReceiptStatusId(response.data.sale_receipt_status);
-        setOpenViewPayDialog(false);
-        await fetchUpdatedData(billDataId);
-        await fetchReceiptData(response.data.id);
-        setPayRef("");
-        setPayCustomerPayee("");
-        setPayBillIssuer("");
-        setPayDate("");
-        setPayAcc("");
-        setPayBank("");
-        setPayCheck("");
-        setSelectedFile(null); // เคลียร์ไฟล์ที่เลือก
-        Swal.fire({
-          icon: "success",
-          title: "บันทึกข้อมูลใบเสร็จเรียบร้อย",
-          showConfirmButton: false,
-          timer: 1500,
-        });
-      } catch (error) {
-        setOpenViewPayDialog(false);
-        Swal.fire({
-          icon: "error",
-          title: "บันทึกข้อมูลใบเสร็จไม่สำเร็จ",
-          text: "กรุณาลองใหม่อีกครั้ง (กรุณาใส่ข้อมูลให้ครบถ้วน)",
-          confirmButtonText: "ตกลง",
-        });
-      }
-    };
-    
+  const [receiptData, setReceiptData] = useState([]);
 
-    const [receiptData,setReceiptData] = useState([])
-
-    const fetchReceiptData = async (receiptId) => {
-      try {
-        const response = await axios.get(`${import.meta.env.VITE_APP_API}/Receipt/${receiptId}/detail`, {
+  const fetchReceiptData = async (receiptId) => {
+    try {
+      const response = await axios.get(
+        `${import.meta.env.VITE_APP_API}/Receipt/${receiptId}/detail`,
+        {
           headers: {
             Authorization: `Token ${Token}`,
           },
-        });
-    
-        // console.log(response.data)
-        setReceiptData(response.data)
-      } catch (error) {
-        console.error('เกิดข้อผิดพลาดในการดึงข้อมูล:', error);
-        
-      }
-    };
+        }
+      );
 
-    // console.log(billData)
+      // console.log(response.data)
+      setReceiptData(response.data);
+    } catch (error) {
+      console.error("เกิดข้อผิดพลาดในการดึงข้อมูล:", error);
+    }
+  };
 
-  
+  // console.log(billData)
 
-    
   return (
     <>
       <Card className=" h-auto  w-full overflow-scroll px-5 ">
@@ -1190,7 +1170,9 @@ setSaveSelectedProductData(newData);
                     </Typography>
                   </div>
                   <div className="">
-                    <Typography className="">{billData.sale_code || ''}</Typography>
+                    <Typography className="">
+                      {billData.sale_code || ""}
+                    </Typography>
                   </div>
                 </div>
               ) : (
@@ -1207,7 +1189,7 @@ setSaveSelectedProductData(newData);
                     <input
                       type="text"
                       placeholder="ค้นหาผู้บริจาค"
-                      value={searchText || ''}
+                      value={searchText || ""}
                       list="option"
                       onChange={(e) => handleSearch(e.target.value)}
                       className=" w-full rounded border border-gray-400  p-1 text-sm text-gray-600 focus:border-blue-500 focus:outline-none"
@@ -1233,21 +1215,20 @@ setSaveSelectedProductData(newData);
                   </div>
                 </div>
                 <div className="flex  justify-center border-green-500 text-center sm:justify-start">
-                  
                   <IconButton
                     color="green"
                     size="sm"
                     className=" rounded-full border-4  border-green-500 "
                     onClick={handleViewCustomerClick}
                   >
-                    <AiOutlinePlus  className="text-2xl" />
+                    <AiOutlinePlus className="text-2xl" />
                   </IconButton>
                 </div>
-                <small  >เพิ่ม/แก้ไข ผู้บริจาค</small>
+                <small>เพิ่ม/แก้ไข ผู้บริจาค</small>
               </div>
               <div className="mt-5 flex flex-col  items-center gap-5 sm:flex-row ">
                 <div>
-                  <Typography className="flex lg:w-[110px] text-sm font-bold">
+                  <Typography className="flex text-sm font-bold lg:w-[110px]">
                     ที่อยู่:
                   </Typography>
                 </div>
@@ -1259,7 +1240,7 @@ setSaveSelectedProductData(newData);
               </div>
               <div className="mt-5 flex flex-col  items-center gap-5 sm:flex-row ">
                 <div>
-                  <Typography className="flex lg:w-[110px] text-sm font-bold">
+                  <Typography className="flex text-sm font-bold lg:w-[110px]">
                     สถานที่จัดส่ง:
                   </Typography>
                 </div>
@@ -1271,7 +1252,7 @@ setSaveSelectedProductData(newData);
               </div>
               <div className="mt-5 flex flex-col  items-center gap-5 sm:flex-row ">
                 <div>
-                  <Typography className="flex lg:w-[110px] text-sm font-bold">
+                  <Typography className="flex text-sm font-bold lg:w-[110px]">
                     ผู้ติดต่อ:
                   </Typography>
                 </div>
@@ -1283,7 +1264,7 @@ setSaveSelectedProductData(newData);
               </div>
               <div className="mt-5 flex flex-col items-center gap-5 sm:flex-row ">
                 <div>
-                  <Typography className="flex lg:w-[110px] text-sm font-bold">
+                  <Typography className="flex text-sm font-bold lg:w-[110px]">
                     เบอร์โทร:
                   </Typography>
                 </div>
@@ -1297,113 +1278,108 @@ setSaveSelectedProductData(newData);
 
             {/* บนขวา */}
             <div className="flex flex-col items-center lg:items-end">
-                <div className="mt-5 flex flex-col  items-center gap-5 md:flex-row lg:flex-col xl:gap-3 2xl:flex-row ">
-                  <div className="flex gap-3">
+              <div className="mt-5 flex flex-col  items-center gap-5 md:flex-row lg:flex-col xl:gap-3 2xl:flex-row ">
+                <div className="flex gap-3">
                   <div className="flex w-full items-center justify-center align-middle md:justify-start">
                     <Button
-                        size="sm"
-                        variant="gradient"
-                        color="blue"
-                        disabled={!editBill}
-                        className=" flex w-[135px] items-center align-middle  text-sm"
-                        onClick={newBill}
-                      >
-                        <span className="mr-2 flex text-base">
-                          <PiReceipt />
-                        </span>
-                        สร้างบิลใหม่
-                      </Button> 
-                    </div>
-            
-                    <div className="flex w-full items-center justify-center align-middle md:justify-start">
-                      <Button
-                        size="sm"
-                        variant="gradient"
-                        color="green"
-                        className=" flex items-center align-middle text-sm"
-                        onClick={sendAllData}
-                      >
-                        <span className="mr-2 flex text-base">
-                          <IoIosSave />
-                        </span>
-                        บันทึก
-                      </Button>
-                    </div>
-                    <div className="flex w-full items-center justify-center align-middle md:justify-start">
-                      <Button
-                        size="sm"
-                        variant="gradient"
-                        color="red"
-                        disabled={!editBill}
-                        className=" flex items-center align-middle text-sm"
-                        onClick={endBill}
-                      >
-                        <span className="mr-2 flex text-base">
-                          <GiCancel />
-                        </span>
-                        ยกเลิก
-                      </Button>
-                    </div>
+                      size="sm"
+                      variant="gradient"
+                      color="blue"
+                      disabled={!editBill}
+                      className=" flex w-[135px] items-center align-middle  text-sm"
+                      onClick={newBill}
+                    >
+                      <span className="mr-2 flex text-base">
+                        <PiReceipt />
+                      </span>
+                      สร้างบิลใหม่
+                    </Button>
                   </div>
-                  <div className="flex gap-3">
-           
-                    <div className="flex w-full items-center justify-center align-middle md:justify-start">
-                      <Button
-                        size="sm"
-                        variant="gradient"
-                        color="purple"
-                        disabled={!editBill || reportData?.status_sale == 2}
-                        className=" flex w-[120px] items-center align-middle  text-sm"
-                        onClick={handleViewPayClick}
-                      >
-                        <span className="mr-2 flex text-base">
-                          <MdOutlinePayment />
-                        </span>
-                        ชำระเงิน
-                      </Button>
-                    </div>
-                  
 
-                  <div className="flex w-full items-center justify-center align-middle lg:justify-start">
-                      <Button
-                        size="sm"
-                        variant="gradient"
-                        color="orange"
-                        disabled={!editBill}
-                        className=" flex w-[120px] items-center align-middle text-sm"
-                        onClick={handleViewReceiptClick}
-                      >
-                        <span className="mr-2 flex text-base">
-                          <BiReceipt />
-                        </span>
-                        ใบรับของ
-                      </Button>
+                  <div className="flex w-full items-center justify-center align-middle md:justify-start">
+                    <Button
+                      size="sm"
+                      variant="gradient"
+                      color="green"
+                      className=" flex items-center align-middle text-sm"
+                      onClick={sendAllData}
+                    >
+                      <span className="mr-2 flex text-base">
+                        <IoIosSave />
+                      </span>
+                      บันทึก
+                    </Button>
                   </div>
-                      <div className="flex w-full items-center justify-center align-middle md:justify-start">
-                        <div className="flex gap-5 ">
-                          <div>
-                        <Button
-                        size="sm"
-                        variant="gradient"
-                        color="amber"
-                        disabled={reportData?.status_sale !== 2 || !editBill }
-                        className=" flex w-[110px] items-center align-middle  text-sm"
-                        onClick={handleViewReceiptClick1}
-                      >
-                        <span className="mr-2 flex text-base">
-                          <PiReceipt />
-                        </span>
-                        ใบเสร็จ
-                      </Button>
-                          </div>
-
-                        </div>
-            
-                    </div>
-                    
+                  <div className="flex w-full items-center justify-center align-middle md:justify-start">
+                    <Button
+                      size="sm"
+                      variant="gradient"
+                      color="red"
+                      disabled={!editBill}
+                      className=" flex items-center align-middle text-sm"
+                      onClick={endBill}
+                    >
+                      <span className="mr-2 flex text-base">
+                        <GiCancel />
+                      </span>
+                      ยกเลิก
+                    </Button>
                   </div>
                 </div>
-          
+                <div className="flex gap-3">
+                  <div className="flex w-full items-center justify-center align-middle md:justify-start">
+                    <Button
+                      size="sm"
+                      variant="gradient"
+                      color="purple"
+                      disabled={!editBill || reportData?.status_sale == 2}
+                      className=" flex w-[120px] items-center align-middle  text-sm"
+                      onClick={handleViewPayClick}
+                    >
+                      <span className="mr-2 flex text-base">
+                        <MdOutlinePayment />
+                      </span>
+                      ชำระเงิน
+                    </Button>
+                  </div>
+
+                  <div className="flex w-full items-center justify-center align-middle lg:justify-start">
+                    <Button
+                      size="sm"
+                      variant="gradient"
+                      color="orange"
+                      disabled={!editBill}
+                      className=" flex w-[120px] items-center align-middle text-sm"
+                      onClick={handleViewReceiptClick}
+                    >
+                      <span className="mr-2 flex text-base">
+                        <BiReceipt />
+                      </span>
+                      ใบรับของ
+                    </Button>
+                  </div>
+                  <div className="flex w-full items-center justify-center align-middle md:justify-start">
+                    <div className="flex gap-5 ">
+                      <div>
+                        <Button
+                          size="sm"
+                          variant="gradient"
+                          color="amber"
+                          disabled={reportData?.status_sale !== 2 || !editBill}
+                          className=" flex w-[110px] items-center align-middle  text-sm"
+                          onClick={handleViewReceiptClick1}
+                        >
+                          <span className="mr-2 flex text-base">
+                            <PiReceipt />
+                          </span>
+                          ใบเสร็จ
+                        </Button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
               <div className="mt-5 flex flex-col items-center gap-5 sm:flex-row  ">
                 <div>
                   <Typography className="flex w-[40px] text-sm font-bold">
@@ -1412,7 +1388,7 @@ setSaveSelectedProductData(newData);
                 </div>
                 <div>
                   <Typography className="flex  text-sm ">
-                    {formattedDate || ''}
+                    {formattedDate || ""}
                   </Typography>
                 </div>
               </div>
@@ -1428,7 +1404,7 @@ setSaveSelectedProductData(newData);
                   </Typography>
                 </div>
               </div>
-              
+
               <div className="mt-5 flex flex-col  items-center gap-3 sm:flex-row ">
                 <div className=" flex flex-col  items-center gap-3 sm:flex-row ">
                   <div>
@@ -1448,7 +1424,7 @@ setSaveSelectedProductData(newData);
                 </div>
                 <div className="flex flex-col  items-center gap-3 sm:flex-row ">
                   <div>
-                    <Typography className="flex w-60px] text-sm font-bold">
+                    <Typography className="w-60px] flex text-sm font-bold">
                       / เล่มที่:
                     </Typography>
                   </div>
@@ -1464,7 +1440,7 @@ setSaveSelectedProductData(newData);
                 </div>
               </div>
               <div className="mt-5 flex flex-col  items-center gap-5 sm:flex-row ">
-              <small >เพิ่ม/แก้ไข สินค้า</small>
+                <small>เพิ่ม/แก้ไข สินค้า</small>
                 <div className="flex w-auto justify-center border-green-500 text-center sm:justify-start">
                   <IconButton
                     color="green"
@@ -1475,13 +1451,13 @@ setSaveSelectedProductData(newData);
                     <AiOutlinePlus className="text-2xl" />
                   </IconButton>
                 </div>
-                
+
                 <div className="flex gap-3">
                   <Typography className="text-md flex text-sm font-bold text-red-500">
                     ราคาทั้งหมด:
                   </Typography>
                   <Typography className="text-md flex text-sm  font-bold text-red-500">
-                    {sumTotal.toLocaleString() || ''}
+                    {sumTotal.toLocaleString() || ""}
                   </Typography>
                   <Typography className="text-md flex  font-bold text-red-500">
                     บาท
@@ -1508,7 +1484,7 @@ setSaveSelectedProductData(newData);
                           color="blue-gray"
                           className="font-normal leading-none opacity-70"
                         >
-                          {head || ''}
+                          {head || ""}
                         </Typography>
                       </th>
                     ))}
@@ -1516,21 +1492,36 @@ setSaveSelectedProductData(newData);
                 </thead>
                 <tbody>
                   {saveSelectedProductData.map((data, index) => (
-                    <tr key={index} className={index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}>
+                    <tr
+                      key={index}
+                      className={index % 2 === 0 ? "bg-gray-50" : "bg-white"}
+                    >
                       <td className="border-b border-gray-300 p-4">
                         <div className="flex items-center justify-center">
-                          <Typography variant="small" color="blue-gray" className="font-bold">
+                          <Typography
+                            variant="small"
+                            color="blue-gray"
+                            className="font-bold"
+                          >
                             {index + 1 || ""}
                           </Typography>
                         </div>
                       </td>
                       <td className="border-b border-gray-300 p-4">
-                        <Typography variant="small" color="blue-gray" className="font-normal">
+                        <Typography
+                          variant="small"
+                          color="blue-gray"
+                          className="font-normal"
+                        >
                           {data.product_category || ""}
                         </Typography>
                       </td>
                       <td className="border-b border-gray-300 p-4">
-                        <Typography variant="small" color="blue-gray" className="font-normal">
+                        <Typography
+                          variant="small"
+                          color="blue-gray"
+                          className="font-normal"
+                        >
                           {data.product_name || ""}
                         </Typography>
                       </td>
@@ -1540,13 +1531,19 @@ setSaveSelectedProductData(newData);
                           variant="small"
                           min="0"
                           color="blue-gray"
-                          className="font-normal text-xs w-[100px]  border-2  border-gray-400 rounded-lg focus:outline-none focus:ring-gray-500 focus:ring-1 px-2 py-2"
+                          className="w-[100px] rounded-lg border-2  border-gray-400  px-2 py-2 text-xs font-normal focus:outline-none focus:ring-1 focus:ring-gray-500"
                           placeholder="จำนวน"
-                          onChange={(e) => handleInputChangeAmount(e.target.value, index)}
+                          onChange={(e) =>
+                            handleInputChangeAmount(e.target.value, index)
+                          }
                         />
                       </td>
                       <td className="border-b border-gray-300 p-4">
-                        <Typography variant="small" color="blue-gray" className="font-normal">
+                        <Typography
+                          variant="small"
+                          color="blue-gray"
+                          className="font-normal"
+                        >
                           {data.product_count || ""}
                         </Typography>
                       </td>
@@ -1556,13 +1553,19 @@ setSaveSelectedProductData(newData);
                           variant="small"
                           min="0"
                           color="blue-gray"
-                          className="font-normal text-xs w-[100px]  border-2  border-gray-400 rounded-lg focus:outline-none focus:ring-gray-500 focus:ring-1 px-2 py-2"
+                          className="w-[100px] rounded-lg border-2  border-gray-400  px-2 py-2 text-xs font-normal focus:outline-none focus:ring-1 focus:ring-gray-500"
                           placeholder="ราคา/หน่วย"
-                          onChange={(e) => handleInputChangeUint(e.target.value, index)}
+                          onChange={(e) =>
+                            handleInputChangeUint(e.target.value, index)
+                          }
                         />
                       </td>
                       <td className="border-b border-gray-300 p-4">
-                        <Typography variant="small" color="blue-gray" className="font-normal">
+                        <Typography
+                          variant="small"
+                          color="blue-gray"
+                          className="font-normal"
+                        >
                           {data.total.toLocaleString() || 0}
                         </Typography>
                       </td>
@@ -1582,24 +1585,21 @@ setSaveSelectedProductData(newData);
                   ))}
                 </tbody>
               </table>
-        
             </Card>
             {/* ----------------  หมายเหตุ -------------------------------- */}
-              <div className="flex flex-col md:flex-row w-full gap-3 align-middle items-center py-3">
+            <div className="flex w-full flex-col items-center gap-3 py-3 align-middle md:flex-row">
               <div className="flex">
                 <Typography>หมายเหตุ:</Typography>
-             
               </div>
               <div className="flex w-full">
-              <Input 
-              type="text"
-              id="note"
-              maxLength="100"
-              onChange={(e)=> setNote(e.target.value)}  
+                <Input
+                  type="text"
+                  id="note"
+                  maxLength="100"
+                  onChange={(e) => setNote(e.target.value)}
                 />
               </div>
-
-              </div>
+            </div>
           </div>
 
           {/* ----  View ผู้บริจาค -------------- */}
@@ -1698,7 +1698,7 @@ setSaveSelectedProductData(newData);
                                 type="text"
                                 label="ชื่อผู้บริจาค"
                                 maxLength="45"
-                                value={newCustomerName || ''}
+                                value={newCustomerName || ""}
                                 onChange={(e) =>
                                   setNewCustomerName(e.target.value)
                                 }
@@ -1717,7 +1717,7 @@ setSaveSelectedProductData(newData);
                                 type="text"
                                 label="ที่อยู่ผู้บริจาค"
                                 maxLength="50"
-                                value={newCustomerAddress || ''}
+                                value={newCustomerAddress || ""}
                                 onChange={(e) =>
                                   setNewCustomerAddress(e.target.value)
                                 }
@@ -1736,7 +1736,7 @@ setSaveSelectedProductData(newData);
                                 type="text"
                                 label="สถานที่จัดส่ง"
                                 maxLength="50"
-                                value={newCustomerDelivery || ''}
+                                value={newCustomerDelivery || ""}
                                 onChange={(e) =>
                                   setNewCustomerDelivery(e.target.value)
                                 }
@@ -1756,7 +1756,7 @@ setSaveSelectedProductData(newData);
                                   type="text"
                                   label="ผู้ติดต่อ"
                                   maxLength="50"
-                                  value={newCustomerContract || ''}
+                                  value={newCustomerContract || ""}
                                   onChange={(e) =>
                                     setNewCustomerContract(e.target.value)
                                   }
@@ -1775,7 +1775,7 @@ setSaveSelectedProductData(newData);
                                   type="text"
                                   label="ออกฉลากในนาม"
                                   maxLength="45"
-                                  value={newCustomerNoun || ''}
+                                  value={newCustomerNoun || ""}
                                   onChange={(e) =>
                                     setNewCustomerNoun(e.target.value)
                                   }
@@ -1796,7 +1796,7 @@ setSaveSelectedProductData(newData);
                                   type="text"
                                   label="เบอร์โทรศัพท์"
                                   maxLength="20"
-                                  value={newCustomerTel || ''}
+                                  value={newCustomerTel || ""}
                                   onChange={(e) =>
                                     setNewCustomerTel(e.target.value)
                                   }
@@ -1815,7 +1815,7 @@ setSaveSelectedProductData(newData);
                                   type="text"
                                   label="เลขอ้างอิง"
                                   maxLength="20"
-                                  value={newCustomerNumber || ''}
+                                  value={newCustomerNumber || ""}
                                   onChange={(e) =>
                                     setNewCustomerNumber(e.target.value)
                                   }
@@ -2044,205 +2044,205 @@ setSaveSelectedProductData(newData);
                   </div>
                 )}
                 {activeCustomerMenu === "menu3" && (
-                 <div>
-                 <hr className=" mt-5 border border-gray-500" />
-                 <Card className="h-full w-full  p-3">
-                   <div>
-                     <div className="mt-5 flex w-full flex-col gap-4 ">
-                       <div className="flex flex-col items-center sm:flex-row ">
-                         <div className="">
-                           <Typography className="xl:w-25 sm:mr-5 sm:w-[120px] md:w-[120px] xl:mr-0">
-                             ชื่อผู้บริจาค:
-                           </Typography>
-                         </div>
-                         <div className="mt-3 sm:mt-0 md:w-[300px] ">
-                           <Input
-                             type="text"
-                             label="ชื่อผู้บริจาค"
-                             maxLength="50"
-                             value={
-                               selectedEditCustomerData?.customer_name || ""
-                             }
-                             onChange={(e) =>
-                               setSelectedEditCustomerData({
-                                 ...selectedEditCustomerData,
-                                 customer_name: e.target.value,
-                               })
-                             }
-                             className="w-full "
-                           />
-                         </div>
-                       </div>
-                       <div className="flex flex-col items-center sm:flex-row ">
-                         <div>
-                           <Typography className="xl:w-25 sm:mr-5 sm:w-[120px] md:w-[120px] xl:mr-0">
-                             ที่อยู่ผู้บริจาค:
-                           </Typography>
-                         </div>
-                         <div className="mt-3 sm:mt-0 md:w-[470px]  ">
-                           <Input
-                             type="text"
-                             label="ที่อยู่ผู้บริจาค"
-                             maxLength="50"
-                             value={
-                               selectedEditCustomerData?.customer_address ||
-                               ""
-                             }
-                             onChange={(e) =>
-                               setSelectedEditCustomerData({
-                                 ...selectedEditCustomerData,
-                                 customer_address: e.target.value,
-                               })
-                             }
-                             className="w-full  "
-                           />
-                         </div>
-                       </div>
-                       <div className="flex flex-col items-center sm:flex-row">
-                         <div>
-                           <Typography className="xl:w-25 sm:mr-5 sm:w-[120px] md:w-[120px] xl:mr-0">
-                             สถานที่จัดส่ง:
-                           </Typography>
-                         </div>
-                         <div className="mt-3 sm:mt-0 md:w-[470px] ">
-                           <Input
-                             type="text"
-                             label="สถานที่จัดส่ง"
-                             maxLength="50"
-                             value={
-                               selectedEditCustomerData?.customer_delivery ||
-                               ""
-                             }
-                             onChange={(e) =>
-                               setSelectedEditCustomerData({
-                                 ...selectedEditCustomerData,
-                                 customer_delivery: e.target.value,
-                               })
-                             }
-                             className="w-full "
-                           />
-                         </div>
-                       </div>
-                       <div className="flex flex-col gap-4 xl:flex-row xl:justify-between">
-                         <div className="flex flex-col items-center sm:flex-row">
-                           <div>
-                             <Typography className="xl:w-25 sm:mr-5 sm:w-[120px] md:w-[120px] xl:mr-0">
-                               ผู้ติดต่อ:
-                             </Typography>
-                           </div>
-                           <div className="mt-3 sm:mt-0 md:w-[300px] lg:w-[300px] xl:w-[200px] 2xl:w-[250px]">
-                             <Input
-                               type="text"
-                               label="ผู้ติดต่อ"
-                               maxLength="50"
-                               value={
-                                 selectedEditCustomerData?.customer_contract ||
-                                 ""
-                               }
-                               onChange={(e) =>
-                                 setSelectedEditCustomerData({
-                                   ...selectedEditCustomerData,
-                                   customer_contract: e.target.value,
-                                 })
-                               }
-                               className="w-full  "
-                             />
-                           </div>
-                         </div>
-                         <div className="flex flex-col items-center sm:flex-row">
-                           <div>
-                             <Typography className="sm:mr-5 sm:w-[130px] md:w-[130px] xl:mr-0 xl:w-[130px]">
-                               ออกฉลากในนาม:
-                             </Typography>
-                           </div>
-                           <div className="mt-3 sm:mt-0 md:w-[300px] lg:w-[300px] xl:w-[200px]  2xl:w-[250px]">
-                             <Input
-                               type="text"
-                               label="ออกฉลากในนาม"
-                               maxLength="45"
-                               value={
-                                 selectedEditCustomerData?.customer_noun ||
-                                 ""
-                               }
-                               onChange={(e) =>
-                                 setSelectedEditCustomerData({
-                                   ...selectedEditCustomerData,
-                                   customer_noun: e.target.value,
-                                 })
-                               }
-                               className="w-full "
-                             />
-                           </div>
-                         </div>
-                       </div>
-                       <div className="flex flex-col gap-4 xl:flex-row xl:justify-between">
-                         <div className="flex flex-col items-center sm:flex-row ">
-                           <div>
-                             <Typography className="xl:w-25 sm:mr-5 sm:w-[120px] md:w-[120px] xl:mr-0">
-                               เบอร์โทรศัพท์:
-                             </Typography>
-                           </div>
-                           <div className="mt-3 sm:mt-0 md:w-[300px] lg:w-[300px] xl:w-[200px]  2xl:w-[250px]">
-                             <Input
-                               type="text"
-                               label="เบอร์โทรศัพท์"
-                               maxLength="20"
-                               value={
-                                 selectedEditCustomerData?.customer_tel || ""
-                               }
-                               onChange={(e) =>
-                                 setSelectedEditCustomerData({
-                                   ...selectedEditCustomerData,
-                                   customer_tel: e.target.value,
-                                 })
-                               }
-                               className="w-full "
-                             />
-                           </div>
-                         </div>
-                         <div className="flex flex-col items-center sm:flex-row">
-                           <div>
-                             <Typography className="sm:mr-5 sm:w-[120px] md:w-[120px] xl:w-[100px]">
-                               เลขอ้างอิง:
-                             </Typography>
-                           </div>
-                           <div className="mt-3 sm:mt-0 md:w-[300px] lg:w-[300px] xl:w-[200px] 2xl:w-[250px]">
-                             <Input
-                               type="text"
-                               label="เลขอ้างอิง"
-                               maxLength="20"
-                               value={
-                                 selectedEditCustomerData?.customer_number ||
-                                 ""
-                               }
-                               onChange={(e) =>
-                                 setSelectedEditCustomerData({
-                                   ...selectedEditCustomerData,
-                                   customer_number: e.target.value,
-                                 })
-                               }
-                             />
-                           </div>
-                         </div>
-                       </div>
-                     </div>
-                   </div>
-                   <div className="mt-5 flex justify-center sm:justify-end">
-                     <Button
-                       variant="gradient"
-                       color="purple"
-                       style={{ backgroundColor: "purple" }}
-                       className=" flex items-center align-middle text-base"
-                       onClick={editCustomerTemp}
-                     >
-                       <span className="mr-2 flex text-xl">
-                         <IoIosSave />
-                       </span>
-                       อัพเดท
-                     </Button>
-                   </div>
-                 </Card>
-               </div>
+                  <div>
+                    <hr className=" mt-5 border border-gray-500" />
+                    <Card className="h-full w-full  p-3">
+                      <div>
+                        <div className="mt-5 flex w-full flex-col gap-4 ">
+                          <div className="flex flex-col items-center sm:flex-row ">
+                            <div className="">
+                              <Typography className="xl:w-25 sm:mr-5 sm:w-[120px] md:w-[120px] xl:mr-0">
+                                ชื่อผู้บริจาค:
+                              </Typography>
+                            </div>
+                            <div className="mt-3 sm:mt-0 md:w-[300px] ">
+                              <Input
+                                type="text"
+                                label="ชื่อผู้บริจาค"
+                                maxLength="50"
+                                value={
+                                  selectedEditCustomerData?.customer_name || ""
+                                }
+                                onChange={(e) =>
+                                  setSelectedEditCustomerData({
+                                    ...selectedEditCustomerData,
+                                    customer_name: e.target.value,
+                                  })
+                                }
+                                className="w-full "
+                              />
+                            </div>
+                          </div>
+                          <div className="flex flex-col items-center sm:flex-row ">
+                            <div>
+                              <Typography className="xl:w-25 sm:mr-5 sm:w-[120px] md:w-[120px] xl:mr-0">
+                                ที่อยู่ผู้บริจาค:
+                              </Typography>
+                            </div>
+                            <div className="mt-3 sm:mt-0 md:w-[470px]  ">
+                              <Input
+                                type="text"
+                                label="ที่อยู่ผู้บริจาค"
+                                maxLength="50"
+                                value={
+                                  selectedEditCustomerData?.customer_address ||
+                                  ""
+                                }
+                                onChange={(e) =>
+                                  setSelectedEditCustomerData({
+                                    ...selectedEditCustomerData,
+                                    customer_address: e.target.value,
+                                  })
+                                }
+                                className="w-full  "
+                              />
+                            </div>
+                          </div>
+                          <div className="flex flex-col items-center sm:flex-row">
+                            <div>
+                              <Typography className="xl:w-25 sm:mr-5 sm:w-[120px] md:w-[120px] xl:mr-0">
+                                สถานที่จัดส่ง:
+                              </Typography>
+                            </div>
+                            <div className="mt-3 sm:mt-0 md:w-[470px] ">
+                              <Input
+                                type="text"
+                                label="สถานที่จัดส่ง"
+                                maxLength="50"
+                                value={
+                                  selectedEditCustomerData?.customer_delivery ||
+                                  ""
+                                }
+                                onChange={(e) =>
+                                  setSelectedEditCustomerData({
+                                    ...selectedEditCustomerData,
+                                    customer_delivery: e.target.value,
+                                  })
+                                }
+                                className="w-full "
+                              />
+                            </div>
+                          </div>
+                          <div className="flex flex-col gap-4 xl:flex-row xl:justify-between">
+                            <div className="flex flex-col items-center sm:flex-row">
+                              <div>
+                                <Typography className="xl:w-25 sm:mr-5 sm:w-[120px] md:w-[120px] xl:mr-0">
+                                  ผู้ติดต่อ:
+                                </Typography>
+                              </div>
+                              <div className="mt-3 sm:mt-0 md:w-[300px] lg:w-[300px] xl:w-[200px] 2xl:w-[250px]">
+                                <Input
+                                  type="text"
+                                  label="ผู้ติดต่อ"
+                                  maxLength="50"
+                                  value={
+                                    selectedEditCustomerData?.customer_contract ||
+                                    ""
+                                  }
+                                  onChange={(e) =>
+                                    setSelectedEditCustomerData({
+                                      ...selectedEditCustomerData,
+                                      customer_contract: e.target.value,
+                                    })
+                                  }
+                                  className="w-full  "
+                                />
+                              </div>
+                            </div>
+                            <div className="flex flex-col items-center sm:flex-row">
+                              <div>
+                                <Typography className="sm:mr-5 sm:w-[130px] md:w-[130px] xl:mr-0 xl:w-[130px]">
+                                  ออกฉลากในนาม:
+                                </Typography>
+                              </div>
+                              <div className="mt-3 sm:mt-0 md:w-[300px] lg:w-[300px] xl:w-[200px]  2xl:w-[250px]">
+                                <Input
+                                  type="text"
+                                  label="ออกฉลากในนาม"
+                                  maxLength="45"
+                                  value={
+                                    selectedEditCustomerData?.customer_noun ||
+                                    ""
+                                  }
+                                  onChange={(e) =>
+                                    setSelectedEditCustomerData({
+                                      ...selectedEditCustomerData,
+                                      customer_noun: e.target.value,
+                                    })
+                                  }
+                                  className="w-full "
+                                />
+                              </div>
+                            </div>
+                          </div>
+                          <div className="flex flex-col gap-4 xl:flex-row xl:justify-between">
+                            <div className="flex flex-col items-center sm:flex-row ">
+                              <div>
+                                <Typography className="xl:w-25 sm:mr-5 sm:w-[120px] md:w-[120px] xl:mr-0">
+                                  เบอร์โทรศัพท์:
+                                </Typography>
+                              </div>
+                              <div className="mt-3 sm:mt-0 md:w-[300px] lg:w-[300px] xl:w-[200px]  2xl:w-[250px]">
+                                <Input
+                                  type="text"
+                                  label="เบอร์โทรศัพท์"
+                                  maxLength="20"
+                                  value={
+                                    selectedEditCustomerData?.customer_tel || ""
+                                  }
+                                  onChange={(e) =>
+                                    setSelectedEditCustomerData({
+                                      ...selectedEditCustomerData,
+                                      customer_tel: e.target.value,
+                                    })
+                                  }
+                                  className="w-full "
+                                />
+                              </div>
+                            </div>
+                            <div className="flex flex-col items-center sm:flex-row">
+                              <div>
+                                <Typography className="sm:mr-5 sm:w-[120px] md:w-[120px] xl:w-[100px]">
+                                  เลขอ้างอิง:
+                                </Typography>
+                              </div>
+                              <div className="mt-3 sm:mt-0 md:w-[300px] lg:w-[300px] xl:w-[200px] 2xl:w-[250px]">
+                                <Input
+                                  type="text"
+                                  label="เลขอ้างอิง"
+                                  maxLength="20"
+                                  value={
+                                    selectedEditCustomerData?.customer_number ||
+                                    ""
+                                  }
+                                  onChange={(e) =>
+                                    setSelectedEditCustomerData({
+                                      ...selectedEditCustomerData,
+                                      customer_number: e.target.value,
+                                    })
+                                  }
+                                />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="mt-5 flex justify-center sm:justify-end">
+                        <Button
+                          variant="gradient"
+                          color="purple"
+                          style={{ backgroundColor: "purple" }}
+                          className=" flex items-center align-middle text-base"
+                          onClick={editCustomerTemp}
+                        >
+                          <span className="mr-2 flex text-xl">
+                            <IoIosSave />
+                          </span>
+                          อัพเดท
+                        </Button>
+                      </div>
+                    </Card>
+                  </div>
                 )}
               </Card>
             </DialogBody>
@@ -2275,7 +2275,11 @@ setSaveSelectedProductData(newData);
                               ? "bg-blue-700 text-white"
                               : ""
                           }`}
-                          onClick={() => {setActiveProductMenu("menu1") ,  setSearchQueryProductName(''), setCurrentProductPage(1)}}
+                          onClick={() => {
+                            setActiveProductMenu("menu1"),
+                              setSearchQueryProductName(""),
+                              setCurrentProductPage(1);
+                          }}
                         >
                           ค้นหา
                         </Button>
@@ -2289,7 +2293,11 @@ setSaveSelectedProductData(newData);
                               ? "bg-blue-700 text-white"
                               : ""
                           }`}
-                          onClick={() =>{ setActiveProductMenu("menu2") ,  setSearchQueryProductName('') , setCurrentProductPage(1)}}
+                          onClick={() => {
+                            setActiveProductMenu("menu2"),
+                              setSearchQueryProductName(""),
+                              setCurrentProductPage(1);
+                          }}
                         >
                           เพิ่มสินค้า
                         </Button>
@@ -2305,7 +2313,11 @@ setSaveSelectedProductData(newData);
                               ? "bg-blue-700 text-white"
                               : ""
                           }`}
-                          onClick={() =>{ setActiveProductMenu("menu3") , setSearchQueryProductName(''), setCurrentProductPage(1)}}
+                          onClick={() => {
+                            setActiveProductMenu("menu3"),
+                              setSearchQueryProductName(""),
+                              setCurrentProductPage(1);
+                          }}
                         >
                           แก้ไขข้อมูล
                         </Button>
@@ -2323,8 +2335,10 @@ setSaveSelectedProductData(newData);
                         <Input
                           type="text"
                           label="ค้นหาด้วยชื่อ"
-                          value={searchQueryProductName || ''}
-                          onChange={(e) => setSearchQueryProductName(e.target.value)}
+                          value={searchQueryProductName || ""}
+                          onChange={(e) =>
+                            setSearchQueryProductName(e.target.value)
+                          }
                           className="ps-3 w-full py-2"
                         />
                       </div>
@@ -2465,7 +2479,9 @@ setSaveSelectedProductData(newData);
                                           color="green"
                                           size="sm"
                                           className=" rounded-full border-4  border-green-500 "
-                                          onClick={()=> saveSelectedProduct(data) }
+                                          onClick={() =>
+                                            saveSelectedProduct(data)
+                                          }
                                         >
                                           <AiOutlinePlus className="text-2xl" />
                                         </IconButton>
@@ -2559,8 +2575,7 @@ setSaveSelectedProductData(newData);
                                 onChange={(e) => {
                                   setNewProductCount(e.target.value);
                                 }}
-                              >
-                              </Input>
+                              ></Input>
                             </div>
                           </div>
                           <div className="flex flex-col  items-center justify-center sm:flex-row xl:justify-start">
@@ -2587,8 +2602,12 @@ setSaveSelectedProductData(newData);
                                 <Option value="สลากออมสิน">สลากออมสิน</Option> */}
                                 <Option value="วัตถุมงคล">วัตถุมงคล</Option>
                                 <Option value="โทรศัพท์">โทรศัพท์</Option>
-                                <Option value="เครื่องใช้สำนักงาน">เครื่องใช้สำนักงาน</Option>
-                                <Option value="เครื่องใช้ไฟฟ้า">เครื่องใช้ไฟฟ้า</Option>
+                                <Option value="เครื่องใช้สำนักงาน">
+                                  เครื่องใช้สำนักงาน
+                                </Option>
+                                <Option value="เครื่องใช้ไฟฟ้า">
+                                  เครื่องใช้ไฟฟ้า
+                                </Option>
                                 <Option value="อื่นๆ">อื่นๆ</Option>
                               </Select>
                             </div>
@@ -2647,7 +2666,7 @@ setSaveSelectedProductData(newData);
                             </div>
                             <div className="mt-3 w-full sm:mt-0  ">
                               <Input
-                              type="text"
+                                type="text"
                                 value={selectedEditData?.product_count || ""}
                                 label="หน่วยนับ"
                                 maxLength="20"
@@ -2657,8 +2676,7 @@ setSaveSelectedProductData(newData);
                                     product_count: e.target.value,
                                   })
                                 }
-                              >
-                              </Input>
+                              ></Input>
                             </div>
                           </div>
                           <div className="flex flex-col items-center sm:flex-row">
@@ -2685,8 +2703,12 @@ setSaveSelectedProductData(newData);
                                 <Option value="สลากออมสิน">สลากออมสิน</Option> */}
                                 <Option value="วัตถุมงคล">วัตถุมงคล</Option>
                                 <Option value="โทรศัพท์">โทรศัพท์</Option>
-                                <Option value="เครื่องใช้สำนักงาน">เครื่องใช้สำนักงาน</Option>
-                                <Option value="เครื่องใช้ไฟฟ้า">เครื่องใช้ไฟฟ้า</Option>
+                                <Option value="เครื่องใช้สำนักงาน">
+                                  เครื่องใช้สำนักงาน
+                                </Option>
+                                <Option value="เครื่องใช้ไฟฟ้า">
+                                  เครื่องใช้ไฟฟ้า
+                                </Option>
                                 <Option value="อื่นๆ">อื่นๆ</Option>
                               </Select>
                             </div>
@@ -2708,72 +2730,93 @@ setSaveSelectedProductData(newData);
                       </div>
                       <hr className=" mt-5 border border-gray-500" />
                       <Card className="mt-5 h-full w-full overflow-scroll">
-              <table className="w-full min-w-max table-auto text-center">
-                <thead>
-                  <tr>
-                    {TABLE_HEAD1.map((head) => (
-                      <th
-                        key={head}
-                        className="border-b border-gray-300 bg-gray-100 p-4 text-sm text-gray-700"
-                      >
-                        <Typography
-                          variant="small"
-                          color="blue-gray"
-                          className="font-normal leading-none opacity-70"
-                        >
-                          {head || ''}
-                        </Typography>
-                      </th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {saveSelectedProductData.map((data, index) => (
-                    <tr key={index} className={index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}>
-                      <td className="border-b border-gray-300 p-4">
-                        <div className="flex items-center justify-center">
-                          <Typography variant="small" color="blue-gray" className="font-bold">
-                            {index + 1 || ""}
-                          </Typography>
-                        </div>
-                      </td>
-                      <td className="border-b border-gray-300 p-4">
-                        <Typography variant="small" color="blue-gray" className="font-normal">
-                        {data.product_name || ""}
-                        </Typography>
-                      </td>
-                      <td className="border-b border-gray-300 p-4">
-                        <Typography variant="small" color="blue-gray" className="font-normal">
-                          {data.product_count || ""}
-                        </Typography>
-                      </td>
-                      <td className="border-b border-gray-300 p-4">
-                        <Typography variant="small" color="blue-gray" className="font-normal">
-                          
-                          {data.product_category || ""}
-                        </Typography>
-                      </td>
-                      <td className="border-b border-gray-300 p-4">
-                        <div className="flex justify-center">
-                          <div>
-                          <IconButton
-                            color="green"
-                            size="sm"
-                            className=" rounded-full border-4  border-green-500 "
-                            // onClick={()=> saveSelectedProduct(data) }
-                            onClick={() => setSelectedEditData(data)}
-                            
-                            >
-                            <AiOutlinePlus className="text-2xl" />
-                            </IconButton>
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </Card>
+                        <table className="w-full min-w-max table-auto text-center">
+                          <thead>
+                            <tr>
+                              {TABLE_HEAD1.map((head) => (
+                                <th
+                                  key={head}
+                                  className="border-b border-gray-300 bg-gray-100 p-4 text-sm text-gray-700"
+                                >
+                                  <Typography
+                                    variant="small"
+                                    color="blue-gray"
+                                    className="font-normal leading-none opacity-70"
+                                  >
+                                    {head || ""}
+                                  </Typography>
+                                </th>
+                              ))}
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {saveSelectedProductData.map((data, index) => (
+                              <tr
+                                key={index}
+                                className={
+                                  index % 2 === 0 ? "bg-gray-50" : "bg-white"
+                                }
+                              >
+                                <td className="border-b border-gray-300 p-4">
+                                  <div className="flex items-center justify-center">
+                                    <Typography
+                                      variant="small"
+                                      color="blue-gray"
+                                      className="font-bold"
+                                    >
+                                      {index + 1 || ""}
+                                    </Typography>
+                                  </div>
+                                </td>
+                                <td className="border-b border-gray-300 p-4">
+                                  <Typography
+                                    variant="small"
+                                    color="blue-gray"
+                                    className="font-normal"
+                                  >
+                                    {data.product_name || ""}
+                                  </Typography>
+                                </td>
+                                <td className="border-b border-gray-300 p-4">
+                                  <Typography
+                                    variant="small"
+                                    color="blue-gray"
+                                    className="font-normal"
+                                  >
+                                    {data.product_count || ""}
+                                  </Typography>
+                                </td>
+                                <td className="border-b border-gray-300 p-4">
+                                  <Typography
+                                    variant="small"
+                                    color="blue-gray"
+                                    className="font-normal"
+                                  >
+                                    {data.product_category || ""}
+                                  </Typography>
+                                </td>
+                                <td className="border-b border-gray-300 p-4">
+                                  <div className="flex justify-center">
+                                    <div>
+                                      <IconButton
+                                        color="green"
+                                        size="sm"
+                                        className=" rounded-full border-4  border-green-500 "
+                                        // onClick={()=> saveSelectedProduct(data) }
+                                        onClick={() =>
+                                          setSelectedEditData(data)
+                                        }
+                                      >
+                                        <AiOutlinePlus className="text-2xl" />
+                                      </IconButton>
+                                    </div>
+                                  </div>
+                                </td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </Card>
                     </Card>
                   </div>
                 )}
@@ -2793,7 +2836,14 @@ setSaveSelectedProductData(newData);
               <Card className=" h-full w-full ">
                 <div className="h-full w-full">
                   <PDFViewer width="100%" height="600px">
-                    {reportData && <Receive key={JSON.stringify(reportData)}  reportData={reportData} sumTotal={sumTotal}  thbText={thbText} />}
+                    {reportData && (
+                      <Receive
+                        key={JSON.stringify(reportData)}
+                        reportData={reportData}
+                        sumTotal={sumTotal}
+                        thbText={thbText}
+                      />
+                    )}
                   </PDFViewer>
                 </div>
               </Card>
@@ -2810,10 +2860,8 @@ setSaveSelectedProductData(newData);
                 </span>
                 ยกเลิก
               </Button>
-
             </DialogFooter>
           </Dialog>
-
 
           {/* ----  View ใบเสร็จ -------------- */}
           <Dialog
@@ -2825,30 +2873,53 @@ setSaveSelectedProductData(newData);
           >
             <DialogBody>
               <Card className=" h-full w-full ">
-              {receiptStatusId == 1 && (
-                <div className="h-full w-full">
-                  <PDFViewer width="100%" height="600px">
-                    {reportData && <Receipt1 key={JSON.stringify(reportData)} reportData={reportData} sumTotal={sumTotal} thbText={thbText} receiptData={receiptData} />}
-                  </PDFViewer>
-                </div>
-              )}
+                {receiptStatusId == 1 && (
+                  <div className="h-full w-full">
+                    <PDFViewer width="100%" height="600px">
+                      {reportData && (
+                        <Receipt1
+                          key={JSON.stringify(reportData)}
+                          reportData={reportData}
+                          sumTotal={sumTotal}
+                          thbText={thbText}
+                          receiptData={receiptData}
+                        />
+                      )}
+                    </PDFViewer>
+                  </div>
+                )}
 
-              {receiptStatusId == 2 && (
-                <div className="h-full w-full">
-                  <PDFViewer width="100%" height="600px">
-                    {reportData && <Receipt2 key={JSON.stringify(reportData)} reportData={reportData} sumTotal={sumTotal} thbText={thbText} receiptData={receiptData} />}
-                  </PDFViewer>
-                </div>
-              )}
+                {receiptStatusId == 2 && (
+                  <div className="h-full w-full">
+                    <PDFViewer width="100%" height="600px">
+                      {reportData && (
+                        <Receipt2
+                          key={JSON.stringify(reportData)}
+                          reportData={reportData}
+                          sumTotal={sumTotal}
+                          thbText={thbText}
+                          receiptData={receiptData}
+                        />
+                      )}
+                    </PDFViewer>
+                  </div>
+                )}
 
-              {receiptStatusId == 3 && (
-                <div className="h-full w-full">
-                  <PDFViewer width="100%" height="600px">
-                    {reportData && <Receipt3 key={JSON.stringify(reportData)} reportData={reportData} sumTotal={sumTotal} thbText={thbText} receiptData={receiptData} />}
-                  </PDFViewer>
-                </div>
-              )}
-                
+                {receiptStatusId == 3 && (
+                  <div className="h-full w-full">
+                    <PDFViewer width="100%" height="600px">
+                      {reportData && (
+                        <Receipt3
+                          key={JSON.stringify(reportData)}
+                          reportData={reportData}
+                          sumTotal={sumTotal}
+                          thbText={thbText}
+                          receiptData={receiptData}
+                        />
+                      )}
+                    </PDFViewer>
+                  </div>
+                )}
               </Card>
             </DialogBody>
             <DialogFooter className=" flex justify-center py-0  md:justify-end">
@@ -2863,10 +2934,8 @@ setSaveSelectedProductData(newData);
                 </span>
                 ยกเลิก
               </Button>
-
             </DialogFooter>
           </Dialog>
-
 
           {/* ----  View ชำระเงิน -------------- */}
           <Dialog
@@ -2875,19 +2944,23 @@ setSaveSelectedProductData(newData);
             handler={handleCloseViewPayDialog}
             className="custom-dialog h-[580px] overflow-scroll "
           >
-            <DialogHeader className="bg-blue-700 py-3  px-5 text-center  justify-between  text-base text-white opacity-80  ">
+            <DialogHeader className="justify-between bg-blue-700  py-3 px-5  text-center  text-base text-white opacity-80  ">
               <div className="flex gap-3 ">
                 <Typography className="text-xl">เลือกวิธีชำระเงิน</Typography>
               </div>
               <div className="flex gap-3 ">
-              <div className="flex w-full flex-col sm:flex-row gap-5 justify-center md:justify-end   mt-3 md:mt-0">
+                <div className="mt-3 flex w-full flex-col justify-center gap-5 sm:flex-row   md:mt-0 md:justify-end">
                   <div>
-                    <Typography className="text-lg font-bold text-center ">บิลที่:</Typography>
+                    <Typography className="text-center text-lg font-bold ">
+                      บิลที่:
+                    </Typography>
                   </div>
                   <div>
-                    <Typography className="text-lg font-bold text-center ">{reportData.sale_code || ''}</Typography>
+                    <Typography className="text-center text-lg font-bold ">
+                      {reportData.sale_code || ""}
+                    </Typography>
                   </div>
-                  </div>
+                </div>
               </div>
             </DialogHeader>
             <DialogBody>
@@ -2907,76 +2980,81 @@ setSaveSelectedProductData(newData);
                   </div>
                   </div>
                 </div> */}
-                <div className="flex flex-col w-full  md:flex-row  items-center">
-                  <div className="flex flex-col sm:flex-row w-full justify-center md:justify-start mt-3 gap-5">
-                  <div className="flex justify-center">
-                    <Typography className="text-lg font-bold ">วันที่:</Typography>
-                  </div>
-                  <div className="flex justify-center">
-                    <Typography className="text-lg font-bold ">{formattedDate1 || ''}</Typography>
-                  </div>
-                  </div>
-                </div>
-                <div className="flex flex-col w-full  md:flex-row  items-center">
-                  <div className="flex flex-col md:flex-row w-full gap-5">
-                  <div className="flex justify-center mt-3 sm:justify-start">
-                    <Typography className="text-lg font-bold ">ชำระโดย:</Typography>
-                  </div>
+                <div className="flex w-full flex-col  items-center  md:flex-row">
+                  <div className="mt-3 flex w-full flex-col justify-center gap-5 sm:flex-row md:justify-start">
+                    <div className="flex justify-center">
+                      <Typography className="text-lg font-bold ">
+                        วันที่:
+                      </Typography>
+                    </div>
+                    <div className="flex justify-center">
+                      <Typography className="text-lg font-bold ">
+                        {formattedDate1 || ""}
+                      </Typography>
+                    </div>
                   </div>
                 </div>
-               
-                  {/* menu bar */}
+                <div className="flex w-full flex-col  items-center  md:flex-row">
+                  <div className="flex w-full flex-col gap-5 md:flex-row">
+                    <div className="mt-3 flex justify-center sm:justify-start">
+                      <Typography className="text-lg font-bold ">
+                        ชำระโดย:
+                      </Typography>
+                    </div>
+                  </div>
+                </div>
+
+                {/* menu bar */}
                 <div className=" item-center mt-5 flex w-full flex-col gap-2 md:justify-around lg:flex-row">
-                  <div className="flex  flex-col gap-5  lg:gap-10 sm:flex-row xl:gap-20 ">
+                  <div className="flex  flex-col gap-5  sm:flex-row lg:gap-10 xl:gap-20 ">
                     <div className="flex  flex-col justify-center gap-5 sm:flex-row lg:gap-20  ">
                       <div className="flex  justify-center">
                         <Radio
-                            id="menu1"
-                            name="payMenu"
-                            value="menu1"
-                            checked={activePayMenu === 'menu1'}
-                            onChange={() => {
-                              setActivePayMenu('menu1');
-                              setPayStatus(1);
-                            }}
-                            label="เงินสด"
-                            // color="light-green"
-                            className="w-7 h-7"
-                            
+                          id="menu1"
+                          name="payMenu"
+                          value="menu1"
+                          checked={activePayMenu === "menu1"}
+                          onChange={() => {
+                            setActivePayMenu("menu1");
+                            setPayStatus(1);
+                          }}
+                          label="เงินสด"
+                          // color="light-green"
+                          className="h-7 w-7"
                         />
                       </div>
                     </div>
                     <div className="flex  flex-col justify-center gap-5 sm:flex-row lg:gap-20  ">
                       <div className="flex  justify-center">
                         <Radio
-                            id="menu2"
-                            name="payMenu"
-                            value="menu2"
-                            checked={activePayMenu === 'menu2'}
-                            onChange={() => {
-                              setActivePayMenu('menu2');
-                              setPayStatus(2);
-                            }}
-                            label="เงินโอน"
-                            // color="lightBlue"
-                            className="w-7 h-7"
+                          id="menu2"
+                          name="payMenu"
+                          value="menu2"
+                          checked={activePayMenu === "menu2"}
+                          onChange={() => {
+                            setActivePayMenu("menu2");
+                            setPayStatus(2);
+                          }}
+                          label="เงินโอน"
+                          // color="lightBlue"
+                          className="h-7 w-7"
                         />
                       </div>
                     </div>
                     <div className="flex  flex-col justify-center gap-5 sm:flex-row lg:gap-20  ">
                       <div className="flex  justify-center">
                         <Radio
-                            id="menu3"
-                            name="payMenu"
-                            value="menu3"
-                            checked={activePayMenu === 'menu3'}
-                            onChange={() => {
-                              setActivePayMenu('menu3');
-                              setPayStatus(3);
-                            }}
-                            label="เช็ค"
-                            // color="lightBlue"
-                            className="w-7 h-7"
+                          id="menu3"
+                          name="payMenu"
+                          value="menu3"
+                          checked={activePayMenu === "menu3"}
+                          onChange={() => {
+                            setActivePayMenu("menu3");
+                            setPayStatus(3);
+                          }}
+                          label="เช็ค"
+                          // color="lightBlue"
+                          className="h-7 w-7"
                         />
                       </div>
                     </div>
@@ -2986,89 +3064,8 @@ setSaveSelectedProductData(newData);
 
                 {/* content */}
                 {activePayMenu === "menu1" && (
-                   <div className="mt-5 flex w-full flex-col gap-4 my-4">
-                   <div className="flex flex-col gap-4 xl:gap-10 xl:flex-row ">
-                     <div className="flex flex-col items-center sm:flex-row">
-                       <div>
-                         <Typography className="xl:w-25 sm:mr-5 sm:w-[80px] md:w-[120px] xl:mr-0">
-                           ผู้รับเงิน:
-                         </Typography>
-                       </div>
-                       <div className="mt-3 sm:mt-0 md:w-[210px] lg:w-[210px] xl:w-[210px] 2xl:w-[210px]">
-                         <Input
-                           type="text"
-                           label="ผู้รับเงิน"
-                           maxLength="20"
-                           value={payCustomerPayee || ''}
-                           onChange={(e) =>
-                             setPayCustomerPayee(e.target.value)
-                           }
-                           className="w-full  "
-                         />
-                       </div>
-                     </div> 
-                     <div className="flex flex-col items-center sm:flex-row">
-                       <div>
-                         <Typography className="sm:mr-5 sm:w-[80px] md:w-[120px] xl:mr-0 xl:w-[100px]">
-                           วันที่ชำระ:
-                         </Typography>
-                       </div>
-                       <div className="mt-3 sm:mt-0 md:w-[300px] lg:w-[300px] xl:w-[200px]  2xl:w-[250px]">
-                         <DatePicker
-                         selected={payDate}
-                         dateFormat="dd/MM/yyyy"
-                         locale={th}
-                          onChange={(date) => setPayDate(date)}
-                          className="w-full border-2 border-gray-300 rounded-md p-2   shadow-sm focus:outline-none focus:border-blue-500"
-                          />
-                       </div>
-                     </div>
-                   </div>
-                   <div className="flex flex-col gap-4 xl:gap-10 xl:flex-row ">
-                     <div className="flex flex-col items-center sm:flex-row">
-                       <div>
-                         <Typography className="xl:w-25 sm:mr-5 sm:w-[80px] md:w-[120px] xl:mr-0">
-                           ผู้ออกบิล:
-                         </Typography>
-                       </div>
-                       <div className="mt-3 sm:mt-0 md:w-[210px] lg:w-[210px] xl:w-[210px] 2xl:w-[210px]">
-                         <Input
-                           type="text"
-                           label="ผู้รับเงิน"
-                           maxLength="20"
-                           value={payBillIssuer || ''}
-                           onChange={(e) =>
-                            setPayBillIssuer(e.target.value)
-                           }
-                           className="w-full  "
-                         />
-                       </div>
-                     </div> 
-                     <div className="flex flex-col items-center sm:flex-row">
-                       <div>
-                       <Typography className="xl:w-25 sm:mr-5 sm:w-[88px] md:w-[170px] xl:mr-0">
-                       เลขที่อ้างอิงใบรับของ:
-                       </Typography>
-                       </div>
-                       <div className="mt-3 sm:mt-0 md:w-[300px] lg:w-[300px] xl:w-[200px]  2xl:w-[250px]">
-                       <Input
-                         type="text"
-                         label="เลขที่อ้างอิงใบรับของ"
-                         maxLength="15"
-                         value={payRef || ''}
-                         onChange={(e) =>
-                          setPayRef(e.target.value)
-                         }
-                         className="w-full "
-                       />
-                       </div>
-                     </div>
-                   </div>
-                 </div>
-                )}
-                {activePayMenu === "menu2" && (
-                    <div className="mt-5 flex w-full flex-col gap-4 my-4">
-                    <div className="flex flex-col gap-4 xl:gap-10 xl:flex-row ">
+                  <div className="my-4 mt-5 flex w-full flex-col gap-4">
+                    <div className="flex flex-col gap-4 xl:flex-row xl:gap-10 ">
                       <div className="flex flex-col items-center sm:flex-row">
                         <div>
                           <Typography className="xl:w-25 sm:mr-5 sm:w-[80px] md:w-[120px] xl:mr-0">
@@ -3080,14 +3077,91 @@ setSaveSelectedProductData(newData);
                             type="text"
                             label="ผู้รับเงิน"
                             maxLength="20"
-                            value={payCustomerPayee || ''}
+                            value={payCustomerPayee || ""}
                             onChange={(e) =>
                               setPayCustomerPayee(e.target.value)
                             }
                             className="w-full  "
                           />
                         </div>
-                      </div> 
+                      </div>
+                      <div className="flex flex-col items-center sm:flex-row">
+                        <div>
+                          <Typography className="sm:mr-5 sm:w-[80px] md:w-[120px] xl:mr-0 xl:w-[100px]">
+                            วันที่ชำระ:
+                          </Typography>
+                        </div>
+                        <div className="mt-3 sm:mt-0 md:w-[300px] lg:w-[300px] xl:w-[200px]  2xl:w-[250px]">
+                          <DatePicker
+                            selected={payDate}
+                            dateFormat="dd/MM/yyyy"
+                            locale={th}
+                            onChange={(date) => setPayDate(date)}
+                            className="w-full rounded-md border-2 border-gray-300 p-2   shadow-sm focus:border-blue-500 focus:outline-none"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="flex flex-col gap-4 xl:flex-row xl:gap-10 ">
+                      <div className="flex flex-col items-center sm:flex-row">
+                        <div>
+                          <Typography className="xl:w-25 sm:mr-5 sm:w-[80px] md:w-[120px] xl:mr-0">
+                            ผู้ออกบิล:
+                          </Typography>
+                        </div>
+                        <div className="mt-3 sm:mt-0 md:w-[210px] lg:w-[210px] xl:w-[210px] 2xl:w-[210px]">
+                          <Input
+                            type="text"
+                            label="ผู้รับเงิน"
+                            maxLength="20"
+                            value={payBillIssuer || ""}
+                            onChange={(e) => setPayBillIssuer(e.target.value)}
+                            className="w-full  "
+                          />
+                        </div>
+                      </div>
+                      <div className="flex flex-col items-center sm:flex-row">
+                        <div>
+                          <Typography className="xl:w-25 sm:mr-5 sm:w-[88px] md:w-[170px] xl:mr-0">
+                            เลขที่อ้างอิงใบรับของ:
+                          </Typography>
+                        </div>
+                        <div className="mt-3 sm:mt-0 md:w-[300px] lg:w-[300px] xl:w-[200px]  2xl:w-[250px]">
+                          <Input
+                            type="text"
+                            label="เลขที่อ้างอิงใบรับของ"
+                            maxLength="15"
+                            value={payRef || ""}
+                            onChange={(e) => setPayRef(e.target.value)}
+                            className="w-full "
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+                {activePayMenu === "menu2" && (
+                  <div className="my-4 mt-5 flex w-full flex-col gap-4">
+                    <div className="flex flex-col gap-4 xl:flex-row xl:gap-10 ">
+                      <div className="flex flex-col items-center sm:flex-row">
+                        <div>
+                          <Typography className="xl:w-25 sm:mr-5 sm:w-[80px] md:w-[120px] xl:mr-0">
+                            ผู้รับเงิน:
+                          </Typography>
+                        </div>
+                        <div className="mt-3 sm:mt-0 md:w-[210px] lg:w-[210px] xl:w-[210px] 2xl:w-[210px]">
+                          <Input
+                            type="text"
+                            label="ผู้รับเงิน"
+                            maxLength="20"
+                            value={payCustomerPayee || ""}
+                            onChange={(e) =>
+                              setPayCustomerPayee(e.target.value)
+                            }
+                            className="w-full  "
+                          />
+                        </div>
+                      </div>
                       <div className="flex flex-col items-center sm:flex-row">
                         <div>
                           <Typography className="sm:mr-5 sm:w-[80px] md:w-[100px] xl:mr-0 xl:w-[100px]">
@@ -3096,16 +3170,16 @@ setSaveSelectedProductData(newData);
                         </div>
                         <div className="mt-3 sm:mt-0 md:w-[300px] lg:w-[300px] xl:w-[200px]  2xl:w-[200px]">
                           <DatePicker
-                          selected={payDate}
-                          locale={th}
-                          dateFormat="dd/MM/yyyy"
-                           onChange={(date) => setPayDate(date)}
-                           className="w-full border-2 border-gray-300 rounded-md p-2   shadow-sm focus:outline-none focus:border-blue-500"
-                           />
+                            selected={payDate}
+                            locale={th}
+                            dateFormat="dd/MM/yyyy"
+                            onChange={(date) => setPayDate(date)}
+                            className="w-full rounded-md border-2 border-gray-300 p-2   shadow-sm focus:border-blue-500 focus:outline-none"
+                          />
                         </div>
                       </div>
                     </div>
-                    <div className="flex flex-col gap-4 xl:gap-10 xl:flex-row ">
+                    <div className="flex flex-col gap-4 xl:flex-row xl:gap-10 ">
                       <div className="flex flex-col items-center sm:flex-row">
                         <div>
                           <Typography className="sm:mr-5 sm:w-[120px] md:w-[120px] xl:mr-0 xl:w-[120px]">
@@ -3117,200 +3191,186 @@ setSaveSelectedProductData(newData);
                             type="text"
                             label="โอนเข้าธนาคาร"
                             maxLength="15"
-                            value={payAcc || ''}
-                            onChange={(e) =>
-                              setPayAcc(e.target.value)
-                            }
+                            value={payAcc || ""}
+                            onChange={(e) => setPayAcc(e.target.value)}
                             className="w-full "
                           />
                         </div>
                       </div>
-                      <div className="flex flex-col justify-start items-center sm:flex-row mt-1  ">
-                      <div className="">
-                        <Typography className="sm:mr-5 sm:w-[80px] md:w-[100px] xl:mr-0 xl:w-[100px]">
-                          Upload สลิป:
-                        </Typography>
-                      </div>
-                      <div className="mt-3 sm:mt-0 md:w-[250px] ">
-                        <Input
-                          type="file"
-                          label="สลิป"
-                          onChange={(e) => {
-                            const file = e.target.files[0];
-                            setSelectedFile(file);
-                          }}
-                          className="w-full "
-                        />
+                      <div className="mt-1 flex flex-col items-center justify-start sm:flex-row  ">
+                        <div className="">
+                          <Typography className="sm:mr-5 sm:w-[80px] md:w-[100px] xl:mr-0 xl:w-[100px]">
+                            Upload สลิป:
+                          </Typography>
+                        </div>
+                        <div className="mt-3 sm:mt-0 md:w-[250px] ">
+                          <Input
+                            type="file"
+                            label="สลิป"
+                            onChange={(e) => {
+                              const file = e.target.files[0];
+                              setSelectedFile(file);
+                            }}
+                            className="w-full "
+                          />
+                        </div>
                       </div>
                     </div>
+                    <div className="flex flex-col gap-4 xl:flex-row xl:gap-10 ">
+                      <div className="flex flex-col items-center sm:flex-row">
+                        <div>
+                          <Typography className="xl:w-25 sm:mr-5 sm:w-[80px] md:w-[120px] xl:mr-0">
+                            ผู้ออกบิล:
+                          </Typography>
+                        </div>
+                        <div className="mt-3 sm:mt-0 md:w-[210px] lg:w-[210px] xl:w-[210px] 2xl:w-[210px]">
+                          <Input
+                            type="text"
+                            label="ผู้รับเงิน"
+                            maxLength="20"
+                            value={payBillIssuer || ""}
+                            onChange={(e) => setPayBillIssuer(e.target.value)}
+                            className="w-full  "
+                          />
+                        </div>
+                      </div>
+                      <div className="flex flex-col items-center sm:flex-row">
+                        <div>
+                          <Typography className="xl:w-25 sm:mr-5 sm:w-[88px] md:w-[170px] xl:mr-0">
+                            เลขที่อ้างอิงใบรับของ:
+                          </Typography>
+                        </div>
+                        <div className="mt-3 sm:mt-0 md:w-[300px] lg:w-[300px] xl:w-[200px]  2xl:w-[250px]">
+                          <Input
+                            type="text"
+                            label="เลขที่อ้างอิงใบรับของ"
+                            maxLength="15"
+                            value={payRef || ""}
+                            onChange={(e) => setPayRef(e.target.value)}
+                            className="w-full "
+                          />
+                        </div>
+                      </div>
                     </div>
-                    <div className="flex flex-col gap-4 xl:gap-10 xl:flex-row ">
-                     <div className="flex flex-col items-center sm:flex-row">
-                       <div>
-                         <Typography className="xl:w-25 sm:mr-5 sm:w-[80px] md:w-[120px] xl:mr-0">
-                           ผู้ออกบิล:
-                         </Typography>
-                       </div>
-                       <div className="mt-3 sm:mt-0 md:w-[210px] lg:w-[210px] xl:w-[210px] 2xl:w-[210px]">
-                         <Input
-                           type="text"
-                           label="ผู้รับเงิน"
-                           maxLength="20"
-                           value={payBillIssuer || ''}
-                           onChange={(e) =>
-                            setPayBillIssuer(e.target.value)
-                           }
-                           className="w-full  "
-                         />
-                       </div>
-                     </div> 
-                     <div className="flex flex-col items-center sm:flex-row">
-                       <div>
-                       <Typography className="xl:w-25 sm:mr-5 sm:w-[88px] md:w-[170px] xl:mr-0">
-                       เลขที่อ้างอิงใบรับของ:
-                       </Typography>
-                       </div>
-                       <div className="mt-3 sm:mt-0 md:w-[300px] lg:w-[300px] xl:w-[200px]  2xl:w-[250px]">
-                       <Input
-                         type="text"
-                         label="เลขที่อ้างอิงใบรับของ"
-                         maxLength="15"
-                         value={payRef || ''}
-                         onChange={(e) =>
-                          setPayRef(e.target.value)
-                         }
-                         className="w-full "
-                       />
-                       </div>
-                     </div>
-                   </div>
                   </div>
                 )}
                 {activePayMenu === "menu3" && (
-                   <div className="mt-5 flex w-full flex-col gap-4 my-4">
-                   <div className="flex flex-col gap-4 xl:gap-10 xl:flex-row ">
-                     <div className="flex flex-col items-center sm:flex-row">
-                       <div>
-                         <Typography className="xl:w-25 sm:mr-5 sm:w-[80px] md:w-[120px] xl:mr-0">
-                           ผู้รับเงิน:
-                         </Typography>
-                       </div>
-                       <div className="mt-3 sm:mt-0 md:w-[210px] lg:w-[210px] xl:w-[210px] 2xl:w-[210px]">
-                         <Input
-                           type="text"
-                           label="ผู้รับเงิน"
-                           maxLength="20"
-                           value={payCustomerPayee || ''}
-                           onChange={(e) =>
-                             setPayCustomerPayee(e.target.value)
-                           }
-                           className="w-full  "
-                         />
-                       </div>
-                     </div> 
-                     <div className="flex flex-col items-center sm:flex-row">
-                       <div>
-                         <Typography className="sm:mr-5 sm:w-[80px] md:w-[100px] xl:mr-0 xl:w-[100px]">
-                           วันที่ชำระ:
-                         </Typography>
-                       </div>
-                       <div className="mt-3 sm:mt-0 md:w-[300px] lg:w-[300px] xl:w-[200px]  2xl:w-[250px]">
-                         <DatePicker
-                         selected={payDate}
-                         locale={th}
-                         dateFormat="dd/MM/yyyy"
-                          onChange={(date) => setPayDate(date)}
-                          className="w-full border-2 border-gray-300 rounded-md p-2   shadow-sm focus:outline-none focus:border-blue-500"
+                  <div className="my-4 mt-5 flex w-full flex-col gap-4">
+                    <div className="flex flex-col gap-4 xl:flex-row xl:gap-10 ">
+                      <div className="flex flex-col items-center sm:flex-row">
+                        <div>
+                          <Typography className="xl:w-25 sm:mr-5 sm:w-[80px] md:w-[120px] xl:mr-0">
+                            ผู้รับเงิน:
+                          </Typography>
+                        </div>
+                        <div className="mt-3 sm:mt-0 md:w-[210px] lg:w-[210px] xl:w-[210px] 2xl:w-[210px]">
+                          <Input
+                            type="text"
+                            label="ผู้รับเงิน"
+                            maxLength="20"
+                            value={payCustomerPayee || ""}
+                            onChange={(e) =>
+                              setPayCustomerPayee(e.target.value)
+                            }
+                            className="w-full  "
                           />
-                       </div>
-                     </div>
-                   </div>
-                   <div className="flex flex-col gap-4 xl:gap-10 xl:flex-row ">
-                     <div className="flex flex-col items-center sm:flex-row">
-                       <div>
-                         <Typography className="xl:w-25 sm:mr-5 sm:w-[80px] md:w-[120px] xl:mr-0">
-                           ธนาคาร:
-                         </Typography>
-                       </div>
-                       <div className="mt-3 sm:mt-0 md:w-[210px] lg:w-[210px] xl:w-[210px] 2xl:w-[210px]">
-                         <Input
-                           type="text"
-                           label="ธนาคาร"
-                           maxLength="20"
-                           value={payBank || ''}
-                           onChange={(e) =>
-                             setPayBank(e.target.value)
-                           }
-                           className="w-full  "
-                         />
-                       </div>
-                     </div> 
-                     <div className="flex flex-col items-center sm:flex-row">
-                       <div>
-                         <Typography className="sm:mr-5 sm:w-[80px] md:w-[100px] xl:mr-0 xl:w-[100px]">
-                           เลขที่เช็ค:
-                         </Typography>
-                       </div>
-                       <div className="mt-3 sm:mt-0 md:w-[210px] lg:w-[210px] xl:w-[210px]  2xl:w-[210px]">
-                         <Input
-                           type="text"
-                           label="เลขที่เช็ค"
-                           maxLength="15"
-                           value={payCheck || ''}
-                           onChange={(e) =>
-                             setPayCheck(e.target.value)
-                           }
-                           className="w-full "
-                         />
-                       </div>
-                     </div>
-                   </div>
-                   <div className="flex flex-col gap-4 xl:gap-10 xl:flex-row ">
-                     <div className="flex flex-col items-center sm:flex-row">
-                       <div>
-                         <Typography className="xl:w-25 sm:mr-5 sm:w-[80px] md:w-[120px] xl:mr-0">
-                           ผู้ออกบิล:
-                         </Typography>
-                       </div>
-                       <div className="mt-3 sm:mt-0 md:w-[210px] lg:w-[210px] xl:w-[210px] 2xl:w-[210px]">
-                         <Input
-                           type="text"
-                           label="ผู้รับเงิน"
-                           maxLength="20"
-                           value={payBillIssuer || ''}
-                           onChange={(e) =>
-                            setPayBillIssuer(e.target.value)
-                           }
-                           className="w-full  "
-                         />
-                       </div>
-                     </div> 
-                     <div className="flex flex-col items-center sm:flex-row">
-                       <div>
-                       <Typography className="xl:w-25 sm:mr-5 sm:w-[88px] md:w-[170px] xl:mr-0">
-                       เลขที่อ้างอิงใบรับของ:
-                       </Typography>
-                       </div>
-                       <div className="mt-3 sm:mt-0 md:w-[300px] lg:w-[300px] xl:w-[200px]  2xl:w-[250px]">
-                       <Input
-                         type="text"
-                         label="เลขที่อ้างอิงใบรับของ"
-                         maxLength="15"
-                         value={payRef || ''}
-                         onChange={(e) =>
-                          setPayRef(e.target.value)
-                         }
-                         className="w-full "
-                       />
-                       </div>
-                     </div>
-                   </div>
-                 </div>
+                        </div>
+                      </div>
+                      <div className="flex flex-col items-center sm:flex-row">
+                        <div>
+                          <Typography className="sm:mr-5 sm:w-[80px] md:w-[100px] xl:mr-0 xl:w-[100px]">
+                            วันที่ชำระ:
+                          </Typography>
+                        </div>
+                        <div className="mt-3 sm:mt-0 md:w-[300px] lg:w-[300px] xl:w-[200px]  2xl:w-[250px]">
+                          <DatePicker
+                            selected={payDate}
+                            locale={th}
+                            dateFormat="dd/MM/yyyy"
+                            onChange={(date) => setPayDate(date)}
+                            className="w-full rounded-md border-2 border-gray-300 p-2   shadow-sm focus:border-blue-500 focus:outline-none"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="flex flex-col gap-4 xl:flex-row xl:gap-10 ">
+                      <div className="flex flex-col items-center sm:flex-row">
+                        <div>
+                          <Typography className="xl:w-25 sm:mr-5 sm:w-[80px] md:w-[120px] xl:mr-0">
+                            ธนาคาร:
+                          </Typography>
+                        </div>
+                        <div className="mt-3 sm:mt-0 md:w-[210px] lg:w-[210px] xl:w-[210px] 2xl:w-[210px]">
+                          <Input
+                            type="text"
+                            label="ธนาคาร"
+                            maxLength="20"
+                            value={payBank || ""}
+                            onChange={(e) => setPayBank(e.target.value)}
+                            className="w-full  "
+                          />
+                        </div>
+                      </div>
+                      <div className="flex flex-col items-center sm:flex-row">
+                        <div>
+                          <Typography className="sm:mr-5 sm:w-[80px] md:w-[100px] xl:mr-0 xl:w-[100px]">
+                            เลขที่เช็ค:
+                          </Typography>
+                        </div>
+                        <div className="mt-3 sm:mt-0 md:w-[210px] lg:w-[210px] xl:w-[210px]  2xl:w-[210px]">
+                          <Input
+                            type="text"
+                            label="เลขที่เช็ค"
+                            maxLength="15"
+                            value={payCheck || ""}
+                            onChange={(e) => setPayCheck(e.target.value)}
+                            className="w-full "
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="flex flex-col gap-4 xl:flex-row xl:gap-10 ">
+                      <div className="flex flex-col items-center sm:flex-row">
+                        <div>
+                          <Typography className="xl:w-25 sm:mr-5 sm:w-[80px] md:w-[120px] xl:mr-0">
+                            ผู้ออกบิล:
+                          </Typography>
+                        </div>
+                        <div className="mt-3 sm:mt-0 md:w-[210px] lg:w-[210px] xl:w-[210px] 2xl:w-[210px]">
+                          <Input
+                            type="text"
+                            label="ผู้รับเงิน"
+                            maxLength="20"
+                            value={payBillIssuer || ""}
+                            onChange={(e) => setPayBillIssuer(e.target.value)}
+                            className="w-full  "
+                          />
+                        </div>
+                      </div>
+                      <div className="flex flex-col items-center sm:flex-row">
+                        <div>
+                          <Typography className="xl:w-25 sm:mr-5 sm:w-[88px] md:w-[170px] xl:mr-0">
+                            เลขที่อ้างอิงใบรับของ:
+                          </Typography>
+                        </div>
+                        <div className="mt-3 sm:mt-0 md:w-[300px] lg:w-[300px] xl:w-[200px]  2xl:w-[250px]">
+                          <Input
+                            type="text"
+                            label="เลขที่อ้างอิงใบรับของ"
+                            maxLength="15"
+                            value={payRef || ""}
+                            onChange={(e) => setPayRef(e.target.value)}
+                            className="w-full "
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 )}
               </Card>
             </DialogBody>
             <DialogFooter className=" flex justify-center py-3 ">
-              <div className="flex w-full flex-col justify-center sm:justify-end gap-3 md:flex-row">
+              <div className="flex w-full flex-col justify-center gap-3 sm:justify-end md:flex-row">
                 <div className="flex justify-center">
                   <Button
                     variant="gradient"

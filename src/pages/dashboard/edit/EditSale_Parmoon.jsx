@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { format } from "date-fns-tz";
 import axios from "axios";
-import { Route, Link, Routes, useParams } from "react-router-dom";
+import { Route, Link, Routes, useParams, Await } from "react-router-dom";
 import Swal from "sweetalert2";
 import THBText from "thai-baht-text";
 import DatePicker from "react-datepicker";
@@ -37,8 +37,12 @@ import BillSend_Parmoon from "../modal/BillSend_Parmoon";
 import Pay from "../modal/Pay";
 import BillPay_Parmoon from "../modal/BillPay_Parmoon";
 
-export function EditSale1(idAuctionReport) {
-  const Token = localStorage.getItem("token");
+export function EditSale1({
+  idAuctionReport,
+  setOpenEditParmoon,
+  fetchDataIndex,
+}) {
+  let Token = localStorage.getItem("token");
 
   const [data, setData] = useState([]);
   const [dataAllCustomer, setDataAllCustomer] = useState([]);
@@ -52,7 +56,7 @@ export function EditSale1(idAuctionReport) {
   const [dataPayModal, setDataPayModal] = useState({});
   const [statusModal, setStatusModal] = useState(1);
 
-  // console.log(idAuctionReport.id)
+  // console.log(idAuctionReport)
 
   const TABLE_HEAD = [
     "#",
@@ -84,14 +88,14 @@ export function EditSale1(idAuctionReport) {
   };
 
   // const params = useParams();
-  const id = idAuctionReport.id;
+  const id = idAuctionReport;
 
   const fetchData = async () => {
     try {
       const res = await axios.get(
         `${import.meta.env.VITE_APP_API}/Debtor-Auction/${id}/detail`
       );
-      console.log(res.data);
+      // console.log(res.data);
       setData(res.data);
       setProduct(res.data[0]?.product1);
 
@@ -212,13 +216,15 @@ export function EditSale1(idAuctionReport) {
         showConfirmButton: false,
         timer: 1500,
       });
-      fetchData()
+      fetchData();
     } catch (error) {
       console.error(error);
     }
   };
 
+
   const endBill = async () => {
+    let cancelNote; 
     try {
       // ถามครั้งที่ 1
       const result = await Swal.fire({
@@ -230,7 +236,7 @@ export function EditSale1(idAuctionReport) {
         cancelButtonText: "ยกเลิก",
         confirmButtonText: "ยืนยัน",
         preConfirm: (note) => {
-          return setCancelNote(note);
+          cancelNote = note; 
         },
         allowOutsideClick: () => !Swal.isLoading(),
       });
@@ -239,15 +245,24 @@ export function EditSale1(idAuctionReport) {
         await Swal.fire({
           title: ` คุณต้องการบันทึกการเปลี่ยนแปลงหรือไม่ `,
           showDenyButton: true,
-          // showCancelButton: true,
           confirmButtonText: "บันทึก",
           denyButtonText: `ยกเลิก`,
         }).then((result) => {
           if (result.isConfirmed) {
+            Swal.fire({
+              position: "center",
+              icon: "success",
+              title: "ยกเลิกสำเร็จ",
+              showConfirmButton: false,
+              timer: 1500,
+            });
             const dataSend = {
               show_Id: data[0]?.id_auction_report,
-              action_report_q: cancelNote,
+              auction_report_q: cancelNote, 
             };
+            
+            // console.log(dataSend);
+
             const response = axios.put(
               `${import.meta.env.VITE_APP_API}/Cancel-Auctions`,
               dataSend,
@@ -256,24 +271,24 @@ export function EditSale1(idAuctionReport) {
                   "Content-Type": "application/json",
                   Authorization: `Token ${Token}`,
                 },
-              }
+              } 
             );
-            // console.log(dataSend);
-            Swal.fire("ยกเลิกสำเร็จ !", "", "success");
 
+            fetchDataIndex();
             setTimeout(() => {
-              navigate("/dashboard/auctionsList");
-            }, 1500);
+              setOpenEditParmoon(false);
+            }, 1300);
           } else if (result.isDenied) {
-            Swal.fire("Changes are not saved", "", "info");
+            Swal.fire("บิลยังไม่ถูกยกเลิก !", "", "info");
           }
         });
       }
     } catch (error) {
-      // กรณีเกิดข้อผิดพลาดในการส่งข้อมูล
       Swal.fire("เกิดข้อผิดพลาด", "ไม่สามารถยกเลิกบิลได้ในขณะนี้", "error");
     }
   };
+
+
   const handlePay = async () => {
     setDataPayModal({
       id: data[0]?.id_auction_report,
@@ -287,6 +302,7 @@ export function EditSale1(idAuctionReport) {
     fetchData();
     fetchdataCustomer();
   }, []);
+  useEffect(() => {}, [cancelNote]);
 
   const newBill = () => {
     Swal.fire({
@@ -313,6 +329,8 @@ export function EditSale1(idAuctionReport) {
 
   return (
     <>
+  
+
       <Customer_modal
         open={open}
         handleOpen={handleOpen}
@@ -322,7 +340,6 @@ export function EditSale1(idAuctionReport) {
         id={customerData?.id}
         type={1}
       />
-
       <Product_modal
         open2={open2}
         handleOpen2={handleOpen2}
@@ -332,7 +349,6 @@ export function EditSale1(idAuctionReport) {
         setProduct={setProduct}
         type={1}
       />
-
       <BillSend_Parmoon
         open3={open3}
         handleOpen3={handleOpen3}
@@ -345,14 +361,12 @@ export function EditSale1(idAuctionReport) {
         data={data[0]}
         statusModal={statusModal}
       />
-
       <Pay
         handleOpen3={handleOpen4}
         openPay={openPay}
         dataPayModal={dataPayModal}
         fetchData={fetchData}
       />
-
       <Card className=" h-auto  w-full overflow-scroll px-5 ">
         <div className=" sm:flex-col-auto md:flex-row-auto  flex justify-between gap-4 p-3 ">
           <div className="mt-5 flex flex-col gap-4 md:flex-row lg:flex-row ">
@@ -367,20 +381,18 @@ export function EditSale1(idAuctionReport) {
           </div>
 
           <div className="flex  flex-wrap gap-4 md:flex-row lg:flex-row">
-   
-              <Button
-                size="sm"
-                variant="outlined"
-                color="green"
-                className=" flex w-[150px] items-center align-middle  text-sm"
-                onClick={newBill}
-              >
-                <span className="mr-2 flex text-base">
-                  <PiReceipt />
-                </span>
-                รายการประมูล
-              </Button>
-          
+            <Button
+              size="sm"
+              variant="filled"
+              color="blue"
+              className=" flex w-[150px] items-center align-middle  text-sm"
+              onClick={newBill}
+            >
+              <span className="mr-2 flex text-base">
+                <PiReceipt />
+              </span>
+              รายการประมูล
+            </Button>
 
             <Button
               size="sm"
@@ -401,6 +413,7 @@ export function EditSale1(idAuctionReport) {
               color="red"
               className=" flex items-center align-middle text-sm"
               onClick={endBill}
+              disabled={data[0]?.auction_report_Pay_status === 2}
             >
               <span className="mr-2 flex text-base">
                 <GiCancel />
@@ -427,7 +440,7 @@ export function EditSale1(idAuctionReport) {
                 <Button
                   size="sm"
                   variant="gradient"
-                  color="light-blue"
+                  color="orange"
                   className=" flex w-[120px] items-center align-middle text-sm"
                 >
                   <span className="mr-2 flex text-base">
@@ -451,7 +464,7 @@ export function EditSale1(idAuctionReport) {
                 <Button
                   size="sm"
                   variant="gradient"
-                  color="orange"
+                  color="yellow"
                   className=" flex w-[110px] items-center align-middle  text-sm"
                   disabled={data[0]?.auction_report_Pay_status === 1}
                 >
@@ -718,7 +731,7 @@ export function EditSale1(idAuctionReport) {
         <div>
           {/* ------------ table  ----------------------------------------- */}
 
-          <Card className="h-full w-full overflow-scroll">
+          <Card className="h-full w-full overflow-x-hidden">
             <table className="w-full min-w-max table-auto text-center">
               <thead>
                 <tr>
