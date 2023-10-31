@@ -114,7 +114,7 @@ export function Account() {
         }
       );
       setData(res?.data);
-      // console.log(res.data);
+      console.log(res.data);
 
       if (number) {
         const response = await axios.get(
@@ -438,17 +438,32 @@ export function Account() {
                         variant="small"
                         style={{
                           color:
-                            data?.status_sale === 1 ||
-                            data?.auction_report_Pay_status === 1
+                            data?.status_sale === 1 ||   data?.status_sale === 0
+                             ||
+                            data?.auction_report_Pay_status === 1 || data?.auction_report_Pay_status === 0
                               ? "red"
                               : "green",
                         }}
                         className="font-normal"
                       >
+             
+
+                        {data?.status_sale === 0 ||
+                        data?.auction_report_Pay_status === 0
+                          ? "ยกเลิก"
+                          : ""}
+
                         {data?.status_sale === 1 ||
                         data?.auction_report_Pay_status === 1
                           ? "ยังไม่ชำระ"
-                          : "ชำระแล้ว"}
+                          : ""}
+
+                        {data?.status_sale === 2 ||
+                        data?.auction_report_Pay_status === 2
+                          ? "ชำระแล้ว"
+                          : ""}
+
+                    
                       </Typography>
                     </td>
                     <td className={classes}>
@@ -458,8 +473,8 @@ export function Account() {
                         className="font-normal"
                       >
                         {data?.sale_auction_price
-                          ? data?.sale_auction_price || ""
-                          : data?.auction_report_price || ""}
+                          ? Number(data?.sale_auction_price).toLocaleString() || ""
+                          : Number(data?.auction_report_price).toLocaleString() || ""}
                       </Typography>
                     </td>
                     <td className={classes}>
