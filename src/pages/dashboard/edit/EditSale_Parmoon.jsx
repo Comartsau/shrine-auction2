@@ -274,8 +274,9 @@ export function EditSale1({
               } 
             );
 
-            fetchDataIndex();
+            
             setTimeout(() => {
+              fetchDataIndex();
               setOpenEditParmoon(false);
             }, 1300);
           } else if (result.isDenied) {

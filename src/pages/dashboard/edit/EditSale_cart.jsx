@@ -272,11 +272,10 @@ export function EditSale_cart({idAuctionReport, setOpenEditSale, fetchDataIndex}
                 },
               }
             );
-
             Swal.fire("ยกเลิกสำเร็จ !", "", "success");
-
-            fetchDataIndex();
+           
             setTimeout(() => {
+              fetchDataIndex();
               setOpenEditSale(false);
             }, 1300);
 
