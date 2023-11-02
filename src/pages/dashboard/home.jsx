@@ -38,8 +38,8 @@ export function Home() {
   
       <Card className="flex h-[80vh]  w-full  px-10 ">
         <div className="flex flex-col mt-10 gap-3 items-center justify-center  ">
-        <Typography variant="h1" className="gradient-text1 text-center" >ระบบจัดเก็บเอกสารใบซื้อขาย</Typography>
-        <Typography variant="h1" className="gradient-text1 text-center"  > สำหรับศาลเจ้าขอนแก่น</Typography>
+        <Typography variant="h1" className="gradient-text1 text-center" >โปรแกรมประมูล และ บันทึกใบส่งของ </Typography>
+        <Typography variant="h1" className="gradient-text1 text-center"  >สมาคมปึงเถ่ากงม่าขอนแก่น</Typography>
         </div>
           <div className="flex w-full h-full items-center justify-center gap-5 align-bottom">
             <img

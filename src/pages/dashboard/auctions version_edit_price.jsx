@@ -1568,7 +1568,6 @@ export function Auctions() {
     setOpenViewEditPriceDialog(true);
   };
 
-
   const handleCloseViewEditPriceDialog = () => {
     setOpenViewEditPriceDialog(false);
   };
@@ -1577,14 +1576,12 @@ export function Auctions() {
 
   const [openViewEditPriceDialog2, setOpenViewEditPriceDialog2] = useState(false);
   const [dialogSizeViewEditPrice2, setDialogSizeViewEditPrice2] = useState("md");
-  const [dataEditName, setDataEditName] = useState([]);
-
 
 
   const handleEditPrice2 = (data) => {
     console.log(data)
  
-    setDataEditName(data || [])
+    setDataViewEditPrice(data || [])
     // setCustomerId(data.id_auction_result)
     setOpenViewEditPriceDialog2(true);
   };
@@ -1599,8 +1596,7 @@ export function Auctions() {
 
   const maxEdit = Number(valueEdit3);
 
-console.log(dataEditName)
-
+// console.log(valueEdit3)
 const handleEditChange = (event) => {
   const valueEdit2 = event.target.value;
   setEditValue(valueEdit2);
@@ -1618,58 +1614,6 @@ const handleEditChange = (event) => {
     setMessageEdit('');
   }
 };
-
-
-// ------  แก้ไขผู้บริจาค อันดับ 1 2 3 ------------- //
-const editCustomer = async () => {
-  try {
-    if (!dataEditName) {
-      console.error("No data selected for editing.");
-      return;
-    }
-
-    const data = {
-    customer_name:dataEditName?.user_auction,
-    customer_address:"aaa",
-    customer_delivery:"bbb",
-    customer_contract:"ccc",
-    customer_tel:"ddd",
-    customer_noun:"eee",
-    customer_number:"fff",
-    customer_line:"aaaa"
-    };
-
-    const response = await axios.put(
-      `${import.meta.env.VITE_APP_API}/Customer/${dataEditName?.user_auction_id}/edit`,
-      data,
-      {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Token ${Token}`,
-        },
-      }
-    );
-
-    // console.log(response);
-    await showAuction()
-    handleCloseViewEditPriceDialog2()
-    Swal.fire({
-      icon: 'success',
-      title: 'แก้ไขผู้บริจาคเรียบร้อย',
-      showConfirmButton: false,
-      timer: 1500
-    })
-  } catch (error) {
-    console.error("ไม่สามารถแก้ไขผู้บริจาคได้", error);
-    Swal.fire({
-      icon: 'error',
-      title: 'แก้ไขผู้บริจาคไม่สำเร็จ ',
-      text: 'กรุณาลองใหม่อีกครั้ง',
-      confirmButtonText: 'ตกลง',
-    });
-  }
-};
-
 
 
 //------------- ส่งข้อมูลผู้ประมูล -------------------------- //
@@ -1867,6 +1811,31 @@ const handleSendDataEDitAuction = async () => {
   }, []);
 
   const [product, setProduct] = useState([]);
+
+  // const fetchDataGift = async () => {
+  //   try {
+  //     // let url = `${import.meta.env.VITE_APP_API}/Show`;
+
+  //     const response = await axios.get(`${import.meta.env.VITE_APP_API}/Show`, {
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //         Authorization: `Token ${Token}`,
+  //       },
+  //     });
+
+  //     setProduct(response.data?.[0].product);
+
+  //   } catch (error) {
+  //     // console.error(error);
+  //   }
+  // };
+
+
+
+  // useEffect(() => {
+  //     fetchDataGift();
+  // }, []);
+
   
   const filteredProducts = product.filter(
     (product) => product.auction_product_start_event_count > 0
@@ -3526,24 +3495,7 @@ const handleSendDataEDitAuction = async () => {
                 </div>
               </DialogHeader>
               <DialogBody>
-                  <div className="flex flex-col w-full justify-center mt-5 items-center gap-5">
-                  <div className="flex w-full  justify-center gap-3   items-center ">
-                    <Typography>แก้ไขผู้บริจาค:</Typography>
-                    <input
-                      type="text"
-                      autoComplete="off"
-                      placeholder="แก้ไขผู้บริจาค"
-                      className=" focus:shadow-outline    appearance-none rounded border  border-gray-400 p-1  px-3 leading-tight text-gray-700 shadow focus:border-blue-500 focus:outline-none"
-                      value={dataViewEditPrice? dataViewEditPrice?.user_auction : ''}
-                      id="search6"
-                      list="option"
-                      onChange={(e) => setDataViewEditPrice({
-                        ...dataViewEditPrice,
-                        user_auction:e.target.value
-                      })}
-                      
-                    />
-                  </div>
+                  <div className="flex flex-col w-full justify-center mt-5 items-center">
                   <div className="flex w-full  justify-center gap-3   items-center ">
                     <Typography>แก้ไขราคา:</Typography>
                     <input
@@ -3581,10 +3533,7 @@ const handleSendDataEDitAuction = async () => {
                   color="green"
                   disabled={messageEdit}
                   className=" flex items-center align-middle text-base"
-                  onClick={()=> (
-                    handleSendDataEDitAuction() , 
-                    editCustomer()
-                    )}
+                  onClick={()=>handleSendDataEDitAuction()}
                 >
                   <span className="mr-2 flex text-xl">
                     <IoIosSave />
@@ -3605,7 +3554,7 @@ const handleSendDataEDitAuction = async () => {
             </Dialog>
 
 
-            {/* ----  View Edit ชื่อ อันดับ 2 และ 3 -------------- */}
+            {/* ----  View EditPrice อันดับ 2 และ 3 -------------- */}
 
             <Dialog
               open={openViewEditPriceDialog2}
@@ -3615,50 +3564,28 @@ const handleSendDataEDitAuction = async () => {
             >
               <DialogHeader className="bg-blue-700  text-center text-base  text-white opacity-80">
                 <div className="flex gap-3">
-                  <Typography className="text-xl">แก้ไขชื่อผู้บริจาค</Typography>
+                  <Typography className="text-xl">แก้ไขราคา</Typography>
                 </div>
               </DialogHeader>
               <DialogBody>
                   <div className="flex flex-col w-full justify-center mt-5 items-center">
-                  <div className="mt-3 flex flex-col items-center  gap-3 sm:flex-row ">
-                <div>
-                  <Typography className="flex w-[60px] text-sm">
-                    ผู้บริจาค:
-                  </Typography>
-                </div>
-                <div className="flex items-center justify-center align-middle">
-                  <div className="relative flex w-[200px] justify-center">
+                  <div className="flex w-full  justify-center gap-3   items-center ">
+                    <Typography>แก้ไขราคา:</Typography>
                     <input
-                      type="text"
+                      type="number"
                       autoComplete="off"
-                      placeholder="แก้ไขผู้บริจาค"
-                      value={dataEditName? dataEditName?.user_auction : ''}
-                      // value={searchText6? searchText6 : ''}
-                      id="search6"
-                      list="option"
-                      onChange={(e) => setDataEditName({
-                        ...dataEditName,
-                        user_auction:e.target.value
-                      })}
-                      
+                      min="0"
+                      size="sm"
+                      id="editPrice"
+                      placeholder="ใส่ราคาที่ต้องการแก้ไข"
+                       className=" focus:shadow-outline    appearance-none rounded border  border-gray-400 p-1  px-3 leading-tight text-gray-700 shadow focus:border-blue-500 focus:outline-none"
+                       value={editValue || ''}
+                       onChange={(e)=> {
+                         handleEditChange(e);
+                         setSelectedEditPrice2(e.target.value)
+                       }}
                     />
-                    
                   </div>
-                </div>
-                {/* <div className="flex w-auto justify-center border-green-500 text-center sm:justify-start">
-                  <IconButton
-                    color="green"
-                    // variant="outlined"
-                    size="md"
-                    className=" rounded-full border-4 "
-                    onClick={createNewCustomer}
-                    disabled={customerId && senddata.length < 2 }
-                    // onClick={() => createNewCustomer(senddata)}
-                  >
-                    <AiOutlinePlus className="text-2xl" />
-                  </IconButton>
-                </div> */}
-              </div>
                   {/* {messageEdit && <div className=" flex w-full justify-center mt-5   text-red-500">{messageEdit}</div>} */}
                   </div>
               </DialogBody>
@@ -3678,7 +3605,7 @@ const handleSendDataEDitAuction = async () => {
                   variant="gradient"
                   color="green"
                   className=" flex items-center align-middle text-base"
-                  onClick={editCustomer}
+                  onClick={()=>handleSendDataEDitAuction()}
                 >
                   <span className="mr-2 flex text-xl">
                     <IoIosSave />

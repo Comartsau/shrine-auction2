@@ -125,7 +125,7 @@ const Product_modal = ({
     const res = dataProduct.find((data) => data.id == id);
     // console.log(products.length);
 
-    if (products.length <= 6) {
+    if (products.length <= 10) {
       type === 1 &&
         (res.product_name === "สลากออมสิน" || res.product_name === "ล็อตเตอรี่"
           ? (handleOpen2(),
@@ -163,7 +163,7 @@ const Product_modal = ({
       Swal.fire({
         icon: "error",
         title: "ไม่สามารถทำรายการได้",
-        text: "มีรายการสินค้าครบ 8 รายการแล้ว",
+        text: "มีรายการสินค้าครบ 12 รายการแล้ว",
       });
     }
 
@@ -173,7 +173,7 @@ const Product_modal = ({
     try {
       // console.log(newProduct);
       if (newProduct.product_name) {
-        if (products.length <= 6) {
+        if (products.length <= 10) {
           const res = await axios.post(
             `${import.meta.env.VITE_APP_API}/Product`,
             newProduct
@@ -212,7 +212,7 @@ const Product_modal = ({
           Swal.fire({
             icon: "error",
             title: "ไม่สามารถทำรายการได้",
-            text: "มีรายการสินค้าครบ 8 รายการแล้ว",
+            text: "มีรายการสินค้าครบ 12 รายการแล้ว",
           });
         }
       }

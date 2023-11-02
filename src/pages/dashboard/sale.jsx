@@ -548,14 +548,14 @@ export function Sale() {
 
     // ตรวจสอบว่าข้อมูลที่ถูกเลือกไม่ซ้ำกับข้อมูลที่มีอยู่แล้วใน saveSelectedProductData
     if (!saveSelectedProductData.some((item) => item.id === data.id)) {
-      if (saveSelectedProductData.length < 8) {
+      if (saveSelectedProductData.length < 12) {
         const newData = { ...data, amount: 0, unit: 0, total: 0 };
         setSaveSelectedProductData([...saveSelectedProductData, newData]);
       } else {
         // setOpenViewProductDialog(false);
         Swal.fire({
           icon: "error",
-          title: "ข้อมูลเกิน 8 รายการ",
+          title: "ข้อมูลเกิน 12 รายการ",
           text: "กรุณาลองใหม่อีกครั้ง",
           confirmButtonText: "ตกลง",
         });
