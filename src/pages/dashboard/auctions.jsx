@@ -255,9 +255,9 @@ export function Auctions() {
     setFilteredOptions1(listDataTitle1);
   }, [listDataTitle1]);
 
-  useEffect(()=>{
-    console.log(saveSelectedOption1)
-  },[saveSelectedOption1])
+  // useEffect(()=>{
+  //   console.log(saveSelectedOption1)
+  // },[saveSelectedOption1])
 
 
   const handleSearch1 = (inputText) => {
@@ -1480,6 +1480,7 @@ export function Auctions() {
             document.getElementById("search6").value = "";
             setValue('')
             await showAuction()
+            await fetchDataChooseCustomer()
 
             // Socket
             socket.emit('display_3')
@@ -1555,16 +1556,16 @@ export function Auctions() {
   //---------- Dialog  แก้ไขราคาผู้บริจาค อันดับ 1 -------------- //
   const [dataViewEditPrice, setDataViewEditPrice] = useState([]);
   const [selectedEditPrice, setSelectedEditPrice] = useState("");
-  const [selectedEditPrice2, setSelectedEditPrice2] = useState("");
+  const [selectedEditUserId, setSelectedEditUserId] = useState("");
   const [openViewEditPriceDialog, setOpenViewEditPriceDialog] = useState(false);
   const [dialogSizeViewEditPrice, setDialogSizeViewEditPrice] = useState("md");
 
 
   const handleEditPrice = (data) => {
-    console.log(data)
- 
     setDataViewEditPrice(data || [])
-    // setCustomerId(data.id_auction_result)
+    setDataEditName(data || [])
+    setSelectedEditPrice(data.auction_result_price)
+    setSelectedEditUserId(data.user_auction_id)
     setOpenViewEditPriceDialog(true);
   };
 
@@ -1585,7 +1586,8 @@ export function Auctions() {
     console.log(data)
  
     setDataEditName(data || [])
-    // setCustomerId(data.id_auction_result)
+    setSelectedEditPrice(data.auction_result_price)
+    setSelectedEditUserId(data.user_auction_id)
     setOpenViewEditPriceDialog2(true);
   };
 
@@ -1599,7 +1601,7 @@ export function Auctions() {
 
   const maxEdit = Number(valueEdit3);
 
-console.log(dataEditName)
+// console.log(dataEditName)
 
 const handleEditChange = (event) => {
   const valueEdit2 = event.target.value;
@@ -1630,13 +1632,6 @@ const editCustomer = async () => {
 
     const data = {
     customer_name:dataEditName?.user_auction,
-    customer_address:"aaa",
-    customer_delivery:"bbb",
-    customer_contract:"ccc",
-    customer_tel:"ddd",
-    customer_noun:"eee",
-    customer_number:"fff",
-    customer_line:"aaaa"
     };
 
     const response = await axios.put(
@@ -1650,8 +1645,9 @@ const editCustomer = async () => {
       }
     );
 
-    // console.log(response);
+    // console.log(response.data);
     await showAuction()
+    await fetchDataChooseCustomer()
     handleCloseViewEditPriceDialog2()
     Swal.fire({
       icon: 'success',
@@ -1671,51 +1667,47 @@ const editCustomer = async () => {
 };
 
 
-
+// console.log(dataEditName)
+console.log(selectedEditPrice)
+console.log(selectedEditUserId)
 //------------- ส่งข้อมูลผู้ประมูล -------------------------- //
-
 
 const handleSendDataEDitAuction = async () => {
   try {
-    console.log(dataViewEditPrice)
-    // setValueEdit3(selectedEditPrice)
     const data ={
-            auction_result_price: selectedEditPrice2 ,
-            user_auction: dataViewEditPrice?.user_auction_id,
+            auction_result_price: selectedEditPrice ,
+            user_auction: selectedEditUserId,
             auction_result_auctionstarted: selectedId
           }
-          // console.log(data)
-    const response = await axios.put(
-      `${import.meta.env.VITE_APP_API}/Change-Price`
-           ,data,
-            {
-              headers: {
-                "Content-Type": "application/json",
-                Authorization: `Token ${Token}`,
-              },
-            }
-          );
-          setEditValue('')
-          await showAuction()
-          // console.log(response.data.Data.auction_result_price)
-          setValue3(response.data.Data.auction_result_price)
-          document.getElementById("search6Price").value = "";
-          handleCloseViewEditPriceDialog()
-          handleCloseViewEditPriceDialog2()
-          document.getElementById("search6Price").value = "";
-          setSearchText6('')
-          document.getElementById("search6").value = "";
-          setValue('')
-          setShowName('')
-          setMessage('')
-          setMessageEdit('')
-
-          // Socket
-          socket.emit('display_3')
-
-          
-    
-  } catch (error) {
+             console.log(data)
+             const response = await axios.put(
+              `${import.meta.env.VITE_APP_API}/Change-Price`
+                   ,data,
+                    {
+                      headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Token ${Token}`,
+                      },
+                    }
+                  );
+                  setEditValue('')
+                  await showAuction()
+                  await fetchDataChooseCustomer()
+                  setValue3(response.data.Data.auction_result_price)
+                  document.getElementById("search6Price").value = "";
+                  handleCloseViewEditPriceDialog()
+                  handleCloseViewEditPriceDialog2()
+                  document.getElementById("search6Price").value = "";
+                  setSearchText6('')
+                  document.getElementById("search6").value = "";
+                  setValue('')
+                  setShowName('')
+                  setMessage('')
+                  setMessageEdit('')
+        
+                  // Socket
+                  socket.emit('display_3')
+      }catch (error) {
     
   }
 }
@@ -1870,7 +1862,7 @@ const handleSendDataEDitAuction = async () => {
 
   const [product, setProduct] = useState([]);
 
-  console.log(product)
+  // console.log(product)
 
   const fetchDataGift = async () => {
     try {
@@ -1886,14 +1878,14 @@ const handleSendDataEDitAuction = async () => {
       setProduct(response.data?.[0].product);
 
     } catch (error) {
-      console.error(error);
+  
     }
   };
 
 
-  useEffect(() => {
-      fetchDataGift();
-  }, []);
+  // useEffect(() => {
+  //     fetchDataGift();
+  // }, []);
   
   const filteredProducts = product.filter(
     (product) => product.auction_product_start_event_count > 0
@@ -3561,11 +3553,11 @@ const handleSendDataEDitAuction = async () => {
                       autoComplete="off"
                       placeholder="แก้ไขผู้บริจาค"
                       className=" focus:shadow-outline    appearance-none rounded border  border-gray-400 p-1  px-3 leading-tight text-gray-700 shadow focus:border-blue-500 focus:outline-none"
-                      value={dataViewEditPrice? dataViewEditPrice?.user_auction : ''}
+                      value={dataEditName? dataEditName?.user_auction : ''}
                       id="search6"
                       list="option"
-                      onChange={(e) => setDataViewEditPrice({
-                        ...dataViewEditPrice,
+                      onChange={(e) => setDataEditName({
+                        ...dataEditName,
                         user_auction:e.target.value
                       })}
                       
@@ -3584,7 +3576,7 @@ const handleSendDataEDitAuction = async () => {
                        value={editValue || ''}
                        onChange={(e)=> {
                          handleEditChange(e);
-                         setSelectedEditPrice2(e.target.value)
+                         setSelectedEditPrice(e.target.value)
                        }}
                     />
                   </div>
@@ -3641,24 +3633,24 @@ const handleSendDataEDitAuction = async () => {
               className="custom-dialog h-[520px] overflow-scroll sm:h-[450px]  md:h-auto lg:h-auto"
             >
               <DialogHeader className="bg-blue-700  text-center text-base  text-white opacity-80">
-                <div className="flex gap-3">
+                <div className="flex  gap-3">
                   <Typography className="text-xl">แก้ไขชื่อผู้บริจาค</Typography>
                 </div>
               </DialogHeader>
               <DialogBody>
                   <div className="flex flex-col w-full justify-center mt-5 items-center">
-                  <div className="mt-3 flex flex-col items-center  gap-3 sm:flex-row ">
-                <div>
-                  <Typography className="flex w-[60px] text-sm">
-                    ผู้บริจาค:
+                  <div className="mt-3 flex   flex-col items-center  gap-3 sm:flex-row ">
+              
+                  <Typography className="flex w-full" >
+                    แก้ไขผู้บริจาค:
                   </Typography>
-                </div>
-                <div className="flex items-center justify-center align-middle">
-                  <div className="relative flex w-[200px] justify-center">
+                
+                  <div className="flex w-full  justify-center gap-3   items-center">
                     <input
                       type="text"
                       autoComplete="off"
                       placeholder="แก้ไขผู้บริจาค"
+                      className=" focus:shadow-outline    appearance-none rounded border  border-gray-400 p-1  px-3 leading-tight text-gray-700 shadow focus:border-blue-500 focus:outline-none"
                       value={dataEditName? dataEditName?.user_auction : ''}
                       // value={searchText6? searchText6 : ''}
                       id="search6"
@@ -3671,7 +3663,7 @@ const handleSendDataEDitAuction = async () => {
                     />
                     
                   </div>
-                </div>
+              
                 {/* <div className="flex w-auto justify-center border-green-500 text-center sm:justify-start">
                   <IconButton
                     color="green"
@@ -3705,7 +3697,10 @@ const handleSendDataEDitAuction = async () => {
                   variant="gradient"
                   color="green"
                   className=" flex items-center align-middle text-base"
-                  onClick={editCustomer}
+                  onClick={()=> (
+                    handleSendDataEDitAuction() , 
+                    editCustomer()
+                    )}
                 >
                   <span className="mr-2 flex text-xl">
                     <IoIosSave />
@@ -3809,7 +3804,7 @@ const handleSendDataEDitAuction = async () => {
                               color="blue-gray"
                               className="font-normal"
                             >
-                              {data.auction_result_price.toLocaleString() || ''}
+                              {data?.auction_result_price?.toLocaleString() || ''}
                             </Typography>
                           </td>
                           {isFirst ? (

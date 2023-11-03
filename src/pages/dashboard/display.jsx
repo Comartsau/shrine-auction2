@@ -566,7 +566,7 @@ export function Display() {
       <div
         className={` ${
           number < 1 || number > 3 || number == ""  ? "" : "bg-white shadow-lg shadow-black"
-        }  md:w-30 md:h-30 absolute right-10 z-40 flex  h-20 w-20 translate-y-12  translate-x-9 items-center justify-center rounded-full sm:h-24 sm:w-24 lg:translate-x-0 lg:translate-y-12`}
+        }  md:w-[130px] md:h-[130px] absolute right-10 z-40 flex  h-20 w-20 translate-y-12  translate-x-9 items-center justify-center rounded-full sm:h-24 sm:w-24 lg:translate-x-0 lg:translate-y-12`}
       >
         {number == "1" && (
           // <img
