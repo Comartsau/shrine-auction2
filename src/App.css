@@ -64,6 +64,17 @@
     line-height: 48px !important; /* เปลี่ยนค่าตามที่คุณต้องการ */
   }
 
+  .gradient-text13 {
+
+    background: linear-gradient(179.2deg, #FFB72B 100%,  #FFB72B 100%,  #FFB72B 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: #000;
+    -webkit-text-stroke: 4px #000;
+    text-stroke: 3px #000;
+    font-family: 'Mitr', sans-serif !important;
+  }
+
   .gradient-text2 {
 
     background: linear-gradient(179.2deg, #7D0707 100%,  #7D0707 100%,  #7D0707 100%);

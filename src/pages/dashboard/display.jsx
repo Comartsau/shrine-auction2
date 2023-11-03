@@ -569,34 +569,47 @@ export function Display() {
         }  md:w-30 md:h-30 absolute right-10 z-40 flex  h-20 w-20 translate-y-12  translate-x-9 items-center justify-center rounded-full sm:h-24 sm:w-24 lg:translate-x-0 lg:translate-y-12`}
       >
         {number == "1" && (
-          <img
-            // src="/src/images/no-first.png"
-            src={no1}
-            alt="first"
-            style={{ width: "80%", height: "auto" }}
-            className="ms-2"
-          />
+          // <img
+          //   // src="/src/images/no-first.png"
+          //   src={no1}
+          //   alt="first"
+          //   style={{ width: "80%", height: "auto" }}
+          //   className="ms-2"
+          // />
+          <Typography className="text-8xl font-bold gradient-text13 pb-2 pr-1 ">1</Typography>
         )}
         {number == "2" && (
-          <img
-            // src="/src/images/no-second.png"
-            src={no2}
-            alt="first"
-            style={{ width: "70%", height: "auto" }}
-          />
+          // <img
+          //   // src="/src/images/no-second.png"
+          //   src={no2}
+          //   alt="first"
+          //   style={{ width: "70%", height: "auto" }}
+          // />
+          <Typography className="text-8xl font-bold gradient-text13 pb-2 pr-1 ">2</Typography>
         )}
         {number == "3" && (
-          <img
-            // src="/src/images/no-third.png"
-            src={no3}
-            alt="first"
-            style={{
-              width: "80%",
-              height: "auto",
-              animation: "shake 0.5s infinite",
-              animation: "scale-up-down 0.5s alternate infinite"
-            }}
-          />
+          // <img
+          //   // src="/src/images/no-third.png"
+          //   src={no3}
+          //   alt="first"
+          //   style={{
+          //     width: "80%",
+          //     height: "auto",
+          //     animation: "shake 0.5s infinite",
+          //     animation: "scale-up-down 0.5s alternate infinite"
+          //   }}
+          // />
+          <Typography 
+          className="text-8xl font-bold gradient-text13 pb-2  ps-5 text-center "
+          style={{
+                width: "80%",
+                height: "auto",
+                animation: "shake 0.5s infinite",
+                animation: "scale-up-down 0.5s alternate infinite"
+              }}
+          >
+            3
+            </Typography>
         )}
       </div>
     </div>

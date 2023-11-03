@@ -1915,7 +1915,7 @@ const handleSendDataEDitAuction = async () => {
       <div className="flex flex-col justify-center gap-3 align-middle md:flex-col lg:flex-row">
         {/* content left  หัวข้อประมูล / รายการประมูล */}
         {/* หัวข้อประมูล / รายการประมูล */}
-        <div className="flex h-[590px] w-full  lg:w-[60%] ">
+        <div className="flex h-[690px] w-full  lg:w-[60%] ">
           <Card className=" h-auto  w-full overflow-scroll px-5  ">
             <div className="mt-5 flex flex-col items-center gap-5 sm:flex-row ">
               <div>
@@ -3730,7 +3730,7 @@ const handleSendDataEDitAuction = async () => {
         <div className="flex w-full flex-col  lg:w-[40%] ">
           {/* content  ประมูล  */}
           <div>
-            <Card className=" h-[400px]   w-full overflow-scroll px-5">
+            <Card className=" h-[500px]   w-full overflow-scroll px-5">
               <div className="mt-5 flex flex-col items-center gap-5  ">
                 <table className="w-full min-w-max table-auto text-center">
                   <thead>
