@@ -266,8 +266,6 @@ export const Receive = ({reportData, sumTotal, thbText}) => {
   
   // console.log(data);
 
-
-
   const currentDate = new Date();
 
   const buddhistYear = currentDate.getFullYear() + 543;
@@ -289,7 +287,7 @@ export const Receive = ({reportData, sumTotal, thbText}) => {
   return (
     <Document>
       {/* <Page size={[842, 595]} style={styles.page}> */}
-      {/*  9 x 11 นิ้ว (792 คือ 9 นิ้ว x 72 คือ DPI, 936 คือ 11 นิ้ว x 72 คือ DPI) */}
+      {/*  9 x 11 นิ้ว (792 คือ 9 นิ้ว x 72 คือ DPI, 936 คือ 11 นิ้ว x 72 คือ DPI) */} 
       <Page size="A4" style={styles.page} >
         <View style={styles.flexrowbetween}>
           <View style={styles.flexrow}>
@@ -365,7 +363,7 @@ export const Receive = ({reportData, sumTotal, thbText}) => {
           <View style={styles.flexrow}>
             <View style={[
               styles.flexrowstart,
-              {width:"65%"}
+              {width:"70%"}
               ]}>
               <Text
                 style={[
@@ -393,7 +391,7 @@ export const Receive = ({reportData, sumTotal, thbText}) => {
 
             <View style={[
               styles.flexrow,
-              {width:"35%"}
+              {width:"30%"}
               ]}>
               <View style={styles.flexrowstart}>
                 <Text
@@ -425,7 +423,7 @@ export const Receive = ({reportData, sumTotal, thbText}) => {
           <View style={styles.flexrow}>
             <View style={[
               styles.flexrowstart,
-              {width:"65%"}
+              {width:"70%"}
               ]}>
               <Text
                 style={[
@@ -454,7 +452,7 @@ export const Receive = ({reportData, sumTotal, thbText}) => {
 
             <View style={[
               styles.flexrow,
-              {width:"35%"}
+              {width:"30%"}
               ]}>
             <View style={styles.flexrowstart}>
                 <Text
@@ -486,7 +484,7 @@ export const Receive = ({reportData, sumTotal, thbText}) => {
           <View style={styles.flexrow}>
           <View style={[
               styles.flexrowstart,
-              {width:"65%"}
+              {width:"70%"}
               ]}>
                 <Text
                 style={[
@@ -515,7 +513,7 @@ export const Receive = ({reportData, sumTotal, thbText}) => {
 
             <View style={[
                 styles.flexrow,
-                {width:"35%"}
+                {width:"30%"}
                 ]}>
               <View style={styles.flexrowstart}>
                   <Text
@@ -572,7 +570,7 @@ export const Receive = ({reportData, sumTotal, thbText}) => {
           <View style={styles.flexrow}>
           <View style={[
               styles.flexrowstart,
-              {width:"65%"}
+              {width:"70%"}
               ]}>
               <Text
                 style={[
@@ -706,6 +704,54 @@ export const Receive = ({reportData, sumTotal, thbText}) => {
             <Text style={styles.tableCell4}> {" "} {data.product?.[7]?.product_count }{" "} </Text>
             <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[7]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[7]?.sale_auction_start_event_count_price).toLocaleString() }{" "} </Text>
             <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[7]?.sale_auction_start_event_count_price) || isNaN(data.product?.[7]?.sale_auction_start_event_count) ? '' : (data.product?.[7]?.sale_auction_start_event_count_price * data.product?.[7]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
+          </View>
+          {/* row 9 */}
+          <View style={styles.tableRow}>
+            <Text style={styles.tableCell1}> 9 </Text>
+            <Text style={[styles.tableCell2, { textAlign: "left" }]}>
+              {" "}
+              {data.product?.[8]?.product_name}{" "}
+            </Text>
+            <Text style={styles.tableCell3}>{" "} {isNaN(data.product?.[8]?.sale_auction_start_event_count) ? '' : Number(data.product?.[8]?.sale_auction_start_event_count).toLocaleString() } {" "} </Text>
+            <Text style={styles.tableCell4}> {" "} {data.product?.[8]?.product_count }{" "} </Text>
+            <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[8]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[8]?.sale_auction_start_event_count_price).toLocaleString() }{" "} </Text>
+            <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[8]?.sale_auction_start_event_count_price) || isNaN(data.product?.[8]?.sale_auction_start_event_count) ? '' : (data.product?.[8]?.sale_auction_start_event_count_price * data.product?.[8]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
+          </View>
+          {/* row 10 */}
+          <View style={styles.tableRow}>
+            <Text style={styles.tableCell1}> 10 </Text>
+            <Text style={[styles.tableCell2, { textAlign: "left" }]}>
+              {" "}
+              {data.product?.[9]?.product_name}{" "}
+            </Text>
+            <Text style={styles.tableCell3}>{" "} {isNaN(data.product?.[9]?.sale_auction_start_event_count) ? '' : Number(data.product?.[9]?.sale_auction_start_event_count).toLocaleString() } {" "} </Text>
+            <Text style={styles.tableCell4}> {" "} {data.product?.[9]?.product_count }{" "} </Text>
+            <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[9]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[9]?.sale_auction_start_event_count_price).toLocaleString() }{" "} </Text>
+            <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[9]?.sale_auction_start_event_count_price) || isNaN(data.product?.[9]?.sale_auction_start_event_count) ? '' : (data.product?.[9]?.sale_auction_start_event_count_price * data.product?.[9]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
+          </View>
+          {/* row 11 */}
+          <View style={styles.tableRow}>
+            <Text style={styles.tableCell1}> 11 </Text>
+            <Text style={[styles.tableCell2, { textAlign: "left" }]}>
+              {" "}
+              {data.product?.[10]?.product_name}{" "}
+            </Text>
+            <Text style={styles.tableCell3}>{" "} {isNaN(data.product?.[10]?.sale_auction_start_event_count) ? '' : Number(data.product?.[10]?.sale_auction_start_event_count).toLocaleString() } {" "} </Text>
+            <Text style={styles.tableCell4}> {" "} {data.product?.[10]?.product_count }{" "} </Text>
+            <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[10]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[10]?.sale_auction_start_event_count_price).toLocaleString() }{" "} </Text>
+            <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[10]?.sale_auction_start_event_count_price) || isNaN(data.product?.[10]?.sale_auction_start_event_count) ? '' : (data.product?.[10]?.sale_auction_start_event_count_price * data.product?.[10]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
+          </View>
+          {/* row 12 */}
+          <View style={styles.tableRow}>
+            <Text style={styles.tableCell1}> 12 </Text>
+            <Text style={[styles.tableCell2, { textAlign: "left" }]}>
+              {" "}
+              {data.product?.[11]?.product_name}{" "}
+            </Text>
+            <Text style={styles.tableCell3}>{" "} {isNaN(data.product?.[11]?.sale_auction_start_event_count) ? '' : Number(data.product?.[11]?.sale_auction_start_event_count).toLocaleString() } {" "} </Text>
+            <Text style={styles.tableCell4}> {" "} {data.product?.[11]?.product_count }{" "} </Text>
+            <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[11]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[11]?.sale_auction_start_event_count_price).toLocaleString() }{" "} </Text>
+            <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[11]?.sale_auction_start_event_count_price) || isNaN(data.product?.[11]?.sale_auction_start_event_count) ? '' : (data.product?.[11]?.sale_auction_start_event_count_price * data.product?.[11]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
           </View>
           {/* สรุปรวม */}
           <View style={styles.tableRow}>
@@ -944,7 +990,7 @@ export const Receive = ({reportData, sumTotal, thbText}) => {
           <View style={styles.flexrow}>
             <View style={[
               styles.flexrowstart,
-              {width:"65%"}
+              {width:"70%"}
               ]}>
               <Text
                 style={[
@@ -972,7 +1018,7 @@ export const Receive = ({reportData, sumTotal, thbText}) => {
 
             <View style={[
               styles.flexrow,
-              {width:"35%"}
+              {width:"30%"}
               ]}>
               <View style={styles.flexrowstart}>
                 <Text
@@ -1004,7 +1050,7 @@ export const Receive = ({reportData, sumTotal, thbText}) => {
           <View style={styles.flexrow}>
             <View style={[
               styles.flexrowstart,
-              {width:"65%"}
+              {width:"70%"}
               ]}>
               <Text
                 style={[
@@ -1033,7 +1079,7 @@ export const Receive = ({reportData, sumTotal, thbText}) => {
 
             <View style={[
               styles.flexrow,
-              {width:"35%"}
+              {width:"30%"}
               ]}>
             <View style={styles.flexrowstart}>
                 <Text
@@ -1065,7 +1111,7 @@ export const Receive = ({reportData, sumTotal, thbText}) => {
           <View style={styles.flexrow}>
           <View style={[
               styles.flexrowstart,
-              {width:"65%"}
+              {width:"70%"}
               ]}>
                 <Text
                 style={[
@@ -1094,7 +1140,7 @@ export const Receive = ({reportData, sumTotal, thbText}) => {
 
             <View style={[
                 styles.flexrow,
-                {width:"35%"}
+                {width:"30%"}
                 ]}>
               <View style={styles.flexrowstart}>
                   <Text
@@ -1151,7 +1197,7 @@ export const Receive = ({reportData, sumTotal, thbText}) => {
           <View style={styles.flexrow}>
           <View style={[
               styles.flexrowstart,
-              {width:"65%"}
+              {width:"70%"}
               ]}>
               <Text
                 style={[
@@ -1285,6 +1331,54 @@ export const Receive = ({reportData, sumTotal, thbText}) => {
             <Text style={styles.tableCell4}> {" "} {data.product?.[7]?.product_count }{" "} </Text>
             <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[7]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[7]?.sale_auction_start_event_count_price).toLocaleString() }{" "} </Text>
             <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[7]?.sale_auction_start_event_count_price) || isNaN(data.product?.[7]?.sale_auction_start_event_count) ? '' : (data.product?.[7]?.sale_auction_start_event_count_price * data.product?.[7]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
+          </View>
+          {/* row 9 */}
+          <View style={styles.tableRow}>
+            <Text style={styles.tableCell1}> 9 </Text>
+            <Text style={[styles.tableCell2, { textAlign: "left" }]}>
+              {" "}
+              {data.product?.[8]?.product_name}{" "}
+            </Text>
+            <Text style={styles.tableCell3}>{" "} {isNaN(data.product?.[8]?.sale_auction_start_event_count) ? '' : Number(data.product?.[8]?.sale_auction_start_event_count).toLocaleString() } {" "} </Text>
+            <Text style={styles.tableCell4}> {" "} {data.product?.[8]?.product_count }{" "} </Text>
+            <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[8]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[8]?.sale_auction_start_event_count_price).toLocaleString() }{" "} </Text>
+            <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[8]?.sale_auction_start_event_count_price) || isNaN(data.product?.[8]?.sale_auction_start_event_count) ? '' : (data.product?.[8]?.sale_auction_start_event_count_price * data.product?.[8]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
+          </View>
+          {/* row 10 */}
+          <View style={styles.tableRow}>
+            <Text style={styles.tableCell1}> 10 </Text>
+            <Text style={[styles.tableCell2, { textAlign: "left" }]}>
+              {" "}
+              {data.product?.[9]?.product_name}{" "}
+            </Text>
+            <Text style={styles.tableCell3}>{" "} {isNaN(data.product?.[9]?.sale_auction_start_event_count) ? '' : Number(data.product?.[9]?.sale_auction_start_event_count).toLocaleString() } {" "} </Text>
+            <Text style={styles.tableCell4}> {" "} {data.product?.[9]?.product_count }{" "} </Text>
+            <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[9]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[9]?.sale_auction_start_event_count_price).toLocaleString() }{" "} </Text>
+            <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[9]?.sale_auction_start_event_count_price) || isNaN(data.product?.[9]?.sale_auction_start_event_count) ? '' : (data.product?.[9]?.sale_auction_start_event_count_price * data.product?.[9]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
+          </View>
+          {/* row 11 */}
+          <View style={styles.tableRow}>
+            <Text style={styles.tableCell1}> 11 </Text>
+            <Text style={[styles.tableCell2, { textAlign: "left" }]}>
+              {" "}
+              {data.product?.[10]?.product_name}{" "}
+            </Text>
+            <Text style={styles.tableCell3}>{" "} {isNaN(data.product?.[10]?.sale_auction_start_event_count) ? '' : Number(data.product?.[10]?.sale_auction_start_event_count).toLocaleString() } {" "} </Text>
+            <Text style={styles.tableCell4}> {" "} {data.product?.[10]?.product_count }{" "} </Text>
+            <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[10]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[10]?.sale_auction_start_event_count_price).toLocaleString() }{" "} </Text>
+            <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[10]?.sale_auction_start_event_count_price) || isNaN(data.product?.[10]?.sale_auction_start_event_count) ? '' : (data.product?.[10]?.sale_auction_start_event_count_price * data.product?.[10]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
+          </View>
+          {/* row 12 */}
+          <View style={styles.tableRow}>
+            <Text style={styles.tableCell1}> 12 </Text>
+            <Text style={[styles.tableCell2, { textAlign: "left" }]}>
+              {" "}
+              {data.product?.[11]?.product_name}{" "}
+            </Text>
+            <Text style={styles.tableCell3}>{" "} {isNaN(data.product?.[11]?.sale_auction_start_event_count) ? '' : Number(data.product?.[11]?.sale_auction_start_event_count).toLocaleString() } {" "} </Text>
+            <Text style={styles.tableCell4}> {" "} {data.product?.[11]?.product_count }{" "} </Text>
+            <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[11]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[11]?.sale_auction_start_event_count_price).toLocaleString() }{" "} </Text>
+            <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[11]?.sale_auction_start_event_count_price) || isNaN(data.product?.[11]?.sale_auction_start_event_count) ? '' : (data.product?.[11]?.sale_auction_start_event_count_price * data.product?.[11]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
           </View>
           {/* สรุปรวม */}
           <View style={styles.tableRow}>
@@ -1447,8 +1541,6 @@ export const Receive = ({reportData, sumTotal, thbText}) => {
        
         </View>
       </Page>
-      
-     
     
       {/* สำเนา2 */}
       <Page size="A4" style={styles.page} >
@@ -1526,7 +1618,7 @@ export const Receive = ({reportData, sumTotal, thbText}) => {
           <View style={styles.flexrow}>
             <View style={[
               styles.flexrowstart,
-              {width:"65%"}
+              {width:"70%"}
               ]}>
               <Text
                 style={[
@@ -1554,7 +1646,7 @@ export const Receive = ({reportData, sumTotal, thbText}) => {
 
             <View style={[
               styles.flexrow,
-              {width:"35%"}
+              {width:"30%"}
               ]}>
               <View style={styles.flexrowstart}>
                 <Text
@@ -1586,7 +1678,7 @@ export const Receive = ({reportData, sumTotal, thbText}) => {
           <View style={styles.flexrow}>
             <View style={[
               styles.flexrowstart,
-              {width:"65%"}
+              {width:"70%"}
               ]}>
               <Text
                 style={[
@@ -1615,7 +1707,7 @@ export const Receive = ({reportData, sumTotal, thbText}) => {
 
             <View style={[
               styles.flexrow,
-              {width:"35%"}
+              {width:"30%"}
               ]}>
             <View style={styles.flexrowstart}>
                 <Text
@@ -1647,7 +1739,7 @@ export const Receive = ({reportData, sumTotal, thbText}) => {
           <View style={styles.flexrow}>
           <View style={[
               styles.flexrowstart,
-              {width:"65%"}
+              {width:"70%"}
               ]}>
                 <Text
                 style={[
@@ -1676,7 +1768,7 @@ export const Receive = ({reportData, sumTotal, thbText}) => {
 
             <View style={[
                 styles.flexrow,
-                {width:"35%"}
+                {width:"30%"}
                 ]}>
               <View style={styles.flexrowstart}>
                   <Text
@@ -1733,7 +1825,7 @@ export const Receive = ({reportData, sumTotal, thbText}) => {
           <View style={styles.flexrow}>
           <View style={[
               styles.flexrowstart,
-              {width:"65%"}
+              {width:"70%"}
               ]}>
               <Text
                 style={[
@@ -1759,8 +1851,6 @@ export const Receive = ({reportData, sumTotal, thbText}) => {
               {data.sale_code_customer_contract}{" "}
               </Text>
             </View>
-
- 
           </View>
             {/*-----------  หัวตาราง ---------------------  */}
             <View style={[styles.table, { marginTop: "15" }]}>
@@ -1868,11 +1958,59 @@ export const Receive = ({reportData, sumTotal, thbText}) => {
             <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[7]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[7]?.sale_auction_start_event_count_price).toLocaleString() }{" "} </Text>
             <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[7]?.sale_auction_start_event_count_price) || isNaN(data.product?.[7]?.sale_auction_start_event_count) ? '' : (data.product?.[7]?.sale_auction_start_event_count_price * data.product?.[7]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
           </View>
+          {/* row 9 */}
+          <View style={styles.tableRow}>
+            <Text style={styles.tableCell1}> 9 </Text>
+            <Text style={[styles.tableCell2, { textAlign: "left" }]}>
+              {" "}
+              {data.product?.[8]?.product_name}{" "}
+            </Text>
+            <Text style={styles.tableCell3}>{" "} {isNaN(data.product?.[8]?.sale_auction_start_event_count) ? '' : Number(data.product?.[8]?.sale_auction_start_event_count).toLocaleString() } {" "} </Text>
+            <Text style={styles.tableCell4}> {" "} {data.product?.[8]?.product_count }{" "} </Text>
+            <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[8]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[8]?.sale_auction_start_event_count_price).toLocaleString() }{" "} </Text>
+            <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[8]?.sale_auction_start_event_count_price) || isNaN(data.product?.[8]?.sale_auction_start_event_count) ? '' : (data.product?.[8]?.sale_auction_start_event_count_price * data.product?.[8]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
+          </View>
+          {/* row 10 */}
+          <View style={styles.tableRow}>
+            <Text style={styles.tableCell1}> 10 </Text>
+            <Text style={[styles.tableCell2, { textAlign: "left" }]}>
+              {" "}
+              {data.product?.[9]?.product_name}{" "}
+            </Text>
+            <Text style={styles.tableCell3}>{" "} {isNaN(data.product?.[9]?.sale_auction_start_event_count) ? '' : Number(data.product?.[9]?.sale_auction_start_event_count).toLocaleString() } {" "} </Text>
+            <Text style={styles.tableCell4}> {" "} {data.product?.[9]?.product_count }{" "} </Text>
+            <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[9]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[9]?.sale_auction_start_event_count_price).toLocaleString() }{" "} </Text>
+            <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[9]?.sale_auction_start_event_count_price) || isNaN(data.product?.[9]?.sale_auction_start_event_count) ? '' : (data.product?.[9]?.sale_auction_start_event_count_price * data.product?.[9]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
+          </View>
+          {/* row 11 */}
+          <View style={styles.tableRow}>
+            <Text style={styles.tableCell1}> 11 </Text>
+            <Text style={[styles.tableCell2, { textAlign: "left" }]}>
+              {" "}
+              {data.product?.[10]?.product_name}{" "}
+            </Text>
+            <Text style={styles.tableCell3}>{" "} {isNaN(data.product?.[10]?.sale_auction_start_event_count) ? '' : Number(data.product?.[10]?.sale_auction_start_event_count).toLocaleString() } {" "} </Text>
+            <Text style={styles.tableCell4}> {" "} {data.product?.[10]?.product_count }{" "} </Text>
+            <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[10]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[10]?.sale_auction_start_event_count_price).toLocaleString() }{" "} </Text>
+            <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[10]?.sale_auction_start_event_count_price) || isNaN(data.product?.[10]?.sale_auction_start_event_count) ? '' : (data.product?.[10]?.sale_auction_start_event_count_price * data.product?.[10]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
+          </View>
+          {/* row 12 */}
+          <View style={styles.tableRow}>
+            <Text style={styles.tableCell1}> 12 </Text>
+            <Text style={[styles.tableCell2, { textAlign: "left" }]}>
+              {" "}
+              {data.product?.[11]?.product_name}{" "}
+            </Text>
+            <Text style={styles.tableCell3}>{" "} {isNaN(data.product?.[11]?.sale_auction_start_event_count) ? '' : Number(data.product?.[11]?.sale_auction_start_event_count).toLocaleString() } {" "} </Text>
+            <Text style={styles.tableCell4}> {" "} {data.product?.[11]?.product_count }{" "} </Text>
+            <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[11]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[11]?.sale_auction_start_event_count_price).toLocaleString() }{" "} </Text>
+            <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[11]?.sale_auction_start_event_count_price) || isNaN(data.product?.[11]?.sale_auction_start_event_count) ? '' : (data.product?.[11]?.sale_auction_start_event_count_price * data.product?.[11]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
+          </View>
           {/* สรุปรวม */}
           <View style={styles.tableRow}>
             <Text style={styles.tableCellsum}> {" "}{` ( ${thbText} )` || ''}{" "}   </Text>
             <Text style={styles.tableCell3}>{""}  </Text>
-            <Text style={styles.tableCell4}>{""}  </Text>
+            <Text style={styles.tableCell4}> {""} </Text>
             <Text style={styles.tableCell5}> รวมเป็นเงิน  </Text>
             <Text style={styles.tableCell6}>  {Number(sumTotal).toLocaleString() || ''} </Text>
           </View>
@@ -2024,14 +2162,12 @@ export const Receive = ({reportData, sumTotal, thbText}) => {
               </Text>
             </View>
         
-
           </View>
        
         </View>
       </Page>
-      
-     
-    </Document>
+
+    </Document> 
   );
 };
 

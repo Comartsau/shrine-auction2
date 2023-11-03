@@ -308,11 +308,11 @@ export function Auctions() {
 
     const totalProducts = productData.length;
 
-    if (totalProducts > 9) {
+    if (totalProducts > 8) {
       Swal.fire({
         icon: "error",
         title: "เกินจำนวนรายการ",
-        text: "รายการที่เลือกเกิน 10 รายการ",
+        text: "รายการที่เลือกเกิน 9 รายการ",
         confirmButtonText: "ตกลง",
       });
       // ล้างค่าหลังการบันทึก
@@ -536,11 +536,11 @@ export function Auctions() {
 
     const totalProducts = productData.length;
 
-    if (totalProducts > 9) {
+    if (totalProducts > 8) {
       Swal.fire({
         icon: "error",
         title: "เกินจำนวนรายการ",
-        text: "รายการที่เลือกเกิน 10 รายการ",
+        text: "รายการที่เลือกเกิน 9 รายการ",
         confirmButtonText: "ตกลง",
       });
        // ล้างค่าหลังการบันทึก
@@ -756,11 +756,11 @@ export function Auctions() {
 
     const totalProducts = productData.length;
 
-    if (totalProducts > 9) {
+    if (totalProducts > 8) {
       Swal.fire({
         icon: "error",
         title: "เกินจำนวนรายการ",
-        text: "รายการที่เลือกเกิน 10 รายการ",
+        text: "รายการที่เลือกเกิน 9 รายการ",
         confirmButtonText: "ตกลง",
       });
       // ล้างค่าหลังการบันทึก
@@ -976,11 +976,11 @@ export function Auctions() {
 
     const totalProducts = productData.length;
 
-    if (totalProducts > 9) {
+    if (totalProducts > 8) {
       Swal.fire({
         icon: "error",
         title: "เกินจำนวนรายการ",
-        text: "รายการที่เลือกเกิน 10 รายการ",
+        text: "รายการที่เลือกเกิน 9 รายการ",
         confirmButtonText: "ตกลง",
       });
       // ล้างค่าหลังการบันทึก
@@ -1195,11 +1195,11 @@ export function Auctions() {
 
     const totalProducts = productData.length;
 
-    if (totalProducts > 9) {
+    if (totalProducts > 8) {
       Swal.fire({
         icon: "error",
         title: "เกินจำนวนรายการ",
-        text: "รายการที่เลือกเกิน 10 รายการ",
+        text: "รายการที่เลือกเกิน 9 รายการ",
         confirmButtonText: "ตกลง",
       });
       // ล้างค่าหลังการบันทึก
@@ -1810,7 +1810,7 @@ const handleSendDataEDitAuction = async () => {
         }
       );
       console.log(response.data);
-      // fetchDataGift()
+      fetchDataGift()
       handleClosePreViewDialog()
 
       // Socket
@@ -1866,7 +1866,34 @@ const handleSendDataEDitAuction = async () => {
     };
   }, []);
 
+  //----------------- show Gift ----------------------//
+
   const [product, setProduct] = useState([]);
+
+  console.log(product)
+
+  const fetchDataGift = async () => {
+    try {
+      let url = `${import.meta.env.VITE_APP_API}/Show`;
+
+      const response = await axios.get(url, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Token ${Token}`,
+        },
+      });
+
+      setProduct(response.data?.[0].product);
+
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+
+  useEffect(() => {
+      fetchDataGift();
+  }, []);
   
   const filteredProducts = product.filter(
     (product) => product.auction_product_start_event_count > 0
@@ -1877,7 +1904,7 @@ const handleSendDataEDitAuction = async () => {
       (product) =>
         `${product.product_name} ${product.auction_product_start_event_count} ${product.product_count}`
     )
-    .join(", ");
+    .join(" / ");
 
 
  

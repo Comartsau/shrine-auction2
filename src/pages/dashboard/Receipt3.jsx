@@ -357,7 +357,7 @@ export const Receipt3 = ({reportData, sumTotal, thbText, receiptData}) => {
           <View style={styles.flexrow}>
             <View style={[
               styles.flexrowstart,
-              {width:"65%"}
+              {width:"70%"}
               ]}>
               <Text
                 style={[
@@ -385,7 +385,7 @@ export const Receipt3 = ({reportData, sumTotal, thbText, receiptData}) => {
 
             <View style={[
               styles.flexrow,
-              {width:"35%"}
+              {width:"30%"}
               ]}>
               <View style={styles.flexrowstart}>
                 <Text
@@ -418,7 +418,7 @@ export const Receipt3 = ({reportData, sumTotal, thbText, receiptData}) => {
           <View style={styles.flexrow}>
             <View style={[
               styles.flexrowstart,
-              {width:"65%"}
+              {width:"70%"}
               ]}>
               <Text
                 style={[
@@ -447,7 +447,7 @@ export const Receipt3 = ({reportData, sumTotal, thbText, receiptData}) => {
 
             <View style={[
               styles.flexrow,
-              {width:"35%"}
+              {width:"30%"}
               ]}>
             <View style={styles.flexrowstart}>
                 <Text
@@ -479,7 +479,7 @@ export const Receipt3 = ({reportData, sumTotal, thbText, receiptData}) => {
           <View style={styles.flexrow}>
           <View style={[
               styles.flexrowstart,
-              {width:"65%"}
+              {width:"70%"}
               ]}>
                 <Text
                 style={[
@@ -508,7 +508,7 @@ export const Receipt3 = ({reportData, sumTotal, thbText, receiptData}) => {
 
             <View style={[
               styles.flexrow,
-              {width:"35%"}
+              {width:"30%"}
               ]}>
             <View style={styles.flexrowstart}>
                 <Text
@@ -540,7 +540,7 @@ export const Receipt3 = ({reportData, sumTotal, thbText, receiptData}) => {
           <View style={styles.flexrow}>
           <View style={[
               styles.flexrowstart,
-              {width:"65%"}
+              {width:"70%"}
               ]}>
               <Text
                 style={[
@@ -569,7 +569,7 @@ export const Receipt3 = ({reportData, sumTotal, thbText, receiptData}) => {
 
             <View style={[
                 styles.flexrow,
-                {width:"35%"}
+                {width:"30%"}
                 ]}>
               <View style={styles.flexrowstart}>
                   <Text
@@ -729,6 +729,54 @@ export const Receipt3 = ({reportData, sumTotal, thbText, receiptData}) => {
               <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[7]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[7]?.sale_auction_start_event_count_price).toLocaleString() }{" "} </Text>
               <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[7]?.sale_auction_start_event_count_price) || isNaN(data.product?.[7]?.sale_auction_start_event_count) ? '' : (data.product?.[7]?.sale_auction_start_event_count_price * data.product?.[7]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
             </View>
+            {/* row 9 */}
+            <View style={styles.tableRow}>
+              <Text style={styles.tableCell1}> 9 </Text>
+              <Text style={[styles.tableCell2, { textAlign: "left" }]}>
+                {" "}
+                {data.product?.[8]?.product_name }{" "}
+              </Text>
+              <Text style={styles.tableCell3}>{" "} {data.product?.[8]?.sale_auction_start_event_count }{" "} </Text>
+              <Text style={styles.tableCell4}> {" "} {data.product?.[8]?.product_count }{" "} </Text>
+              <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[8]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[8]?.sale_auction_start_event_count_price).toLocaleString() }{" "} </Text>
+              <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[8]?.sale_auction_start_event_count_price) || isNaN(data.product?.[8]?.sale_auction_start_event_count) ? '' : (data.product?.[8]?.sale_auction_start_event_count_price * data.product?.[8]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
+            </View>
+            {/* row 10 */}
+            <View style={styles.tableRow}>
+              <Text style={styles.tableCell1}> 10 </Text>
+              <Text style={[styles.tableCell2, { textAlign: "left" }]}>
+                {" "}
+                {data.product?.[9]?.product_name }{" "}
+              </Text>
+              <Text style={styles.tableCell3}>{" "} {data.product?.[9]?.sale_auction_start_event_count }{" "} </Text>
+              <Text style={styles.tableCell4}> {" "} {data.product?.[9]?.product_count }{" "} </Text>
+              <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[9]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[9]?.sale_auction_start_event_count_price).toLocaleString() }{" "} </Text>
+              <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[9]?.sale_auction_start_event_count_price) || isNaN(data.product?.[9]?.sale_auction_start_event_count) ? '' : (data.product?.[9]?.sale_auction_start_event_count_price * data.product?.[9]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
+            </View>
+            {/* row 11 */}
+            <View style={styles.tableRow}>
+              <Text style={styles.tableCell1}> 11 </Text>
+              <Text style={[styles.tableCell2, { textAlign: "left" }]}>
+                {" "}
+                {data.product?.[10]?.product_name }{" "}
+              </Text>
+              <Text style={styles.tableCell3}>{" "} {data.product?.[10]?.sale_auction_start_event_count }{" "} </Text>
+              <Text style={styles.tableCell4}> {" "} {data.product?.[10]?.product_count }{" "} </Text>
+              <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[10]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[10]?.sale_auction_start_event_count_price).toLocaleString() }{" "} </Text>
+              <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[10]?.sale_auction_start_event_count_price) || isNaN(data.product?.[10]?.sale_auction_start_event_count) ? '' : (data.product?.[10]?.sale_auction_start_event_count_price * data.product?.[10]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
+            </View>
+            {/* row 12 */}
+            <View style={styles.tableRow}>
+              <Text style={styles.tableCell1}> 12 </Text>
+              <Text style={[styles.tableCell2, { textAlign: "left" }]}>
+                {" "}
+                {data.product?.[11]?.product_name }{" "}
+              </Text>
+              <Text style={styles.tableCell3}>{" "} {data.product?.[11]?.sale_auction_start_event_count }{" "} </Text>
+              <Text style={styles.tableCell4}> {" "} {data.product?.[11]?.product_count }{" "} </Text>
+              <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[11]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[11]?.sale_auction_start_event_count_price).toLocaleString() }{" "} </Text>
+              <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[11]?.sale_auction_start_event_count_price) || isNaN(data.product?.[11]?.sale_auction_start_event_count) ? '' : (data.product?.[11]?.sale_auction_start_event_count_price * data.product?.[11]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
+            </View>
             {/* สรุปรวม */}
             <View style={styles.tableRow}>
               <Text style={styles.tableCellsum}> {" "}{thbText? `( ${thbText} ) ` : ''}{" "}  </Text>
@@ -741,7 +789,7 @@ export const Receipt3 = ({reportData, sumTotal, thbText, receiptData}) => {
           <View style={styles.flexrow}>
             <View style={[
               styles.flexrowstart,
-              {width:"65%"}
+              {width:"70%"}
               ]}>
               <Text
                 style={[
@@ -770,7 +818,7 @@ export const Receipt3 = ({reportData, sumTotal, thbText, receiptData}) => {
 
             <View style={[
               styles.flexrow,
-              {width:"35%"}
+              {width:"30%"}
               ]}>
             <View style={styles.flexrowstart}>
                 <Text
@@ -803,14 +851,14 @@ export const Receipt3 = ({reportData, sumTotal, thbText, receiptData}) => {
           <View style={styles.flexrow}>
             <View style={[
               styles.flexrowstart,
-              {width:"65%"}
+              {width:"70%"}
               ]}>
               
             </View>
 
             <View style={[
               styles.flexrow,
-              {width:"35%"}
+              {width:"30%"}
               ]}>
             <View style={styles.flexrowstart}>
                 <Text
@@ -843,7 +891,7 @@ export const Receipt3 = ({reportData, sumTotal, thbText, receiptData}) => {
           <View style={styles.flexrow}>
             <View style={[
               styles.flexrowstart,
-              {width:"65%"}
+              {width:"70%"}
               ]}>
               <Text
                 style={[
@@ -872,7 +920,7 @@ export const Receipt3 = ({reportData, sumTotal, thbText, receiptData}) => {
 
             <View style={[
               styles.flexrow,
-              {width:"35%"}
+              {width:"30%"}
               ]}>
             <View style={styles.flexrowstart}>
                 <Text
@@ -905,7 +953,7 @@ export const Receipt3 = ({reportData, sumTotal, thbText, receiptData}) => {
           <View style={styles.flexrow}>
             <View style={[
               styles.flexrowstart,
-              {width:"65%"}
+              {width:"70%"}
               ]}>
               <Text
                 style={[
@@ -934,7 +982,7 @@ export const Receipt3 = ({reportData, sumTotal, thbText, receiptData}) => {
 
             <View style={[
               styles.flexrow,
-              {width:"35%"}
+              {width:"30%"}
               ]}>
             <View style={styles.flexrowstart}>
                 <Text
@@ -992,7 +1040,6 @@ export const Receipt3 = ({reportData, sumTotal, thbText, receiptData}) => {
           </View>
         </View>
       </Page>
-
 
       {/* สำเนา1 */}
       <Page size="A4" style={styles.page} >
@@ -1070,7 +1117,7 @@ export const Receipt3 = ({reportData, sumTotal, thbText, receiptData}) => {
           <View style={styles.flexrow}>
             <View style={[
               styles.flexrowstart,
-              {width:"65%"}
+              {width:"70%"}
               ]}>
               <Text
                 style={[
@@ -1098,7 +1145,7 @@ export const Receipt3 = ({reportData, sumTotal, thbText, receiptData}) => {
 
             <View style={[
               styles.flexrow,
-              {width:"35%"}
+              {width:"30%"}
               ]}>
               <View style={styles.flexrowstart}>
                 <Text
@@ -1131,7 +1178,7 @@ export const Receipt3 = ({reportData, sumTotal, thbText, receiptData}) => {
           <View style={styles.flexrow}>
             <View style={[
               styles.flexrowstart,
-              {width:"65%"}
+              {width:"70%"}
               ]}>
               <Text
                 style={[
@@ -1160,7 +1207,7 @@ export const Receipt3 = ({reportData, sumTotal, thbText, receiptData}) => {
 
             <View style={[
               styles.flexrow,
-              {width:"35%"}
+              {width:"30%"}
               ]}>
             <View style={styles.flexrowstart}>
                 <Text
@@ -1192,7 +1239,7 @@ export const Receipt3 = ({reportData, sumTotal, thbText, receiptData}) => {
           <View style={styles.flexrow}>
           <View style={[
               styles.flexrowstart,
-              {width:"65%"}
+              {width:"70%"}
               ]}>
                 <Text
                 style={[
@@ -1221,7 +1268,7 @@ export const Receipt3 = ({reportData, sumTotal, thbText, receiptData}) => {
 
             <View style={[
               styles.flexrow,
-              {width:"35%"}
+              {width:"30%"}
               ]}>
             <View style={styles.flexrowstart}>
                 <Text
@@ -1253,7 +1300,7 @@ export const Receipt3 = ({reportData, sumTotal, thbText, receiptData}) => {
           <View style={styles.flexrow}>
           <View style={[
               styles.flexrowstart,
-              {width:"65%"}
+              {width:"70%"}
               ]}>
               <Text
                 style={[
@@ -1282,7 +1329,7 @@ export const Receipt3 = ({reportData, sumTotal, thbText, receiptData}) => {
 
             <View style={[
                 styles.flexrow,
-                {width:"35%"}
+                {width:"30%"}
                 ]}>
               <View style={styles.flexrowstart}>
                   <Text
@@ -1442,6 +1489,54 @@ export const Receipt3 = ({reportData, sumTotal, thbText, receiptData}) => {
               <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[7]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[7]?.sale_auction_start_event_count_price).toLocaleString() }{" "} </Text>
               <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[7]?.sale_auction_start_event_count_price) || isNaN(data.product?.[7]?.sale_auction_start_event_count) ? '' : (data.product?.[7]?.sale_auction_start_event_count_price * data.product?.[7]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
             </View>
+            {/* row 9 */}
+            <View style={styles.tableRow}>
+              <Text style={styles.tableCell1}> 9 </Text>
+              <Text style={[styles.tableCell2, { textAlign: "left" }]}>
+                {" "}
+                {data.product?.[8]?.product_name }{" "}
+              </Text>
+              <Text style={styles.tableCell3}>{" "} {data.product?.[8]?.sale_auction_start_event_count }{" "} </Text>
+              <Text style={styles.tableCell4}> {" "} {data.product?.[8]?.product_count }{" "} </Text>
+              <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[8]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[8]?.sale_auction_start_event_count_price).toLocaleString() }{" "} </Text>
+              <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[8]?.sale_auction_start_event_count_price) || isNaN(data.product?.[8]?.sale_auction_start_event_count) ? '' : (data.product?.[8]?.sale_auction_start_event_count_price * data.product?.[8]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
+            </View>
+            {/* row 10 */}
+            <View style={styles.tableRow}>
+              <Text style={styles.tableCell1}> 10 </Text>
+              <Text style={[styles.tableCell2, { textAlign: "left" }]}>
+                {" "}
+                {data.product?.[9]?.product_name }{" "}
+              </Text>
+              <Text style={styles.tableCell3}>{" "} {data.product?.[9]?.sale_auction_start_event_count }{" "} </Text>
+              <Text style={styles.tableCell4}> {" "} {data.product?.[9]?.product_count }{" "} </Text>
+              <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[9]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[9]?.sale_auction_start_event_count_price).toLocaleString() }{" "} </Text>
+              <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[9]?.sale_auction_start_event_count_price) || isNaN(data.product?.[9]?.sale_auction_start_event_count) ? '' : (data.product?.[9]?.sale_auction_start_event_count_price * data.product?.[9]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
+            </View>
+            {/* row 11 */}
+            <View style={styles.tableRow}>
+              <Text style={styles.tableCell1}> 11 </Text>
+              <Text style={[styles.tableCell2, { textAlign: "left" }]}>
+                {" "}
+                {data.product?.[10]?.product_name }{" "}
+              </Text>
+              <Text style={styles.tableCell3}>{" "} {data.product?.[10]?.sale_auction_start_event_count }{" "} </Text>
+              <Text style={styles.tableCell4}> {" "} {data.product?.[10]?.product_count }{" "} </Text>
+              <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[10]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[10]?.sale_auction_start_event_count_price).toLocaleString() }{" "} </Text>
+              <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[10]?.sale_auction_start_event_count_price) || isNaN(data.product?.[10]?.sale_auction_start_event_count) ? '' : (data.product?.[10]?.sale_auction_start_event_count_price * data.product?.[10]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
+            </View>
+            {/* row 12 */}
+            <View style={styles.tableRow}>
+              <Text style={styles.tableCell1}> 12 </Text>
+              <Text style={[styles.tableCell2, { textAlign: "left" }]}>
+                {" "}
+                {data.product?.[11]?.product_name }{" "}
+              </Text>
+              <Text style={styles.tableCell3}>{" "} {data.product?.[11]?.sale_auction_start_event_count }{" "} </Text>
+              <Text style={styles.tableCell4}> {" "} {data.product?.[11]?.product_count }{" "} </Text>
+              <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[11]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[11]?.sale_auction_start_event_count_price).toLocaleString() }{" "} </Text>
+              <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[11]?.sale_auction_start_event_count_price) || isNaN(data.product?.[11]?.sale_auction_start_event_count) ? '' : (data.product?.[11]?.sale_auction_start_event_count_price * data.product?.[11]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
+            </View>
             {/* สรุปรวม */}
             <View style={styles.tableRow}>
               <Text style={styles.tableCellsum}> {" "}{thbText? `( ${thbText} ) ` : ''}{" "}  </Text>
@@ -1454,7 +1549,7 @@ export const Receipt3 = ({reportData, sumTotal, thbText, receiptData}) => {
           <View style={styles.flexrow}>
             <View style={[
               styles.flexrowstart,
-              {width:"65%"}
+              {width:"70%"}
               ]}>
               <Text
                 style={[
@@ -1483,7 +1578,7 @@ export const Receipt3 = ({reportData, sumTotal, thbText, receiptData}) => {
 
             <View style={[
               styles.flexrow,
-              {width:"35%"}
+              {width:"30%"}
               ]}>
             <View style={styles.flexrowstart}>
                 <Text
@@ -1516,14 +1611,14 @@ export const Receipt3 = ({reportData, sumTotal, thbText, receiptData}) => {
           <View style={styles.flexrow}>
             <View style={[
               styles.flexrowstart,
-              {width:"65%"}
+              {width:"70%"}
               ]}>
               
             </View>
 
             <View style={[
               styles.flexrow,
-              {width:"35%"}
+              {width:"30%"}
               ]}>
             <View style={styles.flexrowstart}>
                 <Text
@@ -1556,7 +1651,7 @@ export const Receipt3 = ({reportData, sumTotal, thbText, receiptData}) => {
           <View style={styles.flexrow}>
             <View style={[
               styles.flexrowstart,
-              {width:"65%"}
+              {width:"70%"}
               ]}>
               <Text
                 style={[
@@ -1585,7 +1680,7 @@ export const Receipt3 = ({reportData, sumTotal, thbText, receiptData}) => {
 
             <View style={[
               styles.flexrow,
-              {width:"35%"}
+              {width:"30%"}
               ]}>
             <View style={styles.flexrowstart}>
                 <Text
@@ -1618,7 +1713,7 @@ export const Receipt3 = ({reportData, sumTotal, thbText, receiptData}) => {
           <View style={styles.flexrow}>
             <View style={[
               styles.flexrowstart,
-              {width:"65%"}
+              {width:"70%"}
               ]}>
               <Text
                 style={[
@@ -1647,7 +1742,7 @@ export const Receipt3 = ({reportData, sumTotal, thbText, receiptData}) => {
 
             <View style={[
               styles.flexrow,
-              {width:"35%"}
+              {width:"30%"}
               ]}>
             <View style={styles.flexrowstart}>
                 <Text
@@ -1706,7 +1801,6 @@ export const Receipt3 = ({reportData, sumTotal, thbText, receiptData}) => {
         </View>
       </Page>
       
-     
       {/* สำเนา2 */}
       <Page size="A4" style={styles.page} >
         <View style={styles.flexrowbetween}>
@@ -1783,7 +1877,7 @@ export const Receipt3 = ({reportData, sumTotal, thbText, receiptData}) => {
           <View style={styles.flexrow}>
             <View style={[
               styles.flexrowstart,
-              {width:"65%"}
+              {width:"70%"}
               ]}>
               <Text
                 style={[
@@ -1811,7 +1905,7 @@ export const Receipt3 = ({reportData, sumTotal, thbText, receiptData}) => {
 
             <View style={[
               styles.flexrow,
-              {width:"35%"}
+              {width:"30%"}
               ]}>
               <View style={styles.flexrowstart}>
                 <Text
@@ -1844,7 +1938,7 @@ export const Receipt3 = ({reportData, sumTotal, thbText, receiptData}) => {
           <View style={styles.flexrow}>
             <View style={[
               styles.flexrowstart,
-              {width:"65%"}
+              {width:"70%"}
               ]}>
               <Text
                 style={[
@@ -1873,7 +1967,7 @@ export const Receipt3 = ({reportData, sumTotal, thbText, receiptData}) => {
 
             <View style={[
               styles.flexrow,
-              {width:"35%"}
+              {width:"30%"}
               ]}>
             <View style={styles.flexrowstart}>
                 <Text
@@ -1905,7 +1999,7 @@ export const Receipt3 = ({reportData, sumTotal, thbText, receiptData}) => {
           <View style={styles.flexrow}>
           <View style={[
               styles.flexrowstart,
-              {width:"65%"}
+              {width:"70%"}
               ]}>
                 <Text
                 style={[
@@ -1934,7 +2028,7 @@ export const Receipt3 = ({reportData, sumTotal, thbText, receiptData}) => {
 
             <View style={[
               styles.flexrow,
-              {width:"35%"}
+              {width:"30%"}
               ]}>
             <View style={styles.flexrowstart}>
                 <Text
@@ -1966,7 +2060,7 @@ export const Receipt3 = ({reportData, sumTotal, thbText, receiptData}) => {
           <View style={styles.flexrow}>
           <View style={[
               styles.flexrowstart,
-              {width:"65%"}
+              {width:"70%"}
               ]}>
               <Text
                 style={[
@@ -1995,7 +2089,7 @@ export const Receipt3 = ({reportData, sumTotal, thbText, receiptData}) => {
 
             <View style={[
                 styles.flexrow,
-                {width:"35%"}
+                {width:"30%"}
                 ]}>
               <View style={styles.flexrowstart}>
                   <Text
@@ -2155,6 +2249,54 @@ export const Receipt3 = ({reportData, sumTotal, thbText, receiptData}) => {
               <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[7]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[7]?.sale_auction_start_event_count_price).toLocaleString() }{" "} </Text>
               <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[7]?.sale_auction_start_event_count_price) || isNaN(data.product?.[7]?.sale_auction_start_event_count) ? '' : (data.product?.[7]?.sale_auction_start_event_count_price * data.product?.[7]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
             </View>
+            {/* row 9 */}
+            <View style={styles.tableRow}>
+              <Text style={styles.tableCell1}> 9 </Text>
+              <Text style={[styles.tableCell2, { textAlign: "left" }]}>
+                {" "}
+                {data.product?.[8]?.product_name }{" "}
+              </Text>
+              <Text style={styles.tableCell3}>{" "} {data.product?.[8]?.sale_auction_start_event_count }{" "} </Text>
+              <Text style={styles.tableCell4}> {" "} {data.product?.[8]?.product_count }{" "} </Text>
+              <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[8]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[8]?.sale_auction_start_event_count_price).toLocaleString() }{" "} </Text>
+              <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[8]?.sale_auction_start_event_count_price) || isNaN(data.product?.[8]?.sale_auction_start_event_count) ? '' : (data.product?.[8]?.sale_auction_start_event_count_price * data.product?.[8]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
+            </View>
+            {/* row 10 */}
+            <View style={styles.tableRow}>
+              <Text style={styles.tableCell1}> 10 </Text>
+              <Text style={[styles.tableCell2, { textAlign: "left" }]}>
+                {" "}
+                {data.product?.[9]?.product_name }{" "}
+              </Text>
+              <Text style={styles.tableCell3}>{" "} {data.product?.[9]?.sale_auction_start_event_count }{" "} </Text>
+              <Text style={styles.tableCell4}> {" "} {data.product?.[9]?.product_count }{" "} </Text>
+              <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[9]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[9]?.sale_auction_start_event_count_price).toLocaleString() }{" "} </Text>
+              <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[9]?.sale_auction_start_event_count_price) || isNaN(data.product?.[9]?.sale_auction_start_event_count) ? '' : (data.product?.[9]?.sale_auction_start_event_count_price * data.product?.[9]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
+            </View>
+            {/* row 11 */}
+            <View style={styles.tableRow}>
+              <Text style={styles.tableCell1}> 11 </Text>
+              <Text style={[styles.tableCell2, { textAlign: "left" }]}>
+                {" "}
+                {data.product?.[10]?.product_name }{" "}
+              </Text>
+              <Text style={styles.tableCell3}>{" "} {data.product?.[10]?.sale_auction_start_event_count }{" "} </Text>
+              <Text style={styles.tableCell4}> {" "} {data.product?.[10]?.product_count }{" "} </Text>
+              <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[10]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[10]?.sale_auction_start_event_count_price).toLocaleString() }{" "} </Text>
+              <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[10]?.sale_auction_start_event_count_price) || isNaN(data.product?.[10]?.sale_auction_start_event_count) ? '' : (data.product?.[10]?.sale_auction_start_event_count_price * data.product?.[10]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
+            </View>
+            {/* row 12 */}
+            <View style={styles.tableRow}>
+              <Text style={styles.tableCell1}> 12 </Text>
+              <Text style={[styles.tableCell2, { textAlign: "left" }]}>
+                {" "}
+                {data.product?.[11]?.product_name }{" "}
+              </Text>
+              <Text style={styles.tableCell3}>{" "} {data.product?.[11]?.sale_auction_start_event_count }{" "} </Text>
+              <Text style={styles.tableCell4}> {" "} {data.product?.[11]?.product_count }{" "} </Text>
+              <Text style={styles.tableCell5}> {" "} {isNaN(data.product?.[11]?.sale_auction_start_event_count_price) ? '' : Number(data.product?.[11]?.sale_auction_start_event_count_price).toLocaleString() }{" "} </Text>
+              <Text style={styles.tableCell6}> {" "} {isNaN(data.product?.[11]?.sale_auction_start_event_count_price) || isNaN(data.product?.[11]?.sale_auction_start_event_count) ? '' : (data.product?.[11]?.sale_auction_start_event_count_price * data.product?.[11]?.sale_auction_start_event_count).toLocaleString()}{" "}</Text>
+            </View>
             {/* สรุปรวม */}
             <View style={styles.tableRow}>
               <Text style={styles.tableCellsum}> {" "}{thbText? `( ${thbText} ) ` : ''}{" "}  </Text>
@@ -2167,7 +2309,7 @@ export const Receipt3 = ({reportData, sumTotal, thbText, receiptData}) => {
           <View style={styles.flexrow}>
             <View style={[
               styles.flexrowstart,
-              {width:"65%"}
+              {width:"70%"}
               ]}>
               <Text
                 style={[
@@ -2196,7 +2338,7 @@ export const Receipt3 = ({reportData, sumTotal, thbText, receiptData}) => {
 
             <View style={[
               styles.flexrow,
-              {width:"35%"}
+              {width:"30%"}
               ]}>
             <View style={styles.flexrowstart}>
                 <Text
@@ -2229,14 +2371,14 @@ export const Receipt3 = ({reportData, sumTotal, thbText, receiptData}) => {
           <View style={styles.flexrow}>
             <View style={[
               styles.flexrowstart,
-              {width:"65%"}
+              {width:"70%"}
               ]}>
               
             </View>
 
             <View style={[
               styles.flexrow,
-              {width:"35%"}
+              {width:"30%"}
               ]}>
             <View style={styles.flexrowstart}>
                 <Text
@@ -2269,7 +2411,7 @@ export const Receipt3 = ({reportData, sumTotal, thbText, receiptData}) => {
           <View style={styles.flexrow}>
             <View style={[
               styles.flexrowstart,
-              {width:"65%"}
+              {width:"70%"}
               ]}>
               <Text
                 style={[
@@ -2298,7 +2440,7 @@ export const Receipt3 = ({reportData, sumTotal, thbText, receiptData}) => {
 
             <View style={[
               styles.flexrow,
-              {width:"35%"}
+              {width:"30%"}
               ]}>
             <View style={styles.flexrowstart}>
                 <Text
@@ -2331,7 +2473,7 @@ export const Receipt3 = ({reportData, sumTotal, thbText, receiptData}) => {
           <View style={styles.flexrow}>
             <View style={[
               styles.flexrowstart,
-              {width:"65%"}
+              {width:"70%"}
               ]}>
               <Text
                 style={[
@@ -2360,7 +2502,7 @@ export const Receipt3 = ({reportData, sumTotal, thbText, receiptData}) => {
 
             <View style={[
               styles.flexrow,
-              {width:"35%"}
+              {width:"30%"}
               ]}>
             <View style={styles.flexrowstart}>
                 <Text
@@ -2384,7 +2526,6 @@ export const Receipt3 = ({reportData, sumTotal, thbText, receiptData}) => {
                     styles.spacesm,
                   ]}
                 >
-                
                 {dataReceipt.sale_receipt_number}.{" "}
                 </Text>
               </View>
@@ -2402,7 +2543,7 @@ export const Receipt3 = ({reportData, sumTotal, thbText, receiptData}) => {
                 ]}
               >
                 หมายเหตุ:{" "}
-              </Text>
+              </Text> 
               <Text
                 style={[
                   { fontWeight: "light" },
@@ -2414,15 +2555,12 @@ export const Receipt3 = ({reportData, sumTotal, thbText, receiptData}) => {
                 {data.sale_auction_q}{" "}
               </Text>
             </View>
-
           </View>
         </View>
       </Page>
-     
     
-     
     </Document>
   );
 };
-
+ 
 export default Receipt3;

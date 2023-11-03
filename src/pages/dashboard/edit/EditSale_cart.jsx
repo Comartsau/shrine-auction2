@@ -24,11 +24,11 @@ import { MdOutlinePayment } from "react-icons/md";
 import { PiReceipt } from "react-icons/pi";
 import { AiFillDelete, AiOutlinePlus } from "react-icons/ai";
 
-import { PDFViewer } from "@react-pdf/renderer";
-import { Receive } from "../Receive";
-import { Receipt1 } from "../Receipt1";
-import { Receipt2 } from "../Receipt2";
-import { Receipt3 } from "../Receipt3";
+// import { PDFViewer } from "@react-pdf/renderer";
+// import { Receive } from "../Receive";
+// import { Receipt1 } from "../Receipt1";
+// import { Receipt2 } from "../Receipt2";
+// import { Receipt3 } from "../Receipt3";
 
 //   Components
 import Customer_modal from "../modal/Customer_modal";
