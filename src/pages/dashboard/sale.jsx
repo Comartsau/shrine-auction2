@@ -53,6 +53,7 @@ export function Sale() {
   const [isOpen, setIsOpen] = useState(false);
   const [filteredOptions, setFilteredOptions] = useState([]);
   const [selectCustomerData, setSelectCustomerData] = useState([]);
+  const [selectCustomerId, setSelectCustomerId] = useState([]);
   const [selectedEditCustomerData, setSelectedEditCustomerData] =
     useState(null);
   const [selectedNewCustomerData, setSelectedNewCustomerData] = useState(null);
@@ -104,9 +105,10 @@ export function Sale() {
     );
     setSearchText(selectedCustomer.customer_name);
     setSelectCustomerData(selectedCustomer);
+    setSelectCustomerId(selectedCustomer.id);
     setSelectedEditCustomerData(selectedCustomer);
   };
-  // console.log(selectCustomerData)
+  console.log(selectCustomerId)
 
   const handleClear = () => {
     setSearchText("");
@@ -826,7 +828,8 @@ export function Sale() {
         sale_auction_q: note,
         product: productData,
         sale_auction_price: sumTotal.toString(),
-        sale_code_id: 2,
+        // sale_code_id: 2,
+        sale_code_id: selectCustomerId,
 
         aomsin: [
           {
