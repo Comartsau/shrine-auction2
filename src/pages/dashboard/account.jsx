@@ -671,7 +671,7 @@ export function Account() {
 
               <div className="mt-2 mb-2 grid grid-cols-3 gap-4">
                 {dataModal?.aomsin1?.map((data, index) =>
-                  data?.sale_auction_start_event === "สลากออมสิน" ? (
+                  data?.auction_auction_start_event === "สลากออมสิน" ? (
                     <p key={index} className="text-black">
                       {" "}
                       สลากออมสิน {data?.auction_auction_start_event_count} ใบ
@@ -698,6 +698,9 @@ export function Account() {
                   )
                 )}
               </div>
+
+
+
 
               <Card
                 style={{ backgroundColor: "#E7E7E7" }}

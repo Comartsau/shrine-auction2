@@ -811,6 +811,7 @@ export function Sale() {
       console.log(selectedSavingsBond);
       console.log(selectedGovernmentBonds);
 
+
       const saleData = {
         sale_code_customer_name: selectCustomerData.customer_name || "",
         sale_code_customer_address: selectCustomerData.customer_address || "",
@@ -825,7 +826,7 @@ export function Sale() {
         sale_auction_q: note,
         product: productData,
         sale_auction_price: sumTotal.toString(),
-        sale_code_id: 23,
+        sale_code_id: 2,
 
         aomsin: [
           {

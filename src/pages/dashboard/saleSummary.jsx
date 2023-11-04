@@ -22,6 +22,7 @@ import {
   Option,
 } from "@material-tailwind/react";
 import axios from "axios";
+import ExcelProduct from "./modal/ExcelProduct";
 
 export function SaleSummary() {
   const [listData, setListData] = useState([]);
@@ -35,6 +36,9 @@ export function SaleSummary() {
 
   const [startDateExcel, setStartDateExcel] = useState(new Date());
   const [endDateExcel, setEndDateExcel] = useState(new Date());
+
+  const [open, setOpen] = useState(false);
+  const handleOpenPopupReportProduct = ()=> setOpen(!open)
 
 
   // ---------  Token ------------------------ //
@@ -182,6 +186,9 @@ export function SaleSummary() {
 
   return (
     <div>
+
+      <ExcelProduct handleOpen={handleOpenPopupReportProduct} open={open} type={2} />
+
       {/* <p>ข้อมูลผู้บริจาค</p> */}
       <div className="mx-3 mt-3 flex w-full  flex-col justify-center  gap-5 xl:justify-start xl:gap-3 2xl:flex-row  ">
         <div className="flex  flex-col justify-center items-center  gap-5 sm:justify-start md:flex-row ">
@@ -236,7 +243,7 @@ export function SaleSummary() {
                   className="w-full rounded-md border border-gray-400 p-2 shadow-sm  text-gray-600 focus:border-blue-500 focus:outline-none"
                 />
               </div>
-              <div className="flex justify-center">
+              <div className="flex justify-center gap-2">
               <Button
                 fullWidth
                 className="flex w-[200px] items-center justify-center bg-green-500 align-middle text-base md:w-[120px]     lg:w-[150px]"
@@ -247,6 +254,18 @@ export function SaleSummary() {
                 </span>
                 Excel
               </Button>
+
+              <Button
+                  size="sm"
+                  className="flex w-[200px] items-center justify-center bg-red-500 align-middle text-base md:w-[120px]  lg:w-[150px]"
+                  onClick={handleOpenPopupReportProduct}
+                >
+                  <span className="mr-2 text-xl">
+                    <SiMicrosoftexcel />
+                  </span>
+                  สินค้า
+                </Button>
+
             </div>
             </div>
           </div>

@@ -133,7 +133,7 @@ export const routes = [
       },
       {
         icon: <BsGraphUpArrow {...icon} />,
-        name: "สรุปยอดขายประมูล",
+        name: "สรุปยอดประมูล",
         path: "/auctionsSummary",
         element: <AuctionsSummary />,
       },

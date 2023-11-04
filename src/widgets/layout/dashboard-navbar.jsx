@@ -73,7 +73,8 @@ export function DashboardNavbar() {
         `${import.meta.env.VITE_APP_API}/clear1`
       );
 
-      console.log(response.data);
+      // console.log(response.data);
+      localStorage.removeItem('id_auctionstarted')
 
       Swal.fire({
         position: 'center',

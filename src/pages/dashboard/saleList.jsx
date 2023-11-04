@@ -519,7 +519,7 @@ export function SaleList() {
              </tbody>
            ) : (
              <tbody>
-               {displayedData.map((data, index) => {
+               {displayedData?.map((data, index) => {
                  const isLast = index === displayedData.length - 1;
                  const pageIndex = startIndex + index;
                  const classes = isLast

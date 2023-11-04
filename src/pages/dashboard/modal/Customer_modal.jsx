@@ -70,7 +70,7 @@ const Customer_modal = ({
 
   const setDataToState = () => {
     const res = dataAllCustomer?.find((data) => data.id == id);
-    // console.log(res);
+    console.log(dataAllCustomer);
 
     setDataSend({
       customer_address: res?.customer_address || " ",
@@ -103,7 +103,7 @@ const Customer_modal = ({
           auction_report_customer_contract: dataSend?.customer_contract || " ",
           auction_report_customer_noun: dataSend?.customer_noun || " ",
           auction_report_user_auction: dataSend?.customer_name || " ",
-          auction_report_user_tel: dataSend?.customer_tel || " ",
+          auction_report_customer_tel: dataSend?.customer_tel || " ",
           customer_number: dataSend?.customer_number || " ",
           id: dataSend?.id || " ",
           customer_line: "",
@@ -142,7 +142,7 @@ const Customer_modal = ({
           auction_report_customer_contract: dataSend?.customer_contract || " ",
           auction_report_customer_noun: dataSend?.customer_noun || " ",
           auction_report_user_auction: dataSend?.customer_name || " ",
-          sale_code_customer_tel: dataSend?.customer_tel || " ",
+          auction_report_customer_tel: dataSend?.customer_tel || " ",
           customer_number: dataSend?.customer_number || " ",
           sale_code_customer_line: " ",
         }));
@@ -319,7 +319,7 @@ const Customer_modal = ({
                 <div>
                   <div className="mt-4 grid gap-4 sm:grid-cols-1 md:grid-cols-2">
                     <Input
-                      value={dataSend?.customer_name}
+                      value={dataSend?.customer_name }
                       label="ชื่อผู้บริจาค"
                       onChange={(e) =>
                         setDataSend((prev) => ({

@@ -95,7 +95,7 @@ export function EditSale1({
       const res = await axios.get(
         `${import.meta.env.VITE_APP_API}/Debtor-Auction/${id}/detail`
       );
-      // console.log(res.data);
+      console.log(res.data);
       setData(res.data);
       setProduct(res.data[0]?.product1);
 

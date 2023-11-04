@@ -97,7 +97,7 @@ export function EditSale_cart({idAuctionReport, setOpenEditSale, fetchDataIndex}
         `${import.meta.env.VITE_APP_API}/Sale/${id}/detail`
       );
 
-      // console.log(res.data);
+      console.log(res.data);
       setData(res.data);
       setProduct(res.data?.product);
 
@@ -354,13 +354,15 @@ export function EditSale_cart({idAuctionReport, setOpenEditSale, fetchDataIndex}
 
   return (
     <>
+    CUSTOMER ID : {customerData?.id}
       <Customer_modal
         open={open}
         handleOpen={handleOpen}
         setCustomerData={setCustomerData}
         fetchdataCustomer={fetchdataCustomer}
         dataAllCustomer={dataAllCustomer}
-        id={customerData?.id}
+        // id={customerData?.id}
+        id={2}
         type={2}
       />
 
