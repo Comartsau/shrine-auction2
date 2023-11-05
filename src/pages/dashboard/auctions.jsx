@@ -116,7 +116,8 @@ export function Auctions() {
       );
       // console.log(response.data)
       setSelectedId(response.data.id_auctionstarted)
-      localStorage.setItem("id_auctionstarted", response.data.id_auctionstarted || '')
+      // localStorage.setItem("id_auctionstarted", response.data.id_auctionstarted || '')
+      localStorage.setItem("lockMenu", response.data.id_auctionstarted || '')
       setRoomId(response.data.auctionstarted_auction_topic)
 
       // Socket 

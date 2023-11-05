@@ -21,12 +21,12 @@ export function Sidenav({ brandImg, brandName, routes }) {
   };
 
   const userName = localStorage.getItem("username");
-  const [idAuctionStarted, setIdAuctionStarted] = useState("");
+  const [lockMenu, setlockMenu] = useState("");
 
   useEffect(() => {
     // ตรวจสอบค่า id_auctionstarted ทุกๆ 1 วินาที
     setInterval(() => {
-      setIdAuctionStarted(localStorage.getItem("id_auctionstarted"));
+      setlockMenu(localStorage.getItem("lockMenu"));
     }, 1000);
   }, []);
  
@@ -84,7 +84,7 @@ export function Sidenav({ brandImg, brandName, routes }) {
               <li key={name}>
                  <NavLink
                   //  to={`/${layout}${path}`}>
-                  to={idAuctionStarted ? `/Dashboard/auctions` : `/${layout}${path}`}
+                  to={lockMenu ? `/Dashboard/auctions` : `/${layout}${path}`}
                   >
                  {({ isActive }) => (
                    <Button
@@ -98,7 +98,7 @@ export function Sidenav({ brandImg, brandName, routes }) {
                      }
                      className="flex items-center gap-4   capitalize align-middle p-[5px]"
                      fullWidth
-                     disabled={idAuctionStarted}
+                     disabled={lockMenu}
                    >
                      {icon}
                      <Typography
