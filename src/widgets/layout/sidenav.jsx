@@ -11,7 +11,7 @@ import { useMaterialTailwindController, setOpenSidenav } from "@/context";
 import { useState,useEffect } from "react";
 
 
-export function Sidenav({ brandImg, brandName, routes }) {
+export function Sidenav({ routes }) {
   const [controller, dispatch] = useMaterialTailwindController();
   const { sidenavColor, sidenavType, openSidenav } = controller;
   const sidenavTypes = {
