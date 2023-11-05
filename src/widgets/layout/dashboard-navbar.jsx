@@ -74,7 +74,7 @@ export function DashboardNavbar() {
       );
 
       // console.log(response.data);
-      localStorage.removeItem('id_auctionstarted')
+      localStorage.removeItem('lockMenu')
 
       Swal.fire({
         position: 'center',

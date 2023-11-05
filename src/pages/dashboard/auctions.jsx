@@ -152,6 +152,7 @@ export function Auctions() {
         }
       );
       // console.log(response.data)
+      localStorage.removeItem('lockMenu')
       setSelectedOption("");
       setIsSelectDisabled(false);  //  ยกเลิก  disable
       setIsOpen(false);
