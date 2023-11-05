@@ -39,7 +39,11 @@ import BillPay_Parmoon from "../modal/BillPay_Parmoon";
 import BillSend_Sale from "../modal/BillSend_Sale";
 import BillPay_Sale from "../modal/BillPay_Sale";
 
-export function EditSale_cart({idAuctionReport, setOpenEditSale, fetchDataIndex}) {
+export function EditSale_cart({
+  idAuctionReport,
+  setOpenEditSale,
+  fetchDataIndex,
+}) {
   const Token = localStorage.getItem("token");
 
   const [data, setData] = useState([]);
@@ -171,7 +175,7 @@ export function EditSale_cart({idAuctionReport, setOpenEditSale, fetchDataIndex}
         sale_auction_start_event_count_price:
           data?.sale_auction_start_event_count_price,
         sale_auction_start_event_count_unit: data?.product_count,
-        sale_auction_start_event_count_cat: data?.product_category
+        sale_auction_start_event_count_cat: data?.product_category,
       }));
 
       const sendData = {
@@ -223,7 +227,7 @@ export function EditSale_cart({idAuctionReport, setOpenEditSale, fetchDataIndex}
           timer: 1500,
         });
       }
-      fetchData()
+      fetchData();
     } catch (error) {
       console.error(error);
     }
@@ -273,13 +277,11 @@ export function EditSale_cart({idAuctionReport, setOpenEditSale, fetchDataIndex}
               }
             );
             Swal.fire("ยกเลิกสำเร็จ !", "", "success");
-           
+
             setTimeout(() => {
               fetchDataIndex();
               setOpenEditSale(false);
             }, 1300);
-
-    
           } else if (result.isDenied) {
             Swal.fire("บิลยังไม่ถูกยกเลิก !", "", "info");
           }
@@ -306,7 +308,10 @@ export function EditSale_cart({idAuctionReport, setOpenEditSale, fetchDataIndex}
           ...prev,
           aomsin_1: data?.sale_auction_start_event_count,
         }));
-      } else if (data?.product_name == "ล็อตเตอรี่" || data?.product_name == "ลอตเตอรี่") {
+      } else if (
+        data?.product_name == "ล็อตเตอรี่" ||
+        data?.product_name == "ลอตเตอรี่"
+      ) {
         setDataAomsin((prev) => ({
           ...prev,
           aomsin_2: data?.sale_auction_start_event_count,
@@ -317,7 +322,6 @@ export function EditSale_cart({idAuctionReport, setOpenEditSale, fetchDataIndex}
     });
 
     // console.log(dataAomsin);
-    
   };
 
   useEffect(() => {
@@ -354,7 +358,7 @@ export function EditSale_cart({idAuctionReport, setOpenEditSale, fetchDataIndex}
 
   return (
     <>
-    {/* CUSTOMER ID : {customerData?.id} */}
+      {/* CUSTOMER ID : {customerData?.id} */}
       <Customer_modal
         open={open}
         handleOpen={handleOpen}
@@ -534,7 +538,6 @@ export function EditSale_cart({idAuctionReport, setOpenEditSale, fetchDataIndex}
               <div>
                 <select
                   onChange={changeCustomer}
-                  value={customerData?.sale_code_customer_name || ""}
                   className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
                 >
                   <option value={" " || null}>เลือกผู้บริจาคที่ต้องการ</option>
@@ -558,6 +561,18 @@ export function EditSale_cart({idAuctionReport, setOpenEditSale, fetchDataIndex}
               </div>
               <div>
                 <small>เพิ่ม/แก้ไข ผู้บริจาค</small>
+              </div>
+            </div>
+            <div className="flex flex-col  gap-4  p-3 md:flex-row lg:flex-row">
+              <div>
+                <Typography className="flex w-[110px] text-sm font-bold">
+                  ชื่อผู้บริจาค:
+                </Typography>
+              </div>
+              <div>
+                <Typography className="flex  text-sm ">
+                  {customerData?.sale_code_customer_name || ""}
+                </Typography>
               </div>
             </div>
             <div className="flex flex-col  gap-4  p-3 md:flex-row lg:flex-row">

@@ -245,7 +245,7 @@ export function SaleSummary() {
               </div>
               <div className="flex justify-center gap-2">
               <Button
-                fullWidth
+                size="sm"
                 className="flex w-[200px] items-center justify-center bg-green-500 align-middle text-base md:w-[120px]     lg:w-[150px]"
                 onClick={exportToExcel}
               >

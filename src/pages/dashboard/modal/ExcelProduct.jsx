@@ -12,6 +12,7 @@ import axios from "axios";
 
 const ExcelProduct = ({ handleOpen, open, type }) => {
   const [dataSend, setDataSend] = useState({});
+  const [message, setMessage] = useState(false)
   let url;
 
   const handleAddData = (e) => {
@@ -60,6 +61,10 @@ const ExcelProduct = ({ handleOpen, open, type }) => {
       URL.revokeObjectURL(downloadUrl);
 
     } catch (error) {
+      setMessage(true)
+      setTimeout(()=>{
+        setMessage(false)
+      },3000)
       console.log(error);
     }
   };
@@ -80,7 +85,7 @@ const ExcelProduct = ({ handleOpen, open, type }) => {
               name="category"
               className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
             >
-              <option value="">เลือกหัวข้อประมูล</option>
+              <option value="">ทั้งหมด</option>
               <option value="วัตถุมงคล">วัตถุมงคล</option>
               <option value="โทรศัพท์">โทรศัพท์</option>
               <option value="เครื่องใช้สำนักงาน">เครื่องใช้สำนักงาน</option>
@@ -106,12 +111,15 @@ const ExcelProduct = ({ handleOpen, open, type }) => {
               />
             </div>
           </div>
-
+         
           <div className="mt-4 flex flex-col justify-end gap-4 md:flex-row lg:flex-row">
+          {message && <p className="text-red-500 font-bold">ไม่พบข้อมูล ** </p>}
             <Button color="green" onClick={handleExcel}>
               Excel
             </Button>
           </div>
+
+  
         </div>
 
         {/* 

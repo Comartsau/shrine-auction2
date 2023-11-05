@@ -525,7 +525,7 @@ export function EditSale1({
               <div>
                 <select
                   onChange={changeCustomer}
-                  value={customerData?.auction_report_user_auction || " "}
+                  // defaultValue={customerData?.auction_report_user_auction || ""}
                   className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
                 >
                   <option value={" " || null}>เลือกผู้บริจาคที่ต้องการ</option>
@@ -548,6 +548,18 @@ export function EditSale1({
               </div>
               <div>
                 <small>เพิ่ม/แก้ไข ผู้บริจาค</small>
+              </div>
+            </div>
+            <div className="flex flex-col  gap-4  p-3 md:flex-row lg:flex-row">
+              <div>
+                <Typography className="flex w-[110px] text-sm font-bold">
+                  ชื่อผู้บริจาค:
+                </Typography>
+              </div>
+              <div>
+                <Typography className="flex  text-sm ">
+                  {customerData?.auction_report_user_auction || ""}
+                </Typography>
               </div>
             </div>
             <div className="flex flex-col  gap-4  p-3 md:flex-row lg:flex-row">

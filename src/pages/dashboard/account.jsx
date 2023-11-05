@@ -435,19 +435,17 @@ export function Account() {
                     </td>
                     <td className={classes}>
                       <Typography
-                        variant="small"
-                        style={{
-                          color:
-                            data?.status_sale === 1 ||   data?.status_sale === 0
-                             ||
-                            data?.auction_report_Pay_status === 1 || data?.auction_report_Pay_status === 0
-                              ? "red"
-                              : "green",
-                        }}
-                        className="font-normal"
+                        variant="paragraph"
+                        className={`
+                        ${data?.status_sale === 0 || data?.auction_report_Pay_status === 0 ? "bg-red-500 opacity-70 text-white flex justify-center p-1" : ''}
+                        ${data?.status_sale === 1 || data?.auction_report_Pay_status === 1 ? "bg-orange-500 opacity-70 text-black flex justify-center p-1" : ''}
+                        ${data?.status_sale === 2 || data?.auction_report_Pay_status === 2 ? "bg-green-500 opacity-70 text-white flex justify-center p-1" : ''}
+                        `
+                          
+                        }
                       >
-             
 
+  
                         {data?.status_sale === 0 ||
                         data?.auction_report_Pay_status === 0
                           ? "ยกเลิก"
