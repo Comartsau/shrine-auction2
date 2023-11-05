@@ -24,7 +24,7 @@ export function Sidenav({ routes }) {
   const [lockMenu, setlockMenu] = useState("");
 
   useEffect(() => {
-    // ตรวจสอบค่า id_auctionstarted ทุกๆ 1 วินาที
+    // ตรวจสอบค่า lockMenu ทุกๆ 1 วินาที
     setInterval(() => {
       setlockMenu(localStorage.getItem("lockMenu"));
     }, 1000);
