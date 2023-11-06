@@ -46,6 +46,7 @@
   .gradient-text11 {
 
     background: linear-gradient(179.2deg, #FFB72B 100%,  #FFB72B 100%,  #FFB72B 100%);
+    height: 50px;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     color: #7D0707;

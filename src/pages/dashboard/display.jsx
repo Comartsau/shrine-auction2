@@ -312,7 +312,7 @@ export function Display() {
 
   return (
     <div
-      className="flex h-screen w-screen flex-col items-center  bg-red-200  "
+      className="flex h-screen w-screen flex-col items-center   bg-red-200  "
       style={{
         backgroundImage: `url(${bgImage})`,
         backgroundSize: "100% 100%",
@@ -350,7 +350,7 @@ export function Display() {
             {number !== "4" ? (
               //------------ Show  ประมูล --------------------//
               <div className="flex w-full    ">
-                <div className=" mx-14 mt-20 flex  overflow-y-scroll xl:overflow-y-hidden  w-full flex-col items-center   rounded-3xl bg-red-200 bg-opacity-40  h-[550px]   sm:h-[550px] md:h-[550px]  lg:h-[550px]   xl:h-[550px]">
+                <div className=" mx-14 mt-20 flex  overflow-y-scroll xl:overflow-y-hidden  w-full flex-col items-center justify-center  rounded-3xl bg-red-200 bg-opacity-40  h-[550px]   sm:h-[550px] md:h-[550px]  lg:h-[550px]   xl:h-[590px]">
                   <div className="flex mt-5  sm:mt-10 z-20   w-full justify-center md:mt-[30px] lg:mt-[30px] ">
                     <Typography className=" gradient-text text-center text-5xl font-extrabold  lg:text-7xl">
                       {Title ? Title : ""}
@@ -484,21 +484,21 @@ export function Display() {
               </div>
             ) : (
               // ---------- Show ชนะประมูล -------------------//
-              <div className="flex w-full    ">
-                <div className=" z-20 mx-3 mt-5 sm:mt-10 flex  h-[550px] xl:mt-10   w-full flex-col items-center justify-center overflow-y-scroll  md:overflow-auto  sm:h-[500px] md:h-[480px]  lg:h-[550px]   xl:h-[600px]">
-                  <div className=" z-20 mt-[220px] flex w-full justify-center sm:mt-[50px] md:mt-[10px] lg:mt-[5px] ">
+              <div className="flex w-full justify-center    ">
+                <div className=" z-20 mx-3  flex  justify-center items-center  h-[650px]  w-full flex-col  overflow-y-scroll  md:overflow-auto  xl:h-[690px]">
+                  <div className=" z-20 mt-[50px] flex w-full justify-center ">
                   <div className="flex w-full justify-center align-bottom gap-5" >
                     <img src={p01} className="w-[15%] sm:w-[15%] md:w-[10%] xl:w-[10%] bg-white rounded-full " />
                     <img src={p02} className="w-[15%] sm:w-[15%] md:w-[10%] xl:w-[10%]  bg-white rounded-full" />
                   </div>
                   </div>
-                  <div className=" z-20 mt-[10px] flex w-full justify-center sm:mt-[10px] md:mt-[5px] lg:mt-[30px] ">
+                  <div className=" z-20 mt-[10px] flex w-full justify-center sm:mt-[10px] md:mt-[5px] lg:mt-[7px] ">
                     <Typography className=" gradient-text11 text-center text-5xl font-bold  sm:text-5xl">
                       ขอแสดงความยินดี
                     </Typography>
                   </div>
 
-                  <div className="mt-7  flex w-[90%] items-center justify-center rounded-lg border-4  text-center text-3xl text-white sm:w-[80%] py-4 sm:text-5xl md:w-[60%] lg:mt-7 lg:text-6xl"
+                  <div className=" mt-7 flex w-[90%] items-center justify-center rounded-lg border-4   text-center text-3xl text-white sm:w-[80%] py-4 sm:text-5xl md:w-[60%] lg:mt-5 "
                           style={{
                             backgroundColor: "#8A0707",
                             borderColor: "#FFB72B"
@@ -515,7 +515,7 @@ export function Display() {
                       </Typography>
                     </div>
                   </div>
-                  <div className="mt-5 xl:mt-7 flex w-full flex-col items-center justify-center  gap-5 px-5 md:flex-row lg:px-[80px]  ">
+                  <div className="mt-5 xl:mt-5 flex w-full flex-col items-center justify-center  gap-5 px-5 md:flex-row lg:px-[80px]  ">
                     <div className=" z-20 mx-32">
                       <Typography className="text-center text-3xl xl:text-3xl  font-bold gradient-text12"  >
                         {/* {concatenatedAomsinData}/{concatenatedProductData} */}
@@ -524,22 +524,20 @@ export function Display() {
                     </div>
                   </div>
 
-                  <div className="  mt-10 xl:mt-5 flex w-full flex-col items-center justify-center  gap-5 px-5 sm:flex-row  ">
-                    <div className=" flex flex-col items-center justify-center gap-5 sm:flex-row    ">
-                      <div className="">
-                        <Typography className="  flex text-4xl xl:text-4xl  font-bold gradient-text2  ">
+                  <div className="  mt-10 xl:mt-3 flex w-full flex-col items-center justify-center  gap-5 px-5 sm:flex-row  ">
+                    <div className=" flex flex-col   justify-center gap-5 sm:flex-row    ">
+                      <div>
+                        <Typography className="  flex text-4xl xl:text-4xl     font-bold gradient-text11  ">
                           มูลค่า
                         </Typography>
                       </div>
-                    </div>
-                    <div className="flex flex-col items-center justify-center gap-5 sm:flex-row lg:items-end lg:justify-end">
                       <div>
-                        <Typography className="flex   text-3xl xl:text-5xl font-bold gradient-text2  ">
+                        <Typography className="flex   text-3xl xl:text-5xl font-bold gradient-text11  ">
                           {Number(localStorage.getItem('winprice')).toLocaleString() || ''}
                         </Typography>
                       </div>
                       <div>
-                        <Typography className="flex    text-4xl xl:text-4xl font-bold gradient-text2 ">
+                        <Typography className="flex    text-4xl xl:text-4xl font-bold gradient-text11 ">
                           บาท
                         </Typography>
                       </div>
