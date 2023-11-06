@@ -12,7 +12,7 @@ import axios from "axios";
 
 const ExcelProduct = ({ handleOpen, open, type }) => {
   const [dataSend, setDataSend] = useState({});
-  const [message, setMessage] = useState(false)
+  const [message, setMessage] = useState(false);
   let url;
 
   const handleAddData = (e) => {
@@ -22,21 +22,31 @@ const ExcelProduct = ({ handleOpen, open, type }) => {
     }));
   };
   const handleExcel = async () => {
-
     if (type) {
-        url = `/Check/excel/?type_Data=${type}`
-        if (dataSend?.category){
-            url = `/Check/excel/?type_Data=${type}&category=${dataSend?.category}`
+      url = `/Check/excel/?type_Data=${type}`;
+
+      if (dataSend?.category) {
+        url = `/Check/excel/?type_Data=${type}&category=${dataSend?.category}`
+      }
+
+      if (dataSend?.start_date || dataSend?.end_date) {
+         url = `/Check/excel/?type_Data=${type}&start_date=${dataSend?.start_date}&end_date=${dataSend?.end_date}`;
+      }
+
+      if (dataSend?.category || dataSend?.start_date || dataSend?.end_date) {
+         url = `/Check/excel/?type_Data=${type}&category=${dataSend?.category}&start_date=${dataSend?.start_date}&end_date=${dataSend?.end_date}`;
+     
+         if (type == 1 && dataSend?.category == 1 && dataSend?.start_date && dataSend?.end_date){
+          url = `/Check/excel/?type_Data=${type}&category=สลากออมสิน&start_date=${dataSend?.start_date}&end_date=${dataSend?.end_date} `;
+         } 
+          if (type == 1 && dataSend?.category == 2 && dataSend?.start_date && dataSend?.end_date){
+          url = `/Check/excel/?type_Data=${type}&category=ล็อตเตอรี่&start_date=${dataSend?.start_date}&end_date=${dataSend?.end_date} `;
+         }  
         }
 
-        if(dataSend?.start_date || dataSend?.end_date ){
-            url = `/Check/excel/?type_Data=${type}&start_date=${dataSend?.start_date}&end_date=${dataSend?.end_date}`
-        }
-
-        if(dataSend?.category || dataSend?.start_date || dataSend?.end_date ){
-            url = `/Check/excel/?type_Data=${type}&category=${dataSend?.category}&start_date=${dataSend?.start_date}&end_date=${dataSend?.end_date}`
-        }
     }
+
+   
     try {
       const Token = localStorage.getItem("token");
       const res = await axios.get(
@@ -59,26 +69,23 @@ const ExcelProduct = ({ handleOpen, open, type }) => {
       link.download = "Reports.xlsx"; // ตั้งชื่อไฟล์ที่จะดาวน์โหลด
       link.click();
       URL.revokeObjectURL(downloadUrl);
-
     } catch (error) {
-      setMessage(true)
-      setTimeout(()=>{
-        setMessage(false)
-      },3000)
+      setMessage(true);
+      setTimeout(() => {
+        setMessage(false);
+      }, 3000);
       console.log(error);
     }
   };
   return (
     <Dialog open={open} handler={handleOpen}>
       <DialogHeader className="bg-gray-200">
-         รายการของมงคล 
-         
-         {type === 1 && " (รายการประมูล)"}
-         {type === 2 && " (รายการขายสินค้า)"}
-         </DialogHeader>
+        รายการของมงคล
+        {type === 1 && " (รายการประมูล)"}
+        {type === 2 && " (รายการขายสินค้า)"}
+      </DialogHeader>
       <DialogBody>
         <div className="  w-full p-4">
-
           <div>
             <select
               onChange={(e) => handleAddData(e)}
@@ -86,6 +93,8 @@ const ExcelProduct = ({ handleOpen, open, type }) => {
               className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
             >
               <option value="">ทั้งหมด</option>
+              <option value="1">สลากออมสิน</option>
+              <option value="2">ล็อตเตอรี่</option>
               <option value="วัตถุมงคล">วัตถุมงคล</option>
               <option value="โทรศัพท์">โทรศัพท์</option>
               <option value="เครื่องใช้สำนักงาน">เครื่องใช้สำนักงาน</option>
@@ -97,7 +106,7 @@ const ExcelProduct = ({ handleOpen, open, type }) => {
             <div className="w-full">
               <Input
                 onChange={(e) => handleAddData(e)}
-                label="Username"
+                label="วันที่เริ่มต้น"
                 type="date"
                 name="start_date"
               />
@@ -105,21 +114,22 @@ const ExcelProduct = ({ handleOpen, open, type }) => {
             <div className="w-full">
               <Input
                 onChange={(e) => handleAddData(e)}
-                label="Username"
+                label="วันที่สิ้นสุด"
                 type="date"
                 name="end_date"
               />
             </div>
           </div>
-         
+
           <div className="mt-4 flex flex-col justify-end gap-4 md:flex-row lg:flex-row">
-          {message && <p className="text-red-500 font-bold">ไม่พบข้อมูล ** </p>}
+            {message ? (
+              <p className="font-bold text-red-500">ไม่พบข้อมูล ** </p>
+            ) : <p className="font-bold text-red-500">กรุณาเลือกวันที่เริ่มต้น - สิ้นสุด ** </p> }
+         
             <Button color="green" onClick={handleExcel}>
               Excel
             </Button>
           </div>
-
-  
         </div>
 
         {/* 

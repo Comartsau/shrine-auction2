@@ -198,11 +198,11 @@ export function EditSale_cart({
         aomsin: [
           {
             sale_auction_start_event: 1,
-            sale_auction_start_event_count: dataAomsin?.aomsin_2,
+            sale_auction_start_event_count: dataAomsin?.aomsin_1,
           },
           {
             sale_auction_start_event: 2,
-            sale_auction_start_event_count: dataAomsin?.aomsin_1,
+            sale_auction_start_event_count: dataAomsin?.aomsin_2,
           },
         ],
       };

@@ -190,7 +190,7 @@ const DailySummaryProduct = () => {
                 className="mb-2 mt-4 flex justify-end"
               >
                 {selectData.type_Data === 1 &&
-                  `สลากออมสิน : ${sumData?.auction_aomsin2} ใบ`}
+                  `สลากออมสิน : ${sumData?.auction_aomsin1} ใบ`}
                 {selectData.type_Data === 2 &&
                   `สลากออมสิน : ${sumData?.sale_aomsin1} ใบ`}
               </Typography>
@@ -200,7 +200,7 @@ const DailySummaryProduct = () => {
                 className="mb-2 mt-4 flex justify-end"
               >
                 {selectData.type_Data === 1 &&
-                  `ล็อตเตอรี่ : ${sumData?.auction_aomsin1} ใบ`}
+                  `ล็อตเตอรี่ : ${sumData?.auction_aomsin2} ใบ`}
                 {selectData.type_Data === 2 &&
                   `ล็อตเตอรี่ : ${sumData?.sale_aomsin2} ใบ`}
               </Typography>

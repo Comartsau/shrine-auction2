@@ -832,13 +832,13 @@ export function Sale() {
         sale_code_id: selectCustomerId,
 
         aomsin: [
-          {
+          { 
             sale_auction_start_event: 1,
-            sale_auction_start_event_count: selectedSavingsBond.toString(),
+            sale_auction_start_event_count: selectedGovernmentBonds.toString(),
           },
           {
             sale_auction_start_event: 2,
-            sale_auction_start_event_count: selectedGovernmentBonds.toString(),
+            sale_auction_start_event_count: selectedSavingsBond.toString(),
           },
         ],
       };
