@@ -1759,6 +1759,9 @@ const handleSendDataEDitAuction = async () => {
     setOpenPreViewDialog(false);
   };
 
+  console.log(selectedGovernmentBonds)
+  console.log(selectedSavingsBond)
+
   const handleSendGift = async () => {
     try {
       const productData = [
@@ -1778,12 +1781,14 @@ const handleSendDataEDitAuction = async () => {
       const aomsinData =[
         {
           auction_auction_start_count_1: 1,
-          auction_auction_start_event_count:selectedSavingsBond || 0,
+          auction_auction_start_event_count:selectedGovernmentBonds || 0,
+
           
         },
         {
           auction_auction_start_count_1: 2,
-          auction_auction_start_event_count:selectedGovernmentBonds || 0
+          auction_auction_start_event_count:selectedSavingsBond || 0,
+      
         },
       ]
       // console.log(aomsinData)
@@ -1976,9 +1981,9 @@ const handleSendDataEDitAuction = async () => {
                   ฉลากออมสิน
                   <span className="ms-3">
                     {" "}
-                    {selectedSavingsBond || 0}{" "}
+                    { selectedGovernmentBonds || 0}{" "}
                   </span> ใบ <span>|</span> ล็อตเตอรี่{" "}
-                  <span> {selectedGovernmentBonds || 0} </span> ใบ
+                  <span> {selectedSavingsBond || 0} </span> ใบ
                 </Typography>
               </div>
             </div>
@@ -2002,8 +2007,8 @@ const handleSendDataEDitAuction = async () => {
                     type="number"
                     autoComplete="off"
                     min="0"
-                    id="savingsBond"
-                    onChange={(e) => setSelectedSavingsBond(e.target.value)}
+                    id="governmentBonds"
+                    onChange={(e) => setSelectedGovernmentBonds(e.target.value)}
                     className=" focus:shadow-outline   w-[70px] appearance-none rounded  border border-gray-400  px-3 leading-tight text-gray-700 shadow focus:border-blue-500 focus:outline-none"
                   />
                   <Typography className="flex  items-center  ">ใบ</Typography>
@@ -2018,8 +2023,8 @@ const handleSendDataEDitAuction = async () => {
                     type="number"
                     autoComplete="off"
                     min="0"
-                    id="governmentBonds"
-                    onChange={(e) => setSelectedGovernmentBonds(e.target.value)}
+                    id="savingsBond"
+                    onChange={(e) => setSelectedSavingsBond(e.target.value)}
                     className=" focus:shadow-outline  w-[70px] appearance-none rounded  border border-gray-400 px-3 leading-tight text-gray-700 shadow focus:border-blue-500 focus:outline-none"
                   />
                   <Typography className="flex  items-center  ">ใบ</Typography>
@@ -2564,7 +2569,8 @@ const handleSendDataEDitAuction = async () => {
                       </div>
                       <div className="flex justify-center  sm:justify-center">
                         <Typography className=" text-center font-bold sm:text-left">
-                          {selectedSavingsBond || ""}
+                          
+                          {selectedGovernmentBonds || ""}
                         </Typography>
                       </div>
                       <div className="flex justify-center  sm:justify-center">
@@ -2581,7 +2587,7 @@ const handleSendDataEDitAuction = async () => {
                       </div>
                       <div className="flex justify-center  sm:justify-center">
                         <Typography className=" text-center font-bold sm:text-left">
-                          {selectedGovernmentBonds || ""}
+                          {selectedSavingsBond || ""}
                         </Typography>
                       </div>
                       <div className="flex justify-center  sm:justify-center">

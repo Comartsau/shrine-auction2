@@ -165,7 +165,7 @@ export function Display() {
 
     // number 1
     socket.on("show_number_1", (newData) => {
-      // console.log(newData.number)
+      console.log(newData)
 
       localStorage.setItem("status_123", newData.number);
       setNumber(newData.number)
@@ -202,7 +202,7 @@ export function Display() {
 
     // number 2
     socket.on("show_number_2", (newData) => {
-      // console.log(newData)
+      console.log(newData)
     
       // localStorage.setItem("status_123", newData);
       // setTestSocket(newData)
@@ -266,6 +266,9 @@ export function Display() {
         });
 
   }, []);
+
+  console.log(aomsin)
+  console.log(aomsinData)
 
 
   // เลือกข้อมูลที่ต้องการจาก aomsin
