@@ -123,51 +123,62 @@ const Product_modal = ({
   };
   const handleProduct = (id) => {
     const res = dataProduct.find((data) => data.id == id);
-    // console.log(products.length);
-
-    if (products.length <= 10) {
-      type === 1 &&
-        (res.product_name === "สลากออมสิน" || res.product_name === "ล็อตเตอรี่"
-          ? (handleOpen2(),
-            Swal.fire({
-              icon: "error",
-              title: "ไม่สามารถทำรายการได้",
-              text: "สลากออมสิน ล็อตเตรี่ สำหรับบิลประมูลสามารถเพิ่มได้จากข้างนอกได้เลย !",
-            }))
-          : setProduct([
-              ...products,
-              {
-                id,
-                auction_product_start_event: res?.product_name,
-                auction_product_start_event_cat_count: res?.product_count,
-                auction_product_start_event_cat: res?.product_category,
-                auction_product_start_event_count: productQty || 0,
-              },
-            ]),
-        handleOpen2());
-
-      type === 2 &&
-        setProduct([
-          ...products,
-          {
-            id,
-            product_name: res?.product_name,
-            product_count: res?.product_count,
-            product_category: res?.product_category,
-            sale_auction_start_event_count: productQty || 0,
-            sale_auction_start_event_count_price: productPrice || 0,
-          },
-        ]) 
-        handleOpen2()
-    } else {
+    console.log(type);
+    if (productQty === "" || productPrice === "") {
       Swal.fire({
         icon: "error",
-        title: "ไม่สามารถทำรายการได้",
-        text: "มีรายการสินค้าครบ 12 รายการแล้ว",
+        title: "เกิดข้อผิดพลาด",
+        text: "กรุณาระบุ จำนวน และ จำนวนเงิน !",
       });
-    }
+      handleOpen2();
+    } else {
+      if (
+        (type === 1 && products.length < 9) ||
+        (type === 2 && products.length < 12)
+      ) {
+        type === 1 &&
+          (res.product_name === "สลากออมสิน" ||
+          res.product_name === "ล็อตเตอรี่"
+            ? (handleOpen2(),
+              Swal.fire({
+                icon: "error",
+                title: "ไม่สามารถทำรายการได้",
+                text: "สลากออมสิน ล็อตเตรี่ สำหรับบิลประมูลสามารถเพิ่มได้จากข้างนอกได้เลย !",
+              }))
+            : setProduct([
+                ...products,
+                {
+                  id,
+                  auction_product_start_event: res?.product_name,
+                  auction_product_start_event_cat_count: res?.product_count,
+                  auction_product_start_event_cat: res?.product_category,
+                  auction_product_start_event_count: productQty || 0,
+                },
+              ]),
+          handleOpen2());
 
-    // handleOpen2();
+        type === 2 &&
+          setProduct([
+            ...products,
+            {
+              id,
+              product_name: res?.product_name,
+              product_count: res?.product_count,
+              product_category: res?.product_category,
+              sale_auction_start_event_count: productQty || 0,
+              sale_auction_start_event_count_price: productPrice || 0,
+            },
+          ]);
+        handleOpen2();
+      } else {
+        handleOpen2();
+        Swal.fire({
+          icon: "error",
+          title: "ไม่สามารถทำรายการได้",
+          text: "มีรายการสินค้าครบ 12 รายการแล้ว",
+        });
+      }
+    }
   };
   const handleNewProduct = async () => {
     try {
