@@ -189,12 +189,11 @@ export function EditSale_cart({
         sale_code_customer_line: "111",
         sale_auction_refer: customerData?.sale_auction_refer,
         sale_auction_num: customerData?.sale_auction_num,
-        sale_auction_price: String(totalPriceData),
+        sale_auction_price: totalPriceData,
+        // sale_auction_price: 800,
         status_sale: 1,
-
         sale_auction_q: customerData?.sale_auction_q,
         product: modifyProduct,
-
         aomsin: [
           {
             sale_auction_start_event: 1,
@@ -217,7 +216,7 @@ export function EditSale_cart({
         `${import.meta.env.VITE_APP_API}/Sale/${data.id}/edit`,
         sendData
       );
-      // console.log(res.data);
+      console.log(res.data);
 
       if (res) {
         Swal.fire({
