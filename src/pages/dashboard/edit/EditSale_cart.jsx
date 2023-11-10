@@ -189,7 +189,7 @@ export function EditSale_cart({
         sale_code_customer_line: "111",
         sale_auction_refer: customerData?.sale_auction_refer,
         sale_auction_num: customerData?.sale_auction_num,
-        sale_auction_price: totalPriceData,
+        sale_auction_price: String(totalPriceData),
         status_sale: 1,
 
         sale_auction_q: customerData?.sale_auction_q,
@@ -206,7 +206,8 @@ export function EditSale_cart({
           },
         ],
       };
-
+      
+      console.log(totalPriceData)
       // console.log(data[0]);
       console.log(products);
 
