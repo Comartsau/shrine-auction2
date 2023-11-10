@@ -630,7 +630,7 @@ const Product_modal = ({
                   <div className="flex w-full  flex-col items-center gap-6 md:flex-row  lg:flex-row">
                     <div className="w-full">
                       <Input
-                        disabled
+                        // disabled
                         size="md"
                         label="ชื่อสินค้า"
                         className=""
