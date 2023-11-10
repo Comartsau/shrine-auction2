@@ -667,12 +667,12 @@ export function Account() {
               </p>
               <hr className="m-2 " />
 
-              <div className="mt-2 mb-2 grid grid-cols-3 gap-4">
+              <div className="mt-2  mb-2 w-[470px] grid grid-cols-3 gap-4">
                 {dataModal?.aomsin1?.map((data, index) =>
                   data?.auction_auction_start_event === "สลากออมสิน" ? (
-                    <p key={index} className="text-black">
+                    <p key={index} className="text-black ">
                       {" "}
-                      สลากออมสิน {data?.auction_auction_start_event_count} ใบ
+                      สลากออมสิน {data?.auction_auction_start_event_count} หน่วย
                     </p>
                   ) : (
                     <p key={index} className="text-black">
@@ -686,7 +686,7 @@ export function Account() {
                   data?.sale_auction_start_event == 1 ? (
                     <p key={index} className="text-black">
                       {" "}
-                      สลากออมสิน : {data?.sale_auction_start_event_count} ใบ
+                      สลากออมสิน : {data?.sale_auction_start_event_count} หน่วย
                     </p>
                   ) : (
                     <p key={index} className="text-black">

@@ -173,7 +173,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "#000",
     textAlign: "center",
-    width: "10%", // แบ่งเป็น 3 ส่วนเท่า ๆ กัน (ขนาดเท่ากัน)
+    width: "7%", // แบ่งเป็น 3 ส่วนเท่า ๆ กัน (ขนาดเท่ากัน)
     height: "100%",
   },
   tableCell2: {
@@ -183,7 +183,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "#000",
     textAlign: "center",
-    width: "40%", // แบ่งเป็น 3 ส่วนเท่า ๆ กัน (ขนาดเท่ากัน)
+    width: "49%", // แบ่งเป็น 3 ส่วนเท่า ๆ กัน (ขนาดเท่ากัน)
     height: "auto",
   },
   tableCell3: {
@@ -213,7 +213,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "#000",
     textAlign: "center",
-    width: "15%", // แบ่งเป็น 3 ส่วนเท่า ๆ กัน (ขนาดเท่ากัน)
+    width: "12%", // แบ่งเป็น 3 ส่วนเท่า ๆ กัน (ขนาดเท่ากัน)
     height: "100%",
   },
   tableCell6: {
@@ -223,7 +223,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "#000",
     textAlign: "center",
-    width: "15%", // แบ่งเป็น 3 ส่วนเท่า ๆ กัน (ขนาดเท่ากัน)
+    width: "12%", // แบ่งเป็น 3 ส่วนเท่า ๆ กัน (ขนาดเท่ากัน)
     height: "100%",
   },
   tableCellsum: {
@@ -233,7 +233,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "#000",
     textAlign: "center",
-    width: "50%", // แบ่งเป็น 3 ส่วนเท่า ๆ กัน (ขนาดเท่ากัน)
+    width: "56%", // แบ่งเป็น 3 ส่วนเท่า ๆ กัน (ขนาดเท่ากัน)
     height: "100%",
   },
 });
@@ -505,68 +505,7 @@ export const Receipt2 = ({reportData, sumTotal, thbText, receiptData}) => {
               styles.flexrow,
               {width:"30%"}
               ]}>
-            <View style={styles.flexrowstart}>
-                <Text
-                  style={[
-                    { fontWeight: "extrabold" },
-                    { fontFamily: "SarabunBold" },
-                    { fontSize: "11" },
-                    styles.mtsm,
-                    styles.spacesm,
-                  ]}
-                >
-                  เบอร์โทร:{" "}
-                </Text>
-                <Text
-                  style={[
-                    { fontWeight: "light" },
-                    { fontFamily: "Sarabun" },
-                    { fontSize: "11" },
-                    styles.mtsm,
-                    styles.spacesm,
-                  ]}
-                >
-                  {" "}
-                  {data.sale_code_customer_tel}
-                </Text>
-              </View>
-            </View>
-          </View>
-          <View style={styles.flexrow}>
-          <View style={[
-              styles.flexrowstart,
-              {width:"70%"}
-              ]}>
-              <Text
-                style={[
-                  { fontWeight: "extrabold" },
-                  { fontFamily: "SarabunBold" },
-                  { fontSize: "11" },
-                  styles.mtsm,
-                  styles.spacesm,
-                ]}
-              >
-                ผู้ติดต่อ:{" "}
-              </Text>
-              <Text
-                style={[
-                  { fontWeight: "light" },
-                  { fontFamily: "Sarabun" },
-                  { fontSize: "11" },
-                  {display:"flex"},
-                  { width:"80%"},
-                  styles.mtsm,
-                ]}
-              >
-              {data.sale_code_customer_contract}{" "}
-              </Text>
-            </View>
-
-            <View style={[
-                styles.flexrow,
-                {width:"30%"}
-                ]}>
-              <View style={styles.flexrowstart}>
+             <View style={styles.flexrowstart}>
                   <Text
                     style={[
                       { fontWeight: "extrabold" },
@@ -616,6 +555,68 @@ export const Receipt2 = ({reportData, sumTotal, thbText, receiptData}) => {
                     {data?.sale_auction_num}
                   </Text>
                 </View>
+            </View>
+          </View>
+          <View style={styles.flexrow}>
+          <View style={[
+              styles.flexrowstart,
+              {width:"70%"}
+              ]}>
+              <Text
+                style={[
+                  { fontWeight: "extrabold" },
+                  { fontFamily: "SarabunBold" },
+                  { fontSize: "11" },
+                  styles.mtsm,
+                  styles.spacesm,
+                ]}
+              >
+                ผู้ติดต่อ:{" "}
+              </Text>
+              <Text
+                style={[
+                  { fontWeight: "light" },
+                  { fontFamily: "Sarabun" },
+                  { fontSize: "11" },
+                  {display:"flex"},
+                  { width:"80%"},
+                  styles.mtsm,
+                ]}
+              >
+              {data.sale_code_customer_contract}{" "}
+              </Text>
+            </View>
+
+            <View style={[
+                styles.flexrow,
+                {width:"30%"}
+                ]}>
+                  <View style={styles.flexrowstart}>
+                <Text
+                  style={[
+                    { fontWeight: "extrabold" },
+                    { fontFamily: "SarabunBold" },
+                    { fontSize: "11" },
+                    styles.mtsm,
+                    styles.spacesm,
+                  ]}
+                >
+                  เบอร์โทรศัพท์:{" "}
+                </Text>
+                <Text
+                  style={[
+                    { fontWeight: "light" },
+                    { fontFamily: "Sarabun" },
+                    { fontSize: "11" },
+                    styles.mtsm,
+                    styles.spacesm,
+                  ]}
+                >
+                  {" "}
+                  {data.sale_code_customer_tel}
+                </Text>
+              </View>
+             
                   </View>
           </View>
             {/*-----------  หัวตาราง ---------------------  */}
@@ -1225,68 +1226,7 @@ export const Receipt2 = ({reportData, sumTotal, thbText, receiptData}) => {
               styles.flexrow,
               {width:"30%"}
               ]}>
-            <View style={styles.flexrowstart}>
-                <Text
-                  style={[
-                    { fontWeight: "extrabold" },
-                    { fontFamily: "SarabunBold" },
-                    { fontSize: "11" },
-                    styles.mtsm,
-                    styles.spacesm,
-                  ]}
-                >
-                  เบอร์โทร:{" "}
-                </Text>
-                <Text
-                  style={[
-                    { fontWeight: "light" },
-                    { fontFamily: "Sarabun" },
-                    { fontSize: "11" },
-                    styles.mtsm,
-                    styles.spacesm,
-                  ]}
-                >
-                  {" "}
-                  {data.sale_code_customer_tel}
-                </Text>
-              </View>
-            </View>
-          </View>
-          <View style={styles.flexrow}>
-          <View style={[
-              styles.flexrowstart,
-              {width:"70%"}
-              ]}>
-              <Text
-                style={[
-                  { fontWeight: "extrabold" },
-                  { fontFamily: "SarabunBold" },
-                  { fontSize: "11" },
-                  styles.mtsm,
-                  styles.spacesm,
-                ]}
-              >
-                ผู้ติดต่อ:{" "}
-              </Text>
-              <Text
-                style={[
-                  { fontWeight: "light" },
-                  { fontFamily: "Sarabun" },
-                  { fontSize: "11" },
-                  {display:"flex"},
-                  { width:"80%"},
-                  styles.mtsm,
-                ]}
-              >
-              {data.sale_code_customer_contract}{" "}
-              </Text>
-            </View>
-
-            <View style={[
-                styles.flexrow,
-                {width:"30%"}
-                ]}>
-              <View style={styles.flexrowstart}>
+             <View style={styles.flexrowstart}>
                   <Text
                     style={[
                       { fontWeight: "extrabold" },
@@ -1336,6 +1276,68 @@ export const Receipt2 = ({reportData, sumTotal, thbText, receiptData}) => {
                     {data?.sale_auction_num}
                   </Text>
                 </View>
+            </View>
+          </View>
+          <View style={styles.flexrow}>
+          <View style={[
+              styles.flexrowstart,
+              {width:"70%"}
+              ]}>
+              <Text
+                style={[
+                  { fontWeight: "extrabold" },
+                  { fontFamily: "SarabunBold" },
+                  { fontSize: "11" },
+                  styles.mtsm,
+                  styles.spacesm,
+                ]}
+              >
+                ผู้ติดต่อ:{" "}
+              </Text>
+              <Text
+                style={[
+                  { fontWeight: "light" },
+                  { fontFamily: "Sarabun" },
+                  { fontSize: "11" },
+                  {display:"flex"},
+                  { width:"80%"},
+                  styles.mtsm,
+                ]}
+              >
+              {data.sale_code_customer_contract}{" "}
+              </Text>
+            </View>
+
+            <View style={[
+                styles.flexrow,
+                {width:"30%"}
+                ]}>
+                  <View style={styles.flexrowstart}>
+                <Text
+                  style={[
+                    { fontWeight: "extrabold" },
+                    { fontFamily: "SarabunBold" },
+                    { fontSize: "11" },
+                    styles.mtsm,
+                    styles.spacesm,
+                  ]}
+                >
+                  เบอร์โทรศัพท์:{" "}
+                </Text>
+                <Text
+                  style={[
+                    { fontWeight: "light" },
+                    { fontFamily: "Sarabun" },
+                    { fontSize: "11" },
+                    styles.mtsm,
+                    styles.spacesm,
+                  ]}
+                >
+                  {" "}
+                  {data.sale_code_customer_tel}
+                </Text>
+              </View>
+             
                   </View>
           </View>
             {/*-----------  หัวตาราง ---------------------  */}
@@ -1716,8 +1718,8 @@ export const Receipt2 = ({reportData, sumTotal, thbText, receiptData}) => {
           </View>
         </View>
       </Page>
+     
       
-        
       {/* สำเนา2 */}
       <Page size="A4" style={styles.page} >
         <View style={styles.flexrowbetween}>
@@ -1947,68 +1949,7 @@ export const Receipt2 = ({reportData, sumTotal, thbText, receiptData}) => {
               styles.flexrow,
               {width:"30%"}
               ]}>
-            <View style={styles.flexrowstart}>
-                <Text
-                  style={[
-                    { fontWeight: "extrabold" },
-                    { fontFamily: "SarabunBold" },
-                    { fontSize: "11" },
-                    styles.mtsm,
-                    styles.spacesm,
-                  ]}
-                >
-                  เบอร์โทร:{" "}
-                </Text>
-                <Text
-                  style={[
-                    { fontWeight: "light" },
-                    { fontFamily: "Sarabun" },
-                    { fontSize: "11" },
-                    styles.mtsm,
-                    styles.spacesm,
-                  ]}
-                >
-                  {" "}
-                  {data.sale_code_customer_tel}
-                </Text>
-              </View>
-            </View>
-          </View>
-          <View style={styles.flexrow}>
-          <View style={[
-              styles.flexrowstart,
-              {width:"70%"}
-              ]}>
-              <Text
-                style={[
-                  { fontWeight: "extrabold" },
-                  { fontFamily: "SarabunBold" },
-                  { fontSize: "11" },
-                  styles.mtsm,
-                  styles.spacesm,
-                ]}
-              >
-                ผู้ติดต่อ:{" "}
-              </Text>
-              <Text
-                style={[
-                  { fontWeight: "light" },
-                  { fontFamily: "Sarabun" },
-                  { fontSize: "11" },
-                  {display:"flex"},
-                  { width:"80%"},
-                  styles.mtsm,
-                ]}
-              >
-              {data.sale_code_customer_contract}{" "}
-              </Text>
-            </View>
-
-            <View style={[
-                styles.flexrow,
-                {width:"30%"}
-                ]}>
-              <View style={styles.flexrowstart}>
+             <View style={styles.flexrowstart}>
                   <Text
                     style={[
                       { fontWeight: "extrabold" },
@@ -2058,6 +1999,68 @@ export const Receipt2 = ({reportData, sumTotal, thbText, receiptData}) => {
                     {data?.sale_auction_num}
                   </Text>
                 </View>
+            </View>
+          </View>
+          <View style={styles.flexrow}>
+          <View style={[
+              styles.flexrowstart,
+              {width:"70%"}
+              ]}>
+              <Text
+                style={[
+                  { fontWeight: "extrabold" },
+                  { fontFamily: "SarabunBold" },
+                  { fontSize: "11" },
+                  styles.mtsm,
+                  styles.spacesm,
+                ]}
+              >
+                ผู้ติดต่อ:{" "}
+              </Text>
+              <Text
+                style={[
+                  { fontWeight: "light" },
+                  { fontFamily: "Sarabun" },
+                  { fontSize: "11" },
+                  {display:"flex"},
+                  { width:"80%"},
+                  styles.mtsm,
+                ]}
+              >
+              {data.sale_code_customer_contract}{" "}
+              </Text>
+            </View>
+
+            <View style={[
+                styles.flexrow,
+                {width:"30%"}
+                ]}>
+                  <View style={styles.flexrowstart}>
+                <Text
+                  style={[
+                    { fontWeight: "extrabold" },
+                    { fontFamily: "SarabunBold" },
+                    { fontSize: "11" },
+                    styles.mtsm,
+                    styles.spacesm,
+                  ]}
+                >
+                  เบอร์โทรศัพท์:{" "}
+                </Text>
+                <Text
+                  style={[
+                    { fontWeight: "light" },
+                    { fontFamily: "Sarabun" },
+                    { fontSize: "11" },
+                    styles.mtsm,
+                    styles.spacesm,
+                  ]}
+                >
+                  {" "}
+                  {data.sale_code_customer_tel}
+                </Text>
+              </View>
+             
                   </View>
           </View>
             {/*-----------  หัวตาราง ---------------------  */}
@@ -2438,6 +2441,7 @@ export const Receipt2 = ({reportData, sumTotal, thbText, receiptData}) => {
           </View>
         </View>
       </Page>
+      
      
      
 

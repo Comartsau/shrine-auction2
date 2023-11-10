@@ -189,7 +189,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "#000",
     textAlign: "center",
-    width: "10%", // แบ่งเป็น 3 ส่วนเท่า ๆ กัน (ขนาดเท่ากัน)
+    width: "7%", // แบ่งเป็น 3 ส่วนเท่า ๆ กัน (ขนาดเท่ากัน)
     height: "100%",
   },
   tableCell2: {
@@ -199,7 +199,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "#000",
     textAlign: "center",
-    width: "40%", // แบ่งเป็น 3 ส่วนเท่า ๆ กัน (ขนาดเท่ากัน)
+    width: "59%", // แบ่งเป็น 3 ส่วนเท่า ๆ กัน (ขนาดเท่ากัน)
     height: "auto",
   },
   tableCell3: {
@@ -219,7 +219,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "#000",
     textAlign: "center",
-    width: "15%", // แบ่งเป็น 3 ส่วนเท่า ๆ กัน (ขนาดเท่ากัน)
+    width: "12%", // แบ่งเป็น 3 ส่วนเท่า ๆ กัน (ขนาดเท่ากัน)
     height: "100%",
   },
   tableCell5: {
@@ -239,7 +239,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "#000",
     textAlign: "center",
-    width: "25%", // แบ่งเป็น 3 ส่วนเท่า ๆ กัน (ขนาดเท่ากัน)
+    width: "12%", // แบ่งเป็น 3 ส่วนเท่า ๆ กัน (ขนาดเท่ากัน)
     height: "100%",
   },
   tableCellsum: {
@@ -249,7 +249,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "#000",
     textAlign: "center",
-    width: "50%", // แบ่งเป็น 3 ส่วนเท่า ๆ กัน (ขนาดเท่ากัน)
+    width: "66%", // แบ่งเป็น 3 ส่วนเท่า ๆ กัน (ขนาดเท่ากัน)
     height: "100%",
   },
 });
@@ -456,68 +456,7 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
               styles.flexrow,
               {width:"30%"}
               ]}>
-            <View style={styles.flexrowstart}>
-                <Text
-                  style={[
-                    { fontWeight: "extrabold" },
-                    { fontFamily: "SarabunBold" },
-                    { fontSize: "11" },
-                    styles.mtsm,
-                    styles.spacesm,
-                  ]}
-                >
-                  {" "}เบอร์โทรศัพท์:{" "}
-                </Text>
-                <Text
-                  style={[
-                    { fontWeight: "light" },
-                    { fontFamily: "Sarabun" },
-                    { fontSize: "11" },
-                    styles.mtsm,
-                    styles.spacesm,
-                  ]}
-                >
-                  {" "}
-                  {data.auction_report_customer_tel}
-                </Text>
-              </View>
-            </View>
-          </View>
-          <View style={styles.flexrow}>
-          <View style={[
-              styles.flexrowstart,
-              {width:"70%"}
-              ]}>
-                <Text
-                style={[
-                  { fontWeight: "extrabold" },
-                  { fontFamily: "SarabunBold" },
-                  { fontSize: "11" },
-                  styles.mtsm,
-                  styles.spacesm,
-                ]}
-              >
-                ออกสลากในนาม:{" "}
-              </Text>
-              <Text
-                style={[
-                  styles.mtsm,
-                  { fontWeight: "light" },
-                  { fontFamily: "Sarabun" },
-                  { fontSize: "11" },
-                  { display:"flex"},
-                  { width:"76%"},
-                ]}
-              >
-                {" "}{data.auction_report_customer_noun + '' }. {" "}
-              </Text>
-            </View>
-
-            <View style={[
-                styles.flexrow,
-                {width:"30%"}
-                ]}>
-              <View style={styles.flexrowstart}>
+             <View style={styles.flexrowstart}>
                   <Text
                     style={[
                       { fontWeight: "extrabold" },
@@ -567,6 +506,68 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
                     {data?.auction_num}
                   </Text>
                 </View>
+            </View>
+          </View>
+          <View style={styles.flexrow}>
+          <View style={[
+              styles.flexrowstart,
+              {width:"70%"}
+              ]}>
+                <Text
+                style={[
+                  { fontWeight: "extrabold" },
+                  { fontFamily: "SarabunBold" },
+                  { fontSize: "11" },
+                  styles.mtsm,
+                  styles.spacesm,
+                ]}
+              >
+                ออกสลากในนาม:{" "}
+              </Text>
+              <Text
+                style={[
+                  styles.mtsm,
+                  { fontWeight: "light" },
+                  { fontFamily: "Sarabun" },
+                  { fontSize: "11" },
+                  { display:"flex"},
+                  { width:"76%"},
+                ]}
+              >
+                {" "}{data.auction_report_customer_noun + '' }. {" "}
+              </Text>
+            </View>
+
+            <View style={[
+                styles.flexrow,
+                {width:"30%"}
+                ]}>
+                  <View style={styles.flexrowstart}>
+                <Text
+                  style={[
+                    { fontWeight: "extrabold" },
+                    { fontFamily: "SarabunBold" },
+                    { fontSize: "11" },
+                    styles.mtsm,
+                    styles.spacesm,
+                  ]}
+                >
+                  {" "}เบอร์โทรศัพท์:{" "}
+                </Text>
+                <Text
+                  style={[
+                    { fontWeight: "light" },
+                    { fontFamily: "Sarabun" },
+                    { fontSize: "11" },
+                    styles.mtsm,
+                    styles.spacesm,
+                  ]}
+                >
+                  {" "}
+                  {data.auction_report_customer_tel}
+                </Text>
+              </View>
+             
                   </View>
           </View>
           <View style={styles.flexrow}>
@@ -629,7 +630,7 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
                 {data.aomsin1?.[0]?.auction_auction_start_event }{" "}
               </Text>
               <Text style={styles.tableCell3}>{" "} {data.aomsin1?.[0]?.auction_auction_start_event_count }{" "} </Text>
-              <Text style={styles.tableCell4}> {" "}{""} {" "} </Text>
+              <Text style={styles.tableCell4}> {" "} หน่วย {" "} </Text>
               <Text style={styles.tableCell6}> {" "}{""} {" "}</Text>
             </View>
             {/* row 3 */}
@@ -640,7 +641,7 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
                 {data.aomsin1?.[1]?.auction_auction_start_event }{" "}
               </Text>
               <Text style={styles.tableCell3}>{" "} {data.aomsin1?.[1]?.auction_auction_start_event_count }{" "} </Text>
-              <Text style={styles.tableCell4}> {" "}{""} {" "} </Text>
+              <Text style={styles.tableCell4}> {" "} ใบ {" "} </Text>
               <Text style={styles.tableCell6}> {" "}{""} {" "}</Text>
             </View>
             {/* row 4 */}
@@ -764,7 +765,7 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
                   styles.spacesm,
                 ]}
               >
-                ผู้รับของ:{" "}
+                ผู้รับของ/ผู้บริจาค:{" "}
               </Text>
               <Text
                 style={[
@@ -1069,68 +1070,7 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
               styles.flexrow,
               {width:"30%"}
               ]}>
-            <View style={styles.flexrowstart}>
-                <Text
-                  style={[
-                    { fontWeight: "extrabold" },
-                    { fontFamily: "SarabunBold" },
-                    { fontSize: "11" },
-                    styles.mtsm,
-                    styles.spacesm,
-                  ]}
-                >
-                  {" "}เบอร์โทรศัพท์:{" "}
-                </Text>
-                <Text
-                  style={[
-                    { fontWeight: "light" },
-                    { fontFamily: "Sarabun" },
-                    { fontSize: "11" },
-                    styles.mtsm,
-                    styles.spacesm,
-                  ]}
-                >
-                  {" "}
-                  {data.auction_report_customer_tel}
-                </Text>
-              </View>
-            </View>
-          </View>
-          <View style={styles.flexrow}>
-          <View style={[
-              styles.flexrowstart,
-              {width:"70%"}
-              ]}>
-                <Text
-                style={[
-                  { fontWeight: "extrabold" },
-                  { fontFamily: "SarabunBold" },
-                  { fontSize: "11" },
-                  styles.mtsm,
-                  styles.spacesm,
-                ]}
-              >
-                ออกสลากในนาม:{" "}
-              </Text>
-              <Text
-                style={[
-                  styles.mtsm,
-                  { fontWeight: "light" },
-                  { fontFamily: "Sarabun" },
-                  { fontSize: "11" },
-                  { display:"flex"},
-                  { width:"76%"},
-                ]}
-              >
-                {" "}{data.auction_report_customer_noun + '' }. {" "}
-              </Text>
-            </View>
-
-            <View style={[
-                styles.flexrow,
-                {width:"30%"}
-                ]}>
-              <View style={styles.flexrowstart}>
+             <View style={styles.flexrowstart}>
                   <Text
                     style={[
                       { fontWeight: "extrabold" },
@@ -1180,6 +1120,68 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
                     {data?.auction_num}
                   </Text>
                 </View>
+            </View>
+          </View>
+          <View style={styles.flexrow}>
+          <View style={[
+              styles.flexrowstart,
+              {width:"70%"}
+              ]}>
+                <Text
+                style={[
+                  { fontWeight: "extrabold" },
+                  { fontFamily: "SarabunBold" },
+                  { fontSize: "11" },
+                  styles.mtsm,
+                  styles.spacesm,
+                ]}
+              >
+                ออกสลากในนาม:{" "}
+              </Text>
+              <Text
+                style={[
+                  styles.mtsm,
+                  { fontWeight: "light" },
+                  { fontFamily: "Sarabun" },
+                  { fontSize: "11" },
+                  { display:"flex"},
+                  { width:"76%"},
+                ]}
+              >
+                {" "}{data.auction_report_customer_noun + '' }. {" "}
+              </Text>
+            </View>
+
+            <View style={[
+                styles.flexrow,
+                {width:"30%"}
+                ]}>
+                  <View style={styles.flexrowstart}>
+                <Text
+                  style={[
+                    { fontWeight: "extrabold" },
+                    { fontFamily: "SarabunBold" },
+                    { fontSize: "11" },
+                    styles.mtsm,
+                    styles.spacesm,
+                  ]}
+                >
+                  {" "}เบอร์โทรศัพท์:{" "}
+                </Text>
+                <Text
+                  style={[
+                    { fontWeight: "light" },
+                    { fontFamily: "Sarabun" },
+                    { fontSize: "11" },
+                    styles.mtsm,
+                    styles.spacesm,
+                  ]}
+                >
+                  {" "}
+                  {data.auction_report_customer_tel}
+                </Text>
+              </View>
+             
                   </View>
           </View>
           <View style={styles.flexrow}>
@@ -1242,7 +1244,7 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
                 {data.aomsin1?.[0]?.auction_auction_start_event }{" "}
               </Text>
               <Text style={styles.tableCell3}>{" "} {data.aomsin1?.[0]?.auction_auction_start_event_count }{" "} </Text>
-              <Text style={styles.tableCell4}> {" "}{""} {" "} </Text>
+              <Text style={styles.tableCell4}> {" "} หน่วย {" "} </Text>
               <Text style={styles.tableCell6}> {" "}{""} {" "}</Text>
             </View>
             {/* row 3 */}
@@ -1253,7 +1255,7 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
                 {data.aomsin1?.[1]?.auction_auction_start_event }{" "}
               </Text>
               <Text style={styles.tableCell3}>{" "} {data.aomsin1?.[1]?.auction_auction_start_event_count }{" "} </Text>
-              <Text style={styles.tableCell4}> {" "}{""} {" "} </Text>
+              <Text style={styles.tableCell4}> {" "} ใบ {" "} </Text>
               <Text style={styles.tableCell6}> {" "}{""} {" "}</Text>
             </View>
             {/* row 4 */}
@@ -1377,7 +1379,7 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
                   styles.spacesm,
                 ]}
               >
-                ผู้รับของ:{" "}
+                ผู้รับของ/ผู้บริจาค:{" "}
               </Text>
               <Text
                 style={[
@@ -1515,6 +1517,7 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
        
         </View>
       </Page>
+   
       
    
       {/* สำเนา2 */}
@@ -1684,68 +1687,7 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
               styles.flexrow,
               {width:"30%"}
               ]}>
-            <View style={styles.flexrowstart}>
-                <Text
-                  style={[
-                    { fontWeight: "extrabold" },
-                    { fontFamily: "SarabunBold" },
-                    { fontSize: "11" },
-                    styles.mtsm,
-                    styles.spacesm,
-                  ]}
-                >
-                  {" "}เบอร์โทรศัพท์:{" "}
-                </Text>
-                <Text
-                  style={[
-                    { fontWeight: "light" },
-                    { fontFamily: "Sarabun" },
-                    { fontSize: "11" },
-                    styles.mtsm,
-                    styles.spacesm,
-                  ]}
-                >
-                  {" "}
-                  {data.auction_report_customer_tel}
-                </Text>
-              </View>
-            </View>
-          </View>
-          <View style={styles.flexrow}>
-          <View style={[
-              styles.flexrowstart,
-              {width:"70%"}
-              ]}>
-                <Text
-                style={[
-                  { fontWeight: "extrabold" },
-                  { fontFamily: "SarabunBold" },
-                  { fontSize: "11" },
-                  styles.mtsm,
-                  styles.spacesm,
-                ]}
-              >
-                ออกสลากในนาม:{" "}
-              </Text>
-              <Text
-                style={[
-                  styles.mtsm,
-                  { fontWeight: "light" },
-                  { fontFamily: "Sarabun" },
-                  { fontSize: "11" },
-                  { display:"flex"},
-                  { width:"76%"},
-                ]}
-              >
-                {" "}{data.auction_report_customer_noun + '' }. {" "}
-              </Text>
-            </View>
-
-            <View style={[
-                styles.flexrow,
-                {width:"30%"}
-                ]}>
-              <View style={styles.flexrowstart}>
+             <View style={styles.flexrowstart}>
                   <Text
                     style={[
                       { fontWeight: "extrabold" },
@@ -1795,6 +1737,68 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
                     {data?.auction_num}
                   </Text>
                 </View>
+            </View>
+          </View>
+          <View style={styles.flexrow}>
+          <View style={[
+              styles.flexrowstart,
+              {width:"70%"}
+              ]}>
+                <Text
+                style={[
+                  { fontWeight: "extrabold" },
+                  { fontFamily: "SarabunBold" },
+                  { fontSize: "11" },
+                  styles.mtsm,
+                  styles.spacesm,
+                ]}
+              >
+                ออกสลากในนาม:{" "}
+              </Text>
+              <Text
+                style={[
+                  styles.mtsm,
+                  { fontWeight: "light" },
+                  { fontFamily: "Sarabun" },
+                  { fontSize: "11" },
+                  { display:"flex"},
+                  { width:"76%"},
+                ]}
+              >
+                {" "}{data.auction_report_customer_noun + '' }. {" "}
+              </Text>
+            </View>
+
+            <View style={[
+                styles.flexrow,
+                {width:"30%"}
+                ]}>
+                  <View style={styles.flexrowstart}>
+                <Text
+                  style={[
+                    { fontWeight: "extrabold" },
+                    { fontFamily: "SarabunBold" },
+                    { fontSize: "11" },
+                    styles.mtsm,
+                    styles.spacesm,
+                  ]}
+                >
+                  {" "}เบอร์โทรศัพท์:{" "}
+                </Text>
+                <Text
+                  style={[
+                    { fontWeight: "light" },
+                    { fontFamily: "Sarabun" },
+                    { fontSize: "11" },
+                    styles.mtsm,
+                    styles.spacesm,
+                  ]}
+                >
+                  {" "}
+                  {data.auction_report_customer_tel}
+                </Text>
+              </View>
+             
                   </View>
           </View>
           <View style={styles.flexrow}>
@@ -1857,7 +1861,7 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
                 {data.aomsin1?.[0]?.auction_auction_start_event }{" "}
               </Text>
               <Text style={styles.tableCell3}>{" "} {data.aomsin1?.[0]?.auction_auction_start_event_count }{" "} </Text>
-              <Text style={styles.tableCell4}> {" "}{""} {" "} </Text>
+              <Text style={styles.tableCell4}> {" "} หน่วย {" "} </Text>
               <Text style={styles.tableCell6}> {" "}{""} {" "}</Text>
             </View>
             {/* row 3 */}
@@ -1868,7 +1872,7 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
                 {data.aomsin1?.[1]?.auction_auction_start_event }{" "}
               </Text>
               <Text style={styles.tableCell3}>{" "} {data.aomsin1?.[1]?.auction_auction_start_event_count }{" "} </Text>
-              <Text style={styles.tableCell4}> {" "}{""} {" "} </Text>
+              <Text style={styles.tableCell4}> {" "} ใบ {" "} </Text>
               <Text style={styles.tableCell6}> {" "}{""} {" "}</Text>
             </View>
             {/* row 4 */}
@@ -1992,7 +1996,7 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
                   styles.spacesm,
                 ]}
               >
-                ผู้รับของ:{" "}
+                ผู้รับของ/ผู้บริจาค:{" "}
               </Text>
               <Text
                 style={[
@@ -2130,6 +2134,7 @@ export const ReceiveAuctions = ({reportData, sumTotal, thbText}) => {
        
         </View>
       </Page>
+     
     
      
      

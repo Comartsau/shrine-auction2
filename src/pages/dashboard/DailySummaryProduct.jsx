@@ -190,9 +190,9 @@ const DailySummaryProduct = () => {
                 className="mb-2 mt-4 flex justify-end"
               >
                 {selectData.type_Data === 1 &&
-                  `สลากออมสิน : ${sumData?.auction_aomsin1} ใบ`}
+                  `สลากออมสิน : ${sumData?.auction_aomsin1} หน่วย`}
                 {selectData.type_Data === 2 &&
-                  `สลากออมสิน : ${sumData?.sale_aomsin1} ใบ`}
+                  `สลากออมสิน : ${sumData?.sale_aomsin1} หน่วย`}
               </Typography>
               <Typography
                 variant="lead"
