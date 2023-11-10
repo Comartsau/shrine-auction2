@@ -760,10 +760,10 @@ export function AuctionsList() {
                   <div className="flex">
                   {dataAuctions.aomsin1?.[0]?.auction_auction_start_event_count || ''}
                   </div>
-                  <div className="flex">ใบ</div>
+                  <div className="flex">หน่วย</div>
                 </div>
                 <div className="flex w-full flex-col items-center justify-center gap-2 sm:flex-row md:justify-start lg:w-[500px] xl:w-[400px] 2xl:w-[350px]">
-                  <div className="flex font-bold">สลากกินแบ่งรัฐบาล:</div>
+                  <div className="flex font-bold">ล็อตเตอรี่:</div>
                   <div className="flex">
                   {dataAuctions.aomsin1?.[1]?.auction_auction_start_event_count || ''}
                   </div>

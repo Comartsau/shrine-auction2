@@ -1982,7 +1982,7 @@ const handleSendDataEDitAuction = async () => {
                   <span className="ms-3">
                     {" "}
                     { selectedGovernmentBonds || 0}{" "}
-                  </span> ใบ <span>|</span> ล็อตเตอรี่{" "}
+                  </span> หน่วย <span>|</span> ล็อตเตอรี่{" "}
                   <span> {selectedSavingsBond || 0} </span> ใบ
                 </Typography>
               </div>
@@ -2011,7 +2011,7 @@ const handleSendDataEDitAuction = async () => {
                     onChange={(e) => setSelectedGovernmentBonds(e.target.value)}
                     className=" focus:shadow-outline   w-[70px] appearance-none rounded  border border-gray-400  px-3 leading-tight text-gray-700 shadow focus:border-blue-500 focus:outline-none"
                   />
-                  <Typography className="flex  items-center  ">ใบ</Typography>
+                  <Typography className="flex  items-center  ">หน่วย</Typography>
                 </div>
               </div>
               <div className="flex items-center gap-3">
@@ -2575,14 +2575,14 @@ const handleSendDataEDitAuction = async () => {
                       </div>
                       <div className="flex justify-center  sm:justify-center">
                         <Typography className=" text-center font-bold sm:text-left">
-                          ใบ
+                          หน่วย
                         </Typography>
                       </div>
                     </div>
                     <div className="flex  gap-3">
                       <div className="flex justify-center  sm:justify-center">
                         <Typography className=" text-center font-bold sm:text-left">
-                          ฉลากกินแบ่งรัฐบาล:
+                        ล็อตเตอรี่:
                         </Typography>
                       </div>
                       <div className="flex justify-center  sm:justify-center">

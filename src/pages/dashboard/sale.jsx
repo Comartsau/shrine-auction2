@@ -447,6 +447,82 @@ export function Sale() {
   };
 
   // ------  แก้ไขหัวข้อสินค้า ------------- //
+  // const editProduct = async () => {
+  //   setOpenViewProductDialog(false);
+  //   try {
+  //     if (!selectedEditData || !selectedEditData.id) {
+  //       console.error("No data selected for editing or missing ID.");
+  //       return;
+  //     }
+
+  //     const data = {
+  //       product_name: selectedEditData.product_name,
+  //       product_count: selectedEditData.product_count,
+  //       product_category: selectedEditData.product_category,
+  //     };
+  //     // console.log(data)
+
+  //     const response = await axios.put(
+  //       `${import.meta.env.VITE_APP_API}/Product/${selectedEditData.id}/edit`,
+  //       data,
+  //       {
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //           Authorization: `Token ${Token}`,
+  //         },
+  //       }
+  //     );
+
+  //     if (response.status === 200) {
+  //       // console.log("Product edited successfully.");
+  //       // ทำการอัปเดต state หรือตัวแปรที่ใช้เก็บข้อมูลตารางด้านล่าง
+  //       setSaveSelectedProductData((prevData) => {
+  //         const updatedData = [...prevData];
+  //         // หาตำแหน่งของข้อมูลที่แก้ไข
+  //         const dataIndex = updatedData.findIndex(
+  //           (item) => item.id === selectedEditData.id
+  //         );
+  //         if (dataIndex !== -1) {
+  //           updatedData[dataIndex] = {
+  //             ...updatedData[dataIndex],
+  //             product_name: selectedEditData.product_name,
+  //             product_count: selectedEditData.product_count,
+  //             product_category: selectedEditData.product_category,
+  //             // อัปเดตข้อมูลอื่น ๆ ตามที่คุณต้องการ
+  //           };
+  //         }
+  //         return updatedData;
+  //       });
+
+  //       setSearchQueryProductName("");
+  //       Swal.fire({
+  //         icon: "success",
+  //         title: "แก้ไขสินค้าเรียบร้อย",
+  //         showConfirmButton: false,
+  //         timer: 1500,
+  //       });
+  //     } else {
+  //       console.error("ไม่สามารถแก้ไขสินค้าได้");
+  //       setSearchQueryProductName("");
+  //       Swal.fire({
+  //         icon: "error",
+  //         title: "แก้ไขสินค้าไม่สำเร็จ",
+  //         text: "กรุณาลองใหม่อีกครั้ง",
+  //         confirmButtonText: "ตกลง",
+  //       });
+  //     }
+  //   } catch (error) {
+  //     console.error("ไม่สามารถแก้ไขสินค้าได้", error);
+  //     setSearchQueryProductName("");
+  //     Swal.fire({
+  //       icon: "error",
+  //       title: "แก้ไขสินค้าไม่สำเร็จ",
+  //       text: "กรุณาลองใหม่อีกครั้ง",
+  //       confirmButtonText: "ตกลง",
+  //     });
+  //   }
+  // };
+
   const editProduct = async () => {
     setOpenViewProductDialog(false);
     try {
@@ -455,26 +531,7 @@ export function Sale() {
         return;
       }
 
-      const data = {
-        product_name: selectedEditData.product_name,
-        product_count: selectedEditData.product_count,
-        product_category: selectedEditData.product_category,
-      };
       // console.log(data)
-
-      const response = await axios.put(
-        `${import.meta.env.VITE_APP_API}/Product/${selectedEditData.id}/edit`,
-        data,
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Token ${Token}`,
-          },
-        }
-      );
-
-      if (response.status === 200) {
-        // console.log("Product edited successfully.");
         // ทำการอัปเดต state หรือตัวแปรที่ใช้เก็บข้อมูลตารางด้านล่าง
         setSaveSelectedProductData((prevData) => {
           const updatedData = [...prevData];
@@ -501,16 +558,7 @@ export function Sale() {
           showConfirmButton: false,
           timer: 1500,
         });
-      } else {
-        console.error("ไม่สามารถแก้ไขสินค้าได้");
-        setSearchQueryProductName("");
-        Swal.fire({
-          icon: "error",
-          title: "แก้ไขสินค้าไม่สำเร็จ",
-          text: "กรุณาลองใหม่อีกครั้ง",
-          confirmButtonText: "ตกลง",
-        });
-      }
+      
     } catch (error) {
       console.error("ไม่สามารถแก้ไขสินค้าได้", error);
       setSearchQueryProductName("");
@@ -2729,7 +2777,7 @@ export function Sale() {
                           <span className="mr-2 flex text-xl">
                             <IoIosSave />
                           </span>
-                          อัทเดรท
+                          อัทเดท
                         </Button>
                       </div>
                       <hr className=" mt-5 border border-gray-500" />

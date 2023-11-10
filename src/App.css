@@ -69,10 +69,11 @@
 
     background: linear-gradient(179.2deg, #ffce6c 100%,  #ffce6c 100%,  #ffce6c 100%);
     -webkit-background-clip: text;
+    height: 100px;
     -webkit-text-fill-color: transparent;
-    color: #000;
-    -webkit-text-stroke: 4px #000;
-    text-stroke: 3px #000;
+    color: #7D0707;
+    -webkit-text-stroke: 5px #7D0707;
+    text-stroke: 3px #7D0707;
     font-family: 'Mitr', sans-serif !important;
   }
 
