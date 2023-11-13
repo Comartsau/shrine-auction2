@@ -23,6 +23,8 @@ import { BiReceipt } from "react-icons/bi";
 import { MdOutlinePayment } from "react-icons/md";
 import { PiReceipt } from "react-icons/pi";
 import { AiFillDelete, AiOutlinePlus } from "react-icons/ai";
+import Select from "react-select";
+
 
 // import { PDFViewer } from "@react-pdf/renderer";
 // import { Receive } from "../Receive";
@@ -60,6 +62,8 @@ export function EditSale_cart({
 
   const [totalPriceData, setTotalPriceData] = useState(0);
   const [dataAomsin, setDataAomsin] = useState({});
+  const [options, setOptions] = useState([]);
+
 
   const TABLE_HEAD = [
     "#",
@@ -142,13 +146,23 @@ export function EditSale_cart({
       const res = await axios.get(`${import.meta.env.VITE_APP_API}/Customer`);
       setDataAllCustomer(res.data);
       //   console.log(res.data);
+
+      
+      const formattedOptions  = res.data.map((item)=>({
+        value: item.id,
+        label:item.customer_name
+      }))
+      setOptions(formattedOptions)
+
     } catch (error) {
       console.error(error);
     }
   };
 
   const changeCustomer = (e) => {
-    const text = e.target.value;
+    // const text = e.target.value;
+    const text = e.value;
+
     const newData = dataAllCustomer.find((obj) => obj.id == text);
     setCustomerData((prev) => ({
       ...prev,
@@ -161,6 +175,7 @@ export function EditSale_cart({
       sale_code_customer_tel: newData?.customer_tel,
       id: newData?.id,
     }));
+
   };
 
   const deleteRow = (id) => {
@@ -193,6 +208,7 @@ export function EditSale_cart({
         // sale_auction_price: 800,
         status_sale: 1,
         sale_auction_q: customerData?.sale_auction_q,
+        // auction_report_customer_id :customerData?.id,
         product: modifyProduct,
         aomsin: [
           {
@@ -206,9 +222,9 @@ export function EditSale_cart({
         ],
       };
       
-      console.log(totalPriceData)
+      //console.log(totalPriceData)
       // console.log(data[0]);
-      console.log(products);
+      // console.log(products);
 
       console.log(sendData);
 
@@ -535,18 +551,21 @@ export function EditSale_cart({
                   ผู้บริจาค:
                 </Typography>
               </div>
-              <div>
-                <select
+       
+                    <div className="w-full md:w-80">
+                {/* <select
                   onChange={changeCustomer}
                   className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
                 >
                   <option value={" " || null}>เลือกผู้บริจาคที่ต้องการ</option>
                   {dataAllCustomer?.map((data, index) => (
                     <option key={data?.id} value={data?.id}>
-                      {data?.customer_name || ""}
+                      {data?.customer_name || " "}
                     </option>
                   ))}
-                </select>
+                </select> */}
+
+                <Select className="text-lg"  onChange={(option) => changeCustomer(option)} options={options} />
               </div>
               <div>
                 <IconButton
@@ -600,23 +619,11 @@ export function EditSale_cart({
               </div>
             </div>
 
-            <div className="flex flex-col  gap-4  p-3 md:flex-row lg:flex-row">
-              <div>
-                <Typography className="flex w-[110px] text-sm font-bold">
-                  ผู้ติดต่อ:
-                </Typography>
-              </div>
-              <div>
-                <Typography className="flex  text-sm ">
-                  {customerData?.sale_code_customer_contract || ""}
-                </Typography>
-              </div>
-            </div>
-
+    
             <div className="flex flex-col  gap-4  p-3 md:flex-row lg:flex-row">
               <div>
                 <Typography
-                  className="flex w-[70px] text-sm font-bold"
+                  className="flex w-[110px] text-sm font-bold"
                   value="xxxxx"
                 >
                   เบอร์โทร:
@@ -634,7 +641,7 @@ export function EditSale_cart({
             <div className="flex flex-col  gap-4  p-3 md:flex-row lg:flex-row">
               <div>
                 <Typography
-                  className="flex w-[40px] text-sm font-bold"
+                  className="flex w-[110px] text-sm font-bold"
                   value="xxxxx"
                 >
                   วันที่:
@@ -656,6 +663,19 @@ export function EditSale_cart({
               <div>
                 <Typography className="flex  text-sm ">
                   {customerData?.sale_code_customer_noun || ""}
+                </Typography>
+              </div>
+            </div>
+
+            <div className="flex flex-col  gap-4  p-3 md:flex-row lg:flex-row">
+              <div>
+                <Typography className="flex w-[110px] text-sm font-bold">
+                  ผู้ติดต่อ:
+                </Typography>
+              </div>
+              <div>
+                <Typography className="flex  text-sm ">
+                  {customerData?.sale_code_customer_contract || ""}
                 </Typography>
               </div>
             </div>

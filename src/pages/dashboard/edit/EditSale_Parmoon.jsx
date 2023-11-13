@@ -23,12 +23,7 @@ import { BiReceipt } from "react-icons/bi";
 import { MdOutlinePayment } from "react-icons/md";
 import { PiReceipt } from "react-icons/pi";
 import { AiFillDelete, AiOutlinePlus } from "react-icons/ai";
-
-// import { PDFViewer } from "@react-pdf/renderer";
-// import { Receive } from "../Receive";
-// import { Receipt1 } from "../Receipt1";
-// import { Receipt2 } from "../Receipt2";
-// import { Receipt3 } from "../Receipt3";
+import Select from "react-select";
 
 //   Components
 import Customer_modal from "../modal/Customer_modal";
@@ -55,7 +50,7 @@ export function EditSale1({
   const [cancelNote, setCancelNote] = useState("");
   const [dataPayModal, setDataPayModal] = useState({});
   const [statusModal, setStatusModal] = useState(1);
-
+  const [options, setOptions] = useState([]);
   // console.log(idAuctionReport)
 
   const TABLE_HEAD = [
@@ -86,6 +81,8 @@ export function EditSale1({
   const handleOpen5 = (number) => {
     setOpen5(!open5), setStatusModal(number);
   };
+
+
 
   // const params = useParams();
   const id = idAuctionReport;
@@ -133,15 +130,23 @@ export function EditSale1({
   const fetchdataCustomer = async () => {
     try {
       const res = await axios.get(`${import.meta.env.VITE_APP_API}/Customer`);
-      //   console.log('customer : ', res.data);
+        // console.log('customer : ', res.data);
       setDataAllCustomer(res.data);
+
+      const formattedOptions  = res.data.map((item)=>({
+        value: item.id,
+        label:item.customer_name
+      }))
+      setOptions(formattedOptions)
+
     } catch (error) {
       console.error(error);
     }
   };
 
   const changeCustomer = (e) => {
-    const text = e.target.value;
+    // const text = e.target.value;
+    const text = e.value;
     const newData = dataAllCustomer.find((obj) => obj.id == text);
     setCustomerData((prev) => ({
       ...prev,
@@ -222,9 +227,8 @@ export function EditSale1({
     }
   };
 
-
   const endBill = async () => {
-    let cancelNote; 
+    let cancelNote;
     try {
       // ถามครั้งที่ 1
       const result = await Swal.fire({
@@ -236,7 +240,7 @@ export function EditSale1({
         cancelButtonText: "ยกเลิก",
         confirmButtonText: "ยืนยัน",
         preConfirm: (note) => {
-          cancelNote = note; 
+          cancelNote = note;
         },
         allowOutsideClick: () => !Swal.isLoading(),
       });
@@ -258,9 +262,9 @@ export function EditSale1({
             });
             const dataSend = {
               show_Id: data[0]?.id_auction_report,
-              auction_report_q: cancelNote, 
+              auction_report_q: cancelNote,
             };
-            
+
             // console.log(dataSend);
 
             const response = axios.put(
@@ -271,10 +275,9 @@ export function EditSale1({
                   "Content-Type": "application/json",
                   Authorization: `Token ${Token}`,
                 },
-              } 
+              }
             );
 
-            
             setTimeout(() => {
               fetchDataIndex();
               setOpenEditParmoon(false);
@@ -288,7 +291,6 @@ export function EditSale1({
       Swal.fire("เกิดข้อผิดพลาด", "ไม่สามารถยกเลิกบิลได้ในขณะนี้", "error");
     }
   };
-
 
   const handlePay = async () => {
     setDataPayModal({
@@ -330,8 +332,6 @@ export function EditSale1({
 
   return (
     <>
-  
-
       <Customer_modal
         open={open}
         handleOpen={handleOpen}
@@ -522,10 +522,9 @@ export function EditSale1({
                   ผู้บริจาค:
                 </Typography>
               </div>
-              <div>
-                <select
+              <div className="w-full md:w-80">
+                {/* <select
                   onChange={changeCustomer}
-                  // defaultValue={customerData?.auction_report_user_auction || ""}
                   className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
                 >
                   <option value={" " || null}>เลือกผู้บริจาคที่ต้องการ</option>
@@ -534,7 +533,9 @@ export function EditSale1({
                       {data?.customer_name || " "}
                     </option>
                   ))}
-                </select>
+                </select> */}
+
+                <Select className="text-lg"  onChange={(option) => changeCustomer(option)} options={options} />
               </div>
               <div>
                 <IconButton
@@ -621,7 +622,7 @@ export function EditSale1({
             <div className="flex flex-col  gap-4  p-3 md:flex-row lg:flex-row">
               <div>
                 <Typography
-                  className="flex w-[40px] text-sm font-bold"
+                  className="flex w-[110px] text-sm font-bold"
                   value="xxxxx"
                 >
                   วันที่:

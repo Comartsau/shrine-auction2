@@ -60,6 +60,7 @@ export function DashboardNavbar() {
         );
         // console.log(response);
         localStorage.clear();
+        window.location.reload()
         navigate("/auth/sign-in");
       }
     } catch (error) {
