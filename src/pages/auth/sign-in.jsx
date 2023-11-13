@@ -26,10 +26,9 @@ export function SignIn() {
         username:email,
         password:password
       }
-      // const response = await axios.post("http://26.125.18.207:8000/login",data);
       const response = await axios.post(`${import.meta.env.VITE_APP_API}/login`,data);
 
-      // console.log(response)
+      console.log(response)
       //------ Display -----//
       if (response.data.check == 0) {  
         localStorage.setItem("token", response.data.accessToken)
