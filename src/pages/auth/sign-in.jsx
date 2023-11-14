@@ -32,6 +32,7 @@ export function SignIn() {
       //------ Display -----//
       if (response.data.check == 0) {  
         localStorage.setItem("token", response.data.accessToken)
+        localStorage.setItem('Type','display')
         // localStorage.setItem("username", response.data.username)
         // localStorage.setItem("check", response.data.check)
         // localStorage.setItem("id", response.data.id)
@@ -55,6 +56,8 @@ export function SignIn() {
         localStorage.setItem("id", response.data.id)
         localStorage.setItem("btn_login", response.data.btn_login)
         localStorage.setItem("status", response.data.status)
+        localStorage.setItem('Type','admin')
+
         navigate("/dashboard/home");
         window.location.reload();
         // console.log("22222222222222")
@@ -74,6 +77,8 @@ export function SignIn() {
         localStorage.setItem("id", response.data.id)
         localStorage.setItem("btn_login", response.data.btn_login)
         localStorage.setItem("status", response.data.status)
+        localStorage.setItem('Type','user')
+
         navigate("/dashboard/home");
         window.location.reload();
         Swal.fire({

@@ -26,6 +26,7 @@ import Display from "./pages/dashboard/display";
 function App() {
   const navigate = useNavigate();
   let Token = localStorage.getItem("token");
+  let Type = localStorage.getItem('Type')
   const [Tokens, setTokens] = useState(localStorage.getItem("token"));
   const [statusLogin, setStatusLogin] = useState("");
 
@@ -54,13 +55,14 @@ function App() {
 
   return (
     <>
-      {Tokens || statusLogin === "Yes" ? (
+      {Token || statusLogin === "Yes" ? (
         <Routes>
-          <Route path="/" element={<Navigate to="/dashboard/home" />} />,
-          <Route path="/display" element={<Display />} /> ,
-          <Route path="/dashboard/*" element={<Dashboard />} /> ,
+          <Route path="/" element={Type =="display" ? <SignIn/>  :<Navigate to="/dashboard/home" />} />,
+          <Route path="/display" element={ Type =="display" ? <Display /> : <Navigate to="/dashboard/home"/> } /> ,
+          <Route path="/dashboard/*" element={ Type == "display" ? <SignIn/> : <Dashboard/>} /> ,
           <Route path="/auth/*" element={<Auth />} />
         </Routes>
+  
       ) : (
         <Routes>
           <Route path="/" element={<Navigate to="/auth/sign-in" />} />,

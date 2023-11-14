@@ -318,12 +318,12 @@ const Customer_modal = ({
                 <div>
                   <div className="mt-4 grid gap-4 sm:grid-cols-1 md:grid-cols-2">
                     <Input
-                      value={dataSend?.customer_name || "-" }
+                      value={dataSend?.customer_name  }
                       label="ชื่อผู้บริจาค"
                       onChange={(e) =>
                         setDataSend((prev) => ({
                           ...prev,
-                          customer_name: e.target.value || "-",
+                          customer_name: e.target.value ,
                         }))
                       }
                     />
@@ -337,11 +337,11 @@ const Customer_modal = ({
                   <div className=" mt-4 w-full">
                     <Input
                       label="ที่อยู่ผู้บริจาค"
-                      value={dataSend?.customer_address || "-"}
+                      value={dataSend?.customer_address }
                       onChange={(e) =>
                         setDataSend((prev) => ({
                           ...prev,
-                          customer_address: e.target.value || "-",
+                          customer_address: e.target.value ,
                         }))
                       }
                     />
@@ -349,12 +349,12 @@ const Customer_modal = ({
 
                   <div className=" mt-4 w-full">
                     <Input
-                      value={dataSend?.customer_delivery || "-"}
+                      value={dataSend?.customer_delivery }
                       label="สถานที่จัดส่ง"
                       onChange={(e) =>
                         setDataSend((prev) => ({
                           ...prev,
-                          customer_delivery: e.target.value || "-",
+                          customer_delivery: e.target.value ,
                         }))
                       }
                     />
@@ -362,23 +362,23 @@ const Customer_modal = ({
 
                   <div className="mt-4 grid gap-4 sm:grid-cols-1 md:grid-cols-2">
                     <Input
-                      value={dataSend?.customer_contract || "-"}
-                      label="ผู้ติดต่อ"
+                      value={dataSend?.customer_contract }
+                      label="ผู้ติดต่อ "
                       onChange={(e) =>
                         setDataSend((prev) => ({
                           ...prev,
-                          customer_contract: e.target.value || "-",
+                          customer_contract: e.target.value ,
                         }))
                       }
                     />
 
                     <Input
                       label="ออกฉลากในนาม"
-                      value={dataSend?.customer_noun || "-"}
+                      value={dataSend?.customer_noun }
                       onChange={(e) =>
                         setDataSend((prev) => ({
                           ...prev,
-                          customer_noun: e.target.value || "-",
+                          customer_noun: e.target.value ,
                         }))
                       }
                     />
@@ -387,22 +387,22 @@ const Customer_modal = ({
                   <div className="mt-4 grid gap-4 sm:grid-cols-1 md:grid-cols-2">
                     <Input
                       label="โทรศัพท์"
-                      value={dataSend?.customer_tel || "-"}
+                      value={dataSend?.customer_tel}
                       onChange={(e) =>
                         setDataSend((prev) => ({
                           ...prev,
-                          customer_tel: e.target.value || "-",
+                          customer_tel: e.target.value ,
                         }))
                       }
                     />
 
                     <Input
                       label="เลขที่อ้างอิง"
-                      value={dataSend?.customer_number || "-"}
+                      value={dataSend?.customer_number}
                       onChange={(e) =>
                         setDataSend((prev) => ({
                           ...prev,
-                          customer_number: e.target.value || "-",
+                          customer_number: e.target.value ,
                         }))
                       }
                     />
@@ -426,12 +426,12 @@ const Customer_modal = ({
                 <div>
                   <div className="mt-4 grid gap-4 sm:grid-cols-1 md:grid-cols-2">
                     <Input
-                      value={dataSend?.customer_name || "-"}
+                      value={dataSend?.customer_name }
                       label="ชื่อผู้บริจาค"
                       onChange={(e) =>
                         setDataSend((prev) => ({
                           ...prev,
-                          customer_name: e.target.value || "-",
+                          customer_name: e.target.value ,
                         }))
                       }
                     />
@@ -446,11 +446,11 @@ const Customer_modal = ({
                   <div className=" mt-4 w-full">
                     <Input
                       label="ที่อยู่ผู้บริจาค"
-                      value={dataSend?.customer_address || "-"}
+                      value={dataSend?.customer_address }
                       onChange={(e) =>
                         setDataSend((prev) => ({
                           ...prev,
-                          customer_address: e.target.value || "-",
+                          customer_address: e.target.value ,
                         }))
                       }
                     />
@@ -458,12 +458,12 @@ const Customer_modal = ({
 
                   <div className=" mt-4 w-full">
                     <Input
-                      value={dataSend?.customer_delivery || "-"}
+                      value={dataSend?.customer_delivery}
                       label="สถานที่จัดส่ง"
                       onChange={(e) =>
                         setDataSend((prev) => ({
                           ...prev,
-                          customer_delivery: e.target.value || "-",
+                          customer_delivery: e.target.value ,
                         }))
                       }
                     />
@@ -471,23 +471,23 @@ const Customer_modal = ({
 
                   <div className="mt-4 grid gap-4 sm:grid-cols-1 md:grid-cols-2">
                     <Input
-                      value={dataSend?.customer_contract || "-"}
+                      value={dataSend?.customer_contract }
                       label="ผู้ติดต่อ"
                       onChange={(e) =>
                         setDataSend((prev) => ({
                           ...prev,
-                          customer_contract: e.target.value || "-",
+                          customer_contract: e.target.value ,
                         }))
                       }
                     />
 
                     <Input
                       label="ออกฉลากในนาม"
-                      value={dataSend?.customer_noun || "-"}
+                      value={dataSend?.customer_noun }
                       onChange={(e) =>
                         setDataSend((prev) => ({
                           ...prev,
-                          customer_noun: e.target.value || "-",
+                          customer_noun: e.target.value ,
                         }))
                       }
                     />
@@ -496,22 +496,22 @@ const Customer_modal = ({
                   <div className="mt-4 grid gap-4 sm:grid-cols-1 md:grid-cols-2">
                     <Input
                       label="โทรศัพท์"
-                      value={dataSend?.customer_tel || "-"}
+                      value={dataSend?.customer_tel }
                       onChange={(e) =>
                         setDataSend((prev) => ({
                           ...prev,
-                          customer_tel: e.target.value || "-",
+                          customer_tel: e.target.value ,
                         }))
                       }
                     />
 
                     <Input
                       label="เลขที่อ้างอิง"
-                      value={dataSend?.customer_number || "-"}
+                      value={dataSend?.customer_number }
                       onChange={(e) =>
                         setDataSend((prev) => ({
                           ...prev,
-                          customer_number: e.target.value || "-",
+                          customer_number: e.target.value ,
                         }))
                       }
                     />

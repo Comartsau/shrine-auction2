@@ -106,7 +106,8 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   textlg: {
-    fontSize: 18,
+    fontSize: 20,
+    fontWeight:"extrabold"
   },
   textxl: {
     fontSize: 24,
@@ -131,7 +132,7 @@ const styles = StyleSheet.create({
 
   imageContainer: {
     alignSelf: "center",
-    marginTop: 20,
+    marginTop: 0,
     marginBottom: 20,
     wordBreak: "break-word"
   },
@@ -288,10 +289,9 @@ export const Receipt3 = ({reportData, sumTotal, thbText, receiptData}) => {
             <Text style={[styles.textsm, styles.spacesm]}>{""} </Text>
             <Text
               style={[
-                styles.textbase,
-                { fontWeight: "light" },
+                styles.textlg,
                 { fontFamily: "Sarabun" },
-                {color:"red"},
+                {color:"blue"},
               ]}
             >
               ต้นฉบับ{" "}
@@ -545,7 +545,7 @@ export const Receipt3 = ({reportData, sumTotal, thbText, receiptData}) => {
                       styles.spacesm,
                     ]}
                   >
-                    เล่มที่:
+                    เลขที่:
                   </Text>
                   <Text
                     style={[
@@ -1049,13 +1049,12 @@ export const Receipt3 = ({reportData, sumTotal, thbText, receiptData}) => {
             <Text style={[styles.textsm, styles.spacesm]}>{""} </Text>
             <Text
               style={[
-                styles.textbase,
-                { fontWeight: "light" },
+                styles.textlg,
                 { fontFamily: "Sarabun" },
-                {color:"blue"},
+                {color:"red"},
               ]}
             >
-              สำเนา{" "}
+              สำเนา (บัญชี){" "}
             </Text>
           </View>
           <View style={styles.flexrow}>
@@ -1306,7 +1305,7 @@ export const Receipt3 = ({reportData, sumTotal, thbText, receiptData}) => {
                       styles.spacesm,
                     ]}
                   >
-                    เล่มที่:
+                    เลขที่:
                   </Text>
                   <Text
                     style={[
@@ -1811,13 +1810,12 @@ export const Receipt3 = ({reportData, sumTotal, thbText, receiptData}) => {
             <Text style={[styles.textsm, styles.spacesm]}>{""} </Text>
             <Text
               style={[
-                styles.textbase,
-                { fontWeight: "light" },
+                styles.textlg,
                 { fontFamily: "Sarabun" },
-                {color:"blue"},
+                {color:"green"},
               ]}
             >
-              สำเนา{" "}
+              สำเนา (ลูกค้า){" "}
             </Text>
           </View>
           <View style={styles.flexrow}>
@@ -2068,7 +2066,7 @@ export const Receipt3 = ({reportData, sumTotal, thbText, receiptData}) => {
                       styles.spacesm,
                     ]}
                   >
-                    เล่มที่:
+                    เลขที่:
                   </Text>
                   <Text
                     style={[

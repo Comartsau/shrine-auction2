@@ -117,7 +117,8 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   textlg: {
-    fontSize: 18,
+    fontSize: 20,
+    fontWeight:'extrabold'
   },
   textxl: {
     fontSize: 24,
@@ -313,10 +314,10 @@ const BillSend_Sale = ({ open3, handleOpen3, data, statusModal }) => {
                     <Text style={[styles.textsm, styles.spacesm]}>{""} </Text>
                     <Text
                       style={[
-                        styles.textbase,
-                        { fontWeight: "light" },
+                        styles.textlg,
+                        // { fontWeight: "light" },
                         { fontFamily: "Sarabun" },
-                        {color:"red"},
+                        {color:"blue"},
                       ]}
                     >
                       ต้นฉบับ{" "}
@@ -505,7 +506,7 @@ const BillSend_Sale = ({ open3, handleOpen3, data, statusModal }) => {
               styles.spacesm,
             ]}
           >
-            เล่มที่:{" "}
+             เลขที่:
           </Text>
           <Text
             style={[
@@ -937,13 +938,13 @@ const BillSend_Sale = ({ open3, handleOpen3, data, statusModal }) => {
             <Text style={[styles.textsm, styles.spacesm]}>{""} </Text>
             <Text
               style={[
-                styles.textbase,
-                { fontWeight: "light" },
+                styles.textlg,
+                // { fontWeight: "light" },
                 { fontFamily: "Sarabun" },
-                {color:"blue"},
+                {color:"red"},
               ]}
             >
-              สำเนา{" "}
+              สำเนา (บัญชี){" "}
             </Text>
           </View>
           <View style={styles.flexrow}>
@@ -1129,7 +1130,7 @@ const BillSend_Sale = ({ open3, handleOpen3, data, statusModal }) => {
       styles.spacesm,
     ]}
   >
-    เล่มที่:{" "}
+    เลขที่:
   </Text>
   <Text
     style={[
@@ -1566,13 +1567,13 @@ const BillSend_Sale = ({ open3, handleOpen3, data, statusModal }) => {
            <Text style={[styles.textsm, styles.spacesm]}>{""} </Text>
            <Text
              style={[
-               styles.textbase,
-               { fontWeight: "light" },
+               styles.textlg,
+              //  { fontWeight: "light" },
                { fontFamily: "Sarabun" },
-               {color:"blue"},
+               {color:"green"},
              ]}
            >
-             สำเนา{" "}
+             สำเนา (ลูกค้า){" "}
            </Text>
          </View>
          <View style={styles.flexrow}>
@@ -1758,7 +1759,7 @@ const BillSend_Sale = ({ open3, handleOpen3, data, statusModal }) => {
      styles.spacesm,
    ]}
  >
-   เล่มที่:{" "}
+    เลขที่:
  </Text>
  <Text
    style={[

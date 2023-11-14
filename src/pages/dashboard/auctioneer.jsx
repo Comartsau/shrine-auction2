@@ -473,7 +473,7 @@ export function Auctioneer() {
             <Input
               type="text"
               label="ที่อยู่ผู้บริจาค"
-              maxLength="50"
+              maxLength="60"
               value={newCustomerAddress}
               onChange={(e) => setNewCustomerAddress(e.target.value)}
               className="w-full  "
@@ -488,7 +488,7 @@ export function Auctioneer() {
             <Input
               type="text"
               label="สถานที่จัดส่ง"
-              maxLength="50"
+              maxLength="60"
               value={newCustomerDelivery}
               onChange={(e) => setNewCustomerDelivery(e.target.value)}
               className="w-full "
@@ -731,7 +731,7 @@ export function Auctioneer() {
             <Input
               type="text"
               label="ที่อยู่ผู้บริจาค"
-              maxLength="50"
+              maxLength="60"
               value={selectedEditData?.customer_address || ""}
               onChange={(e) =>
                 setSelectedEditData({
@@ -751,7 +751,7 @@ export function Auctioneer() {
             <Input
               type="text"
               label="สถานที่จัดส่ง"
-              maxLength="50"
+              maxLength="60"
               value={selectedEditData?.customer_delivery || ""}
               onChange={(e) =>
                 setSelectedEditData({

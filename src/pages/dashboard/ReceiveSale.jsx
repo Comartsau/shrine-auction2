@@ -112,7 +112,8 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   textlg: {
-    fontSize: 18,
+    fontSize: 20,
+    fontWeight: "extrabold"
   },
   textxl: {
     fontSize: 24,
@@ -298,10 +299,10 @@ export const ReceiveSale = ({reportData, sumTotal, thbText}) => {
             <Text style={[styles.textsm, styles.spacesm]}>{""} </Text>
             <Text
               style={[
-                styles.textbase,
+                styles.textlg,
                 { fontWeight: "light" },
                 { fontFamily: "Sarabun" },
-                {color:"red"}
+                {color:"blue"}
               ]}
             >
               ต้นฉบับ{" "}
@@ -493,7 +494,7 @@ export const ReceiveSale = ({reportData, sumTotal, thbText}) => {
                       styles.spacesm,
                     ]}
                   >
-                    เล่มที่:
+                    เลขที่ :
                   </Text>
                   <Text
                     style={[
@@ -927,13 +928,13 @@ export const ReceiveSale = ({reportData, sumTotal, thbText}) => {
             <Text style={[styles.textsm, styles.spacesm]}>{""} </Text>
             <Text
               style={[
-                styles.textbase,
+                styles.textlg,
                 { fontWeight: "light" },
                 { fontFamily: "Sarabun" },
-                {color:"blue"}
+                {color:"red"}
               ]}
             >
-              สำเนา{" "}
+              สำเนา (บัญชี){" "}
             </Text>
           </View>
           <View style={styles.flexrow}>
@@ -1122,7 +1123,7 @@ export const ReceiveSale = ({reportData, sumTotal, thbText}) => {
                       styles.spacesm,
                     ]}
                   >
-                    เล่มที่:
+                    เลขที่:
                   </Text>
                   <Text
                     style={[
@@ -1556,13 +1557,13 @@ export const ReceiveSale = ({reportData, sumTotal, thbText}) => {
             <Text style={[styles.textsm, styles.spacesm]}>{""} </Text>
             <Text
               style={[
-                styles.textbase,
+                styles.textlg,
                 { fontWeight: "light" },
                 { fontFamily: "Sarabun" },
-                {color:"blue"}
+                {color:"green"}
               ]}
             >
-              สำเนา{" "}
+              สำเนา (ลูกค้า){" "}
             </Text>
           </View>
           <View style={styles.flexrow}>
@@ -1751,7 +1752,7 @@ export const ReceiveSale = ({reportData, sumTotal, thbText}) => {
                       styles.spacesm,
                     ]}
                   >
-                    เล่มที่:
+                     เลขที่:
                   </Text>
                   <Text
                     style={[
